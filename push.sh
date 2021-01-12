@@ -1,3 +1,4 @@
+datetime=$(date "+%Y-%m-%d %H:%M:%S")
 git add .
-git commit -m "keep working"
+git commit -m "${datetime}"
 git push
