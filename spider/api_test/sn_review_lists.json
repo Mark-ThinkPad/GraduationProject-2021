@@ -1,0 +1,1105 @@
+{
+    "commodityReviews": [
+        {
+            "bestTag": 0,
+            "commodityReviewId": 785717261,
+            "content": "耳塞舒服，蓝牙性能好",
+            "publishTime": "2020-12-11 18:29:36",
+            "publishTimeStr": "2020-12-11 18:29:36",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "1***5",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_27_60x60.jpg",
+                "isVip": false
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 10,
+            "picVideInfo": {
+                "imgCount": 6,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253385687865",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253385687865.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253385687865.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253359469556",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253359469556.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253359469556.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253371531477",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253371531477.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253371531477.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253363123289",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253363123289.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253363123289.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253376449640",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253376449640.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253376449640.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 5,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160768253367557339",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160768253367557339.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160768253367557339.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011762436171",
+                "commodityName": "小米真无线蓝牙耳机Air 2S白色 无惧干扰 低延迟无线充电长续航蓝牙耳机",
+                "buyCatalogId": "R9003417",
+                "charaterId1": "颜色",
+                "charaterDesc1": "Air2 S白色",
+                "charaterId2": "",
+                "charaterDesc2": ""
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "30601747",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 6,
+            "canUploadImg": true,
+            "ordinaryContent": "耳塞舒服，蓝牙性能好",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 788458968,
+            "content": "新款的小米10**纪念版，看了好久终于下手了。物流速度极快，第二天就到了，这次包装盒跟以往完全不同，好大的包装，纪念版就是不一样。手机很精致，还配了手机壳，套上外壳，保护一下，开机。屏幕非常的清晰，触屏手感顺滑，拿手上很有质感，买的是12G内存的，非常的顺畅，拍照很清晰，还防抖，太舒服了。配备的这个120W充电器非常给力，太赞了，爱不释手，感觉很值，非常满意，纪念版就是与众不同",
+            "publishTime": "2020-12-16 22:29:55",
+            "publishTimeStr": "2020-12-16 22:29:55",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "1***8",
+                "levelId": "161000000130",
+                "levelName": "V3",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_30_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 190,
+            "picVideInfo": {
+                "imgCount": 4,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160812898053156572",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160812898053156572.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160812898053156572.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160812898683680276",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160812898683680276.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160812898683680276.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160812898035870033",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160812898035870033.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160812898035870033.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160812898971938190",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160812898971938190.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160812898971938190.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926584323",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 8+128GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）8GB+128GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [
+                {
+                    "labelName": "拍照效果好"
+                },
+                {
+                    "labelName": "屏幕清晰"
+                }
+            ],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 4,
+            "canUploadImg": true,
+            "ordinaryContent": "新款的小米10**纪念版，看了好久终于下手了。物流速度极快，第二天就到了，这次包装盒跟以往完全不同，好大的包装，纪念版就是不一样。手机很精致，还配了手机壳，套上外壳，保护一下，开机。屏幕非常的清晰，触屏手感顺滑，拿手上很有质感，买的是12G内存的，非常的顺畅，拍照很清晰，还防抖，太舒服了。配备的这个120W充电器非常给力，太赞了，爱不释手，感觉很值，非常满意，纪念版就是与众不同",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 755131172,
+            "content": "不得不说手机重量在那摆着还是很压手的，系统很全面很顺滑很好上手，产品体验还不错。要是能再薄一点轻一点就更好了",
+            "publishTime": "2020-08-27 21:58:06",
+            "publishTimeStr": "2020-08-27 21:58:06",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": true,
+            "userInfo": {
+                "nickName": "恕***尘",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_30_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 54,
+            "picVideInfo": {
+                "imgCount": 5,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159853668171214661",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159853668171214661.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159853668171214661.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159853651629661545",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159853651629661545.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159853651629661545.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159853651658085641",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159853651658085641.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159853651658085641.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159853668170843113",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159853668170843113.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159853668170843113.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159853668199436537",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159853668199436537.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159853668199436537.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926599698",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 16+512GB 亮银版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "亮银版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）16GB+512GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": true,
+            "smallVideo": {
+                "channelWebId": "N_0a2emq6dpaCloq2L4K2fnq6dqeyinK-dpqSgoQ",
+                "channelId": "N_218850997",
+                "reviewId": 755131172,
+                "deviceType": 1,
+                "duration": 0,
+                "auditStatus": 0,
+                "screenShot": "http://grocery.pptv.com/lpic/dee/63c/447/afeb4df70cac8343b42ccff0ac83940b.jpg?prod=pgc_idcard",
+                "createTime": "2020-08-27 21:55:52",
+                "updateTime": "2020-08-27 21:58:30",
+                "operateStatus": 0,
+                "cloudDiamondFlag": 0,
+                "pointOutDisplay": false,
+                "channelWebUrl": "http://m4.pptvyun.com/svod/b69e7/AKVFyjxGsQ-u9ktyCLgWMcxW7tU/eyJkbCI6MTU5OTE0MTM1MiwiZXMiOjYwNDgwMCwiaWQiOiJuQUd3NXIiLCJ2IjoiMS4wIn0/nAGw5r.mp4"
+            },
+            "imgCnt": 5,
+            "canUploadImg": true,
+            "ordinaryContent": "不得不说手机重量在那摆着还是很压手的，系统很全面很顺滑很好上手，产品体验还不错。要是能再薄一点轻一点就更好了",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 772272777,
+            "content": "电池续航：续航很强<br/>拍照效果：很清晰<br/>显示效果：很不错<br/>运行速度：快<br/>个人感觉拍照没有p40pro好",
+            "publishTime": "2020-11-08 19:58:44",
+            "publishTimeStr": "2020-11-08 19:58:44",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "3***m",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_30_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 50,
+            "picVideInfo": {
+                "imgCount": 5,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160483668864335684",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160483668864335684.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160483668864335684.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160483668863167324",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160483668863167324.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160483668863167324.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160483668846625164",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160483668846625164.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160483668846625164.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160483668832961857",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160483668832961857.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160483668832961857.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160483668860038442",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160483668860038442.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160483668860038442.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926556428",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 12+256GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）12GB+256GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 5,
+            "canUploadImg": true,
+            "guideLabelDTOList": [
+                {
+                    "labelId": "331",
+                    "labelName": "电池续航",
+                    "content": "续航很强"
+                },
+                {
+                    "labelId": "328",
+                    "labelName": "拍照效果",
+                    "content": "很清晰"
+                },
+                {
+                    "labelId": "325",
+                    "labelName": "显示效果",
+                    "content": "很不错"
+                },
+                {
+                    "labelId": "211",
+                    "labelName": "运行速度",
+                    "content": "快"
+                }
+            ],
+            "ordinaryContent": "个人感觉拍照没有p40pro好",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 772656333,
+            "content": "看见好久，一市就开始看，总于下手，按耐不住了，我也算是个米粉吧，本来打算在华为和小米之间选择的，后来还是选了小米，性价比感觉要比华为高点，12+256这下应该够用了吧，120W充电真牛逼，快的不得了，总体来说还不错，个人喜欢没办法，哈哈",
+            "publishTime": "2020-11-09 20:10:13",
+            "publishTimeStr": "2020-11-09 20:10:13",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "萨***神",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_28_60x60.jpg",
+                "isVip": false
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 118,
+            "picVideInfo": {
+                "imgCount": 5,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160492363226329740",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160492363226329740.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160492363226329740.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160492363436347062",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160492363436347062.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160492363436347062.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160492363513437645",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160492363513437645.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160492363513437645.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160492363513672670",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160492363513672670.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160492363513672670.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160492363518478511",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160492363518478511.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160492363518478511.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926556428",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 12+256GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）12GB+256GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 5,
+            "canUploadImg": true,
+            "ordinaryContent": "看见好久，一市就开始看，总于下手，按耐不住了，我也算是个米粉吧，本来打算在华为和小米之间选择的，后来还是选了小米，性价比感觉要比华为高点，12+256这下应该够用了吧，120W充电真牛逼，快的不得了，总体来说还不错，个人喜欢没办法，哈哈",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 778831068,
+            "content": "不错，物美价廉，音质还不错",
+            "publishTime": "2020-11-25 23:38:47",
+            "publishTimeStr": "2020-11-25 23:38:47",
+            "deviceType": 6,
+            "sourceSystem": "ios",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "J***g",
+                "levelId": "161000000110",
+                "levelName": "V1",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_29_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 13,
+            "picVideInfo": {
+                "imgCount": 5,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160631870146262465",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160631870146262465.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160631870146262465.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160631871969335438",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160631871969335438.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160631871969335438.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160631871432353326",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160631871432353326.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160631871432353326.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160631870566820957",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160631870566820957.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160631870566820957.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160631870945663261",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160631870945663261.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160631870945663261.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011762436171",
+                "commodityName": "小米真无线蓝牙耳机Air 2S白色",
+                "buyCatalogId": "R9003417",
+                "charaterId1": "颜色",
+                "charaterDesc1": "Air2 S白色",
+                "charaterId2": "",
+                "charaterDesc2": ""
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "30601747",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 5,
+            "canUploadImg": true,
+            "ordinaryContent": "不错，物美价廉，音质还不错",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 757288280,
+            "content": "性能**，透明后盖的设计令科技感十足，不愧是小米十周年倾力打造的纪念版。",
+            "publishTime": "2020-09-06 21:25:08",
+            "publishTimeStr": "2020-09-06 21:25:08",
+            "deviceType": 6,
+            "sourceSystem": "ios",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "d***6",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_33_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 36,
+            "picVideInfo": {
+                "imgCount": 6,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939848384568350",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939848384568350.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939848384568350.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939849018935872",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939849018935872.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939849018935872.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939848450965551",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939848450965551.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939848450965551.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939848422158907",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939848422158907.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939848422158907.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939848988053662",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939848988053662.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939848988053662.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 5,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159939848713557104",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159939848713557104.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159939848713557104.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926556428",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 12+256GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）12GB+256GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 6,
+            "canUploadImg": true,
+            "ordinaryContent": "性能**，透明后盖的设计令科技感十足，不愧是小米十周年倾力打造的纪念版。",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 774381664,
+            "content": "电池续航：续航还可以没有那么不堪<br/>拍照效果：拍照清晰<br/>运行速度：运行流畅",
+            "publishTime": "2020-11-13 12:26:33",
+            "publishTimeStr": "2020-11-13 12:26:33",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": true,
+            "userInfo": {
+                "nickName": "1***1",
+                "levelId": "161000000110",
+                "levelName": "V1",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_28_60x60.jpg",
+                "isVip": false
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 36,
+            "picVideInfo": {
+                "imgCount": 4,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160524153807734766",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160524153807734766.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160524153807734766.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160524153594664885",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160524153594664885.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160524153594664885.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160524153639461238",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160524153639461238.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160524153639461238.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160524153415521317",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160524153415521317.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160524153415521317.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926584323",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 8+128GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）8GB+128GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [
+                {
+                    "labelName": "拍照效果好"
+                }
+            ],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 4,
+            "canUploadImg": true,
+            "guideLabelDTOList": [
+                {
+                    "labelId": "331",
+                    "labelName": "电池续航",
+                    "content": "续航还可以没有那么不堪"
+                },
+                {
+                    "labelId": "328",
+                    "labelName": "拍照效果",
+                    "content": "拍照清晰"
+                },
+                {
+                    "labelId": "211",
+                    "labelName": "运行速度",
+                    "content": "运行流畅"
+                }
+            ],
+            "ordinaryContent": "",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 783624722,
+            "content": "第一次在苏宁上购物，还算满意吧，就只有一点，手机是完全没电，还得充一会才能开机。手机用了几个小时挺满意的。",
+            "publishTime": "2020-12-07 15:32:55",
+            "publishTimeStr": "2020-12-07 15:32:55",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": true,
+            "userInfo": {
+                "nickName": "1***1",
+                "levelId": "161000000110",
+                "levelName": "V1",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_25_60x60.jpg",
+                "isVip": false
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 53,
+            "picVideInfo": {
+                "imgCount": 5,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160732596866316657",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160732596866316657.jpg?from=mobile",
+                        "coverFlag": false,
+                        "ordershowId": 0,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160732596866316657.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160732596852861104",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160732596852861104.jpg?from=mobile",
+                        "coverFlag": false,
+                        "ordershowId": 0,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160732596852861104.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160732596855196674",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160732596855196674.jpg?from=mobile",
+                        "coverFlag": false,
+                        "ordershowId": 0,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160732596855196674.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160732596856047115",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160732596856047115.jpg?from=mobile",
+                        "coverFlag": false,
+                        "ordershowId": 0,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160732596856047115.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 5,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/160732596865756485",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/160732596865756485.jpg?from=mobile",
+                        "coverFlag": false,
+                        "ordershowId": 0,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/160732596865756485.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926582930",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 8+256GB 陶瓷黑 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "陶瓷黑",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）8GB+256GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 5,
+            "canUploadImg": true,
+            "ordinaryContent": "第一次在苏宁上购物，还算满意吧，就只有一点，手机是完全没电，还得充一会才能开机。手机用了几个小时挺满意的。",
+            "returnCode": "1",
+            "returnMsg": ""
+        },
+        {
+            "bestTag": 0,
+            "commodityReviewId": 753502595,
+            "content": "开机41%的电量，透明版科技感十足，赠的透明壳塑料感太强烈，安上后level立刻降了一截",
+            "publishTime": "2020-08-21 20:05:36",
+            "publishTimeStr": "2020-08-21 20:05:36",
+            "deviceType": 5,
+            "sourceSystem": "android",
+            "anonFlag": false,
+            "userInfo": {
+                "nickName": "淘***妹",
+                "levelId": "161000000140",
+                "levelName": "V4",
+                "imgUrl": "//image.suning.cn/uimg/cmf/cust_headpic/0000000000_24_60x60.jpg",
+                "isVip": true
+            },
+            "qualityStar": 5,
+            "bestFlag": false,
+            "shopInfo": {
+                "shopId": "0000000000",
+                "shopName": "",
+                "shopType": "1"
+            },
+            "picVideoFlag": true,
+            "contentLength": 44,
+            "picVideInfo": {
+                "imgCount": 6,
+                "imageInfo": [
+                    {
+                        "imgSeq": 0,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801119462377657",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801119462377657.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801119462377657.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 1,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801119472800257",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801119472800257.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801119472800257.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 2,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801119452236135",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801119452236135.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801119452236135.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 3,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801151559761734",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801151559761734.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801151559761734.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 4,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801119458973829",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801119458973829.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801119458973829.jpg?from=mobile&format=400w_400h_1e_0l"
+                    },
+                    {
+                        "imgSeq": 5,
+                        "url": "//image.suning.cn/uimg/ZR/share_order/159801119468885688",
+                        "linkUrl": "//image.suning.cn/uimg/ZR/share_order/159801119468885688.jpg?from=mobile",
+                        "coverFlag": false,
+                        "channelSource": "1",
+                        "linkUrl400": "//image.suning.cn/uimg/ZR/share_order/159801119468885688.jpg?from=mobile&format=400w_400h_1e_0l"
+                    }
+                ]
+            },
+            "commodityInfo": {
+                "commodityCode": "000000011926556428",
+                "commodityName": "小米（MI）10 至尊纪念版 双模5G 骁龙865 120Hz高刷新率 120倍长焦镜头 120W快充 12+256GB 透明版 游戏手机",
+                "buyCatalogId": "R1901001",
+                "charaterId1": "颜色",
+                "charaterDesc1": "透明版",
+                "charaterId2": "制式",
+                "charaterDesc2": "（5G版本）12GB+256GB"
+            },
+            "againFlag": false,
+            "individualObject": [],
+            "labelNames": [],
+            "score": 0.0,
+            "againReview": {
+                "againPicFlag": 0
+            },
+            "usefulCnt": 0,
+            "replyCnt": 0,
+            "replyFlag": false,
+            "isShowReviewDetail": true,
+            "styleId": "",
+            "groupId": "37257693",
+            "againReviewImgFlag": false,
+            "againReviewImgList": [],
+            "voiceFlag": false,
+            "smallVideoFlag": false,
+            "imgCnt": 6,
+            "canUploadImg": true,
+            "ordinaryContent": "开机41%的电量，透明版科技感十足，赠的透明壳塑料感太强烈，安上后level立刻降了一截",
+            "returnCode": "1",
+            "returnMsg": ""
+        }
+    ],
+    "returnCode": "1",
+    "returnMsg": "成功取得评价列表",
+    "reCloudDrill": 0
+}

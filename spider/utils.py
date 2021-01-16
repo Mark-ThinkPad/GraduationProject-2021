@@ -1,6 +1,16 @@
 from selenium.webdriver import ChromeOptions
 
 
+# 设置requests请求头
+def set_headers() -> dict:
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                      '(KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
+    }
+
+    return headers
+
+
 # 设置Chrome启动参数
 def set_options() -> ChromeOptions:
     options = ChromeOptions()

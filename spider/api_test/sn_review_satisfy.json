@@ -1,0 +1,33 @@
+{
+    "reviewCounts": [
+        {
+            "commodityCode": "37257693",
+            "shopCode": "0000000000",
+            "oneStarCount": 88,
+            "oneStarMeaninglessCount": 0,
+            "twoStarCount": 19,
+            "twoStarMeaninglessCount": 0,
+            "threeStarCount": 37,
+            "threeStarMeaninglessCount": 0,
+            "fourStarCount": 62,
+            "fourStarMeaninglessCount": 0,
+            "fiveStarCount": 8697,
+            "fiveStarMeaninglessCount": 0,
+            "againCount": 105,
+            "bestCount": 0,
+            "picFlagCount": 1306,
+            "totalCount": 8903,
+            "qualityStar": 5.0,
+            "installCount": 0,
+            "smallVideoCount": 37,
+            "defaultCount": 5618,
+            "smallVideoPicCoexistence": 0,
+            "goodRate": 0.0,
+            "picFlagMeaninglessCount": 0,
+            "smallVideoMeaninglessCount": 0
+        }
+    ],
+    "returnCode": "1",
+    "returnMsg": "查询数量成功",
+    "reCloudDrill": 0
+}

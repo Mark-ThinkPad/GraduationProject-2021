@@ -1,0 +1,43 @@
+{
+    "commodityLabelCountList": [
+        {
+            "labelName": "可以听音乐",
+            "labelCnt": 159
+        },
+        {
+            "labelName": "耳塞舒服",
+            "labelCnt": 153
+        },
+        {
+            "labelName": "蓝牙性能好",
+            "labelCnt": 152
+        },
+        {
+            "labelName": "拍照效果好",
+            "labelCnt": 134
+        },
+        {
+            "labelName": "配对简单",
+            "labelCnt": 111
+        },
+        {
+            "labelName": "分辨率高",
+            "labelCnt": 106
+        },
+        {
+            "labelName": "系统流畅",
+            "labelCnt": 105
+        },
+        {
+            "labelName": "外观漂亮",
+            "labelCnt": 104
+        },
+        {
+            "labelName": "信号稳定",
+            "labelCnt": 95
+        }
+    ],
+    "returnCode": "1",
+    "returnMsg": "",
+    "reCloudDrill": 0
+}
