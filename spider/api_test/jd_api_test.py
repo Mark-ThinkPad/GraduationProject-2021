@@ -46,7 +46,8 @@ def get_jd_comments(browser: Chrome):
 if __name__ == '__main__':
     options = set_options()
     caps = set_capabilities()
-    # 在Windows环境下已将chromedriver添加至环境变量
+    # 在Windows环境下已将chromedriver添加至环境变量, 无需声明执行文件路径
+    # 在Arch Linux环境下, 使用archlinux cn源安装的chromedriver位置在/usr/bin, 也无需声明执行文件路径
     driver = Chrome(options=options, desired_capabilities=caps)
     get_jd_comments(driver)
     driver.quit()
