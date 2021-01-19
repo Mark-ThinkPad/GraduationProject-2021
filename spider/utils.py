@@ -1,4 +1,5 @@
-from selenium.webdriver import ChromeOptions
+import json
+from selenium.webdriver import Chrome, ChromeOptions
 
 
 # 设置requests请求头
@@ -41,3 +42,27 @@ def set_capabilities() -> dict:
     }
 
     return caps
+
+
+# 从Chrome中获取指定接口的响应数据
+def get_response_body(browser: Chrome, target_url: str):
+    request_log = browser.get_log('performance')
+    for i in range(len(request_log)):
+        message = json.loads(request_log[i]['message'])
+        message = message['message']['params']
+        # .get() 方式获取是了避免字段不存在时报错
+        request = message.get('request')
+        if request is None:
+            continue
+
+        url = request.get('url')
+        if url == target_url:
+            # 得到requestId
+            requestId = message['requestId']
+            # print(requestId)
+            # 通过requestId获取接口内容
+            response = browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
+            response_body = response['body']
+            return response_body
+
+    return None

@@ -1,7 +1,6 @@
-import json
 from time import sleep
 from selenium.webdriver import Chrome
-from spider.utils import set_options, set_capabilities
+from spider.utils import set_options, set_capabilities, get_response_body
 
 
 # 获取京东评论api数据
@@ -18,29 +17,13 @@ def get_jd_comments(browser: Chrome):
     sleep(1)
 
     # 获取京东评论接口数据并保存到本地json文件
-    request_log = browser.get_log('performance')
-    for i in range(len(request_log)):
-        message = json.loads(request_log[i]['message'])
-        message = message['message']['params']
-        # .get() 方式获取是了避免字段不存在时报错
-        request = message.get('request')
-        if request is None:
-            continue
-
-        url = request.get('url')
-        page_comment_url = 'https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98' \
-                           '&productId=100014565800&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
-        if url == page_comment_url:
-            # 得到requestId
-            requestId = message['requestId']
-            # print(requestId)
-            # 通过requestId获取接口内容
-            content = browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
-            comments = content['body'].lstrip('fetchJSON_comment98(').rstrip(');)')
-            # print(comments)
-            with open('jd_comments.json', 'w', encoding='UTF-8') as file:
-                file.write(comments)
-            break
+    page_comment_url = 'https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98' \
+                       '&productId=100014565800&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
+    comments = get_response_body(browser, page_comment_url)
+    comments = comments.lstrip('fetchJSON_comment98(').rstrip(');)')
+    # print(comments)
+    with open('jd_comments.json', 'w', encoding='UTF-8') as file:
+        file.write(comments)
 
 
 if __name__ == '__main__':

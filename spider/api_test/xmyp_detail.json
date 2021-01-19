@@ -1,0 +1,1543 @@
+{
+    "code": 0,
+    "message": "ok",
+    "channel": "",
+    "version": "1.0.0",
+    "serverTime": 1611057733,
+    "orgData": null,
+    "data": {
+        "address": null,
+        "gid": 134230,
+        "activity": {
+            "gidAct": {
+                "actType": "",
+                "actInfo": {},
+                "salePromotion": [],
+                "salePromotionPreview": [],
+                "couponDetailCheckoutInfo": null,
+                "photoAtmosphereInfo": null
+            },
+            "pidAct": {
+                "241287": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241288": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241285": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241286": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241283": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241284": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241281": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                },
+                "241282": {
+                    "actType": "",
+                    "actInfo": {},
+                    "salePromotion": [],
+                    "salePromotionPreview": [],
+                    "couponDetailCheckoutInfo": null,
+                    "photoAtmosphereInfo": null
+                }
+            }
+        },
+        "youpinLogo": {
+            "needYoupinLogo": 1,
+            "youpinLogoUrl": "https://img.youpin.mi-img.com/editor1/ce497b9d0341ac785d77e343dddab7e7.png?w=1080&h=111"
+        },
+        "viewRecord": null,
+        "couponsInfo": {
+            "gidCoupons": {
+                "fetchableCoupons": [],
+                "ownedCoupons": []
+            },
+            "pidCoupons": {},
+            "gidMixSortedCoupons": [],
+            "pidMixSortedCoupons": {}
+        },
+        "goods": {
+            "shareInfo": {
+                "contentMap": {
+                    "pyq": "link",
+                    "mx": "link",
+                    "wb": "link",
+                    "title": "小米10至尊纪念版",
+                    "wbContent": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "pics": "https://api.io.mi.com/app/shop/zimg2?thumb=https%3A%2F%2Fimg.youpin.mi-img.com%2Fshopmain%2Fbf8b952f3f5b9c8139622e197aa68ea2.png%40base%40tag%3DimgScale%26h%3D350%26w%3D350%26et%3D1%26eth%3D480%26etw%3D480%26etc%3DFFFFFF&pic=https%3A%2F%2Fimg.youpin.mi-img.com%2Fshopmain%2F66e59d81323ced0515c1c1e723bf7929.jpg%3Fw%3D1080%26h%3D1080",
+                    "content": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "url": "https://m.xiaomiyoupin.com/detail?gid=134230",
+                    "ml": "link"
+                },
+                "poster": {
+                    "title": "小米10至尊纪念版",
+                    "desc": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "img": "https://img.youpin.mi-img.com/shopmain/1b97596eef20a1c00bd0fbc6ae22e0a0.jpg?w=800&h=800",
+                    "price": 529900,
+                    "priceMore": 1,
+                    "tag": ""
+                }
+            },
+            "carouselMapList": [
+                {
+                    "type": 0,
+                    "url": "https://img.youpin.mi-img.com/shopmain/66e59d81323ced0515c1c1e723bf7929.jpg?w=1080&h=1080"
+                },
+                {
+                    "type": 0,
+                    "url": "https://img.youpin.mi-img.com/shopmain/69eaa9d62aad6066f3dca556929bbd6a.jpg?w=1080&h=1080"
+                },
+                {
+                    "type": 0,
+                    "url": "https://img.youpin.mi-img.com/shopmain/5a5f9d144045811c7cc555c453738ad5.jpg?w=1080&h=1080"
+                },
+                {
+                    "type": 0,
+                    "url": "https://img.youpin.mi-img.com/shopmain/292b815340b03da0219af3ecddc2c6f3.jpg?w=1080&h=1080"
+                },
+                {
+                    "type": 0,
+                    "url": "https://img.youpin.mi-img.com/shopmain/495c6fc2c111a5a0d2fbab785bff7aff.jpg?w=1080&h=1080"
+                }
+            ],
+            "goodTypeForButton": 2,
+            "shopTags": [
+                {
+                    "tid": 1,
+                    "name": "颜色",
+                    "parentId": null,
+                    "rootId": 0,
+                    "level": 1,
+                    "oder": 0,
+                    "cid": 0,
+                    "visible": 1,
+                    "tags": [
+                        {
+                            "tid": -68960,
+                            "name": "透明版",
+                            "parentId": 1,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        },
+                        {
+                            "tid": -68961,
+                            "name": "陶瓷黑",
+                            "parentId": 1,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        },
+                        {
+                            "tid": -68963,
+                            "name": "亮银版",
+                            "parentId": 1,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        }
+                    ]
+                },
+                {
+                    "tid": 387,
+                    "name": "版本",
+                    "parentId": null,
+                    "rootId": 0,
+                    "level": 1,
+                    "oder": 0,
+                    "cid": 0,
+                    "visible": 1,
+                    "tags": [
+                        {
+                            "tid": -29039,
+                            "name": "8GB+128GB",
+                            "parentId": 387,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        },
+                        {
+                            "tid": -29038,
+                            "name": "8GB+256GB",
+                            "parentId": 387,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        },
+                        {
+                            "tid": -29036,
+                            "name": "12GB+256GB",
+                            "parentId": 387,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        },
+                        {
+                            "tid": -68962,
+                            "name": "16GB+512GB",
+                            "parentId": 387,
+                            "rootId": 0,
+                            "level": 2,
+                            "oder": 0,
+                            "cid": 0,
+                            "visible": 1,
+                            "tags": null
+                        }
+                    ]
+                }
+            ],
+            "customSupport": null,
+            "services": {
+                "2": {
+                    "type": null,
+                    "text": "满99包邮",
+                    "serviceStatus": "SUPPORT"
+                },
+                "5": {
+                    "type": null,
+                    "text": "小米自营",
+                    "serviceStatus": "SUPPORT"
+                }
+            },
+            "specialPromotionPrice": null,
+            "productInfo": {
+                "241287": {
+                    "pid": 241287,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版 16GB+512GB 陶瓷黑",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 0,
+                    "marketPrice": 699900,
+                    "price": 699900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 7898,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200052",
+                    "mapId": 2203200052,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": false,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "陶瓷黑",
+                        "16GB+512GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241288": {
+                    "pid": 241288,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版  16GB+512GB 亮银版",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 0,
+                    "marketPrice": 699900,
+                    "price": 699900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 3721,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200055",
+                    "mapId": 2203200055,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/54eb6f97adad5ed5dfa519cb15919c25.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/54eb6f97adad5ed5dfa519cb15919c25.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/54eb6f97adad5ed5dfa519cb15919c25.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/54eb6f97adad5ed5dfa519cb15919c25.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": false,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "亮银版",
+                        "16GB+512GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241285": {
+                    "pid": 241285,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版  12GB+256GB 透明版",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 99999,
+                    "marketPrice": 599900,
+                    "price": 599900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 6252,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200054",
+                    "mapId": 2203200054,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": true,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "透明版",
+                        "12GB+256GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241286": {
+                    "pid": 241286,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版 12GB+256GB 陶瓷黑",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 0,
+                    "marketPrice": 599900,
+                    "price": 599900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 2075,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200051",
+                    "mapId": 2203200051,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": false,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "陶瓷黑",
+                        "12GB+256GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241283": {
+                    "pid": 241283,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版 8GB+256GB 陶瓷黑",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 99999,
+                    "marketPrice": 559900,
+                    "price": 559900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 4606,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200050",
+                    "mapId": 2203200050,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": true,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "陶瓷黑",
+                        "8GB+256GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241284": {
+                    "pid": 241284,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版  8GB+256GB 透明版",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 99999,
+                    "marketPrice": 559900,
+                    "price": 559900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 429,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200053",
+                    "mapId": 2203200053,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": true,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "透明版",
+                        "8GB+256GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241281": {
+                    "pid": 241281,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版  8GB+128GB 透明版",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 0,
+                    "marketPrice": 529900,
+                    "price": 529900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 5664,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200002",
+                    "mapId": 2203200002,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/b0f410b40f72533a7e4b6d5a73baa214.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/b0f410b40f72533a7e4b6d5a73baa214.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/b0f410b40f72533a7e4b6d5a73baa214.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/b0f410b40f72533a7e4b6d5a73baa214.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": false,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "透明版",
+                        "8GB+128GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                },
+                "241282": {
+                    "pid": 241282,
+                    "gid": 134230,
+                    "picURL": null,
+                    "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                    "name": "小米10至尊纪念版 8GB+128GB 陶瓷黑",
+                    "firstTime": 1597152600,
+                    "latestTime": 1597152600,
+                    "inventory": 99999,
+                    "marketPrice": 529900,
+                    "price": 529900,
+                    "status": 1,
+                    "buyLimit": 0,
+                    "saled": 1487,
+                    "buyURL": "http://m.mi.com/#ac=home&op=addcart&product_id=2203200003",
+                    "mapId": 2203200003,
+                    "refoundPolicyMap": null,
+                    "skuId": 0,
+                    "depot": 0,
+                    "usePrice": 1,
+                    "labels": null,
+                    "postWeight": 1163,
+                    "proprietor": 11,
+                    "consignor": 11,
+                    "afterSaleAgent": 11,
+                    "brandPrincipalPart": 11,
+                    "specialPostage": 0,
+                    "customerServiceAgent": 0,
+                    "postageType": 0,
+                    "img": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "img800s": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800",
+                    "compressedImg800": "https://img.youpin.mi-img.com/shopmain/d99131e04a5cd077b80ca939580f7016.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                    "saleWeight": 0,
+                    "ypSkuList": null,
+                    "service": [
+                        2,
+                        5
+                    ],
+                    "oder": 0,
+                    "onSale": true,
+                    "preDeliveryTime": 0,
+                    "scheduleOnSaleTime": null,
+                    "totalInventory": null,
+                    "totalSaled": null,
+                    "validate": 0,
+                    "promotionType": null,
+                    "isPromote": false,
+                    "saleMode": "SELF_MARKETING",
+                    "attributeValues": [
+                        "陶瓷黑",
+                        "8GB+128GB"
+                    ],
+                    "tradeModeInfo": {
+                        "tradeMode": "NORMAL",
+                        "startTime": null,
+                        "endTime": null,
+                        "extra": null
+                    },
+                    "protectionPrice": null,
+                    "youPinDelivery": false,
+                    "isVMI": null,
+                    "purchasePrice": null,
+                    "vmiGoodsInfo": null,
+                    "freeShipping": false,
+                    "isMFInsurance": null,
+                    "isMFInsuranceVMI": null,
+                    "freePostageAfterSale": false,
+                    "freePostageAfterSaleVMI": null,
+                    "mfInsuranceInfos": null,
+                    "productBuyLimitInfo": {
+                        "productBuyLimit": 0,
+                        "startTime": 0,
+                        "endTime": 0,
+                        "idtype": "GID"
+                    },
+                    "snapshotVersion": "82e5fe28833680526c42e928b5966e45#1607946567",
+                    "productAtmosphereList": []
+                }
+            },
+            "labels": [
+                {
+                    "labelId": 746,
+                    "name": "小米自营",
+                    "text": "小米自营",
+                    "ext": null,
+                    "businessId": 0,
+                    "type": "sale_mode",
+                    "attrs": {
+                        "font": "default",
+                        "height": 42,
+                        "width": 108,
+                        "bgColor": "#FF6701",
+                        "imageUrl": "",
+                        "jumpUrl": "",
+                        "priority": 5004.0,
+                        "displayStatus": 1
+                    },
+                    "status": 1,
+                    "extra": null
+                }
+            ],
+            "crowdFunding": null,
+            "aiSupport": {
+                "gidAi": {
+                    "isAi": 0,
+                    "aiType": 0,
+                    "aiInfo": null
+                },
+                "pidAi": {}
+            },
+            "buySupport": null,
+            "propTags": [
+                {
+                    "pid": 241281,
+                    "tid": -68960,
+                    "oder": 0
+                },
+                {
+                    "pid": 241281,
+                    "tid": -29039,
+                    "oder": 0
+                },
+                {
+                    "pid": 241282,
+                    "tid": -68961,
+                    "oder": 0
+                },
+                {
+                    "pid": 241282,
+                    "tid": -29039,
+                    "oder": 0
+                },
+                {
+                    "pid": 241283,
+                    "tid": -68961,
+                    "oder": 0
+                },
+                {
+                    "pid": 241283,
+                    "tid": -29038,
+                    "oder": 0
+                },
+                {
+                    "pid": 241284,
+                    "tid": -68960,
+                    "oder": 0
+                },
+                {
+                    "pid": 241284,
+                    "tid": -29038,
+                    "oder": 0
+                },
+                {
+                    "pid": 241285,
+                    "tid": -68960,
+                    "oder": 0
+                },
+                {
+                    "pid": 241285,
+                    "tid": -29036,
+                    "oder": 0
+                },
+                {
+                    "pid": 241286,
+                    "tid": -68961,
+                    "oder": 0
+                },
+                {
+                    "pid": 241286,
+                    "tid": -29036,
+                    "oder": 0
+                },
+                {
+                    "pid": 241287,
+                    "tid": -68961,
+                    "oder": 0
+                },
+                {
+                    "pid": 241287,
+                    "tid": -68962,
+                    "oder": 0
+                },
+                {
+                    "pid": 241288,
+                    "tid": -68963,
+                    "oder": 0
+                },
+                {
+                    "pid": 241288,
+                    "tid": -68962,
+                    "oder": 0
+                }
+            ],
+            "oneYuanSupport": {
+                "isOneYuan": 0,
+                "oneYuanInfo": null,
+                "groupBuyInfo": null
+            },
+            "category": {
+                "oldCid1": 305,
+                "oldCname1": "手机",
+                "oldCid2": 327,
+                "oldCname2": "小米",
+                "cid1": 2148,
+                "cname1": "手机",
+                "cid2": 2236,
+                "cname2": "小米",
+                "cid3": 2607,
+                "cname3": "版本",
+                "newCid1": 14,
+                "newCname1": "手机",
+                "newCid2": 173,
+                "newCname2": "手机通讯",
+                "newCid3": 1867,
+                "newCname3": "手机"
+            },
+            "brand": {
+                "brandName": "小米",
+                "brandId": 11,
+                "brandLogo": "https://img.youpin.mi-img.com/youpinoper/shop_72bacf474dfad998341d995c6fcb9db1.jpg",
+                "brandSlogan": "为发烧而生",
+                "jumpURL": "https://m.xiaomiyoupin.com/w/universal?_rt=weex&pageid=5105&sign=693f135adc720f2e2a6cff3d9fdfee01&pdl=jianyu",
+                "type": 1,
+                "merchantContact": "",
+                "merchantName": "小米",
+                "merchantAddress": "",
+                "miMerchantId": 0,
+                "merchantQualification": "",
+                "miSkillId": "public_000001",
+                "qualificationPic": null,
+                "merchantShortName": "小米",
+                "merchantLogo": null,
+                "merchantId": 11,
+                "merchantSignKey": null,
+                "merchantDesc": null,
+                "merchantSlogan": null,
+                "merchantPinkage": 9900,
+                "merchantFreight": 1000,
+                "merchantPostageDescription": "小米自营商品单笔订单支付金额满150元（以实际付款金额为准，代金券等不含在内）起包邮。小米电视、小米体重秤等因商品特殊性不参与满150元包邮，另小米电视系列产品需要单独配送费，请参见具体商品产品详情页说明。",
+                "merchantStatus": null,
+                "quitNoticePic": null
+            },
+            "goodsInfo": {
+                "gid": 134230,
+                "priceMin": 529900,
+                "priceTag": true,
+                "marketPrice": 529900,
+                "name": "小米10至尊纪念版",
+                "shortName": "小米10至尊纪念版",
+                "shortSummary": "骁龙865处理器",
+                "summary": "骁龙865处理器；120倍超长焦微光相机；1200万人像镜头",
+                "imgSquare": "https://img.youpin.mi-img.com/shopmain/1b97596eef20a1c00bd0fbc6ae22e0a0.jpg?w=800&h=800",
+                "imgHorizon": "https://img.youpin.mi-img.com/shopmain/f2595e9dd5c580c0a3232684be38e223.jpg?w=1020&h=615",
+                "img800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                "img800s": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                "jumpUrl": "https://m.xiaomiyoupin.com/detail?gid=134230",
+                "pids": [
+                    241281,
+                    241282,
+                    241283,
+                    241284,
+                    241285,
+                    241286,
+                    241287,
+                    241288
+                ],
+                "saleStatus": 1,
+                "saleType": "NORMAL",
+                "inventory": 399996,
+                "saleMode": "SELF_MARKETING",
+                "firstTime": 1597152600,
+                "latestTime": 1597152600,
+                "scheduleOnSaleTime": null,
+                "shareDescMap": {},
+                "isCustom": 0,
+                "attrExtMap": {
+                    "custom_name": "小米10至尊纪念版",
+                    "custom_summary": "骁龙865处理器",
+                    "price_tag": 1
+                },
+                "imgSafeArea": 1,
+                "primaryPid": 0,
+                "colorNum": 3,
+                "service": [
+                    2,
+                    5
+                ],
+                "introExt": [
+                    {
+                        "id": "",
+                        "url": "https://m.xiaomiyoupin.com/api/zhaoshang/miGoodsDetailService/get?gid=134230&title=%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85",
+                        "title": "商品详情",
+                        "imagesArray": [
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a3a59ce66c43a5fc38eeb3625947c411.jpg?w=1080&h=2290&bg=949494",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2820e375c86b0d707bf00f83d5070ee6.mp4?cover=https%3A%2F%2Fcdn.cnbj1.fds.api.mi-img.com%2Fmi-mall%2Fbb31fb800ee78a98e08569b57eda9bcb.jpg%3Fw%3D1920%26h%3D1080%26bg%3DABABAB",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b9b1262b6184b4696f0a6c0b012357f.jpg?w=1080&h=2846&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/66bc15765865e8721cc52e2318c4e288.jpg?w=1080&h=437&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d928b517823df058c911c6e5da841b16.jpg?w=1080&h=3233&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d2c844f074858bc2c2c55cae5ef8902.jpg?w=1080&h=2487&bg=D0D0D",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3abc766a307a2f93b5e23a2e81749d0f.jpg?w=1080&h=844&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2dbee9feae79452f855cad31f5a42863.jpg?w=1080&h=2350&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d73879d0954e792b6965f191753b04a8.jpg?w=1080&h=1249&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27ce4c6fa032d81e238d29e7900e7754.jpg?w=1080&h=1341&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/732754e14457be2c23186245d2fcf563.jpg?w=1080&h=1995&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c2599aa00ec142cd584964398779420b.jpg?w=1080&h=1962&bg=474F64",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/694de19ef3df3f739ab455b7341bb8c6.jpg?w=1080&h=1693&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a69ad1f0182d027c51470a7619e2b3f.jpg?w=1080&h=1857&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/538d339e5c3a408a6ab931286814243f.jpg?w=1080&h=1946&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dd7b3ba0b9c5ae89bfddfde1e0221f1f.jpg?w=1080&h=1340&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/df34021f087e68fddd3511d0ac170195.jpg?w=1080&h=2888&bg=1F1F1F",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ae486d68d35cf1f9bd5dd4b6fb801b2e.mp4?cover=https%3A%2F%2Fcdn.cnbj1.fds.api.mi-img.com%2Fmi-mall%2F1a45058b4563225bffb48276063004a3.jpg%3Fw%3D1080%26h%3D566%26bg%3DFFFFFF",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/60ee3995436c453aed8ede3228b1904d.jpg?w=1080&h=778&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ac35f70467c831d3e870684190eebf68.mp4?cover=https%3A%2F%2Fcdn.cnbj1.fds.api.mi-img.com%2Fmi-mall%2Fab348a2efd9a61b6a3f3f79dec6df84b.jpg%3Fw%3D1080%26h%3D566%26bg%3DFAFAFA",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/13eab90b1a84f141655c28bc602e65e0.jpg?w=1080&h=493&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/25ea550a885320a1ea6b60f2be134a3d.jpg?w=1080&h=2779&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/608d58fd8532d01e99e51c5eabbe2d24.jpg?w=1080&h=2075&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/32f0d2abaedbef7dc6a71076ed23d884.jpg?w=1080&h=2922&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9733b22bb177db40aa87a400d4232463.jpg?w=1080&h=2502&bg=10101",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/776d8f90abc083c140c180dbf99e7821.jpg?w=1080&h=2346&bg=10101",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4e0769d5b59698231a703becc905921.jpg?w=1080&h=2650&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/18a8e49b4f06200da7c1251f6fa81374.jpg?w=1080&h=671&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4eb1d11de07f0184e885ea8993465190.jpg?w=1080&h=1368&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/12851dfa541dc07298a9c3c3ed35d5a6.mp4?cover=https%3A%2F%2Fcdn.cnbj1.fds.api.mi-img.com%2Fmi-mall%2F8fade1f2e8c7c09d9931eef8b29cd2d6.jpg%3Fw%3D1920%26h%3D1080%26bg%3D131112",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2e74e92921bce4b29a762ffc293d50bf.jpg?w=1080&h=1435&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/45bdb2873bdc469e87748872f903a898.mp4?cover=https%3A%2F%2Fcdn.cnbj1.fds.api.mi-img.com%2Fmi-mall%2Fa45a981b3e0f9de6525ae520be40bc35.jpg%3Fw%3D1080%26h%3D566%26bg%3DFAFAFA",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/66bc15765865e8721cc52e2318c4e288.jpg?w=1080&h=437&bg=0",
+                            "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc88fd153c1da1138fd621e00137d3e2.png?w=1080&h=427"
+                        ]
+                    }
+                ],
+                "evaluateAvg": 0,
+                "imgSafeAreaUrl": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800",
+                "onSale": true,
+                "picUrl": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png@base@tag=imgScale&h=350&w=350&et=1&eth=480&etw=480&etc=FFFFFF",
+                "ctime": 1597058507,
+                "saled": 32132,
+                "saledFee": 0,
+                "businessId": 15,
+                "businessName": "小米自营行业运营中心",
+                "compressedImg800": "https://img.youpin.mi-img.com/shopmain/bf8b952f3f5b9c8139622e197aa68ea2.png?w=800&h=800@base@tag=imgScale&w=240&h=240",
+                "platform": 127,
+                "youPinDelivery": false,
+                "freeShipping": false,
+                "miSdkId": 12609,
+                "youPinSelfMarketing": false,
+                "pinkage": 9900,
+                "specialPostage": null,
+                "pricePrimaryPid": 241281,
+                "commentInfo": null,
+                "videoUrl": ""
+            }
+        },
+        "cartCount": 0,
+        "paySupport": {
+            "gidPay": null,
+            "pidPay": {
+                "241287": null,
+                "241288": null,
+                "241285": null,
+                "241286": null,
+                "241283": null,
+                "241284": null,
+                "241281": null,
+                "241282": null
+            }
+        },
+        "button": {
+            "gidButton": [
+                {
+                    "type": 10,
+                    "text": "加入购物车",
+                    "url": null,
+                    "postcouponPriceText": "",
+                    "postcouponScm": null
+                }
+            ],
+            "pidButton": {
+                "241287": [
+                    {
+                        "type": 3,
+                        "text": "已售罄",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241288": [
+                    {
+                        "type": 3,
+                        "text": "已售罄",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241285": [
+                    {
+                        "type": 10,
+                        "text": "加入购物车",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241286": [
+                    {
+                        "type": 3,
+                        "text": "已售罄",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241283": [
+                    {
+                        "type": 10,
+                        "text": "加入购物车",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241284": [
+                    {
+                        "type": 10,
+                        "text": "加入购物车",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241281": [
+                    {
+                        "type": 3,
+                        "text": "已售罄",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ],
+                "241282": [
+                    {
+                        "type": 10,
+                        "text": "加入购物车",
+                        "url": null,
+                        "postcouponPriceText": "",
+                        "postcouponScm": null
+                    }
+                ]
+            },
+            "oneYuanButton": null
+        },
+        "comment": {
+            "index": {
+                "avg_score": 5.0,
+                "positive_rate": 99.0,
+                "tags": [
+                    {
+                        "id": "",
+                        "name": "全部",
+                        "count": 121798.0,
+                        "type": "",
+                        "category": ""
+                    },
+                    {
+                        "id": "18177",
+                        "name": "手感很惊艳",
+                        "count": 349.0,
+                        "type": "18177",
+                        "category": ""
+                    },
+                    {
+                        "id": "17819",
+                        "name": "充电很快",
+                        "count": 267.0,
+                        "type": "17819",
+                        "category": ""
+                    },
+                    {
+                        "id": "17240",
+                        "name": "效果显著",
+                        "count": 227.0,
+                        "type": "17240",
+                        "category": ""
+                    },
+                    {
+                        "id": "17828",
+                        "name": "外观非常棒",
+                        "count": 171.0,
+                        "type": "17828",
+                        "category": ""
+                    },
+                    {
+                        "id": "17489",
+                        "name": "屏幕清晰",
+                        "count": 147.0,
+                        "type": "17489",
+                        "category": ""
+                    }
+                ],
+                "total_count": 121798.0,
+                "effective_count": 121798.0
+            },
+            "content": [
+                {
+                    "pid": 2.203200054E9,
+                    "score": 5.0,
+                    "comment_id": 2.05599628E8,
+                    "pics": [
+                        "https://i1.mifile.cn/a2/1610795001_5730769_s1500_2000wh.jpg",
+                        "https://i1.mifile.cn/a2/1610794999_6311868_s1500_2000wh.jpg",
+                        "https://i1.mifile.cn/a2/1610794998_7026018_s1500_2000wh.jpg"
+                    ],
+                    "comment_imgs": [
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610795001_5730769_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610795001_5730769_s1500_2000wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610794999_6311868_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610794999_6311868_s1500_2000wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610794998_7026018_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610794998_7026018_s1500_2000wh.jpg"
+                        }
+                    ],
+                    "ctime": 1.6107552E9,
+                    "text": "一直想买至尊纪念版今天收到了 物流很快 手机很完美。\n  希望小米 越来越好，继续一往无前！",
+                    "txt": "一直想买至尊纪念版今天收到了 物流很快 手机很完美。\n  希望小米 越来越好，继续一往无前！",
+                    "is_feature": false,
+                    "_": 0.0,
+                    "pid_spec": "透明版、12GB+256GB",
+                    "avatar": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-data-mishop/9bd716bcdd5d6e4968d3adc3c5b6353b.jpg",
+                    "nick_name": "150*****38",
+                    "liked": false,
+                    "like_count": 0.0
+                },
+                {
+                    "pid": 2.203200054E9,
+                    "score": 5.0,
+                    "comment_id": 2.05564038E8,
+                    "pics": [
+                        "https://i1.mifile.cn/a2/1610688545_8151563_s828_1497wh.jpg"
+                    ],
+                    "comment_imgs": [
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610688545_8151563_s828_1497wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610688545_8151563_s828_1497wh.jpg"
+                        }
+                    ],
+                    "ctime": 1.6106688E9,
+                    "text": "挺好用 摄像不错 充电很快。一如既往的好",
+                    "txt": "挺好用 摄像不错 充电很快。一如既往的好",
+                    "is_feature": false,
+                    "_": 0.0,
+                    "pid_spec": "透明版、12GB+256GB",
+                    "avatar": "https://s1.mi-img.com/mfsv2/avatar/s010/p01XhEmRxvJe/ILIUCJxJUdCyTj.jpg",
+                    "nick_name": "小酒",
+                    "liked": false,
+                    "like_count": 0.0
+                },
+                {
+                    "pid": 2.203200055E9,
+                    "score": 5.0,
+                    "comment_id": 2.05412142E8,
+                    "pics": [
+                        "https://i1.mifile.cn/a2/1610246389_2298247_s1512_2016wh.jpg",
+                        "https://i1.mifile.cn/a2/1610246388_7793920_s1512_2016wh.jpg"
+                    ],
+                    "comment_imgs": [
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610246389_2298247_s1512_2016wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610246389_2298247_s1512_2016wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1610246388_7793920_s1512_2016wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1610246388_7793920_s1512_2016wh.jpg"
+                        }
+                    ],
+                    "ctime": 1.6102368E9,
+                    "text": "至尊亮银配色真的太好看了，120w快充相当给力，20分钟就能充满，120hz相当丝滑，整体感觉很棒！！",
+                    "txt": "至尊亮银配色真的太好看了，120w快充相当给力，20分钟就能充满，120hz相当丝滑，整体感觉很棒！！",
+                    "is_feature": false,
+                    "_": 0.0,
+                    "pid_spec": "亮银版、16GB+512GB",
+                    "avatar": "https://cdn.cnbj1.fds.api.mi-img.com/user-avatar/0a1fe906-f22a-4f2c-8494-73900d7ccfbc.jpg",
+                    "nick_name": "Vergil",
+                    "liked": false,
+                    "like_count": 0.0
+                },
+                {
+                    "pid": 2.203200055E9,
+                    "score": 5.0,
+                    "comment_id": 2.04841101E8,
+                    "pics": [
+                        "https://i1.mifile.cn/a2/1608562089_2243417_s2000_922wh.jpg",
+                        "https://i1.mifile.cn/a2/1608562088_6116326_s2619_2710wh.jpg"
+                    ],
+                    "comment_imgs": [
+                        {
+                            "img": "https://i1.mifile.cn/a2/1608562089_2243417_s2000_922wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1608562089_2243417_s2000_922wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1608562088_6116326_s2619_2710wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1608562088_6116326_s2619_2710wh.jpg"
+                        }
+                    ],
+                    "ctime": 1.6085088E9,
+                    "text": "外观真是一个让人死心塌地的喜欢\nMI6没抢到亮银买的黑色MI6，现在MI6除了电池不耐用之外还能战斗，终究是我选择了MI10亮银",
+                    "txt": "外观真是一个让人死心塌地的喜欢\nMI6没抢到亮银买的黑色MI6，现在MI6除了电池不耐用之外还能战斗，终究是我选择了MI10亮银",
+                    "is_feature": false,
+                    "_": 0.0,
+                    "pid_spec": "亮银版、16GB+512GB",
+                    "avatar": "https://s1.mi-img.com/mfsv2/avatar/fdsc3/p01LamT8p9n3/J7VCBeMTCc3feX.jpg",
+                    "nick_name": "梦的方向那是闯﷼",
+                    "liked": false,
+                    "like_count": 0.0
+                },
+                {
+                    "pid": 2.203200055E9,
+                    "score": 5.0,
+                    "comment_id": 2.04605343E8,
+                    "pics": [
+                        "https://i1.mifile.cn/a2/1607824188_4900571_s1500_2000wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824187_7640732_s1500_2000wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824187_3219086_s2000_1500wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824186_7539135_s1940_2592wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824185_5641387_s1500_2000wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824184_9105866_s2000_1500wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824183_7044481_s2592_1940wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824183_3303775_s970_970wh.jpg",
+                        "https://i1.mifile.cn/a2/1607824182_4983268_s1448_1086wh.jpg"
+                    ],
+                    "comment_imgs": [
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824188_4900571_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824188_4900571_s1500_2000wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824187_7640732_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824187_7640732_s1500_2000wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824187_3219086_s2000_1500wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824187_3219086_s2000_1500wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824186_7539135_s1940_2592wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824186_7539135_s1940_2592wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824185_5641387_s1500_2000wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824185_5641387_s1500_2000wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824184_9105866_s2000_1500wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824184_9105866_s2000_1500wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824183_7044481_s2592_1940wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824183_7044481_s2592_1940wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824183_3303775_s970_970wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824183_3303775_s970_970wh.jpg"
+                        },
+                        {
+                            "img": "https://i1.mifile.cn/a2/1607824182_4983268_s1448_1086wh.jpg",
+                            "thumbnail": "https://i1.mifile.cn/a2/1607824182_4983268_s1448_1086wh.jpg"
+                        }
+                    ],
+                    "ctime": 1.6078176E9,
+                    "text": "爬山观景，换一种心情",
+                    "txt": "爬山观景，换一种心情",
+                    "is_feature": false,
+                    "_": 0.0,
+                    "pid_spec": "亮银版、16GB+512GB",
+                    "avatar": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-data-mishop/c52c11c915d43e0ac3286161eec4fcaf.jpg",
+                    "nick_name": "海武",
+                    "liked": false,
+                    "like_count": 0.0
+                }
+            ],
+            "__debug": {
+                "product_id": 0.0,
+                "data_source": "direct"
+            },
+            "bigdata_meta": {
+                "trace_kv": ""
+            }
+        },
+        "operation": {
+            "tt": {
+                "topImgRadio": "2.0",
+                "location": "2.0",
+                "url": "https://img.youpin.mi-img.com/youpinoper/9fee8fa728075541df37c9fdf9ded8d0.png",
+                "maskUrl": "",
+                "href": "https://m.xiaomiyoupin.com/w/universal?_rt=weex&pageid=5404&sign=8fa49f1dc81017793fb2ea12afa4a15f&pdl=jianyu",
+                "staticWords": "",
+                "hyperlinkWords": "",
+                "shareText": "",
+                "shareUrl": ""
+            },
+            "wzl": null,
+            "hdBanner": null,
+            "ggBanner": {
+                "topImgRadio": "1.0",
+                "location": "1.0",
+                "url": "https://img.youpin.mi-img.com/youpinoper/4a4bcb0aa99869872507494181b3de26.jpg",
+                "maskUrl": "",
+                "href": "https://m.xiaomiyoupin.com/shop/detail?gid=139221",
+                "staticWords": "",
+                "hyperlinkWords": "",
+                "shareText": "",
+                "shareUrl": ""
+            },
+            "yd": null,
+            "lbq": null
+        },
+        "isFavorite": false
+    },
+    "traceId": "c9ba2d4f45e69095af2c7cdbd6c87806",
+    "cacheTime": 0
+}
