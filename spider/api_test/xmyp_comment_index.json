@@ -1,0 +1,61 @@
+{
+  "code": 0,
+  "message": "ok",
+  "traceId": "04c57fda-5a5e-11eb-9cda-e4434b520774",
+  "data": {
+    "avg_score": 5,
+    "positive_rate": 99,
+    "tags": [
+      {
+        "id": "",
+        "name": "全部",
+        "count": 121802,
+        "type": "",
+        "category": ""
+      },
+      {
+        "id": "18177",
+        "name": "手感很惊艳",
+        "count": 349,
+        "type": "18177",
+        "category": ""
+      },
+      {
+        "id": "17819",
+        "name": "充电很快",
+        "count": 267,
+        "type": "17819",
+        "category": ""
+      },
+      {
+        "id": "17240",
+        "name": "效果显著",
+        "count": 227,
+        "type": "17240",
+        "category": ""
+      },
+      {
+        "id": "17828",
+        "name": "外观非常棒",
+        "count": 171,
+        "type": "17828",
+        "category": ""
+      },
+      {
+        "id": "17489",
+        "name": "屏幕清晰",
+        "count": 147,
+        "type": "17489",
+        "category": ""
+      }
+    ],
+    "total_count": 121802,
+    "effective_count": 121802,
+    "bigdata_meta": {
+      "trace_kv": ""
+    },
+    "__debug": {
+      "product_id": 12609
+    }
+  }
+}

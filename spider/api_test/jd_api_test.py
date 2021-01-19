@@ -15,7 +15,6 @@ def get_jd_comments(browser: Chrome):
     # 选择商品评论标签并点击
     browser.find_element_by_xpath('/html/body/div[10]/div[2]/div[1]/div[1]/ul/li[5]').click()
     sleep(1)
-
     # 获取京东评论接口数据并保存到本地json文件
     page_comment_url = 'https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98' \
                        '&productId=100014565800&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
