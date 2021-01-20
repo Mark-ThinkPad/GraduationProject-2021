@@ -1,0 +1,65 @@
+{
+    "code": "200",
+    "data": [
+        {
+            "name": "全部",
+            "strCount": "497813",
+            "type": "1"
+        },
+        {
+            "name": "晒单",
+            "strCount": "16",
+            "type": "0"
+        },
+        {
+            "name": "有图",
+            "strCount": "8819",
+            "type": "0"
+        },
+        {
+            "name": "追评",
+            "strCount": "1702",
+            "type": "0"
+        },
+        {
+            "name": "有效实用",
+            "strCount": "16465",
+            "type": "0"
+        },
+        {
+            "name": "性价比高",
+            "strCount": "5169",
+            "type": "0"
+        },
+        {
+            "name": "质量上乘",
+            "strCount": "4979",
+            "type": "0"
+        },
+        {
+            "name": "漂亮精致",
+            "strCount": "4429",
+            "type": "0"
+        },
+        {
+            "name": "包装用心",
+            "strCount": "2613",
+            "type": "0"
+        },
+        {
+            "name": "送人合适",
+            "strCount": "1085",
+            "type": "0"
+        },
+        {
+            "name": "宝贝不错",
+            "strCount": "1082",
+            "type": "0"
+        },
+        {
+            "name": "震动强",
+            "strCount": "902",
+            "type": "0"
+        }
+    ]
+}

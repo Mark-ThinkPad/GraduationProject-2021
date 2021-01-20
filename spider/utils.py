@@ -1,4 +1,5 @@
 import json
+from time import time
 from selenium.webdriver import Chrome, ChromeOptions
 
 
@@ -66,3 +67,8 @@ def get_response_body(browser: Chrome, target_url: str):
             return response_body
 
     return None
+
+
+# 获取13位时间戳
+def get_timestamp_13bit():
+    return str(round(time() * 1000))
