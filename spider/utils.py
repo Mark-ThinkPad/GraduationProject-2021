@@ -4,11 +4,12 @@ from selenium.webdriver import Chrome, ChromeOptions
 
 
 # 设置requests请求头
-def set_headers() -> dict:
+def set_headers(**kwargs) -> dict:
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
                       '(KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36'
     }
+    headers.update(kwargs)
 
     return headers
 

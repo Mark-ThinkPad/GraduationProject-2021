@@ -1,0 +1,62 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "addTime_comments": null,
+        "detail": {
+            "ask_num": 0,
+            "comment_tags": [
+                {
+                    "ext": "",
+                    "profile_id": 18177,
+                    "profile_num": 349,
+                    "tag_id": 18177,
+                    "tag_name": "手感很惊艳"
+                },
+                {
+                    "ext": "",
+                    "profile_id": 17819,
+                    "profile_num": 267,
+                    "tag_id": 17819,
+                    "tag_name": "充电很快"
+                },
+                {
+                    "ext": "",
+                    "profile_id": 17240,
+                    "profile_num": 227,
+                    "tag_id": 17240,
+                    "tag_name": "效果显著"
+                },
+                {
+                    "ext": "",
+                    "profile_id": 17828,
+                    "profile_num": 171,
+                    "tag_id": 17828,
+                    "tag_name": "外观非常棒"
+                },
+                {
+                    "ext": "",
+                    "profile_id": 17489,
+                    "profile_num": 148,
+                    "tag_id": 17489,
+                    "tag_name": "屏幕清晰"
+                }
+            ],
+            "comments_bad": 561,
+            "comments_general": 173,
+            "comments_good": 121093,
+            "comments_total": 121827,
+            "default_good": 102557,
+            "five_star": 18000,
+            "four_star": 326,
+            "one_star": 561,
+            "product_id": "12609",
+            "satisfy_per": "99.4",
+            "three_star": 210,
+            "trace_kv": "requestId=205da39d8ed74fa28912b7a75c99fd76\u0026bucket=default\u0026pids=12609\u0026tag_ids=__all__\u0026comment_count=19272\u0026gid=10000251",
+            "two_star": 173
+        },
+        "recommand_comments": null,
+        "support_comments": null
+    }
+}

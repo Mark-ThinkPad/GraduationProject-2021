@@ -1,0 +1,1231 @@
+{
+    "code": 200,
+    "msg": "success",
+    "data": {
+        "product_info": {
+            "product_id": 12609,
+            "name": "小米10至尊纪念版",
+            "product_desc": "\u003cfont color='#ff4a00'\u003e「十年献礼，巅峰美学；最高享12期免息；+1元得200G云空间月卡」\u003c/font\u003e120X 超远变焦 / 120W 秒充科技 / 120Hz刷新率 + 240Hz采样率 / 骁龙865旗舰处理器 /  双模5G / 10倍混合光学变焦 / OIS光学防抖+EIS数字防抖 / 2000万超清前置相机 / 双串蝶式石墨烯基锂离子电池 / 等效4500mAh大电量 / 120W  有线秒充+50W无线秒充+10W无线反充 /  WiFi 6 / 多功能NFC / 红外遥控",
+            "is_enable": true,
+            "is_batched": false,
+            "activity_tips": {
+                "action": {}
+            },
+            "price_tips": {},
+            "page_id": 16770
+        },
+        "goods_info": [
+            {
+                "commodity_id": 1203200001,
+                "goods_id": 2203200002,
+                "name": "小米10至尊纪念版  8GB+128GB 透明版",
+                "price": "5299",
+                "market_price": "5299",
+                "is_sale": true,
+                "is_stock": true,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 71
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 883
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5299",
+                "no_shipment_market_price": "5299",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200001,
+                "goods_id": 2203200053,
+                "name": "小米10至尊纪念版  8GB+256GB 透明版",
+                "price": "5599",
+                "market_price": "5599",
+                "is_sale": true,
+                "is_stock": true,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 71
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 891
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5599",
+                "no_shipment_market_price": "5599",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200001,
+                "goods_id": 2203200054,
+                "name": "小米10至尊纪念版  12GB+256GB 透明版",
+                "price": "5999",
+                "market_price": "5999",
+                "is_sale": true,
+                "is_stock": true,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145789.9525714.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 71
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 884
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5999",
+                "no_shipment_market_price": "5999",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200002,
+                "goods_id": 2203200003,
+                "name": "小米10至尊纪念版 8GB+128GB 陶瓷黑 ",
+                "price": "5299",
+                "market_price": "5299",
+                "is_sale": true,
+                "is_stock": true,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 3
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 883
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5299",
+                "no_shipment_market_price": "5299",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200002,
+                "goods_id": 2203200051,
+                "name": "小米10至尊纪念版 12GB+256GB 陶瓷黑",
+                "price": "5999",
+                "market_price": "5999",
+                "is_sale": true,
+                "is_stock": false,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 3
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 884
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5999",
+                "no_shipment_market_price": "5999",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200002,
+                "goods_id": 2203200052,
+                "name": "小米10至尊纪念版 16GB+512GB 陶瓷黑",
+                "price": "6999",
+                "market_price": "6999",
+                "is_sale": true,
+                "is_stock": false,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 3
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 927
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "6999",
+                "no_shipment_market_price": "6999",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200002,
+                "goods_id": 2203200050,
+                "name": "小米10至尊纪念版 8GB+256GB 陶瓷黑",
+                "price": "5599",
+                "market_price": "5599",
+                "is_sale": true,
+                "is_stock": true,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145894.51396359.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 3
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 891
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "5599",
+                "no_shipment_market_price": "5599",
+                "vip_price": ""
+            },
+            {
+                "commodity_id": 1203200043,
+                "goods_id": 2203200055,
+                "name": "小米10至尊纪念版 16GB+512GB 亮银版",
+                "price": "6999",
+                "market_price": "6999",
+                "is_sale": true,
+                "is_stock": false,
+                "img_url": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145928.18095446.jpg",
+                "img_url_webp": "https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1597145928.18095446.jpg",
+                "address_type": "common",
+                "buy_limit": 2,
+                "action_button": {
+                    "sale_mode": "standard",
+                    "source": "common",
+                    "button_title": "加入购物车",
+                    "is_bigtap": false,
+                    "use_occ": false,
+                    "occ_timeout": 5000
+                },
+                "prop_list": [
+                    {
+                        "prop_cfg_id": 2,
+                        "prop_value_id": 10
+                    },
+                    {
+                        "prop_cfg_id": 8,
+                        "prop_value_id": 927
+                    }
+                ],
+                "gallery_v2": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a3aee3aab3f87436e9292b889a63e59.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2a77970c91a915ae0b3f74c6e71914de.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/443585ccaf4d4e94ddfba456ccb30fb4.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bebd5d68042b108a588c508c78588498.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/80cd1e2ced6a95aa85dfa1674f3066da.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3513bc37eac5ca422fd05ea101928c09.jpg?f=webp\u0026bg=5A5B5F",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20d518a4f1e073802608fb9cd89faf20.jpg?f=webp\u0026bg=10206",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/260cb82596e8886b0130731752714537.jpg?f=webp\u0026bg=20106",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d3857c2d4827030966028209c70f12f8.jpg?f=webp\u0026bg=8A8E97",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/43c496550ec0bad0d930e1e0e8e2ab1d.jpg?f=webp\u0026bg=4080B",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27b83acdbc9b94f063346a52921e8c3b.jpg?f=webp\u0026bg=272B34",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a3aee3aab3f87436e9292b889a63e59.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2a77970c91a915ae0b3f74c6e71914de.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/443585ccaf4d4e94ddfba456ccb30fb4.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bebd5d68042b108a588c508c78588498.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/80cd1e2ced6a95aa85dfa1674f3066da.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "page_id": 16770,
+                "no_shipment_price": "6999",
+                "no_shipment_market_price": "6999",
+                "vip_price": ""
+            }
+        ],
+        "buy_option": [
+            {
+                "name": "颜色",
+                "prop_cfg_id": 2,
+                "list": [
+                    {
+                        "prop_value_id": 71,
+                        "name": "透明版"
+                    },
+                    {
+                        "prop_value_id": 3,
+                        "name": "陶瓷黑"
+                    },
+                    {
+                        "prop_value_id": 10,
+                        "name": "亮银版"
+                    }
+                ]
+            },
+            {
+                "name": "版本",
+                "prop_cfg_id": 8,
+                "list": [
+                    {
+                        "prop_value_id": 883,
+                        "name": "8GB+128GB"
+                    },
+                    {
+                        "prop_value_id": 891,
+                        "name": "8GB+256GB"
+                    },
+                    {
+                        "prop_value_id": 884,
+                        "name": "12GB+256GB"
+                    },
+                    {
+                        "prop_value_id": 927,
+                        "name": "16GB+512GB"
+                    }
+                ]
+            }
+        ],
+        "view_content": [
+            {
+                "view_type": "gallery_view",
+                "show_type": "config",
+                "gallery_v2_view": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a3aee3aab3f87436e9292b889a63e59.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2a77970c91a915ae0b3f74c6e71914de.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/443585ccaf4d4e94ddfba456ccb30fb4.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bebd5d68042b108a588c508c78588498.jpg?bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/80cd1e2ced6a95aa85dfa1674f3066da.jpg?bg=F5F5F5"
+                ],
+                "gallery_v2_view_webp": [
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a3aee3aab3f87436e9292b889a63e59.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2a77970c91a915ae0b3f74c6e71914de.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/443585ccaf4d4e94ddfba456ccb30fb4.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bebd5d68042b108a588c508c78588498.jpg?f=webp\u0026bg=F5F5F5",
+                    "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/80cd1e2ced6a95aa85dfa1674f3066da.jpg?f=webp\u0026bg=F5F5F5"
+                ],
+                "gallery_media_view": {}
+            },
+            {
+                "view_type": "title_view",
+                "show_type": "shopapi"
+            },
+            {
+                "view_type": "attrs_qa_view",
+                "show_type": "shopapi"
+            },
+            {
+                "view_type": "comment_view",
+                "show_type": "shopapi"
+            },
+            {
+                "view_type": "desc_tabs_view",
+                "show_type": "config",
+                "desc_tabs_view": [
+                    {
+                        "view_type": "desc_tabs_view",
+                        "show_type": "config",
+                        "name": "商品详情",
+                        "tab_content": [
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a3a59ce66c43a5fc38eeb3625947c411.jpg?w=1080\u0026h=2290",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a3a59ce66c43a5fc38eeb3625947c411.jpg?w=1080\u0026h=2290"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b9b1262b6184b4696f0a6c0b012357f.jpg?w=1080\u0026h=2846",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2b9b1262b6184b4696f0a6c0b012357f.jpg?w=1080\u0026h=2846"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/afb67eff8aa2c0238e882eab9f32060d.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/afb67eff8aa2c0238e882eab9f32060d.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f766c29b6867fbd042fd010110fb4304.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f766c29b6867fbd042fd010110fb4304.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3d2ace45396d50f711a7a7bc8e1d0e0d.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3d2ace45396d50f711a7a7bc8e1d0e0d.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/81ee587dd8d4cf20df010e92c3a3ada1.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/81ee587dd8d4cf20df010e92c3a3ada1.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/61b6ab5241d21058f386e4fd67b7a061.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/61b6ab5241d21058f386e4fd67b7a061.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/222fbf85bc59c2e0ce5c3fd45f0e61f2.jpg?w=1080\u0026h=1722",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/222fbf85bc59c2e0ce5c3fd45f0e61f2.jpg?w=1080\u0026h=1722"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/66bc15765865e8721cc52e2318c4e288.jpg?w=1080\u0026h=437",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/66bc15765865e8721cc52e2318c4e288.jpg?w=1080\u0026h=437"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2da8ae02dd83b1371e3d10d71871de18.jpg?w=1080\u0026h=1844",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2da8ae02dd83b1371e3d10d71871de18.jpg?w=1080\u0026h=1844"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d928b517823df058c911c6e5da841b16.jpg?w=1080\u0026h=3233",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d928b517823df058c911c6e5da841b16.jpg?w=1080\u0026h=3233"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d2c844f074858bc2c2c55cae5ef8902.jpg?w=1080\u0026h=2487",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9d2c844f074858bc2c2c55cae5ef8902.jpg?w=1080\u0026h=2487"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9016b2af4781b833fe506b9be20426ba.jpg?w=1080\u0026h=1347",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9016b2af4781b833fe506b9be20426ba.jpg?w=1080\u0026h=1347"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3abc766a307a2f93b5e23a2e81749d0f.jpg?w=1080\u0026h=844",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/3abc766a307a2f93b5e23a2e81749d0f.jpg?w=1080\u0026h=844"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fcf1c04b57419cc7ea82a3a3fbed67bf.jpg?w=1080\u0026h=1594",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fcf1c04b57419cc7ea82a3a3fbed67bf.jpg?w=1080\u0026h=1594"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6b1d539136835b1da883c39ae510d8f6.jpg?w=1080\u0026h=1594",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6b1d539136835b1da883c39ae510d8f6.jpg?w=1080\u0026h=1594"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/001cdc7a5473c129d3e52a098357da51.jpg?w=1080\u0026h=1594",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/001cdc7a5473c129d3e52a098357da51.jpg?w=1080\u0026h=1594"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2dbee9feae79452f855cad31f5a42863.jpg?w=1080\u0026h=2350",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2dbee9feae79452f855cad31f5a42863.jpg?w=1080\u0026h=2350"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d73879d0954e792b6965f191753b04a8.jpg?w=1080\u0026h=1249",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d73879d0954e792b6965f191753b04a8.jpg?w=1080\u0026h=1249"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b31443d8838b5099723be9b81e9710b6.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b31443d8838b5099723be9b81e9710b6.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fada8a07937f6374f80537ad2008bcdf.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fada8a07937f6374f80537ad2008bcdf.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/354905e67e8275f5f50f67d4603fe87f.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/354905e67e8275f5f50f67d4603fe87f.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27ce4c6fa032d81e238d29e7900e7754.jpg?w=1080\u0026h=1341",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/27ce4c6fa032d81e238d29e7900e7754.jpg?w=1080\u0026h=1341"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/732754e14457be2c23186245d2fcf563.jpg?w=1080\u0026h=1995",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/732754e14457be2c23186245d2fcf563.jpg?w=1080\u0026h=1995"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c2599aa00ec142cd584964398779420b.jpg?w=1080\u0026h=1962",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c2599aa00ec142cd584964398779420b.jpg?w=1080\u0026h=1962"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6912c6872090f4a6ecfbd9fe2b69ad42.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6912c6872090f4a6ecfbd9fe2b69ad42.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20a44c4eb24f52d023f82015f8c029ae.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/20a44c4eb24f52d023f82015f8c029ae.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b802d8479e4f6d46113f53c7b3e6020b.jpg?w=1080\u0026h=1418",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b802d8479e4f6d46113f53c7b3e6020b.jpg?w=1080\u0026h=1418"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/694de19ef3df3f739ab455b7341bb8c6.jpg?w=1080\u0026h=1693",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/694de19ef3df3f739ab455b7341bb8c6.jpg?w=1080\u0026h=1693"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a69ad1f0182d027c51470a7619e2b3f.jpg?w=1080\u0026h=1857",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5a69ad1f0182d027c51470a7619e2b3f.jpg?w=1080\u0026h=1857"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/538d339e5c3a408a6ab931286814243f.jpg?w=1080\u0026h=1946",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/538d339e5c3a408a6ab931286814243f.jpg?w=1080\u0026h=1946"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dd7b3ba0b9c5ae89bfddfde1e0221f1f.jpg?w=1080\u0026h=1340",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dd7b3ba0b9c5ae89bfddfde1e0221f1f.jpg?w=1080\u0026h=1340"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/df34021f087e68fddd3511d0ac170195.jpg?w=1080\u0026h=2888",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/df34021f087e68fddd3511d0ac170195.jpg?w=1080\u0026h=2888"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/60ee3995436c453aed8ede3228b1904d.jpg?w=1080\u0026h=778",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/60ee3995436c453aed8ede3228b1904d.jpg?w=1080\u0026h=778"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/13eab90b1a84f141655c28bc602e65e0.jpg?w=1080\u0026h=493",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/13eab90b1a84f141655c28bc602e65e0.jpg?w=1080\u0026h=493"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eab280a393a0596f36d5ead92587a456.jpg?w=1080\u0026h=1845",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/eab280a393a0596f36d5ead92587a456.jpg?w=1080\u0026h=1845"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/25ea550a885320a1ea6b60f2be134a3d.jpg?w=1080\u0026h=2779",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/25ea550a885320a1ea6b60f2be134a3d.jpg?w=1080\u0026h=2779"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/608d58fd8532d01e99e51c5eabbe2d24.jpg?w=1080\u0026h=2075",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/608d58fd8532d01e99e51c5eabbe2d24.jpg?w=1080\u0026h=2075"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/32f0d2abaedbef7dc6a71076ed23d884.jpg?w=1080\u0026h=2922",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/32f0d2abaedbef7dc6a71076ed23d884.jpg?w=1080\u0026h=2922"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/58f9d31d32d2c99d1361ebc89052ea44.jpg?w=1080\u0026h=1791",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/58f9d31d32d2c99d1361ebc89052ea44.jpg?w=1080\u0026h=1791"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9733b22bb177db40aa87a400d4232463.jpg?w=1080\u0026h=2502",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9733b22bb177db40aa87a400d4232463.jpg?w=1080\u0026h=2502"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/776d8f90abc083c140c180dbf99e7821.jpg?w=1080\u0026h=2346",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/776d8f90abc083c140c180dbf99e7821.jpg?w=1080\u0026h=2346"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4e0769d5b59698231a703becc905921.jpg?w=1080\u0026h=2650",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/a4e0769d5b59698231a703becc905921.jpg?w=1080\u0026h=2650"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/18a8e49b4f06200da7c1251f6fa81374.jpg?w=1080\u0026h=671",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/18a8e49b4f06200da7c1251f6fa81374.jpg?w=1080\u0026h=671"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/49dd6ba31b963d377c51e53da556f44a.jpg?w=1080\u0026h=1417",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/49dd6ba31b963d377c51e53da556f44a.jpg?w=1080\u0026h=1417"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/79b3d31a1cc3ffc0277bc5bf89372598.jpg?w=1080\u0026h=1417",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/79b3d31a1cc3ffc0277bc5bf89372598.jpg?w=1080\u0026h=1417"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4eb1d11de07f0184e885ea8993465190.jpg?w=1080\u0026h=1368",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4eb1d11de07f0184e885ea8993465190.jpg?w=1080\u0026h=1368"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2e74e92921bce4b29a762ffc293d50bf.jpg?w=1080\u0026h=1435",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2e74e92921bce4b29a762ffc293d50bf.jpg?w=1080\u0026h=1435"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc88fd153c1da1138fd621e00137d3e2.png?w=1080\u0026h=427",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc88fd153c1da1138fd621e00137d3e2.png?w=1080\u0026h=427"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "view_type": "desc_tabs_view",
+                        "show_type": "config",
+                        "name": "规格参数",
+                        "tab_content": [
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/74533f418b0b2e4c99bd15d0f2ab3be5.jpg?w=1080\u0026h=1444",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/74533f418b0b2e4c99bd15d0f2ab3be5.jpg?w=1080\u0026h=1444"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1ff5430bc894cf9f02bd5f043f0d255e.jpg?w=1080\u0026h=1644",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1ff5430bc894cf9f02bd5f043f0d255e.jpg?w=1080\u0026h=1644"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9e58089c5cbb7d142eb7f2dba10b0de9.jpg?w=1080\u0026h=1272",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9e58089c5cbb7d142eb7f2dba10b0de9.jpg?w=1080\u0026h=1272"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f0e4d8147607375cfe70ea022dc572fb.jpg?w=1080\u0026h=3343",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f0e4d8147607375cfe70ea022dc572fb.jpg?w=1080\u0026h=3343"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/492bf609060977a2a17e9c2f25fcdc46.jpg?w=1080\u0026h=1583",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/492bf609060977a2a17e9c2f25fcdc46.jpg?w=1080\u0026h=1583"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1ee3c727c020c0022c18f2cc1df4e058.jpg?w=1080\u0026h=1121",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1ee3c727c020c0022c18f2cc1df4e058.jpg?w=1080\u0026h=1121"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b617c37eecd55a7e00c4a1eb99037709.jpg?w=1080\u0026h=2030",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b617c37eecd55a7e00c4a1eb99037709.jpg?w=1080\u0026h=2030"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2d423c0ecc4b0976574086e366227514.jpg?w=1080\u0026h=794",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2d423c0ecc4b0976574086e366227514.jpg?w=1080\u0026h=794"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6fedee627f1a7b2d5f146730637b829.jpg?w=1080\u0026h=1712",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6fedee627f1a7b2d5f146730637b829.jpg?w=1080\u0026h=1712"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/af46ae6f6f6a4f4e9d1bb9836f97b93c.jpg?w=1080\u0026h=2278",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/af46ae6f6f6a4f4e9d1bb9836f97b93c.jpg?w=1080\u0026h=2278"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b3fffa3484e7147f84eb948df0941f9a.jpg?w=1080\u0026h=2053",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b3fffa3484e7147f84eb948df0941f9a.jpg?w=1080\u0026h=2053"
+                                }
+                            },
+                            {
+                                "view_type": "plain_view",
+                                "plain_view": {
+                                    "is_not_compress": "0",
+                                    "img": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b6a7b12f595faecfb90d92c9c447523f.jpg?w=1080\u0026h=2530",
+                                    "img_webp": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b6a7b12f595faecfb90d92c9c447523f.jpg?w=1080\u0026h=2530"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "view_type": "related_data_view",
+                "show_type": "merge"
+            },
+            {
+                "view_type": "qa_view",
+                "show_type": "shopapi"
+            },
+            {
+                "view_type": "media_comment_view",
+                "show_type": "config",
+                "media_comment_view": {
+                    "title": "媒体评价"
+                }
+            },
+            {
+                "view_type": "relate_package_view",
+                "show_type": "config",
+                "relate_package_view": {
+                    "title": "精选套餐"
+                }
+            },
+            {
+                "view_type": "relate_parts",
+                "show_type": "config",
+                "relate_parts": {
+                    "title": "配件"
+                }
+            }
+        ],
+        "relate_parts": {
+            "title": "",
+            "parts": null
+        },
+        "related_data_view": {
+            "title": "",
+            "data": null
+        },
+        "gallery_view": [
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/dae4a389abe8ec77aace9164fab26d97.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2eeb514c66e6856ad5922573d2546ec1.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/588cdb4b520fcf9b9ce6c714cc3d16ae.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/fc442817fbed7208b343e74ebc1997e7.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/ff80b46807e58499484719f883036548.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9cb9834228615ad897a0a67ff7984ea.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/5c561ded2a5176e38bab6879b47d1865.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/1a8d2b9bd5afc3fa1c46d13d0db4bb64.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9349a1d48c99a1695614b988fde169a.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/4651fb9dfbca25c7867de5bdea13dfd2.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8ab76df5a2dc4b0f397a9f895915ff05.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/7a3aee3aab3f87436e9292b889a63e59.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2a77970c91a915ae0b3f74c6e71914de.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/443585ccaf4d4e94ddfba456ccb30fb4.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/bebd5d68042b108a588c508c78588498.jpg"
+            },
+            {
+                "type": "img",
+                "img_url": "https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/80cd1e2ced6a95aa85dfa1674f3066da.jpg"
+            }
+        ]
+    }
+}

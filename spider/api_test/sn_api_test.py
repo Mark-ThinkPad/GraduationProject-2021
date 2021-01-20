@@ -60,10 +60,10 @@ def get_review_lists():
 
 
 if __name__ == '__main__':
-    # get_price()
-    # sleep(3)
-    # get_review_satisfy()
-    # sleep(3)
-    # get_review_labels()
-    # sleep(3)
+    get_price()
+    sleep(3)
+    get_review_satisfy()
+    sleep(3)
+    get_review_labels()
+    sleep(3)
     get_review_lists()
