@@ -48,7 +48,7 @@ def get_comment_content(browser: Chrome):
     # 选择商品评论标签并点击
     browser.find_element_by_xpath('/html/body/div[1]/div/div[3]/div/div[1]/div[2]/div[1]/div[1]/ul/li[2]').click()
     sleep(1)
-    # 获取评论统计信息并保存到本地json文件
+    # 获取评论详情并保存到本地json文件
     index_url = 'https://www.xiaomiyoupin.com/mtop/market/comment/product/content'
     index = get_response_body(browser, index_url)
     # print(index)

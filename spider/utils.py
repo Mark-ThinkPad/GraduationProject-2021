@@ -1,6 +1,7 @@
 import json
 from time import time
 from selenium.webdriver import Chrome, ChromeOptions
+from selenium.common.exceptions import WebDriverException
 
 
 # 设置requests请求头
@@ -49,6 +50,7 @@ def set_capabilities() -> dict:
 # 从Chrome中获取指定接口的响应数据
 def get_response_body(browser: Chrome, target_url: str):
     request_log = browser.get_log('performance')
+    response_body = 'Not Found'
     for i in range(len(request_log)):
         message = json.loads(request_log[i]['message'])
         message = message['message']['params']
@@ -58,18 +60,20 @@ def get_response_body(browser: Chrome, target_url: str):
             continue
 
         url = request.get('url')
-        if url == target_url:
+        if target_url in url:
             # 得到requestId
             requestId = message['requestId']
             # print(requestId)
             # 通过requestId获取接口内容
-            response = browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
-            response_body = response['body']
-            return response_body
+            try:
+                response = browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
+                response_body = response['body']
+            except WebDriverException:
+                continue
 
-    return None
+    return response_body
 
 
 # 获取13位时间戳
-def get_timestamp_13bit():
+def get_timestamp_13bit() -> str:
     return str(round(time() * 1000))
