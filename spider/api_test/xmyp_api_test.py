@@ -10,7 +10,7 @@ def get_detail(browser: Chrome):
     sleep(1)
     # 获取小米有品商品信息并保存到本地json文件
     detail_url = 'https://www.xiaomiyoupin.com/api/gateway/detail'
-    detail = get_response_body(browser, detail_url)
+    detail = get_response_body(browser, detail_url, 'POST')
     # print(detail)
     with open('xmyp_detail.json', 'w', encoding='UTF-8') as file:
         file.write(detail)
@@ -30,7 +30,7 @@ def get_comment_index(browser: Chrome):
     sleep(1)
     # 获取评论统计信息并保存到本地json文件
     index_url = 'https://www.xiaomiyoupin.com/mtop/market/comment/product/index'
-    index = get_response_body(browser, index_url)
+    index = get_response_body(browser, index_url, 'POST')
     # print(index)
     with open('xmyp_comment_index.json', 'w', encoding='UTF-8') as file:
         file.write(index)
@@ -50,7 +50,7 @@ def get_comment_content(browser: Chrome):
     sleep(1)
     # 获取评论详情并保存到本地json文件
     index_url = 'https://www.xiaomiyoupin.com/mtop/market/comment/product/content'
-    index = get_response_body(browser, index_url)
+    index = get_response_body(browser, index_url, 'POST')
     # print(index)
     with open('xmyp_comment_content.json', 'w', encoding='UTF-8') as file:
         file.write(index)
