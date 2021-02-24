@@ -6,7 +6,7 @@ db = pw.SqliteDatabase('test.db')
 class Test(pw.Model):
     pid = pw.IntegerField(primary_key=True)
     content = pw.TextField()
-    vcontent = pw.CharField(max_length=200, default='test')
+    vcontent = pw.IntegerField(default=1)
 
     class Meta:
         database = db
