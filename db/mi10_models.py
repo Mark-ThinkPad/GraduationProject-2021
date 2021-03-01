@@ -8,8 +8,18 @@ class BaseModel(pw.Model):
         database = mi10_db
 
 
+# 店铺
+class Shop(BaseModel):
+    url = pw.TextField(unique=True)  # 网页URL链接
+    source = pw.CharField(max_length=4)  # 平台数据源
+    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
+
+
+# 评论
 class Comment(BaseModel):
-    source = pw.CharField(max_length=4)  # 数据源
+    comment_id = pw.CharField(max_length=20, primary_key=True)  # 评论ID, 前缀JD, SN等, 小米商城和小米有品共用MI前缀(评论互通)
+    source = pw.CharField(max_length=4)  # 平台数据源
+    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
     create_time = pw.DateTimeField()  # 评论创建时间
     content = pw.TextField()  # 评论内容
     after_time = pw.DateTimeField(null=True)  # 追评时间

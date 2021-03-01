@@ -11,7 +11,7 @@ def get_commodity():
     response = requests.get(commodity_url, headers=headers)
     content = response.text.lstrip('__jp0(').rstrip(');')
     # print(content)
-    with open('xmsc_commodity.json', 'w', encoding='UTF-8') as file:
+    with open('mishop_commodity.json', 'w', encoding='UTF-8') as file:
         file.write(content)
 
 
@@ -24,7 +24,7 @@ def get_comment_summary():
     response = requests.get(comment_summary_url, headers=headers)
     content = response.text.lstrip('__jp6(').rstrip(');')
     # print(content)
-    with open('xmsc_comment_summary.json', 'w', encoding='UTF-8') as file:
+    with open('mishop_comment_summary.json', 'w', encoding='UTF-8') as file:
         file.write(content)
 
 
@@ -37,7 +37,7 @@ def get_comment_list():
     response = requests.get(comment_list_url, headers=headers)
     content = response.text.lstrip('__jp5(').rstrip(');')
     # print(content)
-    with open('xmsc_comment_list.json', 'w', encoding='UTF-8') as file:
+    with open('mishop_comment_list.json', 'w', encoding='UTF-8') as file:
         file.write(content)
 
 
