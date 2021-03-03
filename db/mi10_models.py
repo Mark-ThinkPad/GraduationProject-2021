@@ -1,9 +1,13 @@
 import peewee as pw
 
-mi10_db = pw.SqliteDatabase('mi10.db')
+mi10_db = pw.SqliteDatabase('mi10.db', pragmas=(('foreign_keys', 1),))
 
 
 class BaseModel(pw.Model):
+    # 平台数据源
+    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁", "小米有品", "小米商城")')])
+    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
+
     class Meta:
         database = mi10_db
 
@@ -11,18 +15,22 @@ class BaseModel(pw.Model):
 # 店铺
 class Shop(BaseModel):
     url = pw.TextField(unique=True)  # 网页URL链接
-    # 平台数据源
-    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁", "小米有品", "小米商城")')])
-    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
+
+
+# 商品SKU编号
+class Sku(BaseModel):
+    sku = pw.CharField(max_length=20)  # 商品SKU编号
+    prefix = pw.CharField(max_length=10, null=True)  # 苏宁需要一段前缀码
+    shop = pw.ForeignKeyField(Shop, field=Shop.url, backref='sku', on_delete='CASCADE')
+
+    class Meta:
+        primary_key = pw.CompositeKey('sku', 'source')
 
 
 # 评论
 class Comment(BaseModel):
     # 评论ID, 前缀JD, SN等, 小米商城和小米有品共用MI前缀(评论互通)
     comment_id = pw.CharField(max_length=20, primary_key=True)
-    # 平台数据源
-    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁", "小米有品", "小米商城")')])
-    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
     create_time = pw.DateTimeField()  # 评论创建时间
     content = pw.TextField()  # 评论内容
     star = pw.SmallIntegerField(constraints=[pw.Check('star between 1 and 5')])  # 评分星级
@@ -41,9 +49,6 @@ class Comment(BaseModel):
 
 # 评论统计
 class CommentSummary(BaseModel):
-    # 平台数据源
-    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁", "小米有品", "小米商城")')])
-    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
     total = pw.IntegerField()  # 评论总数
     good_rate = pw.CharField(max_length=4)  # 好评率
     default_good = pw.IntegerField(null=True)  # 默认好评数
@@ -59,9 +64,6 @@ class CommentSummary(BaseModel):
 
 # 型号统计
 class ModelSummary(BaseModel):
-    # 平台数据源
-    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁", "小米有品", "小米商城")')])
-    is_official = pw.BooleanField()  # 是否为官方自营/官方旗舰店
     # 产品型号信息
     product_color = pw.CharField(max_length=4,
                                  constraints=[pw.Check('product_color in ("国风雅灰", "钛银黑", "冰海蓝", "蜜桃金")')])  # 产品颜色版本
@@ -75,5 +77,5 @@ class ModelSummary(BaseModel):
 
 if __name__ == '__main__':
     mi10_db.connect()
-    mi10_db.create_tables([Shop, Comment, CommentSummary, ModelSummary])
+    mi10_db.create_tables([Shop, Sku, Comment, CommentSummary, ModelSummary])
     mi10_db.close()
