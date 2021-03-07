@@ -20,7 +20,7 @@ def get_jd_comments(browser: Chrome):
     page_comment_url = 'https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98' \
                        '&productId=100014565800&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1'
     comments = get_response_body(browser, page_comment_url, 'GET')
-    comments = comments.lstrip('fetchJSON_comment98(').rstrip(');)')
+    comments = comments.lstrip('fetchJSON_comment98(').rstrip(');')
     # print(comments)
     with open('jd_comments.json', 'w', encoding='UTF-8') as file:
         file.write(comments)

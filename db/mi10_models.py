@@ -37,7 +37,7 @@ class Comment(BaseModel):
     content = pw.TextField()  # 评论内容
     star = pw.SmallIntegerField(constraints=[pw.Check('star between 1 and 5')])  # 评分星级
     after_time = pw.DateTimeField(null=True)  # 追评时间
-    after_content = pw.TextField()  # 追评内容
+    after_content = pw.TextField(null=True)  # 追评内容
     after_days = pw.SmallIntegerField(null=True)  # 追评间隔时间
     order_time = pw.DateTimeField(null=True)  # 下单时间, 限京东数据源
     order_days = pw.SmallIntegerField(null=True)  # 从下单到评论的时间(包括物流时间)
@@ -79,4 +79,4 @@ class ModelSummary(BaseModel):
 
 
 if __name__ == '__main__':
-    mi10_db.create_tables([ModelSummary])
+    mi10_db.create_tables([Comment])
