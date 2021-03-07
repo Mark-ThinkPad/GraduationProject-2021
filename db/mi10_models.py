@@ -1,6 +1,7 @@
 import peewee as pw
+from conf.settings import DATABASE_DIR
 
-mi10_db = pw.SqliteDatabase('mi10.db', pragmas=(('foreign_keys', 1),))
+mi10_db = pw.SqliteDatabase(DATABASE_DIR + '/mi10.db', pragmas=(('foreign_keys', 1),))
 
 
 class BaseModel(pw.Model):
@@ -20,6 +21,7 @@ class Shop(BaseModel):
 # 商品SKU编号
 class Sku(BaseModel):
     sku = pw.CharField(max_length=20)  # 商品SKU编号
+    url_prefix = pw.CharField(max_length=80)  # 商品详情页面URL前缀
     prefix = pw.CharField(max_length=10, null=True)  # 苏宁需要一段前缀码
     shop = pw.ForeignKeyField(Shop, field=Shop.url, backref='sku', on_delete='CASCADE')
 
@@ -70,12 +72,11 @@ class ModelSummary(BaseModel):
     product_ram = pw.CharField(max_length=4, constraints=[pw.Check('product_ram in ("8GB", "12GB")')])  # 内存大小
     product_rom = pw.CharField(max_length=5, constraints=[pw.Check('product_rom in ("128GB", "256GB")')])  # 储存大小
     total = pw.IntegerField()
+    good_rate = pw.CharField(max_length=4, null=True)  # 好评率
 
     class Meta:
         primary_key = pw.CompositeKey('source', 'is_official', 'product_color', 'product_ram', 'product_rom')  # 复合主键
 
 
 if __name__ == '__main__':
-    mi10_db.connect()
-    mi10_db.create_tables([Shop, Sku, Comment, CommentSummary, ModelSummary])
-    mi10_db.close()
+    mi10_db.create_tables([ModelSummary])
