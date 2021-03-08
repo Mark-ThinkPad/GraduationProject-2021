@@ -70,8 +70,8 @@ def get_response_body(browser: Chrome, target_url: str, target_method: str):
     return None
 
 
-# 网页向下滑动
-def window_scroll_down(browser: Chrome, distance: int):
+# 网页在垂直方向滑动, distance为正之时向下滑动, 为负值时向上滑动
+def window_scroll_by(browser: Chrome, distance: int):
     js = f'window.scrollBy({{top:{distance}, left:0, behavior: "smooth"}})'
     browser.execute_script(js)
     sleep(0.1)
