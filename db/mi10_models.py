@@ -22,7 +22,7 @@ class Shop(BaseModel):
 class Sku(BaseModel):
     sku = pw.CharField(max_length=20)  # 商品SKU编号
     url_prefix = pw.CharField(max_length=80)  # 商品详情页面URL前缀
-    prefix = pw.CharField(max_length=10, null=True)  # 苏宁需要一段前缀码
+    shop_code = pw.CharField(max_length=10, null=True)  # 苏宁需要店铺代码
     shop = pw.ForeignKeyField(Shop, field=Shop.url, backref='sku', on_delete='CASCADE')
 
     class Meta:
@@ -73,10 +73,16 @@ class ModelSummary(BaseModel):
     product_rom = pw.CharField(max_length=5, constraints=[pw.Check('product_rom in ("128GB", "256GB")')])  # 储存大小
     total = pw.IntegerField()
     good_rate = pw.CharField(max_length=4, null=True)  # 好评率
+    default_good = pw.IntegerField(null=True)  # 默认好评数
+    star_one = pw.IntegerField(null=True)  # 一星数量
+    star_two = pw.IntegerField(null=True)  # 二星数量
+    star_three = pw.IntegerField(null=True)  # 三星数量
+    star_four = pw.IntegerField(null=True)  # 四星数量
+    star_five = pw.IntegerField(null=True)  # 五星数量
 
     class Meta:
         primary_key = pw.CompositeKey('source', 'is_official', 'product_color', 'product_ram', 'product_rom')  # 复合主键
 
 
 if __name__ == '__main__':
-    mi10_db.create_tables([Comment])
+    mi10_db.create_tables([Shop, Sku, Comment, CommentSummary, ModelSummary])

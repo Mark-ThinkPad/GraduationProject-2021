@@ -80,3 +80,17 @@ def window_scroll_by(browser: Chrome, distance: int):
 # 获取13位时间戳
 def get_timestamp_13bit() -> str:
     return str(round(time() * 1000))
+
+
+# 将京东计数字符转为数字
+def parse_jd_count_str(count_str: str) -> int:
+    result = count_str.rstrip('+')
+    if result.isdigit() is False:
+        cn_number_unit = result[-1]
+        if cn_number_unit == '万':
+            prefix_number = result.replace(cn_number_unit, '')
+            result = int(prefix_number) * 10000
+    else:
+        result = int(result)
+
+    return result
