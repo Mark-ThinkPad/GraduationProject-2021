@@ -15,62 +15,111 @@ from spider.utils import (set_options, set_capabilities, get_response_body, wind
 # 获取京东数据
 def get_data_from_jd(browser: Chrome):
     for jd_shop in Shop.select().where(Shop.source == '京东'):
-        print(f'------当前店铺链接: {jd_shop.url}------')
+        print(f'------打开当前京东店铺链接: {jd_shop.url}------')
         browser.get(jd_shop.url)  # 打开商品页面
         # 获取京东商品已上架SKU
         get_jd_sku_from_api(browser, jd_shop)
+
         # 获取默认总推荐排序评论和默认总时间排序评论, 并遍历所有SKU
         print('------获取默认总推荐排序评论和默认总时间排序评论, 并遍历所有SKU------')
         switch_to_jd_default_comments_page(browser, jd_shop)  # 打开评论默认页面
-        get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论
-        switch_to_jd_good_comments(browser)  # 切换到好评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从好评标签获取评论
-        switch_to_jd_general_comments(browser)  # 切换到中评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从中评标签获取评论
-        switch_to_jd_bad_comments(browser)  # 切换到差评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从差评标签获取评论
-        switch_to_jd_total_comments(browser)  # 切回全部评论
+        get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论和统计信息
+
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # switch_to_jd_good_comments(browser)  # 切换到好评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从好评标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # switch_to_jd_general_comments(browser)  # 切换到中评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从中评标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # switch_to_jd_bad_comments(browser)  # 切换到差评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从差评标签获取评论
+
+        # switch_to_jd_total_comments(browser)  # 切回全部评论
+        switch_to_jd_default_comments_page(browser, jd_shop)
         switch_to_jd_time_sort(browser)  # 切换到时间排序
         get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
-        switch_to_jd_video_comments(browser)  # 切换到视频晒单
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从视频晒单标签获取评论
-        switch_to_jd_after_comments(browser)  # 切换到追评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从追评标签获取评论
-        switch_to_jd_good_comments(browser)  # 切换到好评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从好评标签获取评论
-        switch_to_jd_general_comments(browser)  # 切换到中评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从中评标签获取评论
-        switch_to_jd_bad_comments(browser)  # 切换到差评
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从差评标签获取评论和统计信息
-        browser.close()  # 关闭当前标签页
+
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # # switch_to_jd_time_sort(browser)
+        # switch_to_jd_video_comments(browser)  # 切换到视频晒单
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从视频晒单标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # # switch_to_jd_time_sort(browser)
+        # switch_to_jd_after_comments(browser)  # 切换到追评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从追评标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # # switch_to_jd_time_sort(browser)
+        # switch_to_jd_good_comments(browser)  # 切换到好评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从好评标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # # switch_to_jd_time_sort(browser)
+        # switch_to_jd_general_comments(browser)  # 切换到中评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从中评标签获取评论
+        #
+        # # switch_to_jd_default_comments_page(browser, jd_shop)
+        # # switch_to_jd_time_sort(browser)
+        # switch_to_jd_bad_comments(browser)  # 切换到差评
+        # get_jd_comments(browser, jd_shop, get_sku=True)  # 从差评标签获取评论
+        # back_to_first_window(browser)
 
         # 轮询各个SKU的商品页面
         skus = jd_shop.sku  # 通过shop模型反向查询所有sku
         print('------SKU轮询开始------')
         for current_sku in skus:
             print(f'------本轮SKU: {current_sku.sku}------')
+            print(f'------正在打开当前SKU链接: {current_sku.url_prefix}{current_sku.sku}.html------')
+            browser.get(current_sku.url_prefix + current_sku.sku + '.html')
             switch_to_jd_sku_comments_page(browser, current_sku)
-            get_jd_comments(browser, jd_shop, sku_mode=True, summary=True)  # 从全部评价标签获取评论
-            switch_to_jd_good_comments(browser)  # 切换到好评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从好评标签获取评论
-            switch_to_jd_general_comments(browser)  # 切换到中评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从中评标签获取评论
-            switch_to_jd_bad_comments(browser)  # 切换到差评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从差评标签获取评论
-            switch_to_jd_total_comments(browser)  # 切回全部评论
+            get_jd_comments(browser, jd_shop, sku_mode=True, summary=True)  # 从全部评价标签获取评论和统计信息
+
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # switch_to_jd_good_comments(browser)  # 切换到好评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从好评标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # switch_to_jd_general_comments(browser)  # 切换到中评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从中评标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # switch_to_jd_bad_comments(browser)  # 切换到差评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从差评标签获取评论
+
+            # switch_to_jd_total_comments(browser)  # 切回全部评论
+            switch_to_jd_sku_comments_page(browser, current_sku)
             switch_to_jd_time_sort(browser)  # 切换到时间排序
             get_jd_comments(browser, jd_shop, sku_mode=True)  # 从全部评价标签获取评论
-            switch_to_jd_video_comments(browser)  # 切换到视频晒单
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从视频晒单标签获取评论
-            switch_to_jd_after_comments(browser)  # 切换到追评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从追评标签获取评论
-            switch_to_jd_good_comments(browser)  # 切换到好评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从好评标签获取评论
-            switch_to_jd_general_comments(browser)  # 切换到中评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从中评标签获取评论
-            switch_to_jd_bad_comments(browser)  # 切换到差评
-            get_jd_comments(browser, jd_shop, sku_mode=True)  # 从差评标签获取评论和统计信息
-            browser.close()  # 关闭当前标签页
+
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # # switch_to_jd_time_sort(browser)  # 切换到时间排序
+            # switch_to_jd_video_comments(browser)  # 切换到视频晒单
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从视频晒单标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # # switch_to_jd_time_sort(browser)  # 切换到时间排序
+            # switch_to_jd_after_comments(browser)  # 切换到追评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从追评标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # # switch_to_jd_time_sort(browser)  # 切换到时间排序
+            # switch_to_jd_good_comments(browser)  # 切换到好评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从好评标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # # switch_to_jd_time_sort(browser)  # 切换到时间排序
+            # switch_to_jd_general_comments(browser)  # 切换到中评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从中评标签获取评论
+            #
+            # # switch_to_jd_sku_comments_page(browser, current_sku)
+            # # switch_to_jd_time_sort(browser)  # 切换到时间排序
+            # switch_to_jd_bad_comments(browser)  # 切换到差评
+            # get_jd_comments(browser, jd_shop, sku_mode=True)  # 从差评标签获取评论
+            # back_to_first_window(browser)
 
     # 数据汇总后计算总好评率
     calculate_jd_good_rate(CommentSummary.select())
@@ -98,22 +147,26 @@ def get_jd_sku_from_api(browser: Chrome, shop: Shop):
 
 # 打开新窗口并切换到默认评论页面
 def switch_to_jd_default_comments_page(browser: Chrome, shop: Shop):
-    driver.execute_script("window.open()")
-    handles = driver.window_handles
-    driver.switch_to.window(handles[1])
+    browser.execute_script("window.open()")
+    handles = browser.window_handles
+    browser.switch_to.window(handles[1])
+    print('------打开新窗口并正在加载默认评论页面------')
     browser.get(shop.url + '#comment')
-    print('------打开新窗口并切换到默认评论页面------')
+    print('------默认评论页面加载完成------')
+    waiting_jd_comments_loading(browser)
 
 
 # 打开新窗口并切换到具体SKU评论页面
 def switch_to_jd_sku_comments_page(browser: Chrome, sku: Sku):
-    driver.execute_script("window.open()")
-    handles = driver.window_handles
+    browser.execute_script("window.open()")
+    handles = browser.window_handles
     driver.switch_to.window(handles[1])
+    print('------打开新窗口并正在加载当前SKU默认评论页面------')
     browser.get(sku.url_prefix + sku.sku + '.html#comment')
     browser.execute_script('document.getElementById("comm-curr-sku").click()')
+    # browser.find_element_by_id('comm-curr-sku').click()
+    print('------当前SKU默认评论页面加载完成------')
     waiting_jd_comments_loading(browser)
-    print('------打开新窗口并切换到具体SKU评论页面------')
 
 
 # 等待京东评论加载
@@ -124,7 +177,7 @@ def waiting_jd_comments_loading(browser: Chrome):
                 ec.presence_of_all_elements_located((By.CLASS_NAME, 'comment-item'))
             )
             interval_time = uniform(3, 6)  # 随机生成间隔秒数
-            print(f'本次间隔时间: {interval_time} 秒')
+            print(f'本次随机间隔时间: {interval_time} 秒')
             sleep(interval_time)  # 停顿一下, 降低访问频率
             break
         except TimeoutException:
@@ -134,76 +187,94 @@ def waiting_jd_comments_loading(browser: Chrome):
 # 评论页面切换到时间排序
 def switch_to_jd_time_sort(browser: Chrome):
     browser.execute_script('document.querySelector("li.J-sortType-item:nth-child(2)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到时间排序------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到全部评价
 def switch_to_jd_total_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.filter-list > li:nth-child(1) > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".filter-list > li:nth-child(1) > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到全部评价------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到视频晒单
 def switch_to_jd_video_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.filter-list > li:nth-child(3) > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".filter-list > li:nth-child(3) > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到视频晒单------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到追评
 def switch_to_jd_after_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.J-addComment > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".J-addComment > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到追评------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到好评
 def switch_to_jd_good_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.filter-list > li:nth-child(5) > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".filter-list > li:nth-child(5) > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到好评------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到中评
 def switch_to_jd_general_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.filter-list > li:nth-child(6) > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".filter-list > li:nth-child(6) > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到中评------')
+    waiting_jd_comments_loading(browser)
 
 
 # 评论页面切换到差评
 def switch_to_jd_bad_comments(browser: Chrome):
+    # browser.find_element_by_css_selector('.filter-list > li:nth-child(7) > a:nth-child(1)').click()
     browser.execute_script('document.querySelector(".filter-list > li:nth-child(7) > a:nth-child(1)").click()')
-    waiting_jd_comments_loading(browser)
     print('------切换到差评------')
+    waiting_jd_comments_loading(browser)
+
+
+#  回到第一个窗口
+def back_to_first_window(browser: Chrome):
+    browser.close()
+    handles = browser.window_handles
+    browser.switch_to.window(handles[0])
 
 
 # 从默认评论排序中获取所有SKU, 顺便保存评论
 def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode: bool = False, summary: bool = False):
     max_page = 141
-    jd_comments = {}
-    comment_list = []
-    while max_page > 0:
+    # jd_comments = {}
+    # comment_list = []
+    while max_page > 90:
         try:
             # 获取评论
             if sku_mode is True:
-                jd_comments_url = 'https://club.jd.com/comment/skuProductPageComments.action?callback' \
-                                  '=fetchJSON_comment98 '
+                jd_comments_url = 'skuProductPageComments'
             else:
-                jd_comments_url = 'https://club.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98'
+                jd_comments_url = 'productPageComments'
             jd_comments = get_response_body(browser, jd_comments_url, 'GET')
+            if jd_comments is None:
+                print('---未找到评论接口数据---')
+                raise WebDriverException(msg='jd_comments is None')
             jd_comments = jd_comments.lstrip('fetchJSON_comment98(').rstrip(');')
             jd_comments = json.loads(jd_comments)
             # 保存评论
             comment_list = jd_comments['comments']
             insert_jd_comments(comment_list, shop)
+            if len(comment_list) == 0:
+                print('该页评论数据0条')
             # 遍历评论中的所有SKU
             if get_sku is True:
                 get_sku_from_jd_comments(comment_list, shop)
         except WebDriverException:
-            pass
+            print('---此页评论数据获取异常, 跳过此分类---')
+            break
         # 赋值最大页数
         if max_page == 141:
             max_page = jd_comments['maxPage']
@@ -230,6 +301,11 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
                 break
             except TimeoutException:
                 window_scroll_by(browser, 200)
+
+    back_to_first_window(browser)
+    print('------当前浏览器窗口已关闭, 暂停30秒------')
+    # print('------暂停30秒------')
+    sleep(30)
 
 
 # 从评论中获取SKU
