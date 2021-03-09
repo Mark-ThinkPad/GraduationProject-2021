@@ -1,4 +1,5 @@
 import re
+from random import uniform
 from db.mi10_models import Shop
 
 shop = Shop()
@@ -39,3 +40,5 @@ shop.save()
 # final_good_rate = (good_count / sum_count) * 100
 # result = format(final_good_rate, '.1f')
 # print(result, type(result))
+
+# print(uniform(3, 6))
