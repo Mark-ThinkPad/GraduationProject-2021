@@ -2,11 +2,17 @@ import re
 from random import uniform
 from db.mi10_models import Shop
 
-shop = Shop()
-shop.source = '京东'
-shop.is_official = True
-shop.url = 'https://item.jd.com/100011336064.html'
-shop.save()
+# shop = Shop()
+# shop.source = '京东'
+# shop.is_official = True
+# shop.url = 'https://item.jd.com/100011336064.html'
+# shop.save()
+
+# shop = Shop()
+# shop.source = '苏宁'
+# shop.is_official = True
+# shop.url = 'https://product.suning.com/0000000000/11926557079.html'
+# shop.save()
 
 # str_one = '8GB+256GB'
 # str_two = '12GB+256GB'
@@ -42,3 +48,34 @@ shop.save()
 # print(result, type(result))
 
 # print(uniform(3, 6))
+
+# str1 = '全网通 8G+128G 【官方标配】'
+# str2 = '12G+256G 【官方标配】'
+# str3 = '全网通 8GB+128GB'
+# str4 = '全网通8GB+128GB（12期免息）'
+# str5 = '12+256【6期免息】'
+# str6 = '8G+256G 【扫地机器人+耳机蓝牙】套装'
+# str7 = '12GB+256GB'
+# result = re.search(r'\d+[GB]*\+\d+[GB]*', str7).group()
+# print(result)
+# ram_and_rom = result.split('+')
+# print(ram_and_rom)
+# ram = ram_and_rom[0]
+# rom = ram_and_rom[1]
+# if 'G' not in ram:
+#     ram += 'GB'
+# elif 'B' not in ram:
+#     ram += 'B'
+# if 'G' not in rom:
+#     rom += 'GB'
+# elif 'B' not in rom:
+#     rom += 'B'
+# print(ram, rom)
+
+sku1 = '000000000945112108'
+sku2 = '000000011592114089'
+result1 = re.match(r'^[0]+', sku1).group()
+result2 = re.match(r'^[0]+', sku2).group()
+sku1 = sku1.replace(result1, '')
+sku2 = sku2.replace(result2, '')
+print(sku1, sku2)

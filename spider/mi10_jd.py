@@ -7,17 +7,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.webdriver.common.action_chains import ActionChains
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (set_options, set_capabilities, get_response_body, window_scroll_by, parse_jd_count_str)
 
 
-# 获取京东数据
-def get_data_from_jd(browser: Chrome):
+# 获取京东商城的小米10销售数据
+def get_mi10_data_from_jd(browser: Chrome):
     for jd_shop in Shop.select().where(Shop.source == '京东'):
         print(f'------打开当前京东店铺链接: {jd_shop.url}------')
         browser.get(jd_shop.url)  # 打开商品页面
-        # 获取京东商品已上架SKU
+        # 获取已上架SKU
         get_jd_sku_from_api(browser, jd_shop)
 
         # 获取默认总推荐排序评论和默认总时间排序评论, 并遍历所有SKU
@@ -73,8 +72,9 @@ def get_data_from_jd(browser: Chrome):
         print('------SKU轮询开始------')
         for current_sku in skus:
             print(f'------本轮SKU: {current_sku.sku}------')
-            print(f'------正在打开当前SKU链接: {current_sku.url_prefix}{current_sku.sku}.html------')
-            browser.get(current_sku.url_prefix + current_sku.sku + '.html')
+            current_sku_url = current_sku.url_prefix + current_sku.sku + '.html'
+            print(f'------正在打开当前SKU链接: {current_sku_url}------')
+            browser.get(current_sku_url)
             switch_to_jd_sku_comments_page(browser, current_sku)
             get_jd_comments(browser, jd_shop, sku_mode=True, summary=True)  # 从全部评价标签获取评论和统计信息
 
@@ -251,7 +251,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
     max_page = 141
     # jd_comments = {}
     # comment_list = []
-    while max_page > 90:
+    while max_page > 0:
         try:
             # 获取评论
             if sku_mode is True:
@@ -303,9 +303,9 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
                 window_scroll_by(browser, 200)
 
     back_to_first_window(browser)
-    print('------当前浏览器窗口已关闭, 暂停30秒------')
-    # print('------暂停30秒------')
-    sleep(30)
+    print('------当前浏览器窗口已关闭, 暂停10秒------')
+    # print('------暂停10秒------')
+    sleep(10)
 
 
 # 从评论中获取SKU
@@ -329,6 +329,7 @@ def get_sku_from_jd_comments(comment_list: list, shop: Shop):
 # 保存京东评论
 def insert_jd_comments(comment_list: list, shop: Shop):
     for comment in comment_list:
+        productColor, productRam, productRom = parse_jd_mi10_product_info(comment)
         new_comment, created = Comment.get_or_create(
             source=shop.source,
             is_official=shop.is_official,
@@ -338,9 +339,9 @@ def insert_jd_comments(comment_list: list, shop: Shop):
             star=comment['score'],
             order_time=comment['referenceTime'],
             order_days=comment['days'],
-            product_color=comment['productColor'],
-            product_ram=re.match(r'^\w+?\+', comment['productSize']).group().replace('+', ''),
-            product_rom=re.search(r'\+\w+?$', comment['productSize']).group().replace('+', '')
+            product_color=productColor,
+            product_ram=productRam,
+            product_rom=productRom
         )
         if created is True:
             if 'afterUserComment' in comment:
@@ -355,6 +356,31 @@ def insert_jd_comments(comment_list: list, shop: Shop):
             else:
                 new_comment.user_device = 'other'
             new_comment.save()
+
+
+# 解析小米10产品信息
+def parse_jd_mi10_product_info(comment) -> tuple:
+    product_color = comment['productColor']
+    if '国风雅灰' in product_color:
+        product_color = '国风雅灰'
+    if '钛银黑' in product_color:
+        product_color = '钛银黑'
+    if '冰海蓝' in product_color:
+        product_color = '冰海蓝'
+    if '蜜桃金' in product_color:
+        product_color = '蜜桃金'
+    product_ram_and_rom = re.search(r'\d+[GB]*\+\d+[GB]*', comment['productSize']).group().split('+')
+    product_ram = product_ram_and_rom[0]
+    product_rom = product_ram_and_rom[1]
+    if 'G' not in product_ram:
+        product_ram += 'GB'
+    elif 'B' not in product_ram:
+        product_ram += 'B'
+    if 'G' not in product_rom:
+        product_rom += 'GB'
+    elif 'B' not in product_rom:
+        product_rom += 'B'
+    return product_color, product_ram, product_rom
 
 
 # 更新统计数据
@@ -394,22 +420,23 @@ def insert_jd_comment_summary(comment_summary: dict, shop: Shop):
 
 # 保存型号统计数据
 def insert_jd_model_summary(model_summary: dict, comment: dict, shop: Shop):
+    productColor, productRam, productRom = parse_jd_mi10_product_info(comment)
     try:
         ms = ModelSummary.get(
             source=shop.source,
             is_official=shop.is_official,
-            product_color=comment['productColor'],
-            product_ram=re.match(r'^\w+?\+', comment['productSize']).group().replace('+', ''),
-            product_rom=re.search(r'\+\w+?$', comment['productSize']).group().replace('+', ''),
+            product_color=productColor,
+            product_ram=productRam,
+            product_rom=productRom,
         )
         update_jd_summary_data(ms, model_summary)
     except ModelSummary.DoesNotExist:
         ModelSummary.create(
             source=shop.source,
             is_official=shop.is_official,
-            product_color=comment['productColor'],
-            product_ram=re.match(r'^\w+?\+', comment['productSize']).group().replace('+', ''),
-            product_rom=re.search(r'\+\w+?$', comment['productSize']).group().replace('+', ''),
+            product_color=productColor,
+            product_ram=productRam,
+            product_rom=productRom,
             total=parse_jd_count_str(model_summary['commentCountStr']),
             good_rate=model_summary['goodRate'] * 100,
             default_good=parse_jd_count_str(model_summary['defaultGoodCountStr']),
@@ -438,7 +465,7 @@ if __name__ == '__main__':
     # 在Windows环境下已将chromedriver添加至环境变量, 无需声明执行文件路径
     # 在Arch Linux环境下, 使用archlinux cn源安装的chromedriver位置在/usr/bin, 也无需声明执行文件路径
     driver = Chrome(options=options, desired_capabilities=caps)
-    # 京东部分正在开发
-    get_data_from_jd(driver)
+    # 从京东获得数据
+    get_mi10_data_from_jd(driver)
     # 退出浏览器实例
     driver.quit()

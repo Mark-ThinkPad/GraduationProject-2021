@@ -46,7 +46,7 @@ def set_capabilities() -> dict:
     return caps
 
 
-# 从Chrome中获取指定接口的响应数据
+# 从Chrome中获取单个指定接口的响应数据
 def get_response_body(browser: Chrome, target_url: str, target_method: str):
     request_log = browser.get_log('performance')
     for i in range(len(request_log)):
@@ -57,9 +57,9 @@ def get_response_body(browser: Chrome, target_url: str, target_method: str):
         except KeyError:
             continue
         # print(request, type(request))
-        url = request['url']
-        method = request['method']
-        if target_url in url and target_method == method:
+        current_url = request['url']
+        current_method = request['method']
+        if target_url in current_url and target_method == current_method:
             # 得到requestId
             requestId = message['requestId']
             # print(requestId)
@@ -68,6 +68,36 @@ def get_response_body(browser: Chrome, target_url: str, target_method: str):
             return response['body']
 
     return None
+
+
+# 从Chrome中获取多个指定接口的响应数据
+def get_response_body_list(browser: Chrome, target_list: list) -> list:
+    response_body_list = []
+    request_log = browser.get_log('performance')
+    for i in range(len(request_log)):
+        message = json.loads(request_log[i]['message'])
+        message = message['message']['params']
+        try:
+            request = message['request']
+        except KeyError:
+            continue
+        # print(request, type(request))
+        current_url = request['url']
+        current_method = request['method']
+        for target in target_list:
+            if target['url'] in current_url and target['method'] == current_method:
+                # 得到requestId
+                requestId = message['requestId']
+                # print(requestId)
+                # 通过requestId获取接口内容
+                response = browser.execute_cdp_cmd('Network.getResponseBody', {'requestId': requestId})
+                response_body_list.append({
+                    'response_body': response['body'],
+                    'url': target['url'],
+                    'method': target['method']
+                })
+
+    return response_body_list
 
 
 # 网页在垂直方向滑动, distance为正之时向下滑动, 为负值时向上滑动
