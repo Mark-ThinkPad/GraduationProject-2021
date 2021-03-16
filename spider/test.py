@@ -72,10 +72,19 @@ from db.mi10_models import Shop
 #     rom += 'B'
 # print(ram, rom)
 
-sku1 = '000000000945112108'
-sku2 = '000000011592114089'
-result1 = re.match(r'^[0]+', sku1).group()
-result2 = re.match(r'^[0]+', sku2).group()
-sku1 = sku1.replace(result1, '')
-sku2 = sku2.replace(result2, '')
-print(sku1, sku2)
+# sku1 = '000000000945112108'
+# sku2 = '000000011592114089'
+# result1 = re.match(r'^[0]+', sku1).group()
+# result2 = re.match(r'^[0]+', sku2).group()
+# sku1 = sku1.replace(result1, '')
+# sku2 = sku2.replace(result2, '')
+# print(sku1, sku2)
+
+# str1 = '30天后追加'
+# result = int(re.match(r'^\d+', str1).group())
+# print(result, type(result))
+
+# str1 = '12+256（G）'
+# str2 = '(5G版本）8GB+128GB'
+# result = re.search(r'\d+[GB]*\+\d+[GB]*', str1).group()
+# print(result)
