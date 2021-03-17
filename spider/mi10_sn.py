@@ -8,7 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as ec
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
-from spider.utils import (set_options, set_capabilities, get_response_body, get_response_body_list, window_scroll_by)
+from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
 
 
 # 获取苏宁易购的小米10销售数据
@@ -24,17 +25,25 @@ def get_mi10_data_from_sn(browser: Chrome):
         switch_to_sn_default_comments_page(browser, sn_shop.url)
         get_sn_comments(browser, sn_shop)
 
-        # # 轮询各个SKU的商品页面
-        # print('------SKU轮询开始------')
-        # for current_sku in sn_shop.sku:
-        #     print(f'------本轮SKU: {current_sku.sku}------')
-        #     current_sku_url = current_sku.url_prefix + current_sku.shop_code + '/' + current_sku.sku + '.html'
-        #     print(f'------正在打开当前SKU链接: {current_sku_url}------')
-        #     browser.get(current_sku_url)
-        #     sleep(10)
+        # 轮询各个SKU的商品页面
+        print('------SKU轮询开始------')
+        for current_sku in sn_shop.sku:
+            print(f'------本轮SKU: {current_sku.sku}------')
+            current_sku_url = current_sku.url_prefix + current_sku.shop_code + '/' + current_sku.sku + '.html'
+            print(f'------正在打开当前SKU链接: {current_sku_url}------')
+            browser.get(current_sku_url)
+
+            print('------开始获取当前SKU默认排序评论------')
+            switch_to_sn_sku_comments_page(browser, current_sku_url)
+            get_sn_comments(browser, sn_shop, sku_mode=True)
+
+    # 数据汇总后计算最终好评率
+    calculate_mi10_good_rate(CommentSummary.select().where(CommentSummary.source == '苏宁'))
+    calculate_mi10_good_rate(ModelSummary.select().where(ModelSummary.source == '苏宁'))
+    print('------苏宁平台数据获取完成------')
 
 
-# 获取所有SKU和评论统计 (苏宁自营店页面返回了两个接口数据)
+# 从后端API接口获取所有SKU和评论统计 (苏宁自营店页面返回了两个接口数据)
 def get_sn_sku_and_comment_summary_from_api(browser: Chrome, shop: Shop):
     skus_list = []
     summary = {}
@@ -86,9 +95,7 @@ def get_sn_sku_and_comment_summary_from_api(browser: Chrome, shop: Shop):
 
 # 打开新窗口并切换到默认评论页面
 def switch_to_sn_default_comments_page(browser: Chrome, shop_url: str):
-    browser.execute_script("window.open()")
-    handles = browser.window_handles
-    browser.switch_to.window(handles[1])
+    open_second_window(browser)
     print('------打开新窗口并正在加载默认评论页面------')
     browser.get(shop_url + '#productCommTitle')
     browser.execute_script('document.querySelector("#productCommTitle > a:nth-child(1)").click()')
@@ -98,9 +105,7 @@ def switch_to_sn_default_comments_page(browser: Chrome, shop_url: str):
 
 # 打开新窗口并切换到具体SKU评论页面
 def switch_to_sn_sku_comments_page(browser: Chrome, sku_url: str):
-    browser.execute_script("window.open()")
-    handles = browser.window_handles
-    browser.switch_to.window(handles[1])
+    open_second_window(browser)
     print('------打开新窗口并正在加载当前SKU默认评论页面------')
     browser.get(sku_url + '#productCommTitle')
     browser.execute_script('document.querySelector("#productCommTitle > a:nth-child(1)").click()')
@@ -123,13 +128,6 @@ def waiting_sn_comments_loading(browser: Chrome):
             break
         except TimeoutException:
             pass
-
-
-#  回到第一个窗口
-def back_to_first_window(browser: Chrome):
-    browser.close()
-    handles = browser.window_handles
-    browser.switch_to.window(handles[0])
 
 
 # 获取苏宁评论
@@ -156,11 +154,12 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
                         sn_model_summary = sn_model_summary.lstrip('satisfy(').rstrip(')')
                         sn_model_summary = json.loads(sn_model_summary)
                 if sn_comments['returnMsg'] == '无评价数据':
+                    print('---无评价数据, 跳过此SKU---')
                     break
                 else:
                     if sn_model_summary['returnMsg'] == '查询数量成功':
                         insert_sn_model_summary(sn_model_summary['reviewCounts'][0],
-                                                sn_comments['commodityReviews'][0], shop)
+                                                sn_comments['commodityReviews'][0]['commodityInfo'], shop)
                     else:
                         print('---查询当前SKU评论统计数量失败---')
             else:
@@ -177,9 +176,12 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
                 comment_list = sn_comments['commodityReviews']
                 insert_sn_comments(comment_list, shop)
             else:
+                # 最大页数为50页, 小于50页时需要打印出异常情况
+                if page <= 50:
+                    print(f'---获取第{page}页评论异常---')
                 break
         except WebDriverException:
-            print('---此页评论数据获取异常, 跳过此轮---')
+            print(f'---获取第{page}页评论异常, 跳过此轮---')
             break
 
         print(f'当前页数: {page}')
@@ -198,23 +200,29 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
         page += 1
 
     back_to_first_window(browser)
+    print('------当前浏览器窗口已关闭, 暂停10秒------')
+    sleep(10)
 
 
 # 保存苏宁评论
 def insert_sn_comments(comment_list: list, shop: Shop):
     for comment in comment_list:
-        productColor, productRam, productRom = parse_sn_mi10_product_info(comment)
+        try:
+            commodity_info = comment['commodityInfo']
+            color, ram, rom = parse_mi10_product_info(commodity_info['charaterDesc1'], commodity_info['charaterDesc2'])
+        except (AttributeError, KeyError):
+            print('---有一条评论对应的产品信息不规范, 跳过此条评论---')
+            continue
         new_comment, created = Comment.get_or_create(
             source=shop.source,
             is_official=shop.is_official,
-            comment_id='JD' + str(comment['commodityReviewId']),
+            comment_id='SN' + str(comment['commodityReviewId']),
             create_time=comment['publishTime'],
             content=comment['content'],
             star=comment['qualityStar'],
-            user_device=comment['sourceSystem'],
-            product_color=productColor,
-            product_ram=productRam,
-            product_rom=productRom
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom
         )
         if created is True:
             if comment['againFlag'] is True:
@@ -227,45 +235,58 @@ def insert_sn_comments(comment_list: list, shop: Shop):
                 else:
                     after_days_num = int(re.match(r'^\d+', after_days_str).group())
                 new_comment.after_days = after_days_num
+            if comment['sourceSystem'] == 'android':
+                new_comment.user_device = 'Android'
+            elif comment['sourceSystem'] == 'ios':
+                new_comment.user_device = 'iOS'
+            else:
+                new_comment.user_device = 'other'
             new_comment.save()
 
 
-# 解析小米10产品信息
-def parse_sn_mi10_product_info(commodity_info) -> tuple:
-    product_color = commodity_info['charaterDesc1']
-    if '灰' in product_color:
-        product_color = '国风雅灰'
-    if '黑' in product_color:
-        product_color = '钛银黑'
-    if '蓝' in product_color:
-        product_color = '冰海蓝'
-    if '金' in product_color:
-        product_color = '蜜桃金'
-    product_ram_and_rom = re.search(r'\d+[GB]*\+\d+[GB]*', commodity_info['charaterDesc2']).group().split('+')
-    product_ram = product_ram_and_rom[0]
-    product_rom = product_ram_and_rom[1]
-    if 'G' not in product_ram:
-        product_ram += 'GB'
-    elif 'B' not in product_ram:
-        product_ram += 'B'
-    if 'G' not in product_rom:
-        product_rom += 'GB'
-    elif 'B' not in product_rom:
-        product_rom += 'B'
-    return product_color, product_ram, product_rom
-
-
 # 保存型号统计数据
-def insert_sn_model_summary(model_summary: dict, comment: dict, shop: Shop):
-    pass
+def insert_sn_model_summary(model_summary: dict, commodity_info: dict, shop: Shop):
+    try:
+        color, ram, rom = parse_mi10_product_info(commodity_info['charaterDesc1'], commodity_info['charaterDesc2'])
+    except (AttributeError, KeyError):
+        print('---输入产品信息不规范, 跳过此SKU评论统计信息---')
+        return
+    try:
+        ms = ModelSummary.get(
+            source=shop.source,
+            is_official=shop.is_official,
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom
+        )
+        ms.total += model_summary['totalCount']
+        ms.default_good += model_summary['defaultCount']
+        ms.star_one += model_summary['oneStarCount']
+        ms.star_two += model_summary['twoStarCount']
+        ms.star_three += model_summary['threeStarCount']
+        ms.star_four += model_summary['fourStarCount']
+        ms.star_five += model_summary['fiveStarCount']
+        ms.save()
+    except ModelSummary.DoesNotExist:
+        ModelSummary.create(
+            source=shop.source,
+            is_official=shop.is_official,
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom,
+            total=model_summary['totalCount'],
+            good_rate=str(model_summary['goodRate']),
+            default_good=model_summary['defaultCount'],
+            star_one=model_summary['oneStarCount'],
+            star_two=model_summary['twoStarCount'],
+            star_three=model_summary['threeStarCount'],
+            star_four=model_summary['fourStarCount'],
+            star_five=model_summary['fiveStarCount'],
+        )
 
 
 if __name__ == '__main__':
-    options = set_options()
-    caps = set_capabilities()
-    # 在Windows环境下已将chromedriver添加至环境变量, 无需声明执行文件路径
-    # 在Arch Linux环境下, 使用archlinux cn源安装的chromedriver位置在/usr/bin, 也无需声明执行文件路径
-    driver = Chrome(options=options, desired_capabilities=caps)
+    driver = get_chrome_driver()
     # 从苏宁获得数据
     get_mi10_data_from_sn(driver)
     # 退出浏览器实例

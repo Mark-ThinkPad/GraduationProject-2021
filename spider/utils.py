@@ -1,3 +1,4 @@
+import re
 import json
 from time import time, sleep
 from selenium.webdriver import Chrome, ChromeOptions
@@ -44,6 +45,16 @@ def set_capabilities() -> dict:
     }
 
     return caps
+
+
+# 创建一个chrome实例
+def get_chrome_driver() -> Chrome:
+    options = set_options()
+    caps = set_capabilities()
+    # 在Windows环境下已将chromedriver添加至环境变量, 无需声明执行文件路径
+    # 在Arch Linux环境下, 使用archlinux cn源安装的chromedriver位置在/usr/bin, 也无需声明执行文件路径
+    driver = Chrome(options=options, desired_capabilities=caps)
+    return driver
 
 
 # 从Chrome中获取单个指定接口的响应数据
@@ -124,3 +135,53 @@ def parse_jd_count_str(count_str: str) -> int:
         result = int(result)
 
     return result
+
+
+# selenium打开第二个窗口
+def open_second_window(browser: Chrome):
+    browser.execute_script("window.open()")
+    handles = browser.window_handles
+    browser.switch_to.window(handles[1])
+
+
+# selenium回到第一个窗口
+def back_to_first_window(browser: Chrome):
+    browser.close()
+    handles = browser.window_handles
+    browser.switch_to.window(handles[0])
+
+
+# 解析小米10产品信息
+def parse_mi10_product_info(product_color: str, storage: str) -> tuple:
+    if '灰' in product_color:
+        product_color = '国风雅灰'
+    if '黑' in product_color:
+        product_color = '钛银黑'
+    if '蓝' in product_color:
+        product_color = '冰海蓝'
+    if '金' in product_color:
+        product_color = '蜜桃金'
+    product_ram_and_rom = re.search(r'\d+[GB]*\+\d+[GB]*', storage).group().split('+')
+    product_ram = product_ram_and_rom[0]
+    product_rom = product_ram_and_rom[1]
+    if 'G' not in product_ram:
+        product_ram += 'GB'
+    elif 'B' not in product_ram:
+        product_ram += 'B'
+    if 'G' not in product_rom:
+        product_rom += 'GB'
+    elif 'B' not in product_rom:
+        product_rom += 'B'
+    return product_color, product_ram, product_rom
+
+
+# 计算小米10数据最终好评率
+def calculate_mi10_good_rate(summary_list):
+    for summary in summary_list:
+        good_count = summary.star_four + summary.star_five
+        sum_count = summary.star_one + summary.star_two + summary.star_three + summary.star_four + summary.star_five
+        final_good_rate = (good_count / sum_count) * 100
+        summary.good_rate = format(final_good_rate, '.1f')
+        summary.save()
+    print('------最终好评率计算完成------')
+

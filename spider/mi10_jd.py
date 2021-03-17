@@ -8,7 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as ec
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
-from spider.utils import (set_options, set_capabilities, get_response_body, window_scroll_by, parse_jd_count_str)
+from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
 
 
 # 获取京东商城的小米10销售数据
@@ -30,9 +31,8 @@ def get_mi10_data_from_jd(browser: Chrome):
         get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
 
         # 轮询各个SKU的商品页面
-        skus = jd_shop.sku  # 通过shop模型反向查询所有sku
         print('------SKU轮询开始------')
-        for current_sku in skus:
+        for current_sku in jd_shop.sku:
             print(f'------本轮SKU: {current_sku.sku}------')
             current_sku_url = current_sku.url_prefix + current_sku.sku + '.html'
             print(f'------正在打开当前SKU链接: {current_sku_url}------')
@@ -47,13 +47,13 @@ def get_mi10_data_from_jd(browser: Chrome):
             switch_to_jd_time_sort(browser)  # 切换到时间排序
             get_jd_comments(browser, jd_shop, sku_mode=True)  # 从全部评价标签获取评论
 
-    # 数据汇总后计算总好评率
-    calculate_jd_good_rate(CommentSummary.select())
-    calculate_jd_good_rate(ModelSummary.select())
+    # 数据汇总后计算最终好评率
+    calculate_mi10_good_rate(CommentSummary.select().where(CommentSummary.source == '京东'))
+    calculate_mi10_good_rate(ModelSummary.select().where(ModelSummary.source == '京东'))
     print('------京东平台数据获取完成------')
 
 
-# 从getstocks接口获取已上架的SKU
+# 从后端API接口获取已上架的SKU
 def get_jd_sku_from_api(browser: Chrome, shop: Shop):
     jd_sku_url = 'type=getstocks'
     skus = get_response_body(browser, jd_sku_url, 'GET')
@@ -73,9 +73,7 @@ def get_jd_sku_from_api(browser: Chrome, shop: Shop):
 
 # 打开新窗口并切换到默认评论页面
 def switch_to_jd_default_comments_page(browser: Chrome, shop_url: str):
-    browser.execute_script("window.open()")
-    handles = browser.window_handles
-    browser.switch_to.window(handles[1])
+    open_second_window(browser)
     print('------打开新窗口并正在加载默认评论页面------')
     browser.get(shop_url + '#comment')
     print('------默认评论页面加载完成------')
@@ -84,13 +82,10 @@ def switch_to_jd_default_comments_page(browser: Chrome, shop_url: str):
 
 # 打开新窗口并切换到具体SKU评论页面
 def switch_to_jd_sku_comments_page(browser: Chrome, sku_url: str):
-    browser.execute_script("window.open()")
-    handles = browser.window_handles
-    driver.switch_to.window(handles[1])
+    open_second_window(browser)
     print('------打开新窗口并正在加载当前SKU默认评论页面------')
     browser.get(sku_url + '#comment')
     browser.execute_script('document.getElementById("comm-curr-sku").click()')
-    # browser.find_element_by_id('comm-curr-sku').click()
     print('------当前SKU默认评论页面加载完成------')
     waiting_jd_comments_loading(browser)
 
@@ -117,18 +112,9 @@ def switch_to_jd_time_sort(browser: Chrome):
     waiting_jd_comments_loading(browser)
 
 
-#  回到第一个窗口
-def back_to_first_window(browser: Chrome):
-    browser.close()
-    handles = browser.window_handles
-    browser.switch_to.window(handles[0])
-
-
 # 从默认评论排序中获取所有SKU, 也可以顺便保存评论
 def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode: bool = False, summary: bool = False):
     max_page = 141
-    # jd_comments = {}
-    # comment_list = []
     while max_page > 0:
         try:
             # 获取评论
@@ -182,7 +168,6 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
 
     back_to_first_window(browser)
     print('------当前浏览器窗口已关闭, 暂停10秒------')
-    # print('------暂停10秒------')
     sleep(10)
 
 
@@ -207,7 +192,7 @@ def get_sku_from_jd_comments(comment_list: list, shop: Shop):
 # 保存京东评论
 def insert_jd_comments(comment_list: list, shop: Shop):
     for comment in comment_list:
-        productColor, productRam, productRom = parse_jd_mi10_product_info(comment)
+        color, ram, rom = parse_mi10_product_info(comment['productColor'], comment['productSize'])
         new_comment, created = Comment.get_or_create(
             source=shop.source,
             is_official=shop.is_official,
@@ -217,9 +202,9 @@ def insert_jd_comments(comment_list: list, shop: Shop):
             star=comment['score'],
             order_time=comment['referenceTime'],
             order_days=comment['days'],
-            product_color=productColor,
-            product_ram=productRam,
-            product_rom=productRom
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom
         )
         if created is True:
             if 'afterUserComment' in comment:
@@ -234,31 +219,6 @@ def insert_jd_comments(comment_list: list, shop: Shop):
             else:
                 new_comment.user_device = 'other'
             new_comment.save()
-
-
-# 解析小米10产品信息
-def parse_jd_mi10_product_info(comment) -> tuple:
-    product_color = comment['productColor']
-    if '国风雅灰' in product_color:
-        product_color = '国风雅灰'
-    if '钛银黑' in product_color:
-        product_color = '钛银黑'
-    if '冰海蓝' in product_color:
-        product_color = '冰海蓝'
-    if '蜜桃金' in product_color:
-        product_color = '蜜桃金'
-    product_ram_and_rom = re.search(r'\d+[GB]*\+\d+[GB]*', comment['productSize']).group().split('+')
-    product_ram = product_ram_and_rom[0]
-    product_rom = product_ram_and_rom[1]
-    if 'G' not in product_ram:
-        product_ram += 'GB'
-    elif 'B' not in product_ram:
-        product_ram += 'B'
-    if 'G' not in product_rom:
-        product_rom += 'GB'
-    elif 'B' not in product_rom:
-        product_rom += 'B'
-    return product_color, product_ram, product_rom
 
 
 # 更新统计数据
@@ -298,23 +258,23 @@ def insert_jd_comment_summary(comment_summary: dict, shop: Shop):
 
 # 保存型号统计数据
 def insert_jd_model_summary(model_summary: dict, comment: dict, shop: Shop):
-    productColor, productRam, productRom = parse_jd_mi10_product_info(comment)
+    color, ram, rom = parse_mi10_product_info(comment['productColor'], comment['productSize'])
     try:
         ms = ModelSummary.get(
             source=shop.source,
             is_official=shop.is_official,
-            product_color=productColor,
-            product_ram=productRam,
-            product_rom=productRom,
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom
         )
         update_jd_summary_data(ms, model_summary)
     except ModelSummary.DoesNotExist:
         ModelSummary.create(
             source=shop.source,
             is_official=shop.is_official,
-            product_color=productColor,
-            product_ram=productRam,
-            product_rom=productRom,
+            product_color=color,
+            product_ram=ram,
+            product_rom=rom,
             total=parse_jd_count_str(model_summary['commentCountStr']),
             good_rate=str(model_summary['goodRate'] * 100),
             default_good=parse_jd_count_str(model_summary['defaultGoodCountStr']),
@@ -326,23 +286,8 @@ def insert_jd_model_summary(model_summary: dict, comment: dict, shop: Shop):
         )
 
 
-# 计算最终好评率
-def calculate_jd_good_rate(summary_list):
-    for summary in summary_list:
-        good_count = summary.star_four + summary.star_five
-        sum_count = summary.star_one + summary.star_two + summary.star_three + summary.star_four + summary.star_five
-        final_good_rate = (good_count / sum_count) * 100
-        summary.good_rate = format(final_good_rate, '.1f')
-        summary.save()
-        print('------最终好评率计算完成------')
-
-
 if __name__ == '__main__':
-    options = set_options()
-    caps = set_capabilities()
-    # 在Windows环境下已将chromedriver添加至环境变量, 无需声明执行文件路径
-    # 在Arch Linux环境下, 使用archlinux cn源安装的chromedriver位置在/usr/bin, 也无需声明执行文件路径
-    driver = Chrome(options=options, desired_capabilities=caps)
+    driver = get_chrome_driver()
     # 从京东获得数据
     get_mi10_data_from_jd(driver)
     # 退出浏览器实例
