@@ -8,10 +8,16 @@ from db.mi10_models import Shop
 # shop.url = 'https://item.jd.com/100011336064.html'
 # shop.save()
 
+# shop = Shop()
+# shop.source = '苏宁'
+# shop.is_official = True
+# shop.url = 'https://product.suning.com/0000000000/11926557079.html'
+# shop.save()
+
 shop = Shop()
-shop.source = '苏宁'
+shop.source = '小米有品'
 shop.is_official = True
-shop.url = 'https://product.suning.com/0000000000/11926557079.html'
+shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630'
 shop.save()
 
 # str_one = '8GB+256GB'

@@ -29,6 +29,16 @@ class Sku(BaseModel):
         primary_key = pw.CompositeKey('sku', 'source')
 
 
+# 小米有品和小米商城(数据互通)的SKU与对应的产品规格
+class MiSku(BaseModel):
+    sku = pw.CharField(max_length=20, primary_key=True)  # 商品SKU编号
+    # 产品型号信息
+    product_color = pw.CharField(max_length=4,
+                                 constraints=[pw.Check('product_color in ("国风雅灰", "钛银黑", "冰海蓝", "蜜桃金")')])  # 产品颜色版本
+    product_ram = pw.CharField(max_length=4, constraints=[pw.Check('product_ram in ("8GB", "12GB")')])  # 内存大小
+    product_rom = pw.CharField(max_length=5, constraints=[pw.Check('product_rom in ("128GB", "256GB")')])  # 储存大小
+
+
 # 评论
 class Comment(BaseModel):
     # 评论ID, 前缀JD, SN等, 小米商城和小米有品共用MI前缀(评论互通)
@@ -85,4 +95,4 @@ class ModelSummary(BaseModel):
 
 
 if __name__ == '__main__':
-    mi10_db.create_tables([Shop, Sku, Comment, CommentSummary, ModelSummary])
+    mi10_db.create_tables([Shop, Sku, Comment, CommentSummary, ModelSummary, MiSku])

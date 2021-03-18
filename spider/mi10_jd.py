@@ -5,8 +5,8 @@ from random import uniform
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
                           open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
@@ -15,7 +15,7 @@ from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by
 # 获取京东商城的小米10销售数据
 def get_mi10_data_from_jd(browser: Chrome):
     for jd_shop in Shop.select().where(Shop.source == '京东'):
-        print(f'------打开当前京东店铺链接: {jd_shop.url}------')
+        print(f'------打开当前京东商品链接: {jd_shop.url}------')
         browser.get(jd_shop.url)  # 打开商品页面
         # 获取已上架SKU
         get_jd_sku_from_api(browser, jd_shop)
@@ -287,6 +287,7 @@ def insert_jd_model_summary(model_summary: dict, comment: dict, shop: Shop):
 
 
 if __name__ == '__main__':
+    # 创建一个chrome实例
     driver = get_chrome_driver()
     # 从京东获得数据
     get_mi10_data_from_jd(driver)

@@ -5,8 +5,8 @@ from random import uniform
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.common.exceptions import TimeoutException, WebDriverException
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
                           open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
@@ -15,7 +15,7 @@ from spider.utils import (get_chrome_driver, get_response_body, get_response_bod
 # 获取苏宁易购的小米10销售数据
 def get_mi10_data_from_sn(browser: Chrome):
     for sn_shop in Shop.select().where(Shop.source == '苏宁'):
-        print(f'------打开当前苏宁店铺链接: {sn_shop.url}------')
+        print(f'------打开当前苏宁商品链接: {sn_shop.url}------')
         browser.get(sn_shop.url)
         # 获取所有SKU和评论统计
         get_sn_sku_and_comment_summary_from_api(browser, sn_shop)
@@ -286,6 +286,7 @@ def insert_sn_model_summary(model_summary: dict, commodity_info: dict, shop: Sho
 
 
 if __name__ == '__main__':
+    # 创建一个chrome实例
     driver = get_chrome_driver()
     # 从苏宁获得数据
     get_mi10_data_from_sn(driver)
