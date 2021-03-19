@@ -1,7 +1,7 @@
 import re
 import json
 from random import uniform
-from time import time, sleep
+from time import time, sleep, localtime, strftime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
@@ -128,6 +128,11 @@ def get_timestamp_13bit() -> str:
     return str(round(time() * 1000))
 
 
+# 解析13位时间戳
+def parse_timestamp_13bit(timestamp: int) -> str:
+    return strftime('%Y-%m-%d %H:%M:%S', localtime(timestamp / 1000))
+
+
 # 将京东计数字符转为数字
 def parse_jd_count_str(count_str: str) -> int:
     result = count_str.rstrip('+')
@@ -204,4 +209,3 @@ def calculate_mi10_good_rate(summary_list):
         summary.good_rate = format(final_good_rate, '.1f')
         summary.save()
     print('------最终好评率计算完成------')
-

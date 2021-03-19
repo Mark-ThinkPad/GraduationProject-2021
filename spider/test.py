@@ -1,6 +1,7 @@
 import re
 from random import uniform
 from db.mi10_models import Shop
+from spider.utils import parse_timestamp_13bit
 
 # shop = Shop()
 # shop.source = '京东'
@@ -17,7 +18,7 @@ from db.mi10_models import Shop
 shop = Shop()
 shop.source = '小米有品'
 shop.is_official = True
-shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630'
+shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630&spmref=YouPinPC'
 shop.save()
 
 # str_one = '8GB+256GB'
@@ -94,3 +95,5 @@ shop.save()
 # str2 = '(5G版本）8GB+128GB'
 # result = re.search(r'\d+[GB]*\+\d+[GB]*', str1).group()
 # print(result)
+
+# print(parse_timestamp_13bit(1616141975952))

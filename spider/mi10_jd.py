@@ -102,7 +102,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
     max_page = 141
     while max_page > 0:
         try:
-            # 获取评论
+            # 获取当前页面的评论
             if sku_mode is True:
                 jd_comments_url = 'skuProductPageComments'
             else:
@@ -110,7 +110,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
             jd_comments = get_response_body(browser, jd_comments_url, 'GET')
             if jd_comments is None:
                 print('---未找到评论接口数据---')
-                raise WebDriverException(msg='jd_comments is None')
+                break
             jd_comments = jd_comments.lstrip('fetchJSON_comment98(').rstrip(');')
             jd_comments = json.loads(jd_comments)
             # 保存评论
@@ -122,7 +122,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
             if get_sku is True:
                 get_sku_from_jd_comments(comment_list, shop)
         except WebDriverException:
-            print('---此页评论数据获取异常, 跳过此分类---')
+            print('---此页评论数据获取异常(WebDriverException), 跳过此分类---')
             break
         # 赋值最大页数
         if max_page == 141:
@@ -136,7 +136,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
                 insert_jd_comment_summary(total_summary, shop)
         # 最后一页就不下滑了
         max_page -= 1
-        print(f'剩余页数: {max_page}')
+        print(f'本轮剩余页数: {max_page}')
         if max_page == 0:
             break
         # 下滑点击下一页

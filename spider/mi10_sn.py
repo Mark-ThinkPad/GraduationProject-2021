@@ -90,7 +90,7 @@ def get_sn_sku_and_comment_summary_from_api(browser: Chrome, shop: Shop):
         )
         print('------保存商品评论统计数量完成------')
     else:
-        print('------查询商品评论统计数量失败------')
+        print('---查询商品评论统计数量失败---')
 
 
 # 打开新窗口并切换到默认评论页面
@@ -120,7 +120,7 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
     page = 1
     while True:
         try:
-            # 获取评论
+            # 获取当前页面的评论
             if sku_mode is True and page == 1:
                 sn_comments = {}
                 sn_model_summary = {}
@@ -166,7 +166,7 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
                     print(f'---获取第{page}页评论异常---')
                 break
         except WebDriverException:
-            print(f'---获取第{page}页评论异常, 跳过此轮---')
+            print(f'---获取第{page}页评论异常(WebDriverException), 跳过此轮---')
             break
 
         print(f'当前页数: {page}')
