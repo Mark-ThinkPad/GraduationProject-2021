@@ -45,7 +45,7 @@ class Comment(BaseModel):
     comment_id = pw.CharField(max_length=20, primary_key=True)
     create_time = pw.DateTimeField()  # 评论创建时间
     content = pw.TextField()  # 评论内容
-    star = pw.SmallIntegerField(constraints=[pw.Check('star between 1 and 5')])  # 评分星级
+    star = pw.SmallIntegerField(constraints=[pw.Check('star between 0 and 5')])  # 评分星级
     after_time = pw.DateTimeField(null=True)  # 追评时间
     after_content = pw.TextField(null=True)  # 追评内容
     after_days = pw.SmallIntegerField(null=True)  # 追评间隔时间

@@ -1,7 +1,6 @@
 import re
 import json
 from time import sleep
-from random import uniform
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +8,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate,
+                          waiting_comments_loading)
 
 
 # 获取苏宁易购的小米10销售数据
@@ -100,7 +100,7 @@ def switch_to_sn_default_comments_page(browser: Chrome, shop_url: str):
     browser.get(shop_url + '#productCommTitle')
     browser.execute_script('document.querySelector("#productCommTitle > a:nth-child(1)").click()')
     print('------默认评论页面加载完成------')
-    waiting_sn_comments_loading(browser)
+    waiting_comments_loading(browser, 'rv-target-item')
 
 
 # 打开新窗口并切换到具体SKU评论页面
@@ -109,25 +109,10 @@ def switch_to_sn_sku_comments_page(browser: Chrome, sku_url: str):
     print('------打开新窗口并正在加载当前SKU默认评论页面------')
     browser.get(sku_url + '#productCommTitle')
     browser.execute_script('document.querySelector("#productCommTitle > a:nth-child(1)").click()')
-    waiting_sn_comments_loading(browser)
+    waiting_comments_loading(browser, 'rv-target-item')
     browser.execute_script('document.querySelector(".uncheck").click()')
     print('------当前SKU默认评论页面加载完成------')
-    waiting_sn_comments_loading(browser)
-
-
-# 等待苏宁评论加载
-def waiting_sn_comments_loading(browser: Chrome):
-    while True:
-        try:
-            WebDriverWait(browser, 0.5).until(
-                ec.presence_of_all_elements_located((By.CLASS_NAME, 'rv-target-item'))
-            )
-            interval_time = uniform(3, 6)  # 随机生成间隔秒数
-            print(f'本次随机间隔时间: {interval_time} 秒')
-            sleep(interval_time)  # 停顿一下, 降低访问频率
-            break
-        except TimeoutException:
-            pass
+    waiting_comments_loading(browser, 'rv-target-item')
 
 
 # 获取苏宁评论
@@ -192,7 +177,7 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
                     ec.element_to_be_clickable((By.CSS_SELECTOR, '.next.rv-maidian'))
                 )
                 browser.execute_script('document.getElementsByClassName("next rv-maidian")[0].click()')
-                waiting_sn_comments_loading(browser)
+                waiting_comments_loading(browser, 'rv-target-item')
                 break
             except TimeoutException:
                 window_scroll_by(browser, 500)

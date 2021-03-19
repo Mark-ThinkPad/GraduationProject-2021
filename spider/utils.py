@@ -1,6 +1,11 @@
 import re
 import json
+from random import uniform
 from time import time, sleep
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import Chrome, ChromeOptions
 
 
@@ -149,6 +154,21 @@ def back_to_first_window(browser: Chrome):
     browser.close()
     handles = browser.window_handles
     browser.switch_to.window(handles[0])
+
+
+# 等待评论加载
+def waiting_comments_loading(browser: Chrome, class_name: str):
+    while True:
+        try:
+            WebDriverWait(browser, 0.5).until(
+                ec.presence_of_all_elements_located((By.CLASS_NAME, class_name))
+            )
+            interval_time = uniform(3, 6)  # 随机生成间隔秒数
+            print(f'本次随机间隔时间: {interval_time} 秒')
+            sleep(interval_time)  # 停顿一下, 降低访问频率
+            break
+        except TimeoutException:
+            pass
 
 
 # 解析小米10产品信息

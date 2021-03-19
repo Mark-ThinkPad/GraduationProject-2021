@@ -1,7 +1,6 @@
 import re
 import json
 from time import sleep
-from random import uniform
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -9,7 +8,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate)
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate,
+                          waiting_comments_loading)
 
 
 # 获取京东商城的小米10销售数据
@@ -77,7 +77,7 @@ def switch_to_jd_default_comments_page(browser: Chrome, shop_url: str):
     print('------打开新窗口并正在加载默认评论页面------')
     browser.get(shop_url + '#comment')
     print('------默认评论页面加载完成------')
-    waiting_jd_comments_loading(browser)
+    waiting_comments_loading(browser, 'comment-item')
 
 
 # 打开新窗口并切换到具体SKU评论页面
@@ -87,29 +87,14 @@ def switch_to_jd_sku_comments_page(browser: Chrome, sku_url: str):
     browser.get(sku_url + '#comment')
     browser.execute_script('document.getElementById("comm-curr-sku").click()')
     print('------当前SKU默认评论页面加载完成------')
-    waiting_jd_comments_loading(browser)
-
-
-# 等待京东评论加载
-def waiting_jd_comments_loading(browser: Chrome):
-    while True:
-        try:
-            WebDriverWait(browser, 0.5).until(
-                ec.presence_of_all_elements_located((By.CLASS_NAME, 'comment-item'))
-            )
-            interval_time = uniform(3, 6)  # 随机生成间隔秒数
-            print(f'本次随机间隔时间: {interval_time} 秒')
-            sleep(interval_time)  # 停顿一下, 降低访问频率
-            break
-        except TimeoutException:
-            pass
+    waiting_comments_loading(browser, 'comment-item')
 
 
 # 评论页面切换到时间排序
 def switch_to_jd_time_sort(browser: Chrome):
     browser.execute_script('document.querySelector("li.J-sortType-item:nth-child(2)").click()')
     print('------切换到时间排序------')
-    waiting_jd_comments_loading(browser)
+    waiting_comments_loading(browser, 'comment-item')
 
 
 # 从默认评论排序中获取所有SKU, 也可以顺便保存评论
@@ -161,7 +146,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
                     ec.element_to_be_clickable((By.CLASS_NAME, 'ui-pager-next'))
                 )
                 browser.execute_script('document.getElementsByClassName("ui-pager-next")[0].click()')
-                waiting_jd_comments_loading(browser)
+                waiting_comments_loading(browser, 'comment-item')
                 break
             except TimeoutException:
                 window_scroll_by(browser, 200)
