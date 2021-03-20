@@ -1,4 +1,5 @@
 import re
+import json
 from random import uniform
 from db.mi10_models import Shop
 from spider.utils import parse_timestamp_13bit
@@ -15,10 +16,16 @@ from spider.utils import parse_timestamp_13bit
 # shop.url = 'https://product.suning.com/0000000000/11926557079.html'
 # shop.save()
 
+# shop = Shop()
+# shop.source = '小米有品'
+# shop.is_official = True
+# shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630&spmref=YouPinPC'
+# shop.save()
+
 shop = Shop()
-shop.source = '小米有品'
+shop.source = '小米商城'
 shop.is_official = True
-shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630&spmref=YouPinPC'
+shop.url = 'https://www.mi.com/comment/10000214.html'
 shop.save()
 
 # str_one = '8GB+256GB'

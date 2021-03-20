@@ -21,7 +21,7 @@ def get_mi10_data_from_youpin(browser: Chrome):
         print('------开始获取默认排序评论------')
         switch_to_youpin_default_comments_page(browser)
         get_youpin_comments(browser, youpin_shop)
-        print('------小米有品数据获取完成------')
+    print('------小米有品数据获取完成------')
 
 
 # 从后端API接口获取小米平台(商城和有品)所有SKU与对应的产品规格信息
@@ -79,7 +79,7 @@ def get_youpin_comments(browser: Chrome, shop: Shop):
                     if data['url'] == 'comment/product/content' and data['method'] == 'POST':
                         comment_content = data['response_body']
                         comment_content = json.loads(comment_content)
-                        max_page = comment_content['data']['page']['total']
+                        max_page = (comment_content['data']['page']['total'] + 9) // 10
                         print(f'---评论总页数: {max_page} 页')
                 # 保存评论统计数量
                 if comment_index['message'] == 'ok':
@@ -109,7 +109,7 @@ def get_youpin_comments(browser: Chrome, shop: Shop):
                 print(f'---获取第{page}页评论数据异常---')
                 break
         except WebDriverException:
-            print(f'---获取第{page}页评论异常(WebDriverException), 尝试翻到下一页---')
+            print(f'---获取第{page}页评论数据异常(WebDriverException), 尝试翻到下一页---')
 
         print(f'当前页数: {page}')
         # 下滑点击下一页

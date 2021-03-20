@@ -163,10 +163,10 @@ def get_sn_comments(browser: Chrome, shop: Shop, sku_mode: bool = False):
             else:
                 # 最大页数为50页, 小于50页时需要打印出异常情况
                 if page <= 50:
-                    print(f'---获取第{page}页评论异常---')
+                    print(f'---获取第{page}页评论数据异常---')
                 break
         except WebDriverException:
-            print(f'---获取第{page}页评论异常(WebDriverException), 跳过此轮---')
+            print(f'---获取第{page}页评论数据异常(WebDriverException), 跳过此轮---')
             break
 
         print(f'当前页数: {page}')
