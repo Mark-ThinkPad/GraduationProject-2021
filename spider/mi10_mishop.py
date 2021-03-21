@@ -1,7 +1,5 @@
 import re
 import json
-from time import sleep
-from random import uniform
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait

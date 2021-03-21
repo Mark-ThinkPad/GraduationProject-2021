@@ -118,6 +118,7 @@ def get_jd_comments(browser: Chrome, shop: Shop, get_sku: bool = False, sku_mode
             insert_jd_comments(comment_list, shop)
             if len(comment_list) == 0:
                 print('该页评论数据0条')
+                break
             # 遍历评论中的所有SKU
             if get_sku is True:
                 get_sku_from_jd_comments(comment_list, shop)
