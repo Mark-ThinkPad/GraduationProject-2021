@@ -1,5 +1,5 @@
 selenium==3.141.0
-Flask_Script==2.0.6
-peewee==3.14.2
 requests==2.25.1
+peewee==3.14.4
 Flask==1.1.2
+Flask_Script==2.0.6
