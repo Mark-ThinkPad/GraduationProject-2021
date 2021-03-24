@@ -128,6 +128,38 @@ class CommentDateCount(BaseModel):
     percentage = pw.CharField(max_length=4, null=True)
 
 
+# 追评间隔时间分布
+class AfterDaysCount(BaseModel):
+    after_days = pw.SmallIntegerField(primary_key=True)
+    total = pw.IntegerField(default=0)
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# 用户下单时间分布 (月度) (仅限京东数据源)
+class OrderDateCount(BaseModel):
+    year_month = pw.CharField(max_length=7, primary_key=True)
+    total = pw.IntegerField(default=0)
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# 用户下单到评论的间隔时间 (仅限京东数据源)
+class OrderDaysCount(BaseModel):
+    order_days = pw.SmallIntegerField(primary_key=True)
+    total = pw.IntegerField(default=0)
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# 用户活跃度 (基于非默认好评数量)
+class UserActivity(BaseModel):
+    source = pw.CharField(max_length=4, primary_key=True, constraints=[pw.Check('source in ("京东", "苏宁", "小米商城")')])
+    total = pw.IntegerField()
+    active_count = pw.IntegerField()  # 活跃用户数 (非默认好评)
+    active_percentage = pw.CharField(max_length=4)
+    inactive_count = pw.IntegerField()  # 非活跃用户数 (默认好评数)
+    inactive_percentage = pw.CharField(max_length=4)
+
+
 if __name__ == '__main__':
-    # mi10_analyze_db.create_tables([UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount, CommentDateCount])
-    CommentDateCount.create_table()
+    # mi10_analyze_db.create_tables([UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
+    #                                CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity])
+    UserActivity.create_table()

@@ -1,6 +1,7 @@
 from time import strftime
 from db.mi10_models import Comment, CommentSummary, ModelSummary
-from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount)
+from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
+                                    CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 from data_analyze.utils import calculate_percentage
 
 
@@ -307,9 +308,95 @@ def get_rom_count():
 
 # 统计用户评论时间分布 (月度)
 def get_comment_date_count():
-    comment = Comment.get_by_id('SN810521815')
-    year_month = str(comment.create_time)[0:7]
-    print(year_month, type(year_month))
+    for comment in Comment.select():
+        year_month = str(comment.create_time)[0:7]
+        try:
+            cdc = CommentDateCount.get_by_id(year_month)
+            cdc.total += 1
+            cdc.save()
+        except CommentDateCount.DoesNotExist:
+            CommentDateCount.create(
+                year_month=year_month,
+                total=1
+            )
+
+    comments_total = Comment.select().count()
+    for cdc in CommentDateCount.select():
+        cdc.percentage = calculate_percentage(comments_total, cdc.total)
+        cdc.save()
+
+
+# 统计追评间隔时间分布
+def get_after_days_count():
+    for comment in Comment.select().where(Comment.after_days.is_null(False)):
+        after_days = comment.after_days
+        try:
+            adc = AfterDaysCount.get_by_id(after_days)
+            adc.total += 1
+            adc.save()
+        except AfterDaysCount.DoesNotExist:
+            AfterDaysCount.create(
+                after_days=after_days,
+                total=1
+            )
+
+    after_total = Comment.select().where(Comment.after_days.is_null(False)).count()
+    for adc in AfterDaysCount.select():
+        adc.percentage = calculate_percentage(after_total, adc.total)
+        adc.save()
+
+
+# 统计用户下单时间分布 (月度) (仅限京东数据源)
+def get_order_date_count():
+    for comment in Comment.select().where(Comment.order_time.is_null(False)):
+        year_month = str(comment.order_time)[0:7]
+        try:
+            odc = OrderDateCount.get_by_id(year_month)
+            odc.total += 1
+            odc.save()
+        except OrderDateCount.DoesNotExist:
+            OrderDateCount.create(
+                year_month=year_month,
+                total=1
+            )
+
+    order_total = Comment.select().where(Comment.order_time.is_null(False)).count()
+    for odc in OrderDateCount.select():
+        odc.percentage = calculate_percentage(order_total, odc.total)
+        odc.save()
+
+
+# 统计用户下单到评论的间隔时间 (仅限京东数据源)
+def get_order_days_count():
+    for comment in Comment.select().where(Comment.order_days.is_null(False)):
+        order_days = comment.order_days
+        try:
+            odc = OrderDaysCount.get_by_id(order_days)
+            odc.total += 1
+            odc.save()
+        except OrderDaysCount.DoesNotExist:
+            OrderDaysCount.create(
+                order_days=order_days,
+                total=1
+            )
+
+    order_total = Comment.select().where(Comment.order_days.is_null(False)).count()
+    for odc in OrderDaysCount.select():
+        odc.percentage = calculate_percentage(order_total, odc.total)
+        odc.save()
+
+
+# 计算用户活跃度 (基于非默认好评数量)
+def get_user_activity():
+    for platform in Total.select():
+        UserActivity.create(
+            source=platform.source,
+            total=platform.total,
+            active_count=platform.total - platform.default_good,
+            active_percentage=calculate_percentage(platform.total, platform.total - platform.default_good),
+            inactive_count=platform.default_good,
+            inactive_percentage=calculate_percentage(platform.total, platform.default_good)
+        )
 
 
 if __name__ == '__main__':
@@ -319,4 +406,8 @@ if __name__ == '__main__':
     # get_color_count()
     # get_ram_count()
     # get_rom_count()
-    get_comment_date_count()
+    # get_comment_date_count()
+    # get_after_days_count()
+    # get_order_date_count()
+    # get_order_days_count()
+    get_user_activity()
