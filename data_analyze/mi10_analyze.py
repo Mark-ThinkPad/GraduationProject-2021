@@ -1,4 +1,5 @@
-from time import strftime
+import jieba.analyse
+from conf.settings import DATA_ANALYZE_DIR
 from db.mi10_models import Comment, CommentSummary, ModelSummary
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
@@ -399,6 +400,17 @@ def get_user_activity():
         )
 
 
+# 获取高频词
+def get_high_frequency_words():
+    content = ''
+    for comment in Comment.select():
+        content += comment.content + '\n'
+
+    jieba.analyse.set_stop_words(DATA_ANALYZE_DIR + '/custom_cn_stopwords.txt')
+    tags = jieba.analyse.extract_tags(content, topK=100)
+    print(','.join(tags))
+
+
 if __name__ == '__main__':
     # get_user_device_count()
     # get_total()
@@ -410,4 +422,5 @@ if __name__ == '__main__':
     # get_after_days_count()
     # get_order_date_count()
     # get_order_days_count()
-    get_user_activity()
+    # get_user_activity()
+    get_high_frequency_words()
