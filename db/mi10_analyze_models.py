@@ -159,7 +159,27 @@ class UserActivity(BaseModel):
     inactive_percentage = pw.CharField(max_length=4)
 
 
+# 所有评论中提取的高频词 (不包括追评)
+class AllCommentsWords(BaseModel):
+    word = pw.CharField(max_length=20, primary_key=True)
+
+
+# 追评高频词
+class AfterCommentsWords(BaseModel):
+    word = pw.CharField(max_length=20, primary_key=True)
+
+
+# iOS转化用户评论高频词
+class IosCommentsWords(BaseModel):
+    word = pw.CharField(max_length=20, primary_key=True)
+
+
+# 评分五星以下用户评论的高频词
+class NonFiveStarCommentsWords(BaseModel):
+    word = pw.CharField(max_length=20, primary_key=True)
+
+
 if __name__ == '__main__':
-    # mi10_analyze_db.create_tables([UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
-    #                                CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity])
-    UserActivity.create_table()
+    mi10_analyze_db.create_tables([UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
+                                   CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity,
+                                   AllCommentsWords, AfterCommentsWords, IosCommentsWords, NonFiveStarCommentsWords])

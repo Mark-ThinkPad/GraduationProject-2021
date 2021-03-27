@@ -1,9 +1,10 @@
 import jieba.analyse
 from conf.settings import DATA_ANALYZE_DIR
+from data_analyze.utils import calculate_percentage
 from db.mi10_models import Comment, CommentSummary, ModelSummary
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
-                                    CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
-from data_analyze.utils import calculate_percentage
+                                    CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity,
+                                    AllCommentsWords, AfterCommentsWords, IosCommentsWords, NonFiveStarCommentsWords)
 
 
 # 计算安卓用户留存率和iOS用户转化率
@@ -400,27 +401,71 @@ def get_user_activity():
         )
 
 
-# 获取高频词
-def get_high_frequency_words():
+# 提取所有评论中提取的高频词 (不包括追评)
+def get_all_comments_words():
     content = ''
     for comment in Comment.select():
         content += comment.content + '\n'
-
+    # 基于TF-IDF算法的关键词抽取
     jieba.analyse.set_stop_words(DATA_ANALYZE_DIR + '/custom_cn_stopwords.txt')
-    tags = jieba.analyse.extract_tags(content, topK=100)
-    print(','.join(tags))
+    tags = jieba.analyse.extract_tags(content, topK=200)
+    for tag in tags:
+        AllCommentsWords.create(word=tag)
+
+
+# 提取追评中的高频词
+def get_after_comments_words():
+    content = ''
+    for comment in Comment.select().where(Comment.after_content.is_null(False)):
+        content += comment.after_content + '\n'
+    # 基于TF-IDF算法的关键词抽取
+    jieba.analyse.set_stop_words(DATA_ANALYZE_DIR + '/custom_cn_stopwords.txt')
+    tags = jieba.analyse.extract_tags(content, topK=200)
+    for tag in tags:
+        AfterCommentsWords.create(word=tag)
+
+
+# 提取iOS转化用户评论高频词
+def get_ios_comments_words():
+    content = ''
+    for comment in Comment.select().where(Comment.user_device == 'iOS'):
+        content += comment.content + '\n'
+        if comment.after_content is not None:
+            content += comment.after_content + '\n'
+    # 基于TF-IDF算法的关键词抽取
+    jieba.analyse.set_stop_words(DATA_ANALYZE_DIR + '/custom_cn_stopwords.txt')
+    tags = jieba.analyse.extract_tags(content, topK=200)
+    for tag in tags:
+        IosCommentsWords.create(word=tag)
+
+
+# 提取评分五星以下评论的高频词
+def get_non_five_star_comments_words():
+    content = ''
+    for comment in Comment.select().where((Comment.star.in_([1, 2, 3, 4]))):
+        content += comment.content + '\n'
+        if comment.after_content is not None:
+            content += comment.after_content + '\n'
+    # 基于TF-IDF算法的关键词抽取
+    jieba.analyse.set_stop_words(DATA_ANALYZE_DIR + '/custom_cn_stopwords.txt')
+    tags = jieba.analyse.extract_tags(content, topK=200)
+    for tag in tags:
+        NonFiveStarCommentsWords.create(word=tag)
 
 
 if __name__ == '__main__':
-    # get_user_device_count()
-    # get_total()
-    # get_model_count()
-    # get_color_count()
-    # get_ram_count()
-    # get_rom_count()
-    # get_comment_date_count()
-    # get_after_days_count()
-    # get_order_date_count()
-    # get_order_days_count()
-    # get_user_activity()
-    get_high_frequency_words()
+    get_user_device_count()
+    get_total()
+    get_model_count()
+    get_color_count()
+    get_ram_count()
+    get_rom_count()
+    get_comment_date_count()
+    get_after_days_count()
+    get_order_date_count()
+    get_order_days_count()
+    get_user_activity()
+    get_all_comments_words()
+    get_after_comments_words()
+    get_ios_comments_words()
+    get_non_five_star_comments_words()
