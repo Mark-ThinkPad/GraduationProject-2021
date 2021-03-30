@@ -7,11 +7,37 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="shortcut icon" href="/static/images/favicon.ico">
   <link rel="stylesheet" href="/static/css/bulma.min.css">
+  <link rel="stylesheet" href="/static/css/base.css">
   <title>商品销售数据分析方法研究与应用</title>
 </head>
 <body>
   <header>
-
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <img src="/static/images/shop.png" alt="shop">
+          <span class="ml-2">商品销售数据分析方法研究与应用</span>
+        </a>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="/phone">手机品类</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="/phone">总览</a>
+              <a class="navbar-item" href="/phone/mi10">小米10</a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link" href="/wirelessheadphone">无线耳机品类</a>
+            <div class="navbar-dropdown">
+              <a class="navbar-item" href="/wirelessheadphone">总览</a>
+              <a class="navbar-item" href="/wirelessheadphone/airpods">AirPods</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <main>
@@ -19,8 +45,18 @@
   {% endblock %}
   </main>
 
-  <footer>
-
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <span>&copy;2021&nbsp;&nbsp;&nbsp;毕业设计-商品销售数据分析方法研究与应用</span>
+        <span class="mx-6"></span>
+        <span>计科11704&nbsp;&nbsp;&nbsp;周淦清&nbsp;&nbsp;&nbsp;201703407</span>
+      </p>
+    </div>
   </footer>
+
+  <script src="/static/js/echarts.min.js"></script>
+  {% block js %}
+  {% endblock %}
 </body>
 </html>
