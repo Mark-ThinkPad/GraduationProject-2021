@@ -30,6 +30,7 @@
   <div class="column is-half uniform-height" id="rom_count"></div>
   <div class="column is-half uniform-height" id="user_activity"></div>
   <div class="column is-full uniform-height" id="comment_date_count"></div>
+  <div class="column is-full uniform-height" id="order_date_count"></div>
 </div>
 {% endblock %}
 
@@ -57,8 +58,8 @@ let total_option = {
   xAxis: [
     {
       type: 'category',
-      axisTick: {
-        alignWithLabel: true
+      axisPointer: {
+        type: 'shadow'
       },
       data: {{ total_source | tojson }}
     }
@@ -221,7 +222,7 @@ rom_count_chart.setOption(rom_count_option);
 <script>
 // 用户活跃度百分比多Y轴柱状图
 let user_activity_dom = document.getElementById("user_activity");
-let user_activity_chart = echarts.init(user_activity_dom)
+let user_activity_chart = echarts.init(user_activity_dom);
 let user_activity_option = {
   title: {
     text: "电商平台用户活跃度"
@@ -241,8 +242,8 @@ let user_activity_option = {
   xAxis: [
     {
       type: 'category',
-      axisTick: {
-        alignWithLabel: true
+      axisPointer: {
+        type: 'shadow'
       },
       data: {{ ua_source | tojson }}
     }
@@ -297,5 +298,117 @@ let user_activity_option = {
   ]
 };
 user_activity_chart.setOption(user_activity_option);
+</script>
+
+<script>
+// 用户评论时间分布折柱混合图
+let cdc_dom = document.getElementById("comment_date_count");
+let cdc_chart = echarts.init(cdc_dom);
+let cdc_option = {
+  title: {
+    text: "用户评论时间分布",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      crossStyle: {
+        color: '#999'
+      }
+    }
+  },
+  legend: {
+    data: ['百分比', '百分比']
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ cdc_ym | tojson }},
+      axisPointer: {
+        type: 'shadow'
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: '百分比',
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: '百分比',
+      type: 'bar',
+      data: {{ cdc_per | tojson }}
+    },
+    {
+      name: '百分比',
+      type: 'line',
+      data: {{ cdc_per | tojson }}
+    }
+  ]
+};
+cdc_chart.setOption(cdc_option);
+</script>
+
+<script>
+// 用户下单时间分布折柱混合图
+let odc_dom = document.getElementById("order_date_count");
+let odc_chart = echarts.init(odc_dom);
+let odc_option = {
+  title: {
+    text: "用户下单时间分布",
+    subtext: "(仅京东平台数据)",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross',
+      crossStyle: {
+        color: '#999'
+      }
+    }
+  },
+  legend: {
+    data: ['百分比', '百分比']
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ odc_ym | tojson }},
+      axisPointer: {
+        type: 'shadow'
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: '百分比',
+      type: 'bar',
+      data: {{ odc_per | tojson }}
+    },
+    {
+      name: '百分比',
+      type: 'line',
+      data: {{ odc_per | tojson }}
+    }
+  ]
+};
+odc_chart.setOption(odc_option);
 </script>
 {% endblock %}

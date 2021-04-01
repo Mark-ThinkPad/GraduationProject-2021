@@ -41,6 +41,19 @@ def mi10():
         ua_source.append(ua.source)
         ua_ap.append(float(ua.active_percentage))
         ua_iap.append(float(ua.inactive_percentage))
+    # 用户评论时间分布
+    cdc_ym = []
+    cdc_per = []
+    for cdc in CommentDateCount.select().order_by(CommentDateCount.year_month.asc()):
+        cdc_ym.append(cdc.year_month)
+        cdc_per.append(float(cdc.percentage))
+    # 用户下单时间分布
+    odc_ym = []
+    odc_per = []
+    for odc in OrderDateCount.select().order_by(OrderDateCount.year_month.asc()):
+        odc_ym.append(odc.year_month)
+        odc_per.append(float(odc.percentage))
     return render_template('mi10.html', total_source=total_source, total_count=total_count,
                            total_good_rate=total_good_rate, color_count=color_count, ram_count=ram_count,
-                           rom_count=rom_count, ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap)
+                           rom_count=rom_count, ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym,
+                           cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per)
