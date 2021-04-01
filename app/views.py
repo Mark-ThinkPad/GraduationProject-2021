@@ -13,10 +13,34 @@ def index():
 
 @views.route('/phone/mi10')
 def mi10():
-    # 数据源总览
+    # 电商平台数据源概览
     total_source = []
     total_count = []
+    total_good_rate = []
     for platform in Total.select():
         total_source.append(platform.source)
         total_count.append(platform.total)
-    return render_template('mi10.html', total_source=total_source, total_count=total_count)
+        total_good_rate.append(float(platform.good_rate))
+    # 机身颜色百分比
+    color_count = []
+    for cc in ColorCount.select():
+        color_count.append({'value': float(cc.percentage), 'name': cc.product_color})
+    # 内存容量百分比
+    ram_count = []
+    for rac in RamCount.select():
+        ram_count.append({'value': float(rac.percentage), 'name': rac.product_ram})
+    # 储存容量百分比
+    rom_count = []
+    for roc in RomCount.select():
+        rom_count.append({'value': float(roc.percentage), 'name': roc.product_rom})
+    # 用户活跃度百分比
+    ua_source = []
+    ua_ap = []
+    ua_iap = []
+    for ua in UserActivity.select():
+        ua_source.append(ua.source)
+        ua_ap.append(float(ua.active_percentage))
+        ua_iap.append(float(ua.inactive_percentage))
+    return render_template('mi10.html', total_source=total_source, total_count=total_count,
+                           total_good_rate=total_good_rate, color_count=color_count, ram_count=ram_count,
+                           rom_count=rom_count, ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap)

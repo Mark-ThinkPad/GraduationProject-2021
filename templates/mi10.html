@@ -25,46 +25,277 @@
     </div>
   </div>
   <div class="column is-half uniform-height" id="total" ></div>
-  <div class="column is-half uniform-height"></div>
+  <div class="column is-half uniform-height" id="color_count"></div>
+  <div class="column is-half uniform-height" id="ram_count"></div>
+  <div class="column is-half uniform-height" id="rom_count"></div>
+  <div class="column is-half uniform-height" id="user_activity"></div>
+  <div class="column is-full uniform-height" id="comment_date_count"></div>
 </div>
 {% endblock %}
 
 {% block js %}
 <script>
-let chart_dom = document.getElementById("total");
-let chart = echarts.init(chart_dom);
-let option = {
+// 数据源概览多Y轴柱状图
+let total_dom = document.getElementById("total");
+let total_chart = echarts.init(total_dom);
+let total_option = {
   title: {
-    text: "数据源总览"
+    text: "电商数据源概览"
   },
   tooltip: {
-    trigger: "axis",
-    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: "line"        // 默认为直线，可选为："line" | "shadow"
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
     }
   },
   grid: {
-    left: "3%",
-    right: "4%",
-    bottom: "3%",
-    containLabel: true
+    right: '20%'
   },
   legend: {
-    data: ["销量(基于评论总数)"]
+    data: ['销量(基于评论总数)', '好评率']
   },
-  xAxis: {
-    type: "category",
-    data: {{ total_source | tojson }}
-  },
-  yAxis: {
-    type: "value"
-  },
-  series: [{
-    name: "销量(基于评论总数)",
-    type: "bar",
-    data: {{ total_count | tojson }}
-  }]
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        alignWithLabel: true
+      },
+      data: {{ total_source | tojson }}
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: '销量(基于评论总数)',
+      position: 'left',
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#5470C6'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} 部'
+      }
+    },
+    {
+      type: 'value',
+      name: '好评率',
+      min: 0,
+      max: 100,
+      position: 'right',
+      offset: 40,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#91CC75'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+  ],
+  series: [
+    {
+      name: '销量(基于评论总数)',
+      type: 'bar',
+      data: {{ total_count | tojson }}
+    },
+    {
+      name: '好评率',
+      type: 'bar',
+      yAxisIndex: 1,
+      data: {{ total_good_rate | tojson }}
+    }
+  ]
 };
-chart.setOption(option);
+total_chart.setOption(total_option);
+</script>
+
+<script>
+// 机身颜色百分比饼图
+let color_count_dom = document.getElementById("color_count");
+let color_count_chart = echarts.init(color_count_dom);
+let color_count_option = {
+  title: {
+    text: '机身颜色百分比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '机身颜色',
+      type: 'pie',
+      radius: '50%',
+      data: {{ color_count | tojson }},
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+color_count_chart.setOption(color_count_option);
+</script>
+
+<script>
+// 内存容量百分比饼图
+let ram_count_dom = document.getElementById("ram_count");
+let ram_count_chart = echarts.init(ram_count_dom);
+let ram_count_option = {
+  title: {
+    text: '内存(RAM)容量百分比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '内存容量',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ram_count | tojson }},
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ram_count_chart.setOption(ram_count_option);
+</script>
+
+<script>
+// 储存容量百分比饼图
+let rom_count_dom = document.getElementById("rom_count");
+let rom_count_chart = echarts.init(rom_count_dom);
+let rom_count_option = {
+  title: {
+    text: '储存(ROM)容量百分比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '储存容量',
+      type: 'pie',
+      radius: '50%',
+      data: {{ rom_count | tojson }},
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+rom_count_chart.setOption(rom_count_option);
+</script>
+
+<script>
+// 用户活跃度百分比多Y轴柱状图
+let user_activity_dom = document.getElementById("user_activity");
+let user_activity_chart = echarts.init(user_activity_dom)
+let user_activity_option = {
+  title: {
+    text: "电商平台用户活跃度"
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  grid: {
+    right: '20%'
+  },
+  legend: {
+    data: ['活跃用户百分比', '非活跃用户百分比']
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisTick: {
+        alignWithLabel: true
+      },
+      data: {{ ua_source | tojson }}
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: '活跃用户百分比',
+      min: 0,
+      max: 100,
+      position: 'left',
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#5470C6'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+    {
+      type: 'value',
+      name: '非活跃用户百分比',
+      min: 0,
+      max: 100,
+      position: 'right',
+      offset: 40,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#91CC75'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+  ],
+  series: [
+    {
+      name: '活跃用户百分比',
+      type: 'bar',
+      data: {{ ua_ap | tojson }}
+    },
+    {
+      name: '非活跃用户百分比',
+      type: 'bar',
+      yAxisIndex: 1,
+      data: {{ ua_iap | tojson }}
+    }
+  ]
+};
+user_activity_chart.setOption(user_activity_option);
 </script>
 {% endblock %}

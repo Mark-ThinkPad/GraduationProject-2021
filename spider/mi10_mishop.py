@@ -48,7 +48,9 @@ def get_mi10_data_from_mishop(browser: Chrome):
 # 同时获取SKU与对应的产品规格信息, 评论统计和第一页评论, 并返回总页数
 def get_sku_info_and_summary_and_first_page_comments(browser: Chrome) -> int:
     # 捕获三个接口的数据
-    sku_info = summary = comments = {}
+    sku_info = {}
+    summary = {}
+    comments = {}
     target_urls = [
         {'url': 'commodity_page', 'method': 'GET'},
         {'url': 'user_comment/get_summary', 'method': 'GET'},
