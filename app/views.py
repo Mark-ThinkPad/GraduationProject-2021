@@ -21,6 +21,14 @@ def mi10():
         total_source.append(platform.source)
         total_count.append(platform.total)
         total_good_rate.append(float(platform.good_rate))
+    # 各型号数据概览
+    mc_name = []
+    mc_per = []
+    mc_good_rate = []
+    for model in ModelCount.select():
+        mc_name.append(model.product_color + '\n' + model.product_ram + '+' + model.product_rom)
+        mc_per.append(model.percentage)
+        mc_good_rate.append(float(model.good_rate))
     # 机身颜色百分比
     color_count = []
     for cc in ColorCount.select():
@@ -53,7 +61,27 @@ def mi10():
     for odc in OrderDateCount.select().order_by(OrderDateCount.year_month.asc()):
         odc_ym.append(odc.year_month)
         odc_per.append(float(odc.percentage))
+    # 从下单到评论的时间间隔分布
+    odsc_days = []
+    odsc_per = []
+    for odsc in OrderDaysCount.select():
+        odsc_days.append(odsc.order_days)
+        odsc_per.append(float(odsc.percentage))
+    # 追评时间间隔分布
+    adc_days = []
+    adc_per = []
+    for adc in AfterDaysCount.select():
+        adc_days.append(adc.after_days)
+        adc_per.append(adc.percentage)
+    # 用户设备类型统计
+    udc_system = []
+    udc_per = []
+    for udc in UserDeviceCount.select():
+        udc_system += ['Android 留存用户', 'iOS 转化用户', 'other']
+        udc_per += [udc.android_percentage, udc.ios_percentage, udc.other_percentage]
     return render_template('mi10.html', total_source=total_source, total_count=total_count,
-                           total_good_rate=total_good_rate, color_count=color_count, ram_count=ram_count,
-                           rom_count=rom_count, ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym,
-                           cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per)
+                           total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
+                           color_count=color_count, ram_count=ram_count, rom_count=rom_count, ua_source=ua_source,
+                           ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym, cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per,
+                           odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per,
+                           udc_system=udc_system)
