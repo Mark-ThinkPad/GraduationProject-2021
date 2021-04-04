@@ -1,6 +1,7 @@
-selenium==3.141.0
-requests==2.25.1
-Flask==1.1.2
-peewee==3.14.4
+wordcloud==1.8.1
 Flask_Script==2.0.6
+requests==2.25.1
+peewee==3.14.4
+Flask==1.1.2
+selenium==3.141.0
 jieba==0.42.1

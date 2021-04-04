@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
-                                    CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity,
-                                    AllCommentsWords, AfterCommentsWords, IosCommentsWords, NonFiveStarCommentsWords)
+                                    CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 
 views = Blueprint('views', __name__)
 
