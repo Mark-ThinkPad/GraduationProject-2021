@@ -161,8 +161,8 @@ def back_to_first_window(browser: Chrome):
     browser.switch_to.window(handles[0])
 
 
-# 等待评论加载
-def waiting_comments_loading(browser: Chrome, class_name: str):
+# 等待页面相关内容加载
+def waiting_content_loading(browser: Chrome, class_name: str):
     while True:
         try:
             WebDriverWait(browser, 0.5).until(

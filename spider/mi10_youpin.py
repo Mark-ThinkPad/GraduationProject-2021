@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, MiSku, Comment, CommentSummary
 from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          waiting_comments_loading, parse_timestamp_13bit)
+                          waiting_content_loading, parse_timestamp_13bit)
 
 
 # 获取小米有品的小米10销售数据
@@ -53,7 +53,7 @@ def get_mi_sku_and_product_info_from_api(browser: Chrome, shop: Shop):
 def switch_to_youpin_default_comments_page(browser: Chrome):
     window_scroll_by(browser, 800)
     browser.execute_script('document.querySelector("li.info-nav-item:nth-child(2)").click()')
-    waiting_comments_loading(browser, 'commentItem')
+    waiting_content_loading(browser, 'commentItem')
 
 
 # 获取小米有品的评论数据
@@ -128,7 +128,7 @@ def turn_to_the_next_page(browser: Chrome):
             )
             js_script = 'document.querySelector("li.m-pagination-item:nth-child(8) > a:nth-child(1)").click()'
             browser.execute_script(js_script)
-            waiting_comments_loading(browser, 'commentItem')
+            waiting_content_loading(browser, 'commentItem')
             break
         except TimeoutException:
             window_scroll_by(browser, 500)

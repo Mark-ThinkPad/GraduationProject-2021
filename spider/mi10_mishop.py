@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, MiSku, Comment, CommentSummary
 from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          waiting_comments_loading)
+                          waiting_content_loading)
 
 
 # 获取小米商城的小米10销售数据
@@ -190,7 +190,7 @@ def turn_to_the_next_page(browser: Chrome):
                 ec.element_to_be_clickable((By.CLASS_NAME, 'more'))
             )
             browser.execute_script('document.querySelector(".more").click()')
-            waiting_comments_loading(browser, 'common')
+            waiting_content_loading(browser, 'common')
             break
         except TimeoutException:
             window_scroll_by(browser, 500)
