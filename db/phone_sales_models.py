@@ -40,5 +40,14 @@ class ExistedSku(BaseModel):
         primary_key = pw.CompositeKey('source', 'sku')
 
 
+# 所有将要获取的商品SKU编号
+class TargetSku(BaseModel):
+    source = pw.CharField(max_length=4, constraints=[pw.Check('source in ("京东", "苏宁")')])  # 数据源平台
+    sku = pw.CharField(max_length=20)  # 商品SKU编号
+
+    class Meta:
+        primary_key = pw.CompositeKey('source', 'sku')
+
+
 if __name__ == '__main__':
-    phone_sales_db.create_tables([Commodity, ExistedSku])
+    phone_sales_db.create_tables([Commodity, ExistedSku, TargetSku])

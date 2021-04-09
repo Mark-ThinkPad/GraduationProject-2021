@@ -22,11 +22,11 @@ from spider.utils import parse_timestamp_13bit
 # shop.url = 'https://www.xiaomiyoupin.com/detail?gid=118630&spmref=YouPinPC'
 # shop.save()
 
-shop = Shop()
-shop.source = '小米商城'
-shop.is_official = True
-shop.url = 'https://www.mi.com/comment/10000214.html'
-shop.save()
+# shop = Shop()
+# shop.source = '小米商城'
+# shop.is_official = True
+# shop.url = 'https://www.mi.com/comment/10000214.html'
+# shop.save()
 
 # str_one = '8GB+256GB'
 # str_two = '12GB+256GB'
@@ -104,3 +104,8 @@ shop.save()
 # print(result)
 
 # print(parse_timestamp_13bit(1616141975952))
+
+str1 = '18.7'
+str2 = '22'
+str3 = '其他英寸'
+print(float(str2))
