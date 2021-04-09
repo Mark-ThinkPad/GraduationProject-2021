@@ -20,7 +20,7 @@ def get_phone_sales_from_jd(browser: Chrome):
     insert_jd_all_target_sku(browser)
     # 保存所有商品信息
     # insert_jd_all_commodity(browser)
-    
+
     print('------京东手机分类销量数据获取完成------')
 
 
@@ -76,7 +76,7 @@ def insert_jd_target_sku(browser: Chrome):
     for element in elements:
         # 获取当前商品SKU编号
         current_sku: str = element.get_attribute('data-sku')
-        TargetSku.create(
+        TargetSku.get_or_create(
             source='京东',
             sku=current_sku
         )

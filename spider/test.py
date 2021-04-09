@@ -105,7 +105,7 @@ from spider.utils import parse_timestamp_13bit
 
 # print(parse_timestamp_13bit(1616141975952))
 
-str1 = '18.7'
-str2 = '22'
-str3 = '其他英寸'
-print(float(str2))
+# str1 = '18.7'
+# str2 = '22'
+# str3 = '其他英寸'
+# print(float(str2))
