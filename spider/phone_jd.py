@@ -17,9 +17,9 @@ def get_phone_sales_from_jd(browser: Chrome):
     print(f'------打开京东手机分类页面------')
     browser.get('https://list.jd.com/list.html?cat=9987,653,655')
     # 保存将要获取的所有商品SKU编号
-    insert_jd_all_target_sku(browser)
+    # insert_jd_all_target_sku(browser)
     # 保存所有商品信息
-    # insert_jd_all_commodity(browser)
+    insert_jd_all_commodity(browser)
 
     print('------京东手机分类销量数据获取完成------')
 
@@ -62,7 +62,7 @@ def get_jd_sku_from_api(browser: Chrome, sku: str):
     skus = re.sub(r'^\w+?\(', '', skus)
     skus = json.loads(skus)
     for key in skus.keys():
-        ExistedSku.create(
+        ExistedSku.get_or_create(
             source='京东',
             sku=key
         )
@@ -132,10 +132,23 @@ def insert_jd_all_commodity(browser: Chrome):
         # 从后端API接口获取并保存已上架的SKU
         get_jd_sku_from_api(browser, sku)
 
-        commodity.price = float(browser.find_element_by_css_selector('span.price:nth-child(2)').text)
-        commodity.title = browser.find_element_by_class_name('sku-name').text.strip()
-        total_str = browser.find_element_by_css_selector('#comment-count > a').text
-        commodity.total = parse_jd_count_str(total_str)
+        try:
+            commodity.price = float(browser.find_element_by_css_selector('span.price:nth-child(2)').text)
+        except (ValueError, NoSuchElementException):
+            # 价格显示为待发布时或商品以下柜时, 抛出异常
+            commodity.price = -1
+
+        try:
+            commodity.title = browser.find_element_by_class_name('sku-name').text.strip()
+        except NoSuchElementException:
+            commodity.title = '无商品标题'
+
+        try:
+            total_str = browser.find_element_by_css_selector('#comment-count > a').text
+            commodity.total = parse_jd_count_str(total_str)
+        except NoSuchElementException:
+            # 商品为预约状态时销量不显示在价格旁边, 抛出异常
+            commodity.total = -1
 
         # 判断是否为京东自营
         try:
@@ -155,16 +168,26 @@ def insert_jd_all_commodity(browser: Chrome):
                 '> a').text
         except NoSuchElementException:
             commodity.shop_name = '店铺名称为空'
-        commodity.brand = browser.find_element_by_css_selector('#parameter-brand > li > a').text
+
+        try:
+            commodity.brand = browser.find_element_by_css_selector('#parameter-brand > li > a').text
+        except NoSuchElementException:
+            commodity.brand = '品牌未注明'
+            
         intro = browser.find_elements_by_css_selector('.parameter2 > li')
         intro_list = []
         for i in intro:
             intro_list.append(i.text)
+        # 预赋值, 防止注入空置报错
+        commodity.os = '页面未注明'
+        commodity.model = '页面未注明'
         for intro_item in intro_list:
             if '操作系统' in intro_item:
                 commodity.os = intro_item.replace('操作系统：', '')
             if 'CPU型号' in intro_item:
                 commodity.soc_model = intro_item.replace('CPU型号：', '')
+            if '商品名称' in intro_item:
+                commodity.model = intro_item.replace('商品名称：', '')
 
         # 下滑点击 规格与包装 选项
         window_scroll_by(browser, 1200)
