@@ -68,5 +68,4 @@ class SNExistedSku(BaseModel):
 
 
 if __name__ == '__main__':
-    # phone_sales_db.create_tables([Commodity, ExistedSku, TargetSku, SNTargetSku])
-    SNExistedSku.create_table()
+    phone_sales_db.create_tables([Commodity, ExistedSku, TargetSku, SNTargetSku, SNExistedSku])

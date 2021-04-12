@@ -109,3 +109,5 @@ from spider.utils import parse_timestamp_13bit
 # str2 = '22'
 # str3 = '其他英寸'
 # print(float(str2))
+
+# print(int('0070067921'))

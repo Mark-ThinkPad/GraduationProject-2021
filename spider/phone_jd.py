@@ -162,7 +162,6 @@ def insert_jd_all_commodity(browser: Chrome):
             self = False
         commodity.is_self = self
 
-        # 从商品介绍中获取商品信息
         try:
             commodity.shop_name = browser.find_element_by_css_selector(
                 '#crumb-wrap > div > div.contact.fr.clearfix > div.J-hove-wrap.EDropdown.fr > div:nth-child(1) > div '
@@ -170,6 +169,7 @@ def insert_jd_all_commodity(browser: Chrome):
         except NoSuchElementException:
             commodity.shop_name = '店铺名称为空'
 
+        # 从商品介绍中获取商品信息
         try:
             commodity.brand = browser.find_element_by_css_selector('#parameter-brand > li > a').text
         except NoSuchElementException:
@@ -249,7 +249,7 @@ def insert_jd_all_commodity(browser: Chrome):
         back_to_first_window(browser)
 
 
-# 删除已经保存的商品target_sku
+# 删除已经保存的商品 target_sku
 def delete_saved_commodity_sku(target_sku: str):
     saved_sku = TargetSku.get(
         TargetSku.source == '京东',
