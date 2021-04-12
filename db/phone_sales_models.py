@@ -49,5 +49,24 @@ class TargetSku(BaseModel):
         primary_key = pw.CompositeKey('source', 'sku')
 
 
+# 苏宁平台所有将要获取的商品SKU编号
+class SNTargetSku(BaseModel):
+    shop_code = pw.CharField(max_length=10)  # 苏宁商品URL中含有店铺代码, 需保存
+    sku = pw.CharField(max_length=20)  # 商品SKU编号
+
+    class Meta:
+        primary_key = pw.CompositeKey('shop_code', 'sku')
+
+
+# 苏宁平台已存在的SKU, 避免销量重复计数
+class SNExistedSku(BaseModel):
+    shop_code = pw.CharField(max_length=10)  # 苏宁商品URL中含有店铺代码, 需保存
+    sku = pw.CharField(max_length=20)  # 商品SKU编号
+
+    class Meta:
+        primary_key = pw.CompositeKey('shop_code', 'sku')
+
+
 if __name__ == '__main__':
-    phone_sales_db.create_tables([Commodity, ExistedSku, TargetSku])
+    # phone_sales_db.create_tables([Commodity, ExistedSku, TargetSku, SNTargetSku])
+    SNExistedSku.create_table()

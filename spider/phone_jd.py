@@ -17,7 +17,7 @@ def get_phone_sales_from_jd(browser: Chrome):
     print(f'------打开京东手机分类页面------')
     browser.get('https://list.jd.com/list.html?cat=9987,653,655')
     # 保存将要获取的所有商品SKU编号
-    # insert_jd_all_target_sku(browser)
+    insert_jd_all_target_sku(browser)
     # 保存所有商品信息
     insert_jd_all_commodity(browser)
 
@@ -99,6 +99,7 @@ def insert_jd_all_target_sku(browser: Chrome):
         sleep(3)
         # 保存将要获取的当前页面的商品SKU编号
         insert_jd_target_sku(browser)
+
         # 翻页
         if current_page == max_page:
             break
@@ -173,7 +174,7 @@ def insert_jd_all_commodity(browser: Chrome):
             commodity.brand = browser.find_element_by_css_selector('#parameter-brand > li > a').text
         except NoSuchElementException:
             commodity.brand = '品牌未注明'
-            
+
         intro = browser.find_elements_by_css_selector('.parameter2 > li')
         intro_list = []
         for i in intro:
