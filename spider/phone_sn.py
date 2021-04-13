@@ -7,9 +7,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 from db.phone_sales_models import Commodity, SNTargetSku, SNExistedSku
-from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate,
-                          waiting_content_loading)
+from spider.utils import (get_chrome_driver, get_response_body_list, window_scroll_by, open_second_window,
+                          back_to_first_window, waiting_content_loading)
 
 
 def get_phone_sales_from_sn(browser: Chrome):
@@ -132,14 +131,65 @@ def insert_sn_all_commodity(browser: Chrome):
         commodity.model = '页面未注明'
         commodity.os = '页面未注明'
 
-        # # 保存商品信息
-        # commodity.save()
-        # # 删除已经保存的商品target_sku
-        # delete_saved_commodity_sku(sku)
-        # print(f'------SKU编号为 {sku} 的商品信息保存完毕------')
+        intro_list = browser.find_elements_by_css_selector('#phoneParameters > ul > li')
+        for intro in intro_list:
+            intro_title = intro.find_element_by_tag_name('p').text
+            items = intro.find_elements_by_css_selector('dl > dd > div > ul > li')
+            if intro_title == '屏幕':
+                for item in items:
+                    if '屏幕尺寸' in item.text:
+                        commodity.screen_size = float(item.text.replace('屏幕尺寸：', '').replace('英寸', '').strip())
+            if intro_title == 'CPU':
+                for item in items:
+                    if 'CPU型号' in item.text:
+                        commodity.soc_model = item.text.replace('CPU型号：', '')
+
+        # 下滑点击 包装及参数 选项
+        window_scroll_by(browser, 1500)
+        browser.execute_script('document.querySelector("#productParTitle > a").click()')
+        sleep(1)
+
+        # 从 规格与包装 中获取商品信息
+        spec_list = browser.find_elements_by_css_selector('#itemParameter > tbody > tr')
+        for spec in spec_list:
+            if spec.get_attribute('parametercode') is not None:
+                spec_name = spec.find_element_by_tag_name('span').text
+                spec_value = spec.find_element_by_class_name('val').text
+                if spec_name == '品牌':
+                    commodity.brand = spec_value
+                if spec_name == '型号':
+                    commodity.model = spec_value
+                if spec_name == '手机操作系统':
+                    commodity.os = spec_value
+                if spec_name == 'CPU品牌':
+                    commodity.soc_mfrs = spec_value
+                if spec_name == 'CPU型号':
+                    commodity.soc_model = spec_value
+                try:
+                    spec_val = spec_value.replace('mm', '').replace('MM', '').replace('毫米', '').replace('英寸', '')\
+                        .replace('mM', '').replace('Mm', '').replace('g', '').replace('G', '').replace('约', '')\
+                        .replace('大约', '').replace('左右', '').replace('克', '').replace('寸', '').strip()
+                    if spec_name == '屏幕尺寸':
+                        commodity.screen_size = float(spec_val)
+                    if spec_name == '机身长度':
+                        commodity.length = float(spec_val)
+                    if spec_name == '机身宽度':
+                        commodity.width = float(spec_val)
+                    if spec_name == '机身厚度':
+                        commodity.thickness = float(spec_val)
+                    if spec_name == '重量':
+                        commodity.weight = float(spec_val)
+                except ValueError:
+                    pass
+
+        # 保存商品信息
+        commodity.save()
+        # 删除已经保存的商品target_sku
+        delete_saved_commodity_sku(shop_code, sku)
+        print(f'------SKU编号为 {sku} 的商品信息保存完毕------')
         # 回到手机分类页面
         back_to_first_window(browser)
-        break
+        sleep(2)
 
 
 # 删除已经保存的商品 sn_target_sku
@@ -180,7 +230,7 @@ def get_sn_sku_and_total_from_api(browser: Chrome, shop_code: str, sku: str):
             shop_code=shop_code,
             sku=sku
         )
-        print('-----当前商品为单SKU商品------')
+        print('------当前商品为单SKU商品------')
 
     for skus in skus_list:
         skus = skus.lstrip('getClusterPrice(').rstrip(');')
