@@ -136,11 +136,17 @@ def preprocess_data():
     # query.execute()
 
     # 规范产品名
-    name_list = ['三星 Galaxy A51 5G（SM-A5160）双卡双待8GB+128GB迷踪黑', '三星 Galaxy A51 5G手机', '三星 Galaxy A51 5G',
-                 'A51 5G', 'A51']
-    Commodity.update(model='Galaxy A51').where(Commodity.model.in_(name_list)).execute()
-    for commodity in Commodity.select().where(Commodity.brand == '努比亚').group_by(Commodity.model):
+    # name_list = ['黑鲨4 Pro']
+    # Commodity.update(model='黑鲨游戏手机4 Pro').where(Commodity.model.in_(name_list)).execute()
+    for commodity in Commodity.select().where(Commodity.brand == '三星').group_by(Commodity.model):
         print(commodity.model)
+
+    # 规范操作系统名
+    os_list = ['OPPO', 'ROG', 'realme', 'vivo', '一加', '三星', '努比亚', '华为', '小米', '摩托罗拉', '索尼', '联想', '美图', '荣耀',
+               '谷歌', '锤子/坚果', '魅族', '黑鲨']
+    Commodity.update(os='Android').where(Commodity.brand.in_(os_list)).execute()
+    for commodity in Commodity.select().where(Commodity.brand == '三星').group_by(Commodity.soc_mfrs):
+        print(commodity.soc_mfrs)
 
 
 if __name__ == '__main__':
