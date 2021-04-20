@@ -13,20 +13,20 @@ from spider.utils import (get_chrome_driver, get_response_body_list, window_scro
 
 def get_wireless_headphone_from_sn(browser: Chrome):
     # 打开京东无线耳机分类
-    url_list = [
-        'https://search.suning.com/%E6%97%A0%E7%BA%BF%E8%80%B3%E6%9C%BA/',
-        'https://search.suning.com/%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA/',
-        'https://list.suning.com/0-232003-0-2-0-0-0___0_0-0-0-0-0-8784626.html#search-path',
-        'https://list.suning.com/0-232003-0-0-0-0-0-0-0-0-47313.html'
-    ]
-    for url in url_list:
-        print(f'------正在打开苏宁无线耳机分类页面------')
-        browser.get(url)
-        # 保存将要获取的所有商品SKU编号
-        insert_sn_all_target_sku(browser)
+    # url_list = [
+    #     'https://search.suning.com/%E6%97%A0%E7%BA%BF%E8%80%B3%E6%9C%BA/',
+    #     'https://search.suning.com/%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA/',
+    #     'https://list.suning.com/0-232003-0-2-0-0-0___0_0-0-0-0-0-8784626.html#search-path',
+    #     'https://list.suning.com/0-232003-0-0-0-0-0-0-0-0-47313.html'
+    # ]
+    # for url in url_list:
+    #     print(f'------正在 打开苏宁无线耳机分类页面------')
+    #     browser.get(url)
+    #     # 保存将要获取的所有商品SKU编号
+    #     insert_sn_all_target_sku(browser)
 
     # 保存所有商品信息
-    # insert_sn_all_commodity(browser)
+    insert_sn_all_commodity(browser)
 
     print('------苏宁无线耳机分类销量数据获取完成------')
 

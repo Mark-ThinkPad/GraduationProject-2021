@@ -1,11 +1,12 @@
 import re
 import json
 from time import sleep
+from json.decoder import JSONDecodeError
 from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.common.exceptions import TimeoutException, NoSuchElementException
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 from db.wireless_headphone_models import Commodity, JDExistedSku, JDTargetSku
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
                           open_second_window, back_to_first_window, waiting_content_loading)
@@ -14,18 +15,18 @@ from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by
 # 获取京东无线耳机分类销量数据
 def get_wireless_headphone_from_jd(browser: Chrome):
     # 打开京东无线耳机分类
-    url_list = [
-        'https://list.jd.com/list.html?cat=652%2C828%2C842&ev=235_58350%5E&cid3=842',
-        'https://list.jd.com/list.html?cat=652%2C828%2C842&ev=235_66906%5E&cid3=842'
-    ]
-    for url in url_list:
-        print(f'------正在打开京东无线耳机分类页面------')
-        browser.get(url)
-        # 保存将要获取的所有商品SKU编号
-        insert_jd_all_target_sku(browser)
+    # url_list = [
+    #     'https://list.jd.com/list.html?cat=652%2C828%2C842&ev=235_58350%5E&cid3=842',
+    #     'https://list.jd.com/list.html?cat=652%2C828%2C842&ev=235_66906%5E&cid3=842'
+    # ]
+    # for url in url_list:
+    #     print(f'------正在打开京东无线耳机分类页面------')
+    #     browser.get(url)
+    #     # 保存将要获取的所有商品SKU编号
+    #     insert_jd_all_target_sku(browser)
 
     # 保存所有商品信息
-    # insert_jd_all_commodity(browser)
+    insert_jd_all_commodity(browser)
 
     print('------京东无线耳机分类销量数据获取完成------')
 
@@ -55,19 +56,22 @@ def switch_to_current_sku_page(browser: Chrome, sku_url: str):
 
 # 从后端API接口获取并保存已上架的SKU
 def get_jd_sku_from_api(browser: Chrome, sku: str):
-    jd_sku_url = 'type=getstocks'
-    skus = get_response_body(browser, jd_sku_url, 'GET')
-    if skus is None:
-        JDExistedSku.create(sku=sku)
-        print('---当前商品所有SKU编号获取失败, 可能是单SKU商品---')
-        return
-    skus = skus.rstrip(')')
-    skus = re.sub(r'^\w+?\(', '', skus)
-    skus = json.loads(skus)
-    for key in skus.keys():
-        JDExistedSku.get_or_create(sku=key)
+    try:
+        jd_sku_url = 'type=getstocks'
+        skus = get_response_body(browser, jd_sku_url, 'GET')
+        if skus is None:
+            raise WebDriverException()
 
-    print('------保存已上架SKU完成------')
+        skus = skus.rstrip(')')
+        skus = re.sub(r'^\w+?\(', '', skus)
+        skus = json.loads(skus)
+        for key in skus.keys():
+            JDExistedSku.get_or_create(sku=key)
+        print('------保存已上架SKU完成------')
+
+    except (WebDriverException, JSONDecodeError):
+        JDExistedSku.get_or_create(sku=sku)
+        print('------当前商品是单SKU商品------')
 
 
 # 保存将要获取的商品SKU编号
@@ -107,7 +111,7 @@ def insert_jd_all_target_sku(browser: Chrome):
 
 # 保存商品信息
 def insert_jd_all_commodity(browser: Chrome):
-    for target_sku in JDTargetSku.select().where(JDTargetSku.source == '京东'):
+    for target_sku in JDTargetSku.select():
         # 获取当前商品SKU编号
         sku: str = target_sku.sku
         # 检查当前SKU是否在数据库中保存的SKU中, 避免销量重复计数
