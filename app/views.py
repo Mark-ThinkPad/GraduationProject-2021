@@ -1,13 +1,113 @@
 from flask import Blueprint, render_template, redirect, url_for
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
+from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
+                                           BrandPercentage, FeaturePhonePercentage)
 
 views = Blueprint('views', __name__)
 
 
 @views.route('/')
 def index():
-    return redirect(url_for('views.mi10'))
+    return redirect(url_for('views.phone'))
+
+
+@views.route('/phone')
+def phone():
+    # 手机销量排行
+    phone_name = []
+    phone_count = []
+    for item in Phone.select().order_by(Phone.total.asc()):
+        phone_name.append(item.brand + '\n' + item.model)
+        phone_count.append(item.total)
+    # 数据总览
+    total = PhoneTotal.get_by_id(1)
+    # 平台数据源概览
+    platform_source = []
+    platform_tc = []
+    platform_cc = []
+    platform_sp = []
+    platform_nsp = []
+    for platform in PhonePlatform.select():
+        platform_source.append(platform.source)
+        platform_tc.append(platform.total_count)
+        platform_cc.append(platform.commodity_count)
+        platform_sp.append(float(platform.self_percentage))
+        platform_nsp.append(float(platform.non_self_percentage))
+    # 操作系统占比
+    phoneos = []
+    for phone_os in PhoneOS.select():
+        phoneos.append({'value': float(phone_os.percentage), 'name': phone_os.os})
+    # 品牌销量占比
+    phonebrand = []
+    for phone_brand in PhoneBrand.select():
+        phonebrand.append({'value': float(phone_brand.percentage), 'name': phone_brand.brand})
+    # 苹果手机销量明星
+    apple_model = []
+    apple_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '苹果') \
+            .order_by(BrandSalesStar.total.desc()):
+        apple_model.append(bss.model)
+        apple_mt.append(bss.total)
+    # 小米手机销量明星
+    mi_model = []
+    mi_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '小米') \
+            .order_by(BrandSalesStar.total.desc()):
+        mi_model.append(bss.model)
+        mi_mt.append(bss.total)
+    # 华为手机销量明星
+    hw_model = []
+    hw_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '华为') \
+            .order_by(BrandSalesStar.total.desc()):
+        hw_model.append(bss.model)
+        hw_mt.append(bss.total)
+    # 荣耀手机销量明星
+    honor_model = []
+    honor_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '荣耀') \
+            .order_by(BrandSalesStar.total.desc()):
+        honor_model.append(bss.model)
+        honor_mt.append(bss.total)
+    # OPPO手机销量明星
+    oppo_model = []
+    oppo_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == 'OPPO') \
+            .order_by(BrandSalesStar.total.desc()):
+        oppo_model.append(bss.model)
+        oppo_mt.append(bss.total)
+    # vivo手机销量明星
+    vivo_model = []
+    vivo_mt = []
+    for bss in BrandSalesStar.select().where(BrandSalesStar.brand == 'vivo') \
+            .order_by(BrandSalesStar.total.desc()):
+        vivo_model.append(bss.model)
+        vivo_mt.append(bss.total)
+    # 小米与子品牌红米销量占比
+    mi_per = []
+    for bp in BrandPercentage.select().where(BrandPercentage.main_brand == '小米'):
+        mi_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
+    # vivo与子品牌iQOO销量占比
+    vivo_per = []
+    for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'vivo'):
+        vivo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
+    # OPPO与子品牌realem和一加的销量占比
+    oppo_per = []
+    for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'OPPO'):
+        oppo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
+    # 功能机品牌占比
+    fpp = []
+    for fp in FeaturePhonePercentage.select():
+        fpp.append({'value': float(fp.percentage), 'name': fp.brand})
+
+    return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total,
+                           platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
+                           platform_sp=platform_sp, platform_nsp=platform_nsp, phone_os=phoneos, phone_brand=phonebrand,
+                           apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model, mi_mt=mi_mt,
+                           hw_model=hw_model, hw_mt=hw_mt, honor_model=honor_model, honor_mt=honor_mt,
+                           oppo_model=oppo_model, oppo_mt=oppo_mt, vivo_model=vivo_model, vivo_mt=vivo_mt,
+                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, fpp=fpp)
 
 
 @views.route('/phone/mi10')
@@ -78,6 +178,7 @@ def mi10():
     for udc in UserDeviceCount.select():
         udc_system += ['Android 留存用户', 'iOS 转化用户', 'other']
         udc_per += [udc.android_percentage, udc.ios_percentage, udc.other_percentage]
+
     return render_template('mi10.html', total_source=total_source, total_count=total_count,
                            total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
                            color_count=color_count, ram_count=ram_count, rom_count=rom_count, ua_source=ua_source,

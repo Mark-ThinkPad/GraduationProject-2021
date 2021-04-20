@@ -1,0 +1,765 @@
+{% extends "base.html" %}
+{% block main %}
+  <div class="columns is-multiline">
+    <div class="column is-half uniform-height" id="total">
+      <div class="card is-shadowless">
+        <header class="card-header is-shadowless">
+          <p class="card-header-title">
+            <span>手机销售数据总览</span>
+          </p>
+          <p class="card-header-icon">
+            <span>数据来自京东和苏宁</span>
+          </p>
+        </header>
+        <div class="card-content">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>数量</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>总销量</td>
+                <td>{{ total.total_count }} 台</td>
+              </tr>
+              <tr>
+                <td>商品数量</td>
+                <td>{{ total.commodity_count }} 件</td>
+              </tr>
+              <tr>
+                <td>品牌数量</td>
+                <td>{{ total.brand_count }} 个</td>
+              </tr>
+              <tr>
+                <td>机型数量</td>
+                <td>{{ total.model_count }} 种</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="column is-half uniform-height" id="platform"></div>
+    <div class="column is-full more-height" id="phone"></div>
+    <div class="column is-half uniform-height" id="phone_os"></div>
+    <div class="column is-half uniform-height" id="phone_brand"></div>
+    <div class="column is-full uniform-height" id="apple_sales_star"></div>
+    <div class="column is-full uniform-height" id="mi_sales_star"></div>
+    <div class="column is-full uniform-height" id="hw_sales_star"></div>
+    <div class="column is-full uniform-height" id="honor_sales_star"></div>
+    <div class="column is-full uniform-height" id="oppo_sales_star"></div>
+    <div class="column is-full uniform-height" id="vivo_sales_star"></div>
+    <div class="column is-half uniform-height" id="mi_percentage"></div>
+    <div class="column is-half uniform-height" id="vivo_percentage"></div>
+    <div class="column is-half uniform-height" id="oppo_percentage"></div>
+    <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
+  </div>
+{% endblock %}
+
+{% block js %}
+<script>
+// 手机销量排行横向条形图
+let phone_dom = document.getElementById("phone");
+let phone_chart = echarts.init(phone_dom);
+let phone_option = {
+  title: {
+    text: '手机销量排行',
+    subtext: '数据来自京东和苏宁 (下滑查看更多机型)',
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  dataZoom: [
+    {
+      type: 'slider',
+      yAxisIndex: 0,
+      zoomLock: true,
+      width: 10,
+      right: 10,
+      top: 70,
+      bottom: 20,
+      start: 99,
+      end: 100,
+      handleSize: 0,
+      showDetail: false,
+    },
+    {
+      type: 'inside',
+      yAxisIndex: 0,
+      start: 99,
+      end: 100,
+      zoomOnMouseWheel: false,
+      moveOnMouseMove: true,
+      moveOnMouseWheel: true
+    }
+  ],
+  legend: {
+    data: ['销量(台)']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} 台'
+    },
+    min: 0,
+  },
+  yAxis: {
+    type: 'category',
+    data: {{ phone_name | tojson }},
+  },
+  series: [
+    {
+      name: '销量(台)',
+      type: 'bar',
+      data: {{ phone_count | tojson }}
+    }
+  ]
+};
+phone_chart.setOption(phone_option);
+</script>
+
+<script>
+// 电商平台数据源概览多Y轴柱状图
+let platform_dom = document.getElementById("platform");
+let platform_chart = echarts.init(platform_dom);
+let platform_option = {
+  title: {
+    text: "电商平台数据源概览"
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  grid: {
+    right: '20%'
+  },
+  legend: {
+    data: ['总销量', '好评率', '自营销量占比', '非自营销量占比']
+  },
+  xAxis: [
+    {
+      type: 'category',
+      axisPointer: {
+        type: 'shadow'
+      },
+      data: {{ platform_source | tojson }}
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      name: '总销量',
+      position: 'left',
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#5470C6'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    },
+    {
+      type: 'value',
+      name: '商品数量',
+      position: 'right',
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#EE6666'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} 件'
+      }
+    },
+    {
+      type: 'value',
+      name: '销量百分比',
+      min: 0,
+      max: 100,
+      position: 'right',
+      offset: 80,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: '#91CC75'
+        }
+      },
+      axisLabel: {
+        formatter: '{value} %'
+      }
+    },
+  ],
+  series: [
+    {
+      name: '总销量',
+      type: 'bar',
+      data: {{ platform_tc | tojson }}
+    },
+    {
+      name: '商品数量',
+      type: 'bar',
+      yAxisIndex: 1,
+      data: {{ platform_cc | tojson }}
+    },
+    {
+      name: '自营销量占比',
+      type: 'bar',
+      yAxisIndex: 2,
+      data: {{ platform_sp | tojson }}
+    },
+    {
+      name: '非自营销量占比',
+      type: 'bar',
+      yAxisIndex: 2,
+      data: {{ platform_nsp | tojson }}
+    },
+  ]
+};
+platform_chart.setOption(platform_option);
+</script>
+
+<script>
+// 操作系统占比饼图
+let phone_os_dom = document.getElementById("phone_os");
+let phone_os_chart = echarts.init(phone_os_dom);
+let phone_os_option = {
+  title: {
+    text: '操作系统占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '操作系统',
+      type: 'pie',
+      radius: '50%',
+      data: {{ phone_os | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+phone_os_chart.setOption(phone_os_option);
+</script>
+
+<script>
+// 品牌销量占比饼图
+let phone_brand_dom = document.getElementById("phone_brand");
+let phone_brand_chart = echarts.init(phone_brand_dom);
+let phone_brand_option = {
+  title: {
+    text: '品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ phone_brand | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+phone_brand_chart.setOption(phone_brand_option);
+</script>
+
+<script>
+// 苹果手机销量明星柱状图
+let apple_sales_star_dom = document.getElementById("apple_sales_star");
+let apple_sales_star_chart = echarts.init(apple_sales_star_dom);
+let apple_sales_star_option = {
+  title: {
+    text: "苹果手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ apple_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ apple_mt | tojson }}
+    }
+  ]
+};
+apple_sales_star_chart.setOption(apple_sales_star_option);
+</script>
+
+<script>
+// 小米手机销量明星柱状图
+let mi_sales_star_dom = document.getElementById("mi_sales_star");
+let mi_sales_star_chart = echarts.init(mi_sales_star_dom);
+let mi_sales_star_option = {
+  title: {
+    text: "小米手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ mi_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ mi_mt | tojson }}
+    }
+  ]
+};
+mi_sales_star_chart.setOption(mi_sales_star_option);
+</script>
+
+<script>
+// 华为手机销量明星柱状图
+let hw_sales_star_dom = document.getElementById("hw_sales_star");
+let hw_sales_star_chart = echarts.init(hw_sales_star_dom);
+let hw_sales_star_option = {
+  title: {
+    text: "华为手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ hw_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ hw_mt | tojson }}
+    }
+  ]
+};
+hw_sales_star_chart.setOption(hw_sales_star_option);
+</script>
+
+<script>
+// 荣耀手机销量明星柱状图
+let honor_sales_star_dom = document.getElementById("honor_sales_star");
+let honor_sales_star_chart = echarts.init(honor_sales_star_dom);
+let honor_sales_star_option = {
+  title: {
+    text: "荣耀手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ honor_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ honor_mt | tojson }}
+    }
+  ]
+};
+honor_sales_star_chart.setOption(honor_sales_star_option);
+</script>
+
+<script>
+// OPPO手机销量明星柱状图
+let oppo_sales_star_dom = document.getElementById("oppo_sales_star");
+let oppo_sales_star_chart = echarts.init(oppo_sales_star_dom);
+let oppo_sales_star_option = {
+  title: {
+    text: "OPPO手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ oppo_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ oppo_mt | tojson }}
+    }
+  ]
+};
+oppo_sales_star_chart.setOption(oppo_sales_star_option);
+</script>
+
+<script>
+// vivo手机销量明星柱状图
+let vivo_sales_star_dom = document.getElementById("vivo_sales_star");
+let vivo_sales_star_chart = echarts.init(vivo_sales_star_dom);
+let vivo_sales_star_option = {
+  title: {
+    text: "vivo手机销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ vivo_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 台'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ vivo_mt | tojson }}
+    }
+  ]
+};
+vivo_sales_star_chart.setOption(vivo_sales_star_option);
+</script>
+
+<script>
+// 小米与子品牌红米销量占比饼图
+let mi_percentage_dom = document.getElementById("mi_percentage");
+let mi_percentage_chart = echarts.init(mi_percentage_dom);
+let mi_percentage_option = {
+  title: {
+    text: '小米集团旗下所有品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ mi_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+mi_percentage_chart.setOption(mi_percentage_option);
+</script>
+
+<script>
+// vivo与子品牌iQOO销量占比饼图
+let vivo_percentage_dom = document.getElementById("vivo_percentage");
+let vivo_percentage_chart = echarts.init(vivo_percentage_dom);
+let vivo_percentage_option = {
+  title: {
+    text: 'vivo集团旗下所有品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ vivo_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+vivo_percentage_chart.setOption(vivo_percentage_option);
+</script>
+
+<script>
+// OPPO与子品牌realme和一加的销量占比饼图
+let oppo_percentage_dom = document.getElementById("oppo_percentage");
+let oppo_percentage_chart = echarts.init(oppo_percentage_dom);
+let oppo_percentage_option = {
+  title: {
+    text: 'OPPO集团旗下所有品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ oppo_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+oppo_percentage_chart.setOption(oppo_percentage_option);
+</script>
+
+<script>
+// 功能机品牌占比饼图
+let fpp_dom = document.getElementById("feature_phone_percentage");
+let fpp_chart = echarts.init(fpp_dom);
+let fpp_option = {
+  title: {
+    text: '功能机品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ fpp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+fpp_chart.setOption(fpp_option);
+</script>
+{% endblock %}

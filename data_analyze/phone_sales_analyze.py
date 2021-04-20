@@ -1,4 +1,8 @@
+from peewee import fn
+from data_analyze.utils import calculate_percentage
 from db.phone_sales_models import Commodity
+from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
+                                           BrandPercentage, FeaturePhonePercentage)
 
 
 # 预处理原生数据
@@ -154,10 +158,213 @@ def preprocess_data():
     # for commodity in Commodity.select().where(Commodity.brand == target_brand).group_by(Commodity.soc_model):
     #     print(commodity.soc_model)
 
-    Commodity.update({Commodity.soc_model: '未知'}).where(Commodity.soc_model.in_(['其它', '其他', '以官网信息为准', '以官方信息为准'])).execute()
+    Commodity.update({Commodity.soc_model: '未知'}).where(
+        Commodity.soc_model.in_(['其它', '其他', '以官网信息为准', '以官方信息为准'])).execute()
     for commodity in Commodity.select().group_by(Commodity.soc_model):
         print(commodity.soc_model)
 
 
+# 生成型号及销量
+def get_phone():
+    for commodity in Commodity.select():
+        try:
+            phone = Phone.get(
+                Phone.brand == commodity.brand,
+                Phone.model == commodity.model
+            )
+            phone.total += commodity.total
+            phone.save()
+        except Phone.DoesNotExist:
+            Phone.create(
+                brand=commodity.brand,
+                model=commodity.model,
+                total=commodity.total
+            )
+
+
+# 生成数据总览
+def get_phone_total():
+    total_count = Commodity.select(fn.SUM(Commodity.total).alias('tc')).dicts()[0]['tc']
+    commodity_count = Commodity.select().count()
+    brand_count = Commodity.select().group_by(Commodity.brand).count()
+    model_count = Commodity.select().group_by(Commodity.model).count()
+
+    PhoneTotal.create(
+        total_count=total_count,
+        commodity_count=commodity_count,
+        brand_count=brand_count,
+        model_count=model_count
+    )
+
+
+# 生成平台数据源概览
+def get_phone_platform():
+    source_list = ['京东', '苏宁']
+    for source in source_list:
+        total_count = Commodity.select(fn.SUM(Commodity.total).alias('tc')) \
+            .where(Commodity.source == source).dicts()[0]['tc']
+        commodity_count = Commodity.select().where(Commodity.source == source).count()
+        self_count = Commodity.select(fn.SUM(Commodity.total).alias('tc')) \
+            .where((Commodity.source == source) & (Commodity.is_self == True)).dicts()[0]['tc']
+        non_self_count = Commodity.select(fn.SUM(Commodity.total).alias('tc')) \
+            .where((Commodity.source == source) & (Commodity.is_self == False)).dicts()[0]['tc']
+
+        PhonePlatform.create(
+            source=source,
+            total_count=total_count,
+            commodity_count=commodity_count,
+            self_percentage=calculate_percentage(total_count, self_count),
+            non_self_percentage=calculate_percentage(total_count, non_self_count)
+        )
+
+
+# 生成操作系统占比
+def get_phone_os():
+    # for commodity in Commodity.select():
+    #     try:
+    #         phone_os = PhoneOS.get(PhoneOS.os == commodity.os)
+    #         phone_os.total += commodity.total
+    #         phone_os.save()
+    #     except PhoneOS.DoesNotExist:
+    #         PhoneOS.create(
+    #             os=commodity.os,
+    #             total=commodity.total
+    #         )
+    total_count = PhoneOS.select(fn.SUM(PhoneOS.total).alias('tc')).dicts()[0]['tc']
+    for phone_os in PhoneOS.select():
+        phone_os.percentage = calculate_percentage(total_count, phone_os.total)
+        phone_os.save()
+
+
+# 生成品牌销量占比
+def get_phone_brand():
+    # for commodity in Commodity.select():
+    #     try:
+    #         phone_brand = PhoneBrand.get(PhoneBrand.brand == commodity.brand)
+    #         phone_brand.total += commodity.total
+    #         phone_brand.save()
+    #     except PhoneBrand.DoesNotExist:
+    #         PhoneBrand.create(
+    #             brand=commodity.brand,
+    #             total=commodity.total
+    #         )
+    total_count = PhoneBrand.select(fn.SUM(PhoneBrand.total).alias('tc')).dicts()[0]['tc']
+    print(total_count)
+    for phone_brand in PhoneBrand.select():
+        phone_brand.percentage = calculate_percentage(total_count, phone_brand.total)
+        phone_brand.save()
+        # if float(phone_brand.percentage) < 0.8:
+        #     others = PhoneBrand.get_by_id('其他品牌')
+        #     others.total += phone_brand.total
+        #     others.save()
+        #     phone_brand.delete_instance()
+
+
+# 生成品牌销量明星
+def get_brand_sales_star():
+    brand_list = ['苹果', '小米', '华为', '荣耀', 'OPPO', 'vivo']
+    for brand in brand_list:
+        for phone in Phone.select().where(Phone.brand == brand):
+            BrandSalesStar.create(
+                brand=brand,
+                model=phone.model,
+                total=phone.total
+            )
+
+
+# 生成主品牌与子品牌销量占比
+def get_brand_percentage():
+    # redmi = BrandPercentage.get(
+    #     BrandPercentage.main_brand == '小米',
+    #     BrandPercentage.sub_brand == '红米'
+    # )
+    # xiaomi = BrandPercentage.get(
+    #     BrandPercentage.main_brand == '小米',
+    #     BrandPercentage.sub_brand == '小米'
+    # )
+    # for phone in Phone.select().where(Phone.brand == '小米'):
+    #     if '小米' in phone.model:
+    #         xiaomi.total += phone.total
+    #         xiaomi.save()
+    #     if '红米' in phone.model:
+    #         redmi.total += phone.total
+    #         redmi.save()
+    #
+    # vivo = BrandPercentage.get(
+    #     BrandPercentage.main_brand == 'vivo',
+    #     BrandPercentage.sub_brand == 'vivo'
+    # )
+    # iqoo = BrandPercentage.get(
+    #     BrandPercentage.main_brand == 'vivo',
+    #     BrandPercentage.sub_brand == 'iQOO'
+    # )
+    # for phone in Phone.select().where(Phone.brand == 'vivo'):
+    #     if 'iQOO' in phone.model:
+    #         iqoo.total += phone.total
+    #         iqoo.save()
+    #     else:
+    #         vivo.total += phone.total
+    #         vivo.save()
+    #
+    # oppo = BrandPercentage.get(
+    #     BrandPercentage.main_brand == 'OPPO',
+    #     BrandPercentage.sub_brand == 'OPPO'
+    # )
+    # realme = BrandPercentage.get(
+    #     BrandPercentage.main_brand == 'OPPO',
+    #     BrandPercentage.sub_brand == 'realme'
+    # )
+    # oneplus = BrandPercentage.get(
+    #     BrandPercentage.main_brand == 'OPPO',
+    #     BrandPercentage.sub_brand == '一加'
+    # )
+    # oppo.total = Phone.select(fn.SUM(Phone.total).alias('tc')).where(Phone.brand == 'OPPO').dicts()[0]['tc']
+    # oppo.save()
+    # realme.total = Phone.select(fn.SUM(Phone.total).alias('tc')).where(Phone.brand == 'realme').dicts()[0]['tc']
+    # realme.save()
+    # oneplus.total = Phone.select(fn.SUM(Phone.total).alias('tc')).where(Phone.brand == '一加').dicts()[0]['tc']
+    # oneplus.save()
+
+    brand_list = ['小米', 'OPPO', 'vivo']
+    for brand in brand_list:
+        total_count = BrandPercentage.select(fn.SUM(BrandPercentage.total).alias('tc')) \
+            .where(BrandPercentage.main_brand == brand).dicts()[0]['tc']
+        print(total_count)
+        for bp in BrandPercentage.select().where(BrandPercentage.main_brand == brand):
+            bp.percentage = calculate_percentage(total_count, bp.total)
+            bp.save()
+
+
+# 生成功能机品牌占比
+def get_feature_phone_percentage():
+    # for commodity in Commodity.select().where(Commodity.os == '功能机'):
+    #     try:
+    #         fpp = FeaturePhonePercentage.get(FeaturePhonePercentage.brand == commodity.brand)
+    #         fpp.total += commodity.total
+    #         fpp.save()
+    #     except FeaturePhonePercentage.DoesNotExist:
+    #         FeaturePhonePercentage.create(
+    #             brand=commodity.brand,
+    #             total=commodity.total
+    #         )
+    total_count = FeaturePhonePercentage.select(fn.SUM(FeaturePhonePercentage.total).alias('tc')).dicts()[0]['tc']
+    print(total_count)
+    for fpp in FeaturePhonePercentage.select():
+        fpp.percentage = calculate_percentage(total_count, fpp.total)
+        fpp.save()
+        # if float(fpp.percentage) < 0.9:
+        #     others = FeaturePhonePercentage.get_by_id('其他品牌')
+        #     others.total += fpp.total
+        #     others.save()
+        #     fpp.delete_instance()
+
+
 if __name__ == '__main__':
-    preprocess_data()
+    # preprocess_data()
+    # get_phone()
+    # get_phone_total()
+    # get_phone_platform()
+    # get_phone_os()
+    # get_brand_sales_star()
+    # get_brand_percentage()
+    get_feature_phone_percentage()
