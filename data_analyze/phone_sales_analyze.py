@@ -1,8 +1,9 @@
 from peewee import fn
-from data_analyze.utils import calculate_percentage
+from data_analyze.utils import calculate_percentage, calculate_average, calculate_median
 from db.phone_sales_models import Commodity
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
-                                           BrandPercentage, FeaturePhonePercentage)
+                                           BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
+                                           FeaturePhoneSoCPer, PhoneSize)
 
 
 # 预处理原生数据
@@ -359,6 +360,106 @@ def get_feature_phone_percentage():
         #     fpp.delete_instance()
 
 
+# 生成SoC型号及销量
+def get_soc():
+    for commodity in Commodity.select():
+        try:
+            soc = SoC.get(
+                SoC.soc_mfrs == commodity.soc_mfrs,
+                SoC.soc_model == commodity.soc_model
+            )
+            soc.total += commodity.total
+            soc.save()
+        except SoC.DoesNotExist:
+            SoC.create(
+                soc_mfrs=commodity.soc_mfrs,
+                soc_model=commodity.soc_model,
+                total=commodity.total
+            )
+
+
+# 生成SoC制造商占比
+def get_soc_mfrs():
+    for soc in SoC.select():
+        try:
+            soc_mfrs = SoCMfrs.get_by_id(soc.soc_mfrs)
+            soc_mfrs.total += soc.total
+            soc_mfrs.save()
+        except SoCMfrs.DoesNotExist:
+            SoCMfrs.create(
+                soc_mfrs=soc.soc_mfrs,
+                total=soc.total
+            )
+    total_count = SoCMfrs.select(fn.SUM(SoCMfrs.total).alias('tc')).dicts()[0]['tc']
+    print(total_count)
+    for soc_mfrs in SoCMfrs.select():
+        soc_mfrs.percentage = calculate_percentage(total_count, soc_mfrs.total)
+        soc_mfrs.save()
+
+
+# 生成SoC制造商内部销量明星
+def get_soc_star():
+    for soc in SoC.select():
+        SoCStar.create(
+            soc_mfrs=soc.soc_mfrs,
+            soc_model=soc.soc_model,
+            total=soc.total
+        )
+
+
+# 生成功能机SoC制造商占比
+def get_feature_phone_soc_percentage():
+    # for commodity in Commodity.select().where(Commodity.os == '功能机'):
+    #     try:
+    #         fpsp = FeaturePhoneSoCPer.get(FeaturePhoneSoCPer.soc_mfrs == commodity.soc_mfrs)
+    #         fpsp.total += commodity.total
+    #         fpsp.save()
+    #     except FeaturePhoneSoCPer.DoesNotExist:
+    #         FeaturePhoneSoCPer.create(
+    #             soc_mfrs=commodity.soc_mfrs,
+    #             total=commodity.total
+    #         )
+    total_count = FeaturePhoneSoCPer.select(fn.SUM(FeaturePhoneSoCPer.total).alias('tc')).dicts()[0]['tc']
+    print(total_count)
+    for fpsp in FeaturePhoneSoCPer.select():
+        fpsp.percentage = calculate_percentage(total_count, fpsp.total)
+        fpsp.save()
+
+
+# 生成智能手机各项尺寸参数的平均数和中位数
+def get_phone_size():
+    screen_size_list = []
+    width_list = []
+    thickness_list = []
+    length_list = []
+    weight_list = []
+
+    for commodity in Commodity.select().where(Commodity.os.not_in(['功能机', '页面未注明'])):
+        if commodity.screen_size is not None:
+            screen_size_list.append(commodity.screen_size)
+        if commodity.width is not None:
+            width_list.append(commodity.width)
+        if commodity.thickness is not None:
+            thickness_list.append(commodity.thickness)
+        if commodity.length is not None:
+            length_list.append(commodity.length)
+        if commodity.weight is not None:
+            weight_list.append(commodity.weight)
+
+    PhoneSize.create(
+        screen_size_avg=calculate_average(screen_size_list, True),
+        screen_size_med=calculate_median(screen_size_list, True),
+        width_avg=calculate_average(width_list, True),
+        width_med=calculate_median(width_list, True),
+        thickness_avg=calculate_average(thickness_list, True),
+        thickness_med=calculate_median(thickness_list, True),
+        length_avg=calculate_average(length_list, True),
+        length_med=calculate_median(length_list, True),
+        weight_avg=calculate_average(weight_list, True),
+        weight_med=calculate_median(weight_list, True)
+    )
+
+
 if __name__ == '__main__':
     # preprocess_data()
     # get_phone()
@@ -367,4 +468,9 @@ if __name__ == '__main__':
     # get_phone_os()
     # get_brand_sales_star()
     # get_brand_percentage()
-    get_feature_phone_percentage()
+    # get_feature_phone_percentage()
+    # get_soc()
+    # get_soc_mfrs()
+    # get_soc_star()
+    # get_feature_phone_soc_percentage()
+    get_phone_size()

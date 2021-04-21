@@ -2,7 +2,8 @@ from flask import Blueprint, render_template, redirect, url_for
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
-                                           BrandPercentage, FeaturePhonePercentage)
+                                           BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
+                                           FeaturePhoneSoCPer, PhoneSize)
 
 views = Blueprint('views', __name__)
 
@@ -92,7 +93,7 @@ def phone():
     vivo_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'vivo'):
         vivo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
-    # OPPO与子品牌realem和一加的销量占比
+    # OPPO与子品牌realme和一加的销量占比
     oppo_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'OPPO'):
         oppo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
@@ -100,6 +101,58 @@ def phone():
     fpp = []
     for fp in FeaturePhonePercentage.select():
         fpp.append({'value': float(fp.percentage), 'name': fp.brand})
+    # SoC销量排行
+    soc_name = []
+    soc_count = []
+    for soc in SoC.select().order_by(SoC.total.asc()):
+        soc_name.append(soc.soc_mfrs + '\n' + soc.soc_model)
+        soc_count.append(soc.total)
+    # SoC制造商占比
+    socmfrs = []
+    for soc_mfrs in SoCMfrs.select():
+        socmfrs.append({'value': float(soc_mfrs.percentage), 'name': soc_mfrs.soc_mfrs})
+    # 苹果A系列SoC销量明星
+    as_model = []
+    as_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '苹果(A系列)').order_by(SoCStar.total.desc()):
+        as_model.append(soc.soc_model)
+        as_mt.append(soc.total)
+    # 紫光展锐SoC销量明星
+    unisoc_model = []
+    unisoc_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '紫光展锐').order_by(SoCStar.total.desc()):
+        unisoc_model.append(soc.soc_model)
+        unisoc_mt.append(soc.total)
+    # 三星猎户座SoC销量明星
+    exynos_model = []
+    exynos_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '三星猎户座').order_by(SoCStar.total.desc()):
+        exynos_model.append(soc.soc_model)
+        exynos_mt.append(soc.total)
+    # 高通骁龙SoC销量明星
+    snapdragon_model = []
+    snapdragon_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '高通骁龙').order_by(SoCStar.total.desc()):
+        snapdragon_model.append(soc.soc_model)
+        snapdragon_mt.append(soc.total)
+    # 海思麒麟SoC销量明星
+    kirin_model = []
+    kirin_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '海思麒麟').order_by(SoCStar.total.desc()):
+        kirin_model.append(soc.soc_model)
+        kirin_mt.append(soc.total)
+    # 联发科SoC销量明星
+    mtk_model = []
+    mtk_mt = []
+    for soc in SoCStar.select().where(SoCStar.soc_mfrs == '联发科').order_by(SoCStar.total.desc()):
+        mtk_model.append(soc.soc_model)
+        mtk_mt.append(soc.total)
+    # 功能机SoC制造商占比
+    fpsp = []
+    for fps in FeaturePhoneSoCPer.select():
+        fpsp.append({'value': float(fps.percentage), 'name': fps.soc_mfrs})
+    # 智能手机各项尺寸参数的平均数和中位数
+    phone_size = PhoneSize.get_by_id(1)
 
     return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total,
                            platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
@@ -107,7 +160,12 @@ def phone():
                            apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model, mi_mt=mi_mt,
                            hw_model=hw_model, hw_mt=hw_mt, honor_model=honor_model, honor_mt=honor_mt,
                            oppo_model=oppo_model, oppo_mt=oppo_mt, vivo_model=vivo_model, vivo_mt=vivo_mt,
-                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, fpp=fpp)
+                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, fpp=fpp, soc_name=soc_name,
+                           soc_count=soc_count, soc_mfrs=socmfrs, as_model=as_model, as_mt=as_mt,
+                           unisoc_model=unisoc_model, unisoc_mt=unisoc_mt, exynos_model=exynos_model,
+                           exynos_mt=exynos_mt, snapdragon_model=snapdragon_model, snapdragon_mt=snapdragon_mt,
+                           kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt, fpsp=fpsp,
+                           phone_size=phone_size)
 
 
 @views.route('/phone/mi10')

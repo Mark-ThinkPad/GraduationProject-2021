@@ -1,4 +1,3 @@
-import peewee
 import peewee as pw
 from conf.settings import DATABASE_DIR
 
@@ -80,7 +79,55 @@ class FeaturePhonePercentage(BaseModel):
     percentage = pw.CharField(max_length=4, null=True)
 
 
+# SoC销量
+class SoC(BaseModel):
+    soc_mfrs = pw.CharField(max_length=10)  # SoC制造商, mfrs为manufacturer的缩写
+    soc_model = pw.CharField(max_length=20)  # SoC型号
+    total = pw.IntegerField()  # 销量
+
+    class Meta:
+        primary_key = pw.CompositeKey('soc_mfrs', 'soc_model')
+
+
+# SoC制造商占比
+class SoCMfrs(BaseModel):
+    soc_mfrs = pw.CharField(max_length=10, primary_key=True)  # SoC制造商, mfrs为manufacturer的缩写
+    total = pw.IntegerField()
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# SoC制造商内部销量明星
+class SoCStar(BaseModel):
+    soc_mfrs = pw.CharField(max_length=10)  # SoC制造商, mfrs为manufacturer的缩写
+    soc_model = pw.CharField(max_length=20)  # SoC型号
+    total = pw.IntegerField()
+
+    class Meta:
+        primary_key = pw.CompositeKey('soc_mfrs', 'soc_model')
+
+
+# 功能机SoC制造商占比
+class FeaturePhoneSoCPer(BaseModel):
+    soc_mfrs = pw.CharField(max_length=10, primary_key=True)
+    total = pw.IntegerField()
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# 智能手机各项尺寸参数的平均数和中位数
+class PhoneSize(BaseModel):
+    screen_size_avg = pw.CharField(max_length=6)  # 屏幕尺寸平均数
+    screen_size_med = pw.CharField(max_length=6)  # 屏幕尺寸中位数
+    width_avg = pw.CharField(max_length=6)
+    width_med = pw.CharField(max_length=6)
+    thickness_avg = pw.CharField(max_length=6)
+    thickness_med = pw.CharField(max_length=6)
+    length_avg = pw.CharField(max_length=6)
+    length_med = pw.CharField(max_length=6)
+    weight_avg = pw.CharField(max_length=6)
+    weight_med = pw.CharField(max_length=6)
+
+
 if __name__ == '__main__':
-    # phone_sales_analyze_db.create_tables([Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
-    #                                       BrandPercentage, FeaturePhonePercentage])
-    FeaturePhonePercentage.create_table()
+    phone_sales_analyze_db.create_tables([Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
+                                          BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
+                                          FeaturePhoneSoCPer, PhoneSize])

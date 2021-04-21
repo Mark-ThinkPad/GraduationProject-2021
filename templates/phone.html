@@ -1,61 +1,117 @@
 {% extends "base.html" %}
 {% block main %}
-  <div class="columns is-multiline">
-    <div class="column is-half uniform-height" id="total">
-      <div class="card is-shadowless">
-        <header class="card-header is-shadowless">
-          <p class="card-header-title">
-            <span>手机销售数据总览</span>
-          </p>
-          <p class="card-header-icon">
-            <span>数据来自京东和苏宁</span>
-          </p>
-        </header>
-        <div class="card-content">
-          <table class="table is-bordered is-striped is-hoverable is-fullwidth">
-            <thead>
-              <tr>
-                <th>项目</th>
-                <th>数量</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>总销量</td>
-                <td>{{ total.total_count }} 台</td>
-              </tr>
-              <tr>
-                <td>商品数量</td>
-                <td>{{ total.commodity_count }} 件</td>
-              </tr>
-              <tr>
-                <td>品牌数量</td>
-                <td>{{ total.brand_count }} 个</td>
-              </tr>
-              <tr>
-                <td>机型数量</td>
-                <td>{{ total.model_count }} 种</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height" id="total">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">
+          <span>手机销售数据总览</span>
+        </p>
+        <p class="card-header-icon">
+          <span>数据来自京东和苏宁</span>
+        </p>
+      </header>
+      <div class="card-content">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>项目</th>
+              <th>数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>总销量</td>
+              <td>{{ total.total_count }} 台</td>
+            </tr>
+            <tr>
+              <td>商品数量</td>
+              <td>{{ total.commodity_count }} 件</td>
+            </tr>
+            <tr>
+              <td>品牌数量</td>
+              <td>{{ total.brand_count }} 个</td>
+            </tr>
+            <tr>
+              <td>机型数量</td>
+              <td>{{ total.model_count }} 种</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-    <div class="column is-half uniform-height" id="platform"></div>
-    <div class="column is-full more-height" id="phone"></div>
-    <div class="column is-half uniform-height" id="phone_os"></div>
-    <div class="column is-half uniform-height" id="phone_brand"></div>
-    <div class="column is-full uniform-height" id="apple_sales_star"></div>
-    <div class="column is-full uniform-height" id="mi_sales_star"></div>
-    <div class="column is-full uniform-height" id="hw_sales_star"></div>
-    <div class="column is-full uniform-height" id="honor_sales_star"></div>
-    <div class="column is-full uniform-height" id="oppo_sales_star"></div>
-    <div class="column is-full uniform-height" id="vivo_sales_star"></div>
-    <div class="column is-half uniform-height" id="mi_percentage"></div>
-    <div class="column is-half uniform-height" id="vivo_percentage"></div>
-    <div class="column is-half uniform-height" id="oppo_percentage"></div>
-    <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
   </div>
+  <div class="column is-half uniform-height" id="platform"></div>
+  <div class="column is-full more-height" id="phone"></div>
+  <div class="column is-half uniform-height" id="phone_os"></div>
+  <div class="column is-half uniform-height" id="phone_brand"></div>
+  <div class="column is-full uniform-height" id="apple_sales_star"></div>
+  <div class="column is-full uniform-height" id="mi_sales_star"></div>
+  <div class="column is-full uniform-height" id="hw_sales_star"></div>
+  <div class="column is-full uniform-height" id="honor_sales_star"></div>
+  <div class="column is-full uniform-height" id="oppo_sales_star"></div>
+  <div class="column is-full uniform-height" id="vivo_sales_star"></div>
+  <div class="column is-half uniform-height" id="mi_percentage"></div>
+  <div class="column is-half uniform-height" id="vivo_percentage"></div>
+  <div class="column is-half uniform-height" id="oppo_percentage"></div>
+  <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
+  <div class="column is-full more-height" id="soc"></div>
+  <div class="column is-half uniform-height" id="soc_mfrs"></div>
+  <div class="column is-half uniform-height" id="as_star"></div>
+  <div class="column is-half uniform-height" id="unisoc_star"></div>
+  <div class="column is-half uniform-height" id="exynos_star"></div>
+  <div class="column is-full uniform-height" id="snapdragon_star"></div>
+  <div class="column is-full uniform-height" id="kirin_star"></div>
+  <div class="column is-full uniform-height" id="mtk_star"></div>
+  <div class="column is-half uniform-height" id="feature_phone_soc_per"></div>
+  <div class="column is-half uniform-height" id="phone_size">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">
+          <span>智能手机各项尺寸参数的平均数和中位数</span>
+        </p>
+      </header>
+      <div class="card-content">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>参数</th>
+              <th>平均数</th>
+              <th>中位数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>屏幕尺寸</td>
+              <td>{{ phone_size.screen_size_avg }} 英寸</td>
+              <td>{{ phone_size.screen_size_med }} 英寸</td>
+            </tr>
+            <tr>
+              <td>机身宽度</td>
+              <td>{{ phone_size.width_avg }} mm</td>
+              <td>{{ phone_size.width_med }} mm</td>
+            </tr>
+            <tr>
+              <td>机身厚度</td>
+              <td>{{ phone_size.thickness_avg }} mm</td>
+              <td>{{ phone_size.thickness_med }} mm</td>
+            </tr>
+            <tr>
+              <td>机身长度</td>
+              <td>{{ phone_size.length_avg }} mm</td>
+              <td>{{ phone_size.length_med }} mm</td>
+            </tr>
+            <tr>
+              <td>裸机重量</td>
+              <td>{{ phone_size.weight_avg }} g</td>
+              <td>{{ phone_size.weight_med }} g</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
 
 {% block js %}
@@ -761,5 +817,464 @@ let fpp_option = {
   ]
 };
 fpp_chart.setOption(fpp_option);
+</script>
+
+<script>
+// SoC销量排行横向条形图
+let soc_dom = document.getElementById("soc");
+let soc_chart = echarts.init(soc_dom);
+let soc_option = {
+  title: {
+    text: 'SoC销量排行',
+    subtext: '数据来自京东和苏宁 (基于手机销量计算) (下滑查看更多型号)',
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'shadow'
+    }
+  },
+  dataZoom: [
+    {
+      type: 'slider',
+      yAxisIndex: 0,
+      zoomLock: true,
+      width: 10,
+      right: 10,
+      top: 70,
+      bottom: 20,
+      start: 92,
+      end: 100,
+      handleSize: 0,
+      showDetail: false,
+    },
+    {
+      type: 'inside',
+      yAxisIndex: 0,
+      start: 92,
+      end: 100,
+      zoomOnMouseWheel: false,
+      moveOnMouseMove: true,
+      moveOnMouseWheel: true
+    }
+  ],
+  legend: {
+    data: ['销量(片)']
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} 片'
+    },
+    min: 0,
+  },
+  yAxis: {
+    type: 'category',
+    data: {{ soc_name | tojson }},
+  },
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      data: {{ soc_count | tojson }}
+    }
+  ]
+};
+soc_chart.setOption(soc_option);
+</script>
+
+<script>
+// SoC制造商销量占比饼图
+let soc_mfrs_dom = document.getElementById("soc_mfrs");
+let soc_mfrs_chart = echarts.init(soc_mfrs_dom);
+let soc_mfrs_option = {
+  title: {
+    text: 'SoC制造商销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: 'SoC制造商',
+      type: 'pie',
+      radius: '50%',
+      data: {{ soc_mfrs | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+soc_mfrs_chart.setOption(soc_mfrs_option);
+</script>
+
+<script>
+// 苹果A系列SoC销量明星柱状图
+let as_star_dom = document.getElementById("as_star");
+let as_star_chart = echarts.init(as_star_dom);
+let as_star_option = {
+  title: {
+    text: "苹果A系列SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ as_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ as_mt | tojson }}
+    }
+  ]
+};
+as_star_chart.setOption(as_star_option);
+</script>
+
+<script>
+// 紫光展锐SoC销量明星柱状图
+let unisoc_star_dom = document.getElementById("unisoc_star");
+let unisoc_star_chart = echarts.init(unisoc_star_dom);
+let unisoc_star_option = {
+  title: {
+    text: "紫光展锐SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ unisoc_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ unisoc_mt | tojson }}
+    }
+  ]
+};
+unisoc_star_chart.setOption(unisoc_star_option);
+</script>
+
+<script>
+// 三星猎户座SoC销量明星柱状图
+let exynos_star_dom = document.getElementById("exynos_star");
+let exynos_star_chart = echarts.init(exynos_star_dom);
+let exynos_star_option = {
+  title: {
+    text: "三星猎户座SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ exynos_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ exynos_mt | tojson }}
+    }
+  ]
+};
+exynos_star_chart.setOption(exynos_star_option);
+</script>
+
+<script>
+// 高通骁龙SoC销量明星柱状图
+let snapdragon_star_dom = document.getElementById("snapdragon_star");
+let snapdragon_star_chart = echarts.init(snapdragon_star_dom);
+let snapdragon_star_option = {
+  title: {
+    text: "高通骁龙SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ snapdragon_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ snapdragon_mt | tojson }}
+    }
+  ]
+};
+snapdragon_star_chart.setOption(snapdragon_star_option);
+</script>
+
+<script>
+// 海思麒麟SoC销量明星柱状图
+let kirin_star_dom = document.getElementById("kirin_star");
+let kirin_star_chart = echarts.init(kirin_star_dom);
+let kirin_star_option = {
+  title: {
+    text: "海思麒麟SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ kirin_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ kirin_mt | tojson }}
+    }
+  ]
+};
+kirin_star_chart.setOption(kirin_star_option);
+</script>
+
+<script>
+// 联发科SoC销量明星柱状图
+let mtk_star_dom = document.getElementById("mtk_star");
+let mtk_star_chart = echarts.init(mtk_star_dom);
+let mtk_star_option = {
+  title: {
+    text: "联发科SoC销量明星",
+    left: '5%'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+    }
+  },
+  grid: {
+    left: '3%',
+    right: '4%',
+    bottom: '3%',
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: 'category',
+      data: {{ mtk_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: 'value',
+      axisLabel: {
+        formatter: '{value} 片'
+      }
+    }
+  ],
+  series: [
+    {
+      name: '销量(片)',
+      type: 'bar',
+      barWidth: '60%',
+      data: {{ mtk_mt | tojson }}
+    }
+  ]
+};
+mtk_star_chart.setOption(mtk_star_option);
+</script>
+
+<script>
+// 功能机SoC制造商占比饼图
+let fpsp_dom = document.getElementById("feature_phone_soc_per");
+let fpsp_chart = echarts.init(fpsp_dom);
+let fpsp_option = {
+  title: {
+    text: '功能机SoC制造商销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '品牌',
+      type: 'pie',
+      radius: '50%',
+      data: {{ fpsp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+fpsp_chart.setOption(fpsp_option);
 </script>
 {% endblock %}
