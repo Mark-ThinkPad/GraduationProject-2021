@@ -56,5 +56,4 @@ class YouPinURL(BaseModel):
 
 
 if __name__ == '__main__':
-    # wireless_headphone_db.create_tables([Commodity, JDTargetSku, JDExistedSku, SNTargetSku, SNExistedSku, YouPinURL])
-    YouPinURL.create_table()
+    wireless_headphone_db.create_tables([Commodity, JDTargetSku, JDExistedSku, SNTargetSku, SNExistedSku, YouPinURL])

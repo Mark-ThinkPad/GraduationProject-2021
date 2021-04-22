@@ -1,13 +1,8 @@
-import json
 from time import sleep
 from selenium.webdriver import Chrome
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import NoSuchElementException
 from db.wireless_headphone_models import Commodity, YouPinURL
-from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          waiting_content_loading, open_second_window, back_to_first_window)
+from spider.utils import get_chrome_driver, open_second_window, back_to_first_window
 
 
 def get_wireless_headphone_from_youpin(browser: Chrome):
@@ -69,6 +64,20 @@ def insert_youpin_all_commodity(browser: Chrome):
 
         # 打开并切换到当前商品页面
         switch_to_current_sku_page(browser, commodity.url)
+
+        commodity.title = browser.find_element_by_css_selector('.good-name.fl').text
+        commodity.model = commodity.title
+        commodity.price = float(browser.find_element_by_class_name('value').text)
+        commodity.shop_name = browser.find_element_by_class_name('title-content').text
+        commodity.brand = browser.find_element_by_css_selector('.title-content > h6:nth-child(1)').text
+
+        # 判断是否为小米自营
+        try:
+            browser.find_element_by_css_selector('.label.self')
+            commodity.is_self = True
+        except NoSuchElementException:
+            commodity.is_self = False
+
         # 打开评论页面并获取总销量
         browser.execute_script('document.querySelector("li.info-nav-item:nth-child(2)").click()')
         sleep(1)
@@ -77,15 +86,14 @@ def insert_youpin_all_commodity(browser: Chrome):
         total_str = total_str.lstrip('全部(').rstrip(')').strip()
         commodity.total = int(total_str)
 
-        break
-        # # 保存商品信息
-        # commodity.save()
-        # # 删除已经保存的商品URL链接
-        # delete_saved_commodity_url(commodity.url)
-        # print(f'------SKU编号为 {sku} 的商品信息保存完毕------')
-        # # 回到无线耳机分类页面
-        # back_to_first_window(browser)
-        # sleep(2)
+        # 保存商品信息
+        commodity.save()
+        # 删除已经保存的商品URL链接
+        delete_saved_commodity_url(commodity.url)
+        print(f'------URL为 {commodity.url} 的商品信息保存完毕------')
+        # 回到无线耳机分类页面
+        back_to_first_window(browser)
+        sleep(2)
 
 
 # 打开并切换到当前商品页面
