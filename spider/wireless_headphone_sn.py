@@ -12,7 +12,7 @@ from spider.utils import (get_chrome_driver, get_response_body_list, window_scro
 
 
 def get_wireless_headphone_from_sn(browser: Chrome):
-    # 打开京东无线耳机分类
+    # 打开苏宁无线耳机分类
     # url_list = [
     #     'https://search.suning.com/%E6%97%A0%E7%BA%BF%E8%80%B3%E6%9C%BA/',
     #     'https://search.suning.com/%E8%93%9D%E7%89%99%E8%80%B3%E6%9C%BA/',
@@ -20,7 +20,7 @@ def get_wireless_headphone_from_sn(browser: Chrome):
     #     'https://list.suning.com/0-232003-0-0-0-0-0-0-0-0-47313.html'
     # ]
     # for url in url_list:
-    #     print(f'------正在 打开苏宁无线耳机分类页面------')
+    #     print(f'------正在打开苏宁无线耳机分类页面------')
     #     browser.get(url)
     #     # 保存将要获取的所有商品SKU编号
     #     insert_sn_all_target_sku(browser)

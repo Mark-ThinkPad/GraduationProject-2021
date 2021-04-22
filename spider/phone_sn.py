@@ -12,7 +12,7 @@ from spider.utils import (get_chrome_driver, get_response_body_list, window_scro
 
 
 def get_phone_sales_from_sn(browser: Chrome):
-    # 打开京东手机分类
+    # 打开苏宁手机分类
     print(f'------打开苏宁手机分类页面------')
     browser.get('https://list.suning.com/0-20006-0.html?safp=d488778a.phone2018.103327226422.2&safc=cate.0.0&safpn'
                 '=10003.00006')

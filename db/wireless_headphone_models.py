@@ -50,5 +50,11 @@ class SNExistedSku(BaseModel):
         primary_key = pw.CompositeKey('shop_code', 'sku')
 
 
+# 小米有品所有将要获取的商品URL链接
+class YouPinURL(BaseModel):
+    url = pw.CharField(max_length=120, primary_key=True)
+
+
 if __name__ == '__main__':
-    wireless_headphone_db.create_tables([Commodity, JDTargetSku, JDExistedSku, SNTargetSku, SNExistedSku])
+    # wireless_headphone_db.create_tables([Commodity, JDTargetSku, JDExistedSku, SNTargetSku, SNExistedSku, YouPinURL])
+    YouPinURL.create_table()
