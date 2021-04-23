@@ -3,7 +3,7 @@ from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCou
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                            BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                           FeaturePhoneSoCPer, PhoneSize)
+                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand)
 
 views = Blueprint('views', __name__)
 
@@ -153,6 +153,23 @@ def phone():
         fpsp.append({'value': float(fps.percentage), 'name': fps.soc_mfrs})
     # 智能手机各项尺寸参数的平均数和中位数
     phone_size = PhoneSize.get_by_id(1)
+    # 智能手机与功能机价格区间与销量分布
+    ppas_sp = []
+    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '智能手机'):
+        ppas_sp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
+    ppas_fp = []
+    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '功能机'):
+        ppas_fp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
+    # 智能手机在不同价格区间的品牌销量占比
+    ppab_b2k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000元以下'):
+        ppab_b2k.append({'value': float(ppab.percentage), 'name': ppab.brand})
+    ppab_2kto5k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000-5000元'):
+        ppab_2kto5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
+    ppab_a5k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '5000元以上'):
+        ppab_a5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
 
     return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total,
                            platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
@@ -165,7 +182,8 @@ def phone():
                            unisoc_model=unisoc_model, unisoc_mt=unisoc_mt, exynos_model=exynos_model,
                            exynos_mt=exynos_mt, snapdragon_model=snapdragon_model, snapdragon_mt=snapdragon_mt,
                            kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt, fpsp=fpsp,
-                           phone_size=phone_size)
+                           phone_size=phone_size, ppas_sp=ppas_sp, ppas_fp=ppas_fp, ppab_b2k=ppab_b2k,
+                           ppab_2kto5k=ppab_2kto5k, ppab_a5k=ppab_a5k)
 
 
 @views.route('/phone/mi10')

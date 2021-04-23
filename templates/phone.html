@@ -45,25 +45,11 @@
   <div class="column is-full more-height" id="phone"></div>
   <div class="column is-half uniform-height" id="phone_os"></div>
   <div class="column is-half uniform-height" id="phone_brand"></div>
-  <div class="column is-full uniform-height" id="apple_sales_star"></div>
-  <div class="column is-full uniform-height" id="mi_sales_star"></div>
-  <div class="column is-full uniform-height" id="hw_sales_star"></div>
-  <div class="column is-full uniform-height" id="honor_sales_star"></div>
-  <div class="column is-full uniform-height" id="oppo_sales_star"></div>
-  <div class="column is-full uniform-height" id="vivo_sales_star"></div>
-  <div class="column is-half uniform-height" id="mi_percentage"></div>
-  <div class="column is-half uniform-height" id="vivo_percentage"></div>
-  <div class="column is-half uniform-height" id="oppo_percentage"></div>
-  <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
-  <div class="column is-full more-height" id="soc"></div>
-  <div class="column is-half uniform-height" id="soc_mfrs"></div>
-  <div class="column is-half uniform-height" id="as_star"></div>
-  <div class="column is-half uniform-height" id="unisoc_star"></div>
-  <div class="column is-half uniform-height" id="exynos_star"></div>
-  <div class="column is-full uniform-height" id="snapdragon_star"></div>
-  <div class="column is-full uniform-height" id="kirin_star"></div>
-  <div class="column is-full uniform-height" id="mtk_star"></div>
-  <div class="column is-half uniform-height" id="feature_phone_soc_per"></div>
+  <div class="column is-half uniform-height" id="ppas_sp"></div>
+  <div class="column is-half uniform-height" id="ppas_fp"></div>
+  <div class="column is-half uniform-height" id="ppab_b2k"></div>
+  <div class="column is-half uniform-height" id="ppab_2kto5k"></div>
+  <div class="column is-half uniform-height" id="ppab_a5k"></div>
   <div class="column is-half uniform-height" id="phone_size">
     <div class="card is-shadowless">
       <header class="card-header is-shadowless">
@@ -111,6 +97,25 @@
       </div>
     </div>
   </div>
+  <div class="column is-full uniform-height" id="apple_sales_star"></div>
+  <div class="column is-full uniform-height" id="mi_sales_star"></div>
+  <div class="column is-full uniform-height" id="hw_sales_star"></div>
+  <div class="column is-full uniform-height" id="honor_sales_star"></div>
+  <div class="column is-full uniform-height" id="oppo_sales_star"></div>
+  <div class="column is-full uniform-height" id="vivo_sales_star"></div>
+  <div class="column is-half uniform-height" id="mi_percentage"></div>
+  <div class="column is-half uniform-height" id="vivo_percentage"></div>
+  <div class="column is-half uniform-height" id="oppo_percentage"></div>
+  <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
+  <div class="column is-full more-height" id="soc"></div>
+  <div class="column is-half uniform-height" id="soc_mfrs"></div>
+  <div class="column is-half uniform-height" id="feature_phone_soc_per"></div>
+  <div class="column is-half uniform-height" id="as_star"></div>
+  <div class="column is-half uniform-height" id="exynos_star"></div>
+  <div class="column is-full uniform-height" id="snapdragon_star"></div>
+  <div class="column is-full uniform-height" id="kirin_star"></div>
+  <div class="column is-full uniform-height" id="mtk_star"></div>
+  <div class="column is-full uniform-height" id="unisoc_star"></div>
 </div>
 {% endblock %}
 
@@ -1276,5 +1281,180 @@ let fpsp_option = {
   ]
 };
 fpsp_chart.setOption(fpsp_option);
+</script>
+
+<script>
+// 智能手机不同价格区间与销量分布饼图
+let ppas_sp_dom = document.getElementById("ppas_sp");
+let ppas_sp_chart = echarts.init(ppas_sp_dom);
+let ppas_sp_option = {
+  title: {
+    text: '智能手机不同价格区间与销量分布',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '销量占比',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ppas_sp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ppas_sp_chart.setOption(ppas_sp_option);
+</script>
+
+<script>
+// 功能机不同价格区间与销量分布饼图
+let ppas_fp_dom = document.getElementById("ppas_fp");
+let ppas_fp_chart = echarts.init(ppas_fp_dom);
+let ppas_fp_option = {
+  title: {
+    text: '功能机不同价格区间与销量分布',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '销量占比',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ppas_fp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ppas_fp_chart.setOption(ppas_fp_option);
+</script>
+
+<script>
+// 智能手机在2000元以下的品牌销量占比饼图
+let ppab_b2k_dom = document.getElementById("ppab_b2k");
+let ppab_b2k_chart = echarts.init(ppab_b2k_dom);
+let ppab_b2k_option = {
+  title: {
+    text: '智能手机在2000元以下的品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '销量占比',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ppab_b2k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ppab_b2k_chart.setOption(ppab_b2k_option);
+</script>
+
+<script>
+// 智能手机在2000到5000元之间的品牌销量占比饼图
+let ppab_2kto5k_dom = document.getElementById("ppab_2kto5k");
+let ppab_2kto5k_chart = echarts.init(ppab_2kto5k_dom);
+let ppab_2kto5k_option = {
+  title: {
+    text: '智能手机在2000到5000元之间的品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '销量占比',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ppab_2kto5k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ppab_2kto5k_chart.setOption(ppab_2kto5k_option);
+</script>
+
+<script>
+// 智能手机在5000元以上的品牌销量占比饼图
+let ppab_a5k_dom = document.getElementById("ppab_a5k");
+let ppab_a5k_chart = echarts.init(ppab_a5k_dom);
+let ppab_a5k_option = {
+  title: {
+    text: '智能手机在5000元以上的品牌销量占比',
+    left: 'center'
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  legend: {
+    orient: 'vertical',
+    left: 'left',
+  },
+  series: [
+    {
+      name: '销量占比',
+      type: 'pie',
+      radius: '50%',
+      data: {{ ppab_a5k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        }
+      }
+    }
+  ]
+};
+ppab_a5k_chart.setOption(ppab_a5k_option);
 </script>
 {% endblock %}

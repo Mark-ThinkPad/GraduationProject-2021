@@ -3,7 +3,7 @@ from data_analyze.utils import calculate_percentage, calculate_average, calculat
 from db.phone_sales_models import Commodity
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                            BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                           FeaturePhoneSoCPer, PhoneSize)
+                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand)
 
 
 # 预处理原生数据
@@ -460,6 +460,152 @@ def get_phone_size():
     )
 
 
+# 生成智能手机与功能机价格区间与销量分布
+def get_phone_price_and_sales():
+    # PhonePriceAndSales.create(
+    #     type='功能机',
+    #     price_range='500-1000元',
+    #     total=0
+    # )
+
+    # for commodity in Commodity.select().where(Commodity.os.in_(['Android', 'iOS'])):
+    #     if 0 < commodity.price < 500:
+    #         ppas = PhonePriceAndSales.get_by_id(1)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 500 <= commodity.price < 1000:
+    #         ppas = PhonePriceAndSales.get_by_id(2)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 1000 <= commodity.price < 2000:
+    #         ppas = PhonePriceAndSales.get_by_id(3)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 2000 <= commodity.price < 3000:
+    #         ppas = PhonePriceAndSales.get_by_id(4)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 3000 <= commodity.price < 4000:
+    #         ppas = PhonePriceAndSales.get_by_id(5)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 4000 <= commodity.price < 5000:
+    #         ppas = PhonePriceAndSales.get_by_id(6)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if 5000 <= commodity.price < 8000:
+    #         ppas = PhonePriceAndSales.get_by_id(7)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+    #     if commodity.price >= 8000:
+    #         ppas = PhonePriceAndSales.get_by_id(8)
+    #         ppas.total += commodity.total
+    #         ppas.save()
+
+    # total_count = PhonePriceAndSales.select(fn.SUM(PhonePriceAndSales.total).alias('tc')) \
+    #     .where(PhonePriceAndSales.type == '智能手机').dicts()[0]['tc']
+    # print(total_count)
+    # for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '智能手机'):
+    #     ppas.percentage = calculate_percentage(total_count, ppas.total)
+    #     ppas.save()
+
+    for commodity in Commodity.select().where(Commodity.os.in_(['功能机'])):
+        if 0 < commodity.price < 100:
+            ppas = PhonePriceAndSales.get_by_id(9)
+            ppas.total += commodity.total
+            ppas.save()
+        if 100 <= commodity.price < 200:
+            ppas = PhonePriceAndSales.get_by_id(10)
+            ppas.total += commodity.total
+            ppas.save()
+        if 200 <= commodity.price < 300:
+            ppas = PhonePriceAndSales.get_by_id(11)
+            ppas.total += commodity.total
+            ppas.save()
+        if 300 <= commodity.price < 400:
+            ppas = PhonePriceAndSales.get_by_id(12)
+            ppas.total += commodity.total
+            ppas.save()
+        if 400 <= commodity.price < 500:
+            ppas = PhonePriceAndSales.get_by_id(13)
+            ppas.total += commodity.total
+            ppas.save()
+        if 500 <= commodity.price < 1000:
+            ppas = PhonePriceAndSales.get_by_id(14)
+            ppas.total += commodity.total
+            ppas.save()
+
+    total_count = PhonePriceAndSales.select(fn.SUM(PhonePriceAndSales.total).alias('tc')) \
+        .where(PhonePriceAndSales.type == '功能机').dicts()[0]['tc']
+    print(total_count)
+    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '功能机'):
+        ppas.percentage = calculate_percentage(total_count, ppas.total)
+        ppas.save()
+
+
+# 生成智能手机在不同价格区间的品牌销量占比
+def get_phone_price_and_brand():
+    # for commodity in Commodity.select().where(Commodity.os.in_(['Android', 'iOS'])):
+    #     if 0 < commodity.price < 2000:
+    #         try:
+    #             ppab = PhonePriceAndBrand.get(
+    #                 PhonePriceAndBrand.price_range == '2000元以下',
+    #                 PhonePriceAndBrand.brand == commodity.brand
+    #             )
+    #             ppab.total += commodity.total
+    #             ppab.save()
+    #         except PhonePriceAndBrand.DoesNotExist:
+    #             PhonePriceAndBrand.create(
+    #                 price_range='2000元以下',
+    #                 brand=commodity.brand,
+    #                 total=commodity.total
+    #             )
+    #     if 2000 <= commodity.price < 5000:
+    #         try:
+    #             ppab = PhonePriceAndBrand.get(
+    #                 PhonePriceAndBrand.price_range == '2000-5000元',
+    #                 PhonePriceAndBrand.brand == commodity.brand
+    #             )
+    #             ppab.total += commodity.total
+    #             ppab.save()
+    #         except PhonePriceAndBrand.DoesNotExist:
+    #             PhonePriceAndBrand.create(
+    #                 price_range='2000-5000元',
+    #                 brand=commodity.brand,
+    #                 total=commodity.total
+    #             )
+    #     if commodity.price >= 5000:
+    #         try:
+    #             ppab = PhonePriceAndBrand.get(
+    #                 PhonePriceAndBrand.price_range == '5000元以上',
+    #                 PhonePriceAndBrand.brand == commodity.brand
+    #             )
+    #             ppab.total += commodity.total
+    #             ppab.save()
+    #         except PhonePriceAndBrand.DoesNotExist:
+    #             PhonePriceAndBrand.create(
+    #                 price_range='5000元以上',
+    #                 brand=commodity.brand,
+    #                 total=commodity.total
+    #             )
+    range_list = ['2000元以下', '2000-5000元', '5000元以上']
+    for pr in range_list:
+        total_count = PhonePriceAndBrand.select(fn.SUM(PhonePriceAndBrand.total).alias('tc')) \
+            .where(PhonePriceAndBrand.price_range == pr).dicts()[0]['tc']
+        print(total_count)
+        for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == pr):
+            ppab.percentage = calculate_percentage(total_count, ppab.total)
+            ppab.save()
+            # if float(ppab.percentage) < 1:
+            #     others = PhonePriceAndBrand.get(
+            #         PhonePriceAndBrand.price_range == pr,
+            #         PhonePriceAndBrand.brand == '其他品牌'
+            #     )
+            #     others.total += ppab.total
+            #     others.save()
+            #     ppab.delete_instance()
+
+
 if __name__ == '__main__':
     # preprocess_data()
     # get_phone()
@@ -473,4 +619,6 @@ if __name__ == '__main__':
     # get_soc_mfrs()
     # get_soc_star()
     # get_feature_phone_soc_percentage()
-    get_phone_size()
+    # get_phone_size()
+    # get_phone_price_and_sales()
+    get_phone_price_and_brand()

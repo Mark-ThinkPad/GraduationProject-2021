@@ -127,7 +127,26 @@ class PhoneSize(BaseModel):
     weight_med = pw.CharField(max_length=6)
 
 
+# 智能手机与功能机价格区间与销量分布
+class PhonePriceAndSales(BaseModel):
+    type = pw.CharField(max_length=4)
+    price_range = pw.CharField(max_length=20)
+    total = pw.IntegerField()
+    percentage = pw.CharField(max_length=4, null=True)
+
+
+# 智能手机在不同价格区间的品牌销量占比
+class PhonePriceAndBrand(BaseModel):
+    price_range = pw.CharField(max_length=20)
+    brand = pw.CharField(max_length=20)
+    total = pw.IntegerField()
+    percentage = pw.CharField(max_length=4, null=True)
+
+    class Meta:
+        primary_key = pw.CompositeKey('price_range', 'brand')
+
+
 if __name__ == '__main__':
     phone_sales_analyze_db.create_tables([Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                           BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                          FeaturePhoneSoCPer, PhoneSize])
+                                          FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand])
