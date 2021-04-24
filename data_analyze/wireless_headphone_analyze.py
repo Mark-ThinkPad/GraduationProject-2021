@@ -13,7 +13,7 @@ def preprocess_data():
     #     print(commodity.brand)
 
     # 规范产品名
-    target_brand = 'AKG'
+    target_brand = 'B&O'
     name_list = ['']
     Commodity.update(model='').where((Commodity.model.in_(name_list)) & (Commodity.brand == target_brand))\
         .execute()
