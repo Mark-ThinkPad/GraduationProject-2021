@@ -4,6 +4,8 @@ from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCou
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                            BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
                                            FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand)
+from db.wireless_headphone_analyze_models import (WH, WHTotal, WHSelfPer, WHBrand, WHBrandSalesStar, WHPriceAndSales,
+                                                  WHPriceAndBrand)
 
 views = Blueprint('views', __name__)
 
@@ -261,3 +263,91 @@ def mi10():
                            ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym, cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per,
                            odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per,
                            udc_system=udc_system)
+
+
+@views.route('/wirelessheadphone')
+def wireless_headphone():
+    # 数据总览
+    total = WHTotal.get_by_id(1)
+    # 自营与非自营销量比例
+    wh_self_per = WHSelfPer.get_by_id(1)
+    # 无线耳机销量排行
+    wh_name = []
+    wh_count = []
+    for item in WH.select().order_by(WH.total.asc()):
+        wh_name.append(item.brand + '\n' + item.model[:20])
+        wh_count.append(item.total)
+    # 品牌销量占比
+    whbrand = []
+    for wh_brand in WHBrand.select():
+        whbrand.append({'value': float(wh_brand.percentage), 'name': wh_brand.brand})
+    # 无线耳机在不同价格区间与销量分布
+    wh_pas = []
+    for whpas in WHPriceAndSales.select():
+        wh_pas.append({'value': float(whpas.percentage), 'name': whpas.price_range})
+    # 无线耳机在不同价格区间的品牌销量占比
+    wh_pab_b2h = []
+    for wh_pab in WHPriceAndBrand.select().where(WHPriceAndBrand.price_range == '200元以下'):
+        wh_pab_b2h.append({'value': float(wh_pab.percentage), 'name': wh_pab.brand})
+    wh_pab_2hto9h = []
+    for wh_pab in WHPriceAndBrand.select().where(WHPriceAndBrand.price_range == '200-900元'):
+        wh_pab_2hto9h.append({'value': float(wh_pab.percentage), 'name': wh_pab.brand})
+    wh_pab_a9h = []
+    for wh_pab in WHPriceAndBrand.select().where(WHPriceAndBrand.price_range == '900元以上'):
+        wh_pab_a9h.append({'value': float(wh_pab.percentage), 'name': wh_pab.brand})
+    # 苹果无线耳机销量明星
+    apple_model = []
+    apple_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '苹果').order_by(
+            WHBrandSalesStar.total.desc()):
+        apple_model.append(wh_bss.model)
+        apple_mt.append(wh_bss.total)
+    # ENKOR无线耳机销量明星
+    enkor_model = []
+    enkor_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == 'ENKOR').order_by(
+            WHBrandSalesStar.total.desc()):
+        enkor_model.append(wh_bss.model)
+        enkor_mt.append(wh_bss.total)
+    # 华为无线耳机销量明星
+    hw_model = []
+    hw_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '华为').order_by(
+            WHBrandSalesStar.total.desc()):
+        hw_model.append(wh_bss.model)
+        hw_mt.append(wh_bss.total)
+    # 漫步者无线耳机销量明星
+    edifier_model = []
+    edifier_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '漫步者').order_by(
+            WHBrandSalesStar.total.desc()):
+        edifier_model.append(wh_bss.model)
+        edifier_mt.append(wh_bss.total)
+    # 小米无线耳机销量明星
+    mi_model = []
+    mi_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '小米').order_by(
+            WHBrandSalesStar.total.desc()):
+        mi_model.append(wh_bss.model)
+        mi_mt.append(wh_bss.total)
+    # 索尼无线耳机销量明星
+    sony_model = []
+    sony_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '索尼').order_by(
+            WHBrandSalesStar.total.desc()):
+        sony_model.append(wh_bss.model)
+        sony_mt.append(wh_bss.total)
+    # Bose无线耳机销量明星
+    bose_model = []
+    bose_mt = []
+    for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == 'Bose').order_by(
+            WHBrandSalesStar.total.desc()):
+        bose_model.append(wh_bss.model)
+        bose_mt.append(wh_bss.total)
+
+    return render_template('wireless_headphone.html', total=total, wh_self_per=wh_self_per, wh_name=wh_name,
+                           wh_count=wh_count, wh_brand=whbrand, wh_pas=wh_pas, wh_pab_b2h=wh_pab_b2h,
+                           wh_pab_2hto9h=wh_pab_2hto9h, wh_pab_a9h=wh_pab_a9h, apple_model=apple_model,
+                           apple_mt=apple_mt, enkor_model=enkor_model, enkor_mt=enkor_mt, hw_model=hw_model,
+                           hw_mt=hw_mt, edifier_model=edifier_model, edifier_mt=edifier_mt, mi_model=mi_model,
+                           mi_mt=mi_mt, sony_model=sony_model, sony_mt=sony_mt, bose_model=bose_model, bose_mt=bose_mt)
