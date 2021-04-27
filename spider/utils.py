@@ -200,8 +200,8 @@ def parse_mi10_product_info(product_color: str, storage: str) -> tuple:
     return product_color, product_ram, product_rom
 
 
-# 计算小米10数据最终好评率
-def calculate_mi10_good_rate(summary_list):
+# 计算京东和苏宁具体商品销售数据最终好评率
+def calculate_jd_and_sn_good_rate(summary_list):
     for summary in summary_list:
         good_count = summary.star_four + summary.star_five
         sum_count = summary.star_one + summary.star_two + summary.star_three + summary.star_four + summary.star_five

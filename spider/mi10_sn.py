@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, get_response_body_list, window_scroll_by,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate,
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_jd_and_sn_good_rate,
                           waiting_content_loading)
 
 
@@ -38,8 +38,8 @@ def get_mi10_data_from_sn(browser: Chrome):
             get_sn_comments(browser, sn_shop, sku_mode=True)
 
     # 数据汇总后计算最终好评率
-    calculate_mi10_good_rate(CommentSummary.select().where(CommentSummary.source == '苏宁'))
-    calculate_mi10_good_rate(ModelSummary.select().where(ModelSummary.source == '苏宁'))
+    calculate_jd_and_sn_good_rate(CommentSummary.select().where(CommentSummary.source == '苏宁'))
+    calculate_jd_and_sn_good_rate(ModelSummary.select().where(ModelSummary.source == '苏宁'))
     print('------苏宁平台数据获取完成------')
 
 

@@ -8,7 +8,7 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_mi10_good_rate,
+                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_jd_and_sn_good_rate,
                           waiting_content_loading)
 
 
@@ -48,8 +48,8 @@ def get_mi10_data_from_jd(browser: Chrome):
             get_jd_comments(browser, jd_shop, sku_mode=True)  # 从全部评价标签获取评论
 
     # 数据汇总后计算最终好评率
-    calculate_mi10_good_rate(CommentSummary.select().where(CommentSummary.source == '京东'))
-    calculate_mi10_good_rate(ModelSummary.select().where(ModelSummary.source == '京东'))
+    calculate_jd_and_sn_good_rate(CommentSummary.select().where(CommentSummary.source == '京东'))
+    calculate_jd_and_sn_good_rate(ModelSummary.select().where(ModelSummary.source == '京东'))
     print('------京东平台数据获取完成------')
 
 

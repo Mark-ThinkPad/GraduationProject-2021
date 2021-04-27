@@ -1,9 +1,10 @@
 import re
 import json
 from random import uniform
-from db.mi10_models import Shop
+# from db.mi10_models import Shop
 from spider.utils import parse_timestamp_13bit
 from db.wireless_headphone_models import Commodity
+from db.airpods_models import Shop
 
 # shop = Shop()
 # shop.source = '京东'
@@ -113,14 +114,25 @@ from db.wireless_headphone_models import Commodity
 
 # print(int('0070067921'))
 
-Commodity.create(
-    source='荣耀商城',
-    url='https://www.hihonor.com/cn/shop/product/10086341564703.html',
-    title='荣耀 FlyPods 3真无线耳机（铃兰白）',
-    shop_name='荣耀商城',
-    is_self=True,
-    price=499,
-    total=70,
-    brand='荣耀',
-    model='荣耀 FlyPods 3'
+# Commodity.create(
+#     source='荣耀商城',
+#     url='https://www.hihonor.com/cn/shop/product/10086341564703.html',
+#     title='荣耀 FlyPods 3真无线耳机（铃兰白）',
+#     shop_name='荣耀商城',
+#     is_self=True,
+#     price=499,
+#     total=70,
+#     brand='荣耀',
+#     model='荣耀 FlyPods 3'
+# )
+
+Shop.create(
+    source='京东',
+    is_official=True,
+    url='https://item.jd.com/100004325476.html'
 )
+
+self = 'https://item.jd.com/100004325476.html'
+one = 'https://item.jd.com/24497394828.html'
+two = 'https://item.jd.com/69094314974.html'
+three = 'https://item.jd.com/43835722030.html'
