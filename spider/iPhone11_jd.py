@@ -6,7 +6,7 @@ from selenium.webdriver import Chrome
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-from selenium.common.exceptions import TimeoutException, WebDriverException
+from selenium.common.exceptions import TimeoutException, WebDriverException, JavascriptException
 from db.iPhone11_models import Shop, JDSku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
                           open_second_window, back_to_first_window, calculate_jd_and_sn_good_rate,
@@ -15,44 +15,48 @@ from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by
 
 # 获取京东商城的部分iPhone11销售数据
 def get_iPhone11_data_from_jd(browser: Chrome):
-    for jd_shop in Shop.select().where(Shop.source == '京东'):
-        print(f'------打开当前京东商品链接: {jd_shop.url}------')
-        browser.get(jd_shop.url)  # 打开商品页面
-        # 获取已上架SKU
-        get_jd_sku_from_api(browser, jd_shop)
-
-        # 获取默认推荐排序评论和默认时间排序评论, 并遍历所有SKU
-        print('------开始获取默认推荐排序评论------')
-        switch_to_jd_default_comments_page(browser, jd_shop.url)  # 打开评论默认页面
-        get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论和统计信息
-
-        print('------开始获取默认时间排序评论------')
-        switch_to_jd_default_comments_page(browser, jd_shop.url)
-        switch_to_jd_time_sort(browser)  # 切换到时间排序
-        get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
-
-    # # 轮询各个SKU的商品页面
-    # print('------SKU轮询开始------')
-    # for current_sku in JDSku.select():
-    #     print(f'------本轮SKU: {current_sku.sku}------')
-    #     current_sku_url = 'https://item.jd.com/' + current_sku.sku + '.html'
-    #     print(f'------正在打开当前SKU链接: {current_sku_url}------')
-    #     browser.get(current_sku_url)
+    # for jd_shop in Shop.select().where(Shop.source == '京东'):
+    #     print(f'------打开当前京东商品链接: {jd_shop.url}------')
+    #     browser.get(jd_shop.url)  # 打开商品页面
+    #     # 获取已上架SKU
+    #     get_jd_sku_from_api(browser, jd_shop)
     #
-    #     print('------开始获取当前SKU推荐排序评论------')
-    #     switch_to_jd_sku_comments_page(browser, current_sku_url)
-    #     get_jd_comments(browser, current_sku, sku_mode=True, summary=True)  # 从全部评价标签获取评论和统计信息
+    #     # 获取默认推荐排序评论和默认时间排序评论, 并遍历所有SKU
+    #     print('------开始获取默认推荐排序评论------')
+    #     switch_to_jd_default_comments_page(browser, jd_shop.url)  # 打开评论默认页面
+    #     get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论和统计信息
     #
-    #     print('------开始获取当前SKU时间排序评论------')
-    #     switch_to_jd_sku_comments_page(browser, current_sku_url)
+    #     print('------开始获取默认时间排序评论------')
+    #     switch_to_jd_default_comments_page(browser, jd_shop.url)
     #     switch_to_jd_time_sort(browser)  # 切换到时间排序
-    #     get_jd_comments(browser, current_sku, sku_mode=True)  # 从全部评价标签获取评论
-    #
-    #     current_sku.delete_instance()
-    #
-    # # 数据汇总后计算最终好评率
-    # calculate_jd_and_sn_good_rate(CommentSummary.select().where(CommentSummary.source == '京东'))
-    # calculate_jd_and_sn_good_rate(ModelSummary.select().where(ModelSummary.source == '京东'))
+    #     get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
+
+    # 轮询各个SKU的商品页面
+    print('------SKU轮询开始------')
+    for current_sku in JDSku.select():
+        try:
+            print(f'------本轮SKU: {current_sku.sku}------')
+            current_sku_url = 'https://item.jd.com/' + current_sku.sku + '.html'
+            print(f'------正在打开当前SKU链接: {current_sku_url}------')
+            browser.get(current_sku_url)
+
+            print('------开始获取当前SKU推荐排序评论------')
+            switch_to_jd_sku_comments_page(browser, current_sku_url)
+            get_jd_comments(browser, current_sku, sku_mode=True, summary=True)  # 从全部评价标签获取评论和统计信息
+
+            print('------开始获取当前SKU时间排序评论------')
+            switch_to_jd_sku_comments_page(browser, current_sku_url)
+            switch_to_jd_time_sort(browser)  # 切换到时间排序
+            get_jd_comments(browser, current_sku, sku_mode=True)  # 从全部评价标签获取评论
+        except JavascriptException:
+            back_to_first_window(browser)
+            print('---评论页面异常---')
+
+        current_sku.delete_instance()
+
+    # 数据汇总后计算最终好评率
+    calculate_jd_and_sn_good_rate(CommentSummary.select().where(CommentSummary.source == '京东'))
+    calculate_jd_and_sn_good_rate(ModelSummary.select().where(ModelSummary.source == '京东'))
     print('------京东平台数据获取完成------')
 
 
@@ -91,7 +95,8 @@ def switch_to_jd_sku_comments_page(browser: Chrome, sku_url: str):
 def switch_to_jd_time_sort(browser: Chrome):
     browser.execute_script('document.querySelector("li.J-sortType-item:nth-child(2)").click()')
     print('------切换到时间排序------')
-    waiting_content_loading(browser, 'comment-item')
+    # waiting_content_loading(browser, 'comment-item')
+    sleep(3)
 
 
 # 从默认评论排序中获取所有SKU, 也可以顺便保存评论
