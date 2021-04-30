@@ -4,7 +4,8 @@ from random import uniform
 # from db.mi10_models import Shop
 from spider.utils import parse_timestamp_13bit
 from db.wireless_headphone_models import Commodity
-from db.airpods_models import Shop
+# from db.airpods_models import Shop
+from db.iPhone11_models import Shop
 
 # shop = Shop()
 # shop.source = '京东'
@@ -126,13 +127,19 @@ from db.airpods_models import Shop
 #     model='荣耀 FlyPods 3'
 # )
 
-Shop.create(
-    source='京东',
-    is_official=True,
-    url='https://item.jd.com/100004325476.html'
-)
+# Shop.create(
+#     source='京东',
+#     is_official=True,
+#     url='https://item.jd.com/100004325476.html'
+# )
+#
+# self = 'https://item.jd.com/100004325476.html'
+# one = 'https://item.jd.com/24497394828.html'
+# two = 'https://item.jd.com/69094314974.html'
+# three = 'https://item.jd.com/43835722030.html'
 
-self = 'https://item.jd.com/100004325476.html'
-one = 'https://item.jd.com/24497394828.html'
-two = 'https://item.jd.com/69094314974.html'
-three = 'https://item.jd.com/43835722030.html'
+Shop.create(
+    source='苏宁',
+    is_self=False,
+    url='https://product.suning.com/0070517287/12183012070.html'
+)
