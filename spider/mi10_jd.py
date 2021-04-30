@@ -8,8 +8,8 @@ from selenium.webdriver.support import expected_conditions as ec
 from selenium.common.exceptions import TimeoutException, WebDriverException
 from db.mi10_models import Shop, Sku, Comment, CommentSummary, ModelSummary
 from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by, parse_jd_count_str,
-                          open_second_window, back_to_first_window, parse_mi10_product_info, calculate_jd_and_sn_good_rate,
-                          waiting_content_loading)
+                          open_second_window, back_to_first_window, parse_mi10_product_info, waiting_content_loading,
+                          calculate_jd_and_sn_good_rate)
 
 
 # 获取京东商城的小米10销售数据

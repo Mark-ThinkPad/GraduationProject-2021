@@ -186,6 +186,7 @@ def parse_mi10_product_info(product_color: str, storage: str) -> tuple:
         product_color = '冰海蓝'
     if '金' in product_color:
         product_color = '蜜桃金'
+
     product_ram_and_rom = re.search(r'\d+[GB]*\+\d+[GB]*', storage).group().split('+')
     product_ram = product_ram_and_rom[0]
     product_rom = product_ram_and_rom[1]
@@ -197,7 +198,32 @@ def parse_mi10_product_info(product_color: str, storage: str) -> tuple:
         product_rom += 'GB'
     elif 'B' not in product_rom:
         product_rom += 'B'
+
     return product_color, product_ram, product_rom
+
+
+# 解析 iPhone 11 产品信息
+def parse_iPhone11_product_info(color: str, storage: str) -> tuple:
+    if '黑' in color:
+        color = '黑色'
+    if '白' in color:
+        color = '白色'
+    if '红' in color:
+        color = '红色'
+    if '黄' in color:
+        color = '黄色'
+    if '紫' in color:
+        color = '紫色'
+    if '绿' in color:
+        color = '绿色'
+
+    rom = re.search(r'\d+[GB]+', storage).group()
+    if 'G' not in rom:
+        rom += 'GB'
+    elif 'B' not in rom:
+        rom += 'B'
+
+    return color, rom
 
 
 # 计算京东和苏宁具体商品销售数据最终好评率

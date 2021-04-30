@@ -73,12 +73,14 @@ class ModelSummary(BaseModel):
 # 京东SKU
 class JDSku(BaseModel):
     sku = pw.CharField(max_length=20, primary_key=True)  # 商品SKU编号
+    is_self = pw.BooleanField()
 
 
 # 苏宁SKU
 class SNSku(BaseModel):
     shop_code = pw.CharField(max_length=10)  # 苏宁店铺代码
     sku = pw.CharField(max_length=20)
+    is_self = pw.BooleanField()
 
     class Meta:
         primary_key = pw.CompositeKey('shop_code', 'sku')

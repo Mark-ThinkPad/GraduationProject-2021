@@ -138,8 +138,15 @@ from db.iPhone11_models import Shop
 # two = 'https://item.jd.com/69094314974.html'
 # three = 'https://item.jd.com/43835722030.html'
 
-Shop.create(
-    source='苏宁',
-    is_self=False,
-    url='https://product.suning.com/0070517287/12183012070.html'
-)
+# Shop.create(
+#     source='苏宁',
+#     is_self=False,
+#     url='https://product.suning.com/0070517287/12183012070.html'
+# )
+
+str1 = '全网通128GB（新包装）'
+str2 = '全网通64GB（新包装）'
+str3 = '（24期分期0首付新包装）全网通128G'
+str4 = '品胜PD20W 128GB+快充Type-c快充充电器套装'
+result = re.search(r'\d+[GB]+', str4).group()
+print(result)
