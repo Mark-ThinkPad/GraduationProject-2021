@@ -15,21 +15,21 @@ from spider.utils import (get_chrome_driver, get_response_body, window_scroll_by
 
 # 获取京东商城的部分iPhone11销售数据
 def get_iPhone11_data_from_jd(browser: Chrome):
-    # for jd_shop in Shop.select().where(Shop.source == '京东'):
-    #     print(f'------打开当前京东商品链接: {jd_shop.url}------')
-    #     browser.get(jd_shop.url)  # 打开商品页面
-    #     # 获取已上架SKU
-    #     get_jd_sku_from_api(browser, jd_shop)
-    #
-    #     # 获取默认推荐排序评论和默认时间排序评论, 并遍历所有SKU
-    #     print('------开始获取默认推荐排序评论------')
-    #     switch_to_jd_default_comments_page(browser, jd_shop.url)  # 打开评论默认页面
-    #     get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论和统计信息
-    #
-    #     print('------开始获取默认时间排序评论------')
-    #     switch_to_jd_default_comments_page(browser, jd_shop.url)
-    #     switch_to_jd_time_sort(browser)  # 切换到时间排序
-    #     get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
+    for jd_shop in Shop.select().where(Shop.source == '京东'):
+        print(f'------打开当前京东商品链接: {jd_shop.url}------')
+        browser.get(jd_shop.url)  # 打开商品页面
+        # 获取已上架SKU
+        get_jd_sku_from_api(browser, jd_shop)
+
+        # 获取默认推荐排序评论和默认时间排序评论, 并遍历所有SKU
+        print('------开始获取默认推荐排序评论------')
+        switch_to_jd_default_comments_page(browser, jd_shop.url)  # 打开评论默认页面
+        get_jd_comments(browser, jd_shop, get_sku=True, summary=True)  # 从全部评价标签获取评论和统计信息
+
+        print('------开始获取默认时间排序评论------')
+        switch_to_jd_default_comments_page(browser, jd_shop.url)
+        switch_to_jd_time_sort(browser)  # 切换到时间排序
+        get_jd_comments(browser, jd_shop, get_sku=True)  # 从全部评价标签获取评论
 
     # 轮询各个SKU的商品页面
     print('------SKU轮询开始------')
