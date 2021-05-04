@@ -12,7 +12,7 @@
 </head>
 <body>
   <header>
-    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+    <nav class="navbar is-light is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <img src="/static/images/shop.png" alt="shop">
@@ -20,19 +20,18 @@
         </a>
       </div>
       <div class="navbar-menu">
-        <div class="navbar-start">
+        <div class="navbar-end">
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="/phone">手机品类</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="/phone">总览</a>
-              <a class="navbar-item" href="/phone/mi10">小米10</a>
+              <a class="navbar-item" href="/phone" id="phone_url">总览</a>
+              <a class="navbar-item" href="/phone/mi10" id="mi10_url">小米10</a>
             </div>
           </div>
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link" href="/wirelessheadphone">无线耳机品类</a>
             <div class="navbar-dropdown">
-              <a class="navbar-item" href="/wirelessheadphone">总览</a>
-              <a class="navbar-item" href="/wirelessheadphone/airpods">AirPods</a>
+              <a class="navbar-item" href="/wirelessheadphone" id="wh_url">总览</a>
             </div>
           </div>
         </div>

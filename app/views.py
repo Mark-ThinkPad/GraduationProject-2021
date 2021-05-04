@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, redirect, url_for
+from app.utils import rounding_w
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
@@ -25,6 +26,7 @@ def phone():
         phone_count.append(item.total)
     # 数据总览
     total = PhoneTotal.get_by_id(1)
+    total_tc = rounding_w(total.total_count)
     # 平台数据源概览
     platform_source = []
     platform_tc = []
@@ -33,7 +35,7 @@ def phone():
     platform_nsp = []
     for platform in PhonePlatform.select():
         platform_source.append(platform.source)
-        platform_tc.append(platform.total_count)
+        platform_tc.append(rounding_w(platform.total_count))
         platform_cc.append(platform.commodity_count)
         platform_sp.append(float(platform.self_percentage))
         platform_nsp.append(float(platform.non_self_percentage))
@@ -51,42 +53,42 @@ def phone():
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '苹果') \
             .order_by(BrandSalesStar.total.desc()):
         apple_model.append(bss.model)
-        apple_mt.append(bss.total)
+        apple_mt.append(rounding_w(bss.total))
     # 小米手机销量明星
     mi_model = []
     mi_mt = []
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '小米') \
             .order_by(BrandSalesStar.total.desc()):
         mi_model.append(bss.model)
-        mi_mt.append(bss.total)
+        mi_mt.append(rounding_w(bss.total))
     # 华为手机销量明星
     hw_model = []
     hw_mt = []
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '华为') \
             .order_by(BrandSalesStar.total.desc()):
         hw_model.append(bss.model)
-        hw_mt.append(bss.total)
+        hw_mt.append(rounding_w(bss.total))
     # 荣耀手机销量明星
     honor_model = []
     honor_mt = []
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == '荣耀') \
             .order_by(BrandSalesStar.total.desc()):
         honor_model.append(bss.model)
-        honor_mt.append(bss.total)
+        honor_mt.append(rounding_w(bss.total))
     # OPPO手机销量明星
     oppo_model = []
     oppo_mt = []
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == 'OPPO') \
             .order_by(BrandSalesStar.total.desc()):
         oppo_model.append(bss.model)
-        oppo_mt.append(bss.total)
+        oppo_mt.append(rounding_w(bss.total))
     # vivo手机销量明星
     vivo_model = []
     vivo_mt = []
     for bss in BrandSalesStar.select().where(BrandSalesStar.brand == 'vivo') \
             .order_by(BrandSalesStar.total.desc()):
         vivo_model.append(bss.model)
-        vivo_mt.append(bss.total)
+        vivo_mt.append(rounding_w(bss.total))
     # 小米与子品牌红米销量占比
     mi_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == '小米'):
@@ -118,37 +120,37 @@ def phone():
     as_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '苹果(A系列)').order_by(SoCStar.total.desc()):
         as_model.append(soc.soc_model)
-        as_mt.append(soc.total)
+        as_mt.append(rounding_w(soc.total))
     # 紫光展锐SoC销量明星
     unisoc_model = []
     unisoc_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '紫光展锐').order_by(SoCStar.total.desc()):
         unisoc_model.append(soc.soc_model)
-        unisoc_mt.append(soc.total)
+        unisoc_mt.append(rounding_w(soc.total))
     # 三星猎户座SoC销量明星
     exynos_model = []
     exynos_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '三星猎户座').order_by(SoCStar.total.desc()):
         exynos_model.append(soc.soc_model)
-        exynos_mt.append(soc.total)
+        exynos_mt.append(rounding_w(soc.total))
     # 高通骁龙SoC销量明星
     snapdragon_model = []
     snapdragon_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '高通骁龙').order_by(SoCStar.total.desc()):
         snapdragon_model.append(soc.soc_model)
-        snapdragon_mt.append(soc.total)
+        snapdragon_mt.append(rounding_w(soc.total))
     # 海思麒麟SoC销量明星
     kirin_model = []
     kirin_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '海思麒麟').order_by(SoCStar.total.desc()):
         kirin_model.append(soc.soc_model)
-        kirin_mt.append(soc.total)
+        kirin_mt.append(rounding_w(soc.total))
     # 联发科SoC销量明星
     mtk_model = []
     mtk_mt = []
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '联发科').order_by(SoCStar.total.desc()):
         mtk_model.append(soc.soc_model)
-        mtk_mt.append(soc.total)
+        mtk_mt.append(rounding_w(soc.total))
     # 功能机SoC制造商占比
     fpsp = []
     for fps in FeaturePhoneSoCPer.select():
@@ -173,7 +175,7 @@ def phone():
     for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '5000元以上'):
         ppab_a5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
 
-    return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total,
+    return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total, total_tc=total_tc,
                            platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
                            platform_sp=platform_sp, platform_nsp=platform_nsp, phone_os=phoneos, phone_brand=phonebrand,
                            apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model, mi_mt=mi_mt,
@@ -196,7 +198,7 @@ def mi10():
     total_good_rate = []
     for platform in Total.select():
         total_source.append(platform.source)
-        total_count.append(platform.total)
+        total_count.append(rounding_w(platform.total))
         total_good_rate.append(float(platform.good_rate))
     # 各型号数据概览
     mc_name = []
@@ -251,24 +253,24 @@ def mi10():
         adc_days.append(adc.after_days)
         adc_per.append(adc.percentage)
     # 用户设备类型统计
-    udc_system = []
     udc_per = []
     for udc in UserDeviceCount.select():
-        udc_system += ['Android 留存用户', 'iOS 转化用户', 'other']
-        udc_per += [udc.android_percentage, udc.ios_percentage, udc.other_percentage]
+        udc_per.append({'value': float(udc.android_percentage), 'name': 'Android 留存用户'})
+        udc_per.append({'value': float(udc.ios_percentage), 'name': 'iOS 转化用户'})
+        udc_per.append({'value': float(udc.other_percentage), 'name': 'other'})
 
     return render_template('mi10.html', total_source=total_source, total_count=total_count,
                            total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
                            color_count=color_count, ram_count=ram_count, rom_count=rom_count, ua_source=ua_source,
                            ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym, cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per,
-                           odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per,
-                           udc_system=udc_system)
+                           odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per)
 
 
 @views.route('/wirelessheadphone')
 def wireless_headphone():
     # 数据总览
     total = WHTotal.get_by_id(1)
+    total_tc = rounding_w(total.total_count)
     # 自营与非自营销量比例
     wh_self_per = WHSelfPer.get_by_id(1)
     # 无线耳机销量排行
@@ -301,52 +303,52 @@ def wireless_headphone():
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '苹果').order_by(
             WHBrandSalesStar.total.desc()):
         apple_model.append(wh_bss.model)
-        apple_mt.append(wh_bss.total)
+        apple_mt.append(rounding_w(wh_bss.total))
     # ENKOR无线耳机销量明星
     enkor_model = []
     enkor_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == 'ENKOR').order_by(
             WHBrandSalesStar.total.desc()):
         enkor_model.append(wh_bss.model)
-        enkor_mt.append(wh_bss.total)
+        enkor_mt.append(rounding_w(wh_bss.total))
     # 华为无线耳机销量明星
     hw_model = []
     hw_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '华为').order_by(
             WHBrandSalesStar.total.desc()):
         hw_model.append(wh_bss.model)
-        hw_mt.append(wh_bss.total)
+        hw_mt.append(rounding_w(wh_bss.total))
     # 漫步者无线耳机销量明星
     edifier_model = []
     edifier_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '漫步者').order_by(
             WHBrandSalesStar.total.desc()):
         edifier_model.append(wh_bss.model)
-        edifier_mt.append(wh_bss.total)
+        edifier_mt.append(rounding_w(wh_bss.total))
     # 小米无线耳机销量明星
     mi_model = []
     mi_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '小米').order_by(
             WHBrandSalesStar.total.desc()):
         mi_model.append(wh_bss.model)
-        mi_mt.append(wh_bss.total)
+        mi_mt.append(rounding_w(wh_bss.total))
     # 索尼无线耳机销量明星
     sony_model = []
     sony_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == '索尼').order_by(
             WHBrandSalesStar.total.desc()):
         sony_model.append(wh_bss.model)
-        sony_mt.append(wh_bss.total)
+        sony_mt.append(rounding_w(wh_bss.total))
     # Bose无线耳机销量明星
     bose_model = []
     bose_mt = []
     for wh_bss in WHBrandSalesStar.select().where(WHBrandSalesStar.brand == 'Bose').order_by(
             WHBrandSalesStar.total.desc()):
         bose_model.append(wh_bss.model)
-        bose_mt.append(wh_bss.total)
+        bose_mt.append(rounding_w(wh_bss.total))
 
-    return render_template('wireless_headphone.html', total=total, wh_self_per=wh_self_per, wh_name=wh_name,
-                           wh_count=wh_count, wh_brand=whbrand, wh_pas=wh_pas, wh_pab_b2h=wh_pab_b2h,
+    return render_template('wireless_headphone.html', total=total, total_tc=total_tc, wh_self_per=wh_self_per,
+                           wh_name=wh_name, wh_count=wh_count, wh_brand=whbrand, wh_pas=wh_pas, wh_pab_b2h=wh_pab_b2h,
                            wh_pab_2hto9h=wh_pab_2hto9h, wh_pab_a9h=wh_pab_a9h, apple_model=apple_model,
                            apple_mt=apple_mt, enkor_model=enkor_model, enkor_mt=enkor_mt, hw_model=hw_model,
                            hw_mt=hw_mt, edifier_model=edifier_model, edifier_mt=edifier_mt, mi_model=mi_model,

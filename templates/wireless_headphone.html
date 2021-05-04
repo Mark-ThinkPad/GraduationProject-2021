@@ -19,7 +19,7 @@
           <tbody>
             <tr>
               <td>总销量</td>
-              <td>{{ total.total_count }} 件</td>
+              <td>{{ total_tc }} 万件</td>
             </tr>
             <tr>
               <td>商品数量</td>
@@ -61,12 +61,16 @@
 
 {% block js %}
 <script>
-// 自营与非自营销量比例柱状图
+document.getElementById("wh_url").classList.add("is-active");
+</script>
+
+<script>
+// 官方自营与非官方自营销量比例柱状图
 let wh_self_per_dom = document.getElementById("wh_self_per");
 let wh_self_per_chart = echarts.init(wh_self_per_dom);
 let wh_self_per_option = {
   title: {
-    text: "自营与非自营销量占比",
+    text: "官方自营与非官方自营销量占比",
     left: '5%'
   },
   tooltip: {
@@ -84,7 +88,7 @@ let wh_self_per_option = {
   xAxis: [
     {
       type: 'category',
-      data: ['自营', '非自营'],
+      data: ['官方自营', '非官方自营'],
       axisTick: {
         alignWithLabel: true
       },
@@ -191,7 +195,7 @@ let wh_brand_dom = document.getElementById("wh_brand");
 let wh_brand_chart = echarts.init(wh_brand_dom);
 let wh_brand_option = {
   title: {
-    text: '品牌销量占比',
+    text: '不同品牌的无线耳机销量占所有无线耳机销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -226,7 +230,7 @@ let wh_pas_dom = document.getElementById("wh_pas");
 let wh_pas_chart = echarts.init(wh_pas_dom);
 let wh_pas_option = {
   title: {
-    text: '无线耳机不同价格区间与销量分布',
+    text: '不同价格区间内的无线耳机销量占无线耳机总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -261,7 +265,7 @@ let wh_pab_b2h_dom = document.getElementById("wh_pab_b2h");
 let wh_pab_b2h_chart = echarts.init(wh_pab_b2h_dom);
 let wh_pab_b2h_option = {
   title: {
-    text: '无线耳机在200元以下的品牌销量占比',
+    text: '200元以下的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -296,7 +300,7 @@ let wh_pab_2hto9h_dom = document.getElementById("wh_pab_2hto9h");
 let wh_pab_2hto9h_chart = echarts.init(wh_pab_2hto9h_dom);
 let wh_pab_2hto9h_option = {
   title: {
-    text: '无线耳机在200元到900元之间的品牌销量占比',
+    text: '200元到900元之间的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -331,7 +335,7 @@ let wh_pab_a9h_dom = document.getElementById("wh_pab_a9h");
 let wh_pab_a9h_chart = echarts.init(wh_pab_a9h_dom);
 let wh_pab_a9h_option = {
   title: {
-    text: '无线耳机在900元以上的品牌销量占比',
+    text: '900元以上的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -397,7 +401,7 @@ let apple_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -450,7 +454,7 @@ let enkor_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -503,7 +507,7 @@ let hw_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -556,7 +560,7 @@ let edifier_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -609,7 +613,7 @@ let mi_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -662,7 +666,7 @@ let sony_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],
@@ -715,7 +719,7 @@ let bose_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 件'
+        formatter: '{value} 万件'
       }
     }
   ],

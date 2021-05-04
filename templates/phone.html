@@ -22,7 +22,7 @@
           <tbody>
             <tr>
               <td>总销量</td>
-              <td>{{ total.total_count }} 台</td>
+              <td>{{ total_tc }} 万台</td>
             </tr>
             <tr>
               <td>商品数量</td>
@@ -121,6 +121,10 @@
 
 {% block js %}
 <script>
+document.getElementById("phone_url").classList.add("is-active");
+</script>
+
+<script>
 // 手机销量排行横向条形图
 let phone_dom = document.getElementById("phone");
 let phone_chart = echarts.init(phone_dom);
@@ -192,12 +196,12 @@ phone_chart.setOption(phone_option);
 </script>
 
 <script>
-// 电商平台数据源概览多Y轴柱状图
+// 电商平台数据源总览多Y轴柱状图
 let platform_dom = document.getElementById("platform");
 let platform_chart = echarts.init(platform_dom);
 let platform_option = {
   title: {
-    text: "电商平台数据源概览"
+    text: "电商平台数据源总览"
   },
   tooltip: {
     trigger: 'axis',
@@ -209,7 +213,7 @@ let platform_option = {
     right: '20%'
   },
   legend: {
-    data: ['总销量', '好评率', '自营销量占比', '非自营销量占比']
+    data: ['总销量', '商品数量', '官方自营销量占比', '非官方自营销量占比']
   },
   xAxis: [
     {
@@ -232,7 +236,7 @@ let platform_option = {
         }
       },
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     },
     {
@@ -280,13 +284,13 @@ let platform_option = {
       data: {{ platform_cc | tojson }}
     },
     {
-      name: '自营销量占比',
+      name: '官方自营销量占比',
       type: 'bar',
       yAxisIndex: 2,
       data: {{ platform_sp | tojson }}
     },
     {
-      name: '非自营销量占比',
+      name: '非官方自营销量占比',
       type: 'bar',
       yAxisIndex: 2,
       data: {{ platform_nsp | tojson }}
@@ -302,7 +306,7 @@ let phone_os_dom = document.getElementById("phone_os");
 let phone_os_chart = echarts.init(phone_os_dom);
 let phone_os_option = {
   title: {
-    text: '操作系统占比',
+    text: '不同操作系统的手机销量占全部手机销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -337,7 +341,7 @@ let phone_brand_dom = document.getElementById("phone_brand");
 let phone_brand_chart = echarts.init(phone_brand_dom);
 let phone_brand_option = {
   title: {
-    text: '品牌销量占比',
+    text: '不同品牌的手机销量占所有手机销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -403,7 +407,7 @@ let apple_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -456,7 +460,7 @@ let mi_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -509,7 +513,7 @@ let hw_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -562,7 +566,7 @@ let honor_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -615,7 +619,7 @@ let oppo_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -668,7 +672,7 @@ let vivo_sales_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 台'
+        formatter: '{value} 万台'
       }
     }
   ],
@@ -690,7 +694,7 @@ let mi_percentage_dom = document.getElementById("mi_percentage");
 let mi_percentage_chart = echarts.init(mi_percentage_dom);
 let mi_percentage_option = {
   title: {
-    text: '小米集团旗下所有品牌销量占比',
+    text: '小米集团旗下各个品牌销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -725,7 +729,7 @@ let vivo_percentage_dom = document.getElementById("vivo_percentage");
 let vivo_percentage_chart = echarts.init(vivo_percentage_dom);
 let vivo_percentage_option = {
   title: {
-    text: 'vivo集团旗下所有品牌销量占比',
+    text: 'vivo集团旗下各个品牌销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -760,7 +764,7 @@ let oppo_percentage_dom = document.getElementById("oppo_percentage");
 let oppo_percentage_chart = echarts.init(oppo_percentage_dom);
 let oppo_percentage_option = {
   title: {
-    text: 'OPPO集团旗下所有品牌销量占比',
+    text: 'OPPO集团旗下各个品牌销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -795,7 +799,7 @@ let fpp_dom = document.getElementById("feature_phone_percentage");
 let fpp_chart = echarts.init(fpp_dom);
 let fpp_option = {
   title: {
-    text: '功能机品牌销量占比',
+    text: '不同品牌的功能机销量占所有功能机销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -901,7 +905,8 @@ let soc_mfrs_dom = document.getElementById("soc_mfrs");
 let soc_mfrs_chart = echarts.init(soc_mfrs_dom);
 let soc_mfrs_option = {
   title: {
-    text: 'SoC制造商销量占比',
+    text: '不同SoC制造商的芯片销量占全部手机销量的百分比',
+    subtext: '基于手机销量统计',
     left: 'center'
   },
   tooltip: {
@@ -967,7 +972,7 @@ let as_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1020,7 +1025,7 @@ let unisoc_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1073,7 +1078,7 @@ let exynos_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1126,7 +1131,7 @@ let snapdragon_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1179,7 +1184,7 @@ let kirin_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1232,7 +1237,7 @@ let mtk_star_option = {
     {
       type: 'value',
       axisLabel: {
-        formatter: '{value} 片'
+        formatter: '{value} 万片'
       }
     }
   ],
@@ -1254,7 +1259,8 @@ let fpsp_dom = document.getElementById("feature_phone_soc_per");
 let fpsp_chart = echarts.init(fpsp_dom);
 let fpsp_option = {
   title: {
-    text: '功能机SoC制造商销量占比',
+    text: '不同功能机SoC制造商的芯片销量占功能机总销量的百分比',
+    subtext: '基于手机销量统计',
     left: 'center'
   },
   tooltip: {
@@ -1289,7 +1295,7 @@ let ppas_sp_dom = document.getElementById("ppas_sp");
 let ppas_sp_chart = echarts.init(ppas_sp_dom);
 let ppas_sp_option = {
   title: {
-    text: '智能手机不同价格区间与销量分布',
+    text: '不同价格区间内的智能手机销量占智能手机总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -1324,7 +1330,7 @@ let ppas_fp_dom = document.getElementById("ppas_fp");
 let ppas_fp_chart = echarts.init(ppas_fp_dom);
 let ppas_fp_option = {
   title: {
-    text: '功能机不同价格区间与销量分布',
+    text: '不同价格区间内的功能机销量占功能机总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -1359,7 +1365,7 @@ let ppab_b2k_dom = document.getElementById("ppab_b2k");
 let ppab_b2k_chart = echarts.init(ppab_b2k_dom);
 let ppab_b2k_option = {
   title: {
-    text: '智能手机在2000元以下的品牌销量占比',
+    text: '2000元以下的智能手机中不同品牌的手机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -1394,7 +1400,7 @@ let ppab_2kto5k_dom = document.getElementById("ppab_2kto5k");
 let ppab_2kto5k_chart = echarts.init(ppab_2kto5k_dom);
 let ppab_2kto5k_option = {
   title: {
-    text: '智能手机在2000到5000元之间的品牌销量占比',
+    text: '2000到5000元之间的智能手机中不同品牌的手机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
@@ -1429,7 +1435,7 @@ let ppab_a5k_dom = document.getElementById("ppab_a5k");
 let ppab_a5k_chart = echarts.init(ppab_a5k_dom);
 let ppab_a5k_option = {
   title: {
-    text: '智能手机在5000元以上的品牌销量占比',
+    text: '5000元以上的智能手机中不同品牌的手机销量占总销量的百分比',
     left: 'center'
   },
   tooltip: {
