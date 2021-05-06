@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-full more-height" id="soc"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("phone_soc_sales_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "手机SoC销量总览";
+</script>
+
+<script>
+// SoC销量排行横向条形图
+let soc_dom = document.getElementById("soc");
+let soc_chart = echarts.init(soc_dom);
+let soc_option = {
+  title: {
+    text: "SoC销量排行",
+    subtext: "数据来自京东和苏宁 (基于手机销量计算) (下滑查看更多型号)",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow"
+    }
+  },
+  dataZoom: [
+    {
+      type: "slider",
+      yAxisIndex: 0,
+      zoomLock: true,
+      width: 10,
+      right: 10,
+      top: 70,
+      bottom: 20,
+      start: 92,
+      end: 100,
+      handleSize: 0,
+      showDetail: false,
+    },
+    {
+      type: "inside",
+      yAxisIndex: 0,
+      start: 92,
+      end: 100,
+      zoomOnMouseWheel: false,
+      moveOnMouseMove: true,
+      moveOnMouseWheel: true
+    }
+  ],
+  legend: {
+    data: ["销量(片)"]
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value} 片"
+    },
+    min: 0,
+  },
+  yAxis: {
+    type: "category",
+    data: {{ soc_name | tojson }},
+  },
+  series: [
+    {
+      name: "销量(片)",
+      type: "bar",
+      data: {{ soc_count | tojson }}
+    }
+  ]
+};
+soc_chart.setOption(soc_option);
+</script>
+{% endblock %}

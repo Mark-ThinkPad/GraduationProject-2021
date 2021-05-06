@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">主要手机品牌的子品牌简介</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p>
+            <span>小米旗下的红米子品牌与2013年推出, 初期专注于千元附近价位的中低端手机.</span>
+            <span>2019年卢伟冰被任命为红米品牌总经理, 并宣布红米品牌独立, 红米手机也上探到2000元以上的中端旗舰手机.</span>
+          </p>
+          <p>曾经在互联网模式发展的初期, 魅族也拥有旗下的子品牌魅蓝, 对标小米旗下的红米品牌. 随着魅族核心人物之一的李楠最终离职魅族, 魅蓝品牌彻底画上了句号.</p>
+          <p>
+            <span>华为于2013年推出互联网子品牌荣耀, 其诞生目的是以互联网模式与其他互联网模式下成立的新兴品牌竞争.</span>
+            <span>经过数年的商业竞争, 荣耀相比小米逐渐占据上风. 2020年11月7日, 荣耀被整体出售给国有资本, 再次独立.</span>
+          </p>
+          <p>
+            <span>OPPO旗下有两个互联网子品牌, 一加和realme.</span>
+            <span>一加成立于2013年, 其CEO为前OPPO产品经理刘作虎, 产品以旗舰手机为主.</span>
+            <span>与其他立足国内的互联网品牌不同, 一加首款产品就同时打向国内外市场, 其在国外市场的销量优于国内市场的销量.</span>
+            <span>而realme品牌源于oppo realme音乐手机, 后来realme作为OPPO在国外市场布局的一个子品牌, 2018年, realme品牌正式回国, 向国内销售产品.</span>
+            <span>realme主要销售中低端手机, 就像红米之于小米.</span>
+          </p>
+          <p>
+            <span>iQOO则是vivo旗下的互联网子品牌, 于2019年成立, 其产品主要与小米对应价位的性价比机型竞争.</span>
+          </p>
+          <p>
+            <span>在本次项目统计中, 根据电商平台的销售策略, 红米手机的销量并入小米品牌销量统计, iQOO手机的销量并入vivo品牌销量统计.</span>
+            <span>一加和realme则不并入OPPO品牌的销量统计, 而荣耀已经与华为明确分家, 故荣耀的销售数据不并入华为品牌销量统计</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="mi_percentage"></div>
+  <div class="column is-half uniform-height" id="vivo_percentage"></div>
+  <div class="column is-half uniform-height" id="oppo_percentage"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("phone_brand_per_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "头部手机品牌中主品牌与子品牌销量占比";
+</script>
+
+<script>
+// 小米与子品牌红米销量占比饼图
+let mi_percentage_dom = document.getElementById("mi_percentage");
+let mi_percentage_chart = echarts.init(mi_percentage_dom);
+let mi_percentage_option = {
+  title: {
+    text: "小米集团旗下各个品牌销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ mi_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+mi_percentage_chart.setOption(mi_percentage_option);
+</script>
+
+<script>
+// vivo与子品牌iQOO销量占比饼图
+let vivo_percentage_dom = document.getElementById("vivo_percentage");
+let vivo_percentage_chart = echarts.init(vivo_percentage_dom);
+let vivo_percentage_option = {
+  title: {
+    text: "vivo集团旗下各个品牌销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ vivo_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+vivo_percentage_chart.setOption(vivo_percentage_option);
+</script>
+
+<script>
+// OPPO与子品牌realme和一加的销量占比饼图
+let oppo_percentage_dom = document.getElementById("oppo_percentage");
+let oppo_percentage_chart = echarts.init(oppo_percentage_dom);
+let oppo_percentage_option = {
+  title: {
+    text: "OPPO集团旗下各个品牌销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ oppo_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+oppo_percentage_chart.setOption(oppo_percentage_option);
+</script>
+{% endblock %}

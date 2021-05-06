@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">无线耳机发展变迁</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p>
+            <span>无线耳机萌生于蓝牙技术的普及, 随着拥有蓝牙功能的手机向大众普及, 无线耳机随之发展.</span>
+          </p>
+          <p>
+            <span>早期的无线耳机一般为单耳挂耳式的佩戴方式, 主要用于接听电话, 常见于部分办公人士.</span>
+          </p>
+          <p>
+            <span>后来蓝牙标准实现了音乐播放功能, 但并未立刻引起蓝牙耳机市场的大发展.</span>
+            <span>多年以后的iPhone7取消3.5mm耳机孔和AirPods的发布是无线耳机发展的关键点.</span>
+            <span>苹果就此引爆了分体式蓝牙耳机的市场, 现在普遍称这种产品形态为 True Wireless, 缩写为TWS, 意为真无线蓝牙耳机. </span>
+            <span>此后这种左右耳各一只耳机, 两只耳机没有线材连接的真无线蓝牙耳机成为了当今无线耳机的主流.</span>
+          </p>
+          <p>
+            <span>此外, 罗技等电脑外设厂商基于鼠标的蓝牙接收器技术发展而来的游戏无线耳机也逐渐流行, 使用时需要在电脑的USB接口上插入类似于U盘形状的蓝牙接收器使用.</span>
+            <span>而耳机形态多为头戴式, 这种蓝牙接收器的优势是音频传输延迟低.</span>
+          </p>
+          <p>
+            <span>同时, 降噪耳机在蓝牙连接技术的加持下也变得更加流行. Bose是专注于降噪耳机的老牌企业, 自然最先抓住了这股潮流, 索尼随后也推出了自己的无线降噪耳机产品.</span>
+            <span>近两年, 各大手机品牌也跟进发布中高端无线降噪耳机产品.</span>
+          </p>
+          <p>
+            <span>可以预见的是, 随着手机厂商普遍去掉3.5mm的耳机孔大环境下, 无线耳机将成为越来越多手机用户的第一选择.</span>
+            <span>有许多其他行业的厂商也嗅到了这股气味, 连著名的充电设备研发企业Anker安克都成立了自己的子品牌SoundCore声阔, 发布了自己的无线降噪耳机产品.</span>
+          </p>
+          <p>
+            <span>当前无线耳机市场, 200元以下价位为中低端产品, 200元到900元之间为中高端产品, 而900元以上的为高端产品, 基本都主打降噪功能.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="wh_brand"></div>
+  <div class="column is-half uniform-height" id="wh_pas"></div>
+  <div class="column is-half uniform-height" id="wh_pab_b2h"></div>
+  <div class="column is-half uniform-height" id="wh_pab_2hto9h"></div>
+  <div class="column is-half uniform-height" id="wh_pab_a9h"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("wh_brand_and_price_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "无线耳机品牌份额与价位段和销量分布";
+</script>
+
+<script>
+// 品牌销量占比饼图
+let wh_brand_dom = document.getElementById("wh_brand");
+let wh_brand_chart = echarts.init(wh_brand_dom);
+let wh_brand_option = {
+  title: {
+    text: "不同品牌的无线耳机销量占所有无线耳机销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ wh_brand | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+wh_brand_chart.setOption(wh_brand_option);
+</script>
+
+<script>
+// 无线耳机不同价位段与销量分布饼图
+let wh_pas_dom = document.getElementById("wh_pas");
+let wh_pas_chart = echarts.init(wh_pas_dom);
+let wh_pas_option = {
+  title: {
+    text: "不同价位段内的无线耳机销量占无线耳机总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ wh_pas | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+wh_pas_chart.setOption(wh_pas_option);
+</script>
+
+<script>
+// 无线耳机在200元以下的品牌销量占比饼图
+let wh_pab_b2h_dom = document.getElementById("wh_pab_b2h");
+let wh_pab_b2h_chart = echarts.init(wh_pab_b2h_dom);
+let wh_pab_b2h_option = {
+  title: {
+    text: "200元以下的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ wh_pab_b2h | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+wh_pab_b2h_chart.setOption(wh_pab_b2h_option);
+</script>
+
+<script>
+// 无线耳机在200元到900元之间的品牌销量占比饼图
+let wh_pab_2hto9h_dom = document.getElementById("wh_pab_2hto9h");
+let wh_pab_2hto9h_chart = echarts.init(wh_pab_2hto9h_dom);
+let wh_pab_2hto9h_option = {
+  title: {
+    text: "200元到900元之间的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ wh_pab_2hto9h | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+wh_pab_2hto9h_chart.setOption(wh_pab_2hto9h_option);
+</script>
+
+<script>
+// 无线耳机在900元以上的品牌销量占比饼图
+let wh_pab_a9h_dom = document.getElementById("wh_pab_a9h");
+let wh_pab_a9h_chart = echarts.init(wh_pab_a9h_dom);
+let wh_pab_a9h_option = {
+  title: {
+    text: "900元以上的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ wh_pab_a9h | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+wh_pab_a9h_chart.setOption(wh_pab_a9h_option);
+</script>
+{% endblock %}

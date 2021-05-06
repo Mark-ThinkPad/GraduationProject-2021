@@ -1,0 +1,192 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height" id="ppas_sp"></div>
+  <div class="column is-half uniform-height" id="ppas_fp"></div>
+  <div class="column is-half uniform-height" id="ppab_b2k"></div>
+  <div class="column is-half uniform-height" id="ppab_2kto5k"></div>
+  <div class="column is-half uniform-height" id="ppab_a5k"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("phone_price_and_sales_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "手机价位段与销量";
+</script>
+
+<script>
+// 智能手机不同价位段与销量分布饼图
+let ppas_sp_dom = document.getElementById("ppas_sp");
+let ppas_sp_chart = echarts.init(ppas_sp_dom);
+let ppas_sp_option = {
+  title: {
+    text: "不同价位段内的智能手机销量占智能手机总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ ppas_sp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+ppas_sp_chart.setOption(ppas_sp_option);
+</script>
+
+<script>
+// 功能机不同价位段与销量分布饼图
+let ppas_fp_dom = document.getElementById("ppas_fp");
+let ppas_fp_chart = echarts.init(ppas_fp_dom);
+let ppas_fp_option = {
+  title: {
+    text: "不同价位段内的功能机销量占功能机总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ ppas_fp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+ppas_fp_chart.setOption(ppas_fp_option);
+</script>
+
+<script>
+// 智能手机在2000元以下的品牌销量占比饼图
+let ppab_b2k_dom = document.getElementById("ppab_b2k");
+let ppab_b2k_chart = echarts.init(ppab_b2k_dom);
+let ppab_b2k_option = {
+  title: {
+    text: "2000元以下的智能手机中不同品牌的手机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ ppab_b2k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+ppab_b2k_chart.setOption(ppab_b2k_option);
+</script>
+
+<script>
+// 智能手机在2000到5000元之间的品牌销量占比饼图
+let ppab_2kto5k_dom = document.getElementById("ppab_2kto5k");
+let ppab_2kto5k_chart = echarts.init(ppab_2kto5k_dom);
+let ppab_2kto5k_option = {
+  title: {
+    text: "2000到5000元之间的智能手机中不同品牌的手机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ ppab_2kto5k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+ppab_2kto5k_chart.setOption(ppab_2kto5k_option);
+</script>
+
+<script>
+// 智能手机在5000元以上的品牌销量占比饼图
+let ppab_a5k_dom = document.getElementById("ppab_a5k");
+let ppab_a5k_chart = echarts.init(ppab_a5k_dom);
+let ppab_a5k_option = {
+  title: {
+    text: "5000元以上的智能手机中不同品牌的手机销量占总销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
+      data: {{ ppab_a5k | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+ppab_a5k_chart.setOption(ppab_a5k_option);
+</script>
+{% endblock %}

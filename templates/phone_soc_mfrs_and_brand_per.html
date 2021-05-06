@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height" id="soc_mfrs"></div>
+  <div class="column is-half uniform-height" id="feature_phone_soc_per"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("phone_soc_mfrs_and_brand_per_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "SoC制造商市场份额与销往不同手机品牌的比例";
+</script>
+
+<script>
+// SoC制造商销量占比饼图
+let soc_mfrs_dom = document.getElementById("soc_mfrs");
+let soc_mfrs_chart = echarts.init(soc_mfrs_dom);
+let soc_mfrs_option = {
+  title: {
+    text: "不同SoC制造商的芯片销量占全部手机销量的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "SoC制造商",
+      type: "pie",
+      radius: "50%",
+      data: {{ soc_mfrs | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+soc_mfrs_chart.setOption(soc_mfrs_option);
+</script>
+
+<script>
+// 功能机SoC制造商占比饼图
+let fpsp_dom = document.getElementById("feature_phone_soc_per");
+let fpsp_chart = echarts.init(fpsp_dom);
+let fpsp_option = {
+  title: {
+    text: "不同功能机SoC制造商的芯片销量占功能机总销量的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ fpsp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+fpsp_chart.setOption(fpsp_option);
+</script>
+{% endblock %}

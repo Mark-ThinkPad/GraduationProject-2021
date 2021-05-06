@@ -1,0 +1,390 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height" id="apple_sales_star"></div>
+  <div class="column is-half uniform-height" id="enkor_sales_star"></div>
+  <div class="column is-half uniform-height" id="hw_sales_star"></div>
+  <div class="column is-full uniform-height" id="edifier_sales_star"></div>
+  <div class="column is-full uniform-height" id="mi_sales_star"></div>
+  <div class="column is-full uniform-height" id="sony_sales_star"></div>
+  <div class="column is-full uniform-height" id="bose_sales_star"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("wh_brand_sales_star_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "头部无线耳机品牌线上销量明星";
+</script>
+
+<script>
+// 苹果无线耳机销量明星柱状图
+let apple_sales_star_dom = document.getElementById("apple_sales_star");
+let apple_sales_star_chart = echarts.init(apple_sales_star_dom);
+let apple_sales_star_option = {
+  title: {
+    text: "苹果无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ apple_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ apple_mt | tojson }}
+    }
+  ]
+};
+apple_sales_star_chart.setOption(apple_sales_star_option);
+</script>
+
+<script>
+// ENKOR无线耳机销量明星柱状图
+let enkor_sales_star_dom = document.getElementById("enkor_sales_star");
+let enkor_sales_star_chart = echarts.init(enkor_sales_star_dom);
+let enkor_sales_star_option = {
+  title: {
+    text: "ENKOR无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ enkor_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ enkor_mt | tojson }}
+    }
+  ]
+};
+enkor_sales_star_chart.setOption(enkor_sales_star_option);
+</script>
+
+<script>
+// 华为无线耳机销量明星柱状图
+let hw_sales_star_dom = document.getElementById("hw_sales_star");
+let hw_sales_star_chart = echarts.init(hw_sales_star_dom);
+let hw_sales_star_option = {
+  title: {
+    text: "华为无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ hw_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ hw_mt | tojson }}
+    }
+  ]
+};
+hw_sales_star_chart.setOption(hw_sales_star_option);
+</script>
+
+<script>
+// 漫步者无线耳机销量明星柱状图
+let edifier_sales_star_dom = document.getElementById("edifier_sales_star");
+let edifier_sales_star_chart = echarts.init(edifier_sales_star_dom);
+let edifier_sales_star_option = {
+  title: {
+    text: "漫步者无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ edifier_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ edifier_mt | tojson }}
+    }
+  ]
+};
+edifier_sales_star_chart.setOption(edifier_sales_star_option);
+</script>
+
+<script>
+// 小米无线耳机销量明星柱状图
+let mi_sales_star_dom = document.getElementById("mi_sales_star");
+let mi_sales_star_chart = echarts.init(mi_sales_star_dom);
+let mi_sales_star_option = {
+  title: {
+    text: "小米无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ mi_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ mi_mt | tojson }}
+    }
+  ]
+};
+mi_sales_star_chart.setOption(mi_sales_star_option);
+</script>
+
+<script>
+// 索尼无线耳机销量明星柱状图
+let sony_sales_star_dom = document.getElementById("sony_sales_star");
+let sony_sales_star_chart = echarts.init(sony_sales_star_dom);
+let sony_sales_star_option = {
+  title: {
+    text: "索尼无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ sony_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ sony_mt | tojson }}
+    }
+  ]
+};
+sony_sales_star_chart.setOption(sony_sales_star_option);
+</script>
+
+<script>
+// Bose无线耳机销量明星柱状图
+let bose_sales_star_dom = document.getElementById("bose_sales_star");
+let bose_sales_star_chart = echarts.init(bose_sales_star_dom);
+let bose_sales_star_option = {
+  title: {
+    text: "Bose无线耳机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ bose_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ bose_mt | tojson }}
+    }
+  ]
+};
+bose_sales_star_chart.setOption(bose_sales_star_option);
+</script>
+{% endblock %}

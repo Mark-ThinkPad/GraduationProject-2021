@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half uniform-height" id="total">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">
+          <span>无线耳机销售数据总览</span>
+        </p>
+      </header>
+      <div class="card-content">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th>项目</th>
+              <th>数量</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>总销量</td>
+              <td>{{ total_tc }} 万件</td>
+            </tr>
+            <tr>
+              <td>商品数量</td>
+              <td>{{ total.commodity_count }} 件</td>
+            </tr>
+            <tr>
+              <td>品牌数量</td>
+              <td>{{ total.brand_count }} 个</td>
+            </tr>
+            <tr>
+              <td>机型数量</td>
+              <td>{{ total.model_count }} 种</td>
+            </tr>
+            <tr>
+              <td>数据源</td>
+              <td>京东, 苏宁, 小米有品, 网易严选, 小米商城, 华为商城, 荣耀商城, vivo商城, 欢太商城(OPPO集团官方商城)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="wh_self_per"></div>
+  <div class="column is-full more-height" id="wh"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("wh_sales_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "无线耳机销量总览";
+</script>
+
+<script>
+// 官方自营与非官方自营销量比例柱状图
+let wh_self_per_dom = document.getElementById("wh_self_per");
+let wh_self_per_chart = echarts.init(wh_self_per_dom);
+let wh_self_per_option = {
+  title: {
+    text: "官方自营与非官方自营销量占比",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: ["官方自营", "非官方自营"],
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      min: 0,
+      max: 100,
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: [{{ wh_self_per.self_percentage }}, {{ wh_self_per.non_self_percentage }}]
+    }
+  ]
+};
+wh_self_per_chart.setOption(wh_self_per_option);
+</script>
+
+<script>
+// 无线耳机销量排行横向条形图
+let wh_dom = document.getElementById("wh");
+let wh_chart = echarts.init(wh_dom);
+let wh_option = {
+  title: {
+    text: "无线耳机销量排行",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow"
+    }
+  },
+  dataZoom: [
+    {
+      type: "slider",
+      yAxisIndex: 0,
+      zoomLock: true,
+      width: 10,
+      right: 10,
+      top: 70,
+      bottom: 20,
+      start: 99.8,
+      end: 100,
+      handleSize: 0,
+      showDetail: false,
+    },
+    {
+      type: "inside",
+      yAxisIndex: 0,
+      start: 99.8,
+      end: 100,
+      zoomOnMouseWheel: false,
+      moveOnMouseMove: true,
+      moveOnMouseWheel: true
+    }
+  ],
+  legend: {
+    data: ["销量(件)"]
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: {
+    type: "value",
+    axisLabel: {
+      formatter: "{value} 件"
+    },
+    min: 0,
+  },
+  yAxis: {
+    type: "category",
+    data: {{ wh_name | tojson }},
+  },
+  series: [
+    {
+      name: "销量(件)",
+      type: "bar",
+      data: {{ wh_count | tojson }}
+    }
+  ]
+};
+wh_chart.setOption(wh_option);
+</script>
+{% endblock %}

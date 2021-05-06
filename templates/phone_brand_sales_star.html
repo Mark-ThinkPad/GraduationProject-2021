@@ -1,0 +1,336 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-full uniform-height" id="apple_sales_star"></div>
+  <div class="column is-full uniform-height" id="mi_sales_star"></div>
+  <div class="column is-full uniform-height" id="hw_sales_star"></div>
+  <div class="column is-full uniform-height" id="honor_sales_star"></div>
+  <div class="column is-full uniform-height" id="oppo_sales_star"></div>
+  <div class="column is-full uniform-height" id="vivo_sales_star"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("phone_brand_sales_star_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "头部手机品牌线上销量明星";
+</script>
+
+<script>
+// 苹果手机销量明星柱状图
+let apple_sales_star_dom = document.getElementById("apple_sales_star");
+let apple_sales_star_chart = echarts.init(apple_sales_star_dom);
+let apple_sales_star_option = {
+  title: {
+    text: "苹果手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ apple_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ apple_mt | tojson }}
+    }
+  ]
+};
+apple_sales_star_chart.setOption(apple_sales_star_option);
+</script>
+
+<script>
+// 小米手机销量明星柱状图
+let mi_sales_star_dom = document.getElementById("mi_sales_star");
+let mi_sales_star_chart = echarts.init(mi_sales_star_dom);
+let mi_sales_star_option = {
+  title: {
+    text: "小米手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ mi_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ mi_mt | tojson }}
+    }
+  ]
+};
+mi_sales_star_chart.setOption(mi_sales_star_option);
+</script>
+
+<script>
+// 华为手机销量明星柱状图
+let hw_sales_star_dom = document.getElementById("hw_sales_star");
+let hw_sales_star_chart = echarts.init(hw_sales_star_dom);
+let hw_sales_star_option = {
+  title: {
+    text: "华为手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ hw_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ hw_mt | tojson }}
+    }
+  ]
+};
+hw_sales_star_chart.setOption(hw_sales_star_option);
+</script>
+
+<script>
+// 荣耀手机销量明星柱状图
+let honor_sales_star_dom = document.getElementById("honor_sales_star");
+let honor_sales_star_chart = echarts.init(honor_sales_star_dom);
+let honor_sales_star_option = {
+  title: {
+    text: "荣耀手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ honor_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ honor_mt | tojson }}
+    }
+  ]
+};
+honor_sales_star_chart.setOption(honor_sales_star_option);
+</script>
+
+<script>
+// OPPO手机销量明星柱状图
+let oppo_sales_star_dom = document.getElementById("oppo_sales_star");
+let oppo_sales_star_chart = echarts.init(oppo_sales_star_dom);
+let oppo_sales_star_option = {
+  title: {
+    text: "OPPO手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ oppo_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ oppo_mt | tojson }}
+    }
+  ]
+};
+oppo_sales_star_chart.setOption(oppo_sales_star_option);
+</script>
+
+<script>
+// vivo手机销量明星柱状图
+let vivo_sales_star_dom = document.getElementById("vivo_sales_star");
+let vivo_sales_star_chart = echarts.init(vivo_sales_star_dom);
+let vivo_sales_star_option = {
+  title: {
+    text: "vivo手机销量明星",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ vivo_model | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
+      data: {{ vivo_mt | tojson }}
+    }
+  ]
+};
+vivo_sales_star_chart.setOption(vivo_sales_star_option);
+</script>
+{% endblock %}

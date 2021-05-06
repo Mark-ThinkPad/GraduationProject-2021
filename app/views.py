@@ -16,7 +16,7 @@ def index():
     return redirect(url_for('views.phone_sales'))
 
 
-@views.route('/phone_sales')
+@views.route('/phone/sales')
 def phone_sales():
     # 手机销量排行
     phone_name = []
@@ -39,6 +39,59 @@ def phone_sales():
         platform_cc.append(platform.commodity_count)
         platform_sp.append(float(platform.self_percentage))
         platform_nsp.append(float(platform.non_self_percentage))
+    # 智能手机各项尺寸参数的平均数和中位数
+    phone_size = PhoneSize.get_by_id(1)
+
+    return render_template('phone_sales.html', phone_name=phone_name, phone_count=phone_count, total=total,
+                           total_tc=total_tc, platform_source=platform_source, platform_tc=platform_tc,
+                           platform_cc=platform_cc, platform_sp=platform_sp, platform_nsp=platform_nsp,
+                           phone_size=phone_size)
+
+
+@views.route('/phone/os_and_brand_per')
+def phone_os_and_brand_per():
+    # 操作系统占比
+    phoneos = []
+    for phone_os in PhoneOS.select():
+        phoneos.append({'value': float(phone_os.percentage), 'name': phone_os.os})
+    # 品牌销量占比
+    phonebrand = []
+    for phone_brand in PhoneBrand.select():
+        phonebrand.append({'value': float(phone_brand.percentage), 'name': phone_brand.brand})
+    # 功能机品牌占比
+    fpp = []
+    for fp in FeaturePhonePercentage.select():
+        fpp.append({'value': float(fp.percentage), 'name': fp.brand})
+
+    return render_template('phone_os_and_brand_per.html', phone_os=phoneos, phone_brand=phonebrand, fpp=fpp)
+
+
+@views.route('/phone/price_and_sales')
+def phone_price_and_sales():
+    # 智能手机与功能机价格区间与销量分布
+    ppas_sp = []
+    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '智能手机'):
+        ppas_sp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
+    ppas_fp = []
+    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '功能机'):
+        ppas_fp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
+    # 智能手机在不同价格区间的品牌销量占比
+    ppab_b2k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000元以下'):
+        ppab_b2k.append({'value': float(ppab.percentage), 'name': ppab.brand})
+    ppab_2kto5k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000-5000元'):
+        ppab_2kto5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
+    ppab_a5k = []
+    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '5000元以上'):
+        ppab_a5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
+
+    return render_template('phone_price_and_sales.html', ppas_sp=ppas_sp, ppas_fp=ppas_fp, ppab_b2k=ppab_b2k,
+                           ppab_2kto5k=ppab_2kto5k, ppab_a5k=ppab_a5k)
+
+
+@views.route('/phone/brand_sales_star')
+def phone_brand_sales_star():
     # 苹果手机销量明星
     apple_model = []
     apple_mt = []
@@ -81,6 +134,14 @@ def phone_sales():
             .order_by(BrandSalesStar.total.desc()):
         vivo_model.append(bss.model)
         vivo_mt.append(rounding_w(bss.total))
+
+    return render_template('phone_brand_sales_star.html', apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model,
+                           mi_mt=mi_mt, hw_model=hw_model, hw_mt=hw_mt, honor_model=honor_model, honor_mt=honor_mt,
+                           oppo_model=oppo_model, oppo_mt=oppo_mt, vivo_model=vivo_model, vivo_mt=vivo_mt,)
+
+
+@views.route('/phone/brand_per')
+def phone_brand_per():
     # 小米与子品牌红米销量占比
     mi_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == '小米'):
@@ -93,16 +154,38 @@ def phone_sales():
     oppo_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'OPPO'):
         oppo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
+
+    return render_template('phone_brand_per.html', mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per)
+
+
+@views.route('/phone/soc/sales')
+def phone_soc_sales():
     # SoC销量排行
     soc_name = []
     soc_count = []
     for soc in SoC.select().order_by(SoC.total.asc()):
         soc_name.append(soc.soc_mfrs + '\n' + soc.soc_model)
         soc_count.append(soc.total)
+
+    return render_template('phone_soc_sales.html', soc_name=soc_name, soc_count=soc_count)
+
+
+@views.route('/phone/soc/mfrs_and_brand_per')
+def phone_soc_mfrs_and_brand_per():
     # SoC制造商占比
     socmfrs = []
     for soc_mfrs in SoCMfrs.select():
         socmfrs.append({'value': float(soc_mfrs.percentage), 'name': soc_mfrs.soc_mfrs})
+    # 功能机SoC制造商占比
+    fpsp = []
+    for fps in FeaturePhoneSoCPer.select():
+        fpsp.append({'value': float(fps.percentage), 'name': fps.soc_mfrs})
+
+    return render_template('phone_soc_mfrs_and_brand_per.html', soc_mfrs=socmfrs, fpsp=fpsp)
+
+
+@views.route('/phone/soc/mfrs_sales_star')
+def phone_soc_mfrs_sales_star():
     # 苹果A系列SoC销量明星
     as_model = []
     as_mt = []
@@ -139,61 +222,11 @@ def phone_sales():
     for soc in SoCStar.select().where(SoCStar.soc_mfrs == '联发科').order_by(SoCStar.total.desc()):
         mtk_model.append(soc.soc_model)
         mtk_mt.append(rounding_w(soc.total))
-    # 功能机SoC制造商占比
-    fpsp = []
-    for fps in FeaturePhoneSoCPer.select():
-        fpsp.append({'value': float(fps.percentage), 'name': fps.soc_mfrs})
-    # 智能手机各项尺寸参数的平均数和中位数
-    phone_size = PhoneSize.get_by_id(1)
-    # 智能手机与功能机价格区间与销量分布
-    ppas_sp = []
-    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '智能手机'):
-        ppas_sp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
-    ppas_fp = []
-    for ppas in PhonePriceAndSales.select().where(PhonePriceAndSales.type == '功能机'):
-        ppas_fp.append({'value': float(ppas.percentage), 'name': ppas.price_range})
-    # 智能手机在不同价格区间的品牌销量占比
-    ppab_b2k = []
-    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000元以下'):
-        ppab_b2k.append({'value': float(ppab.percentage), 'name': ppab.brand})
-    ppab_2kto5k = []
-    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '2000-5000元'):
-        ppab_2kto5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
-    ppab_a5k = []
-    for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '5000元以上'):
-        ppab_a5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
 
-    return render_template('phone_sales.html', phone_name=phone_name, phone_count=phone_count, total=total, total_tc=total_tc,
-                           platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
-                           platform_sp=platform_sp, platform_nsp=platform_nsp,
-                           apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model, mi_mt=mi_mt,
-                           hw_model=hw_model, hw_mt=hw_mt, honor_model=honor_model, honor_mt=honor_mt,
-                           oppo_model=oppo_model, oppo_mt=oppo_mt, vivo_model=vivo_model, vivo_mt=vivo_mt,
-                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, soc_name=soc_name,
-                           soc_count=soc_count, soc_mfrs=socmfrs, as_model=as_model, as_mt=as_mt,
+    return render_template('phone_soc_mfrs_sales_star.html', as_model=as_model, as_mt=as_mt,
                            unisoc_model=unisoc_model, unisoc_mt=unisoc_mt, exynos_model=exynos_model,
                            exynos_mt=exynos_mt, snapdragon_model=snapdragon_model, snapdragon_mt=snapdragon_mt,
-                           kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt, fpsp=fpsp,
-                           phone_size=phone_size, ppas_sp=ppas_sp, ppas_fp=ppas_fp, ppab_b2k=ppab_b2k,
-                           ppab_2kto5k=ppab_2kto5k, ppab_a5k=ppab_a5k)
-
-
-@views.route('/os_and_brand_per')
-def os_and_brand_per():
-    # 操作系统占比
-    phoneos = []
-    for phone_os in PhoneOS.select():
-        phoneos.append({'value': float(phone_os.percentage), 'name': phone_os.os})
-    # 品牌销量占比
-    phonebrand = []
-    for phone_brand in PhoneBrand.select():
-        phonebrand.append({'value': float(phone_brand.percentage), 'name': phone_brand.brand})
-    # 功能机品牌占比
-    fpp = []
-    for fp in FeaturePhonePercentage.select():
-        fpp.append({'value': float(fp.percentage), 'name': fp.brand})
-
-    return render_template('os_and_brand_per.html', phone_os=phoneos, phone_brand=phonebrand, fpp=fpp)
+                           kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt)
 
 
 @views.route('/phone/mi10')
@@ -272,8 +305,8 @@ def mi10():
                            odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per)
 
 
-@views.route('/wirelessheadphone')
-def wireless_headphone():
+@views.route('/wh/sales')
+def wh_sales():
     # 数据总览
     total = WHTotal.get_by_id(1)
     total_tc = rounding_w(total.total_count)
@@ -285,6 +318,13 @@ def wireless_headphone():
     for item in WH.select().order_by(WH.total.asc()):
         wh_name.append(item.brand + '\n' + item.model[:20])
         wh_count.append(item.total)
+
+    return render_template('wh_sales.html', total=total, total_tc=total_tc, wh_self_per=wh_self_per, wh_name=wh_name,
+                           wh_count=wh_count)
+
+
+@views.route('/wh/brand_and_price')
+def wh_brand_and_price():
     # 品牌销量占比
     whbrand = []
     for wh_brand in WHBrand.select():
@@ -303,6 +343,13 @@ def wireless_headphone():
     wh_pab_a9h = []
     for wh_pab in WHPriceAndBrand.select().where(WHPriceAndBrand.price_range == '900元以上'):
         wh_pab_a9h.append({'value': float(wh_pab.percentage), 'name': wh_pab.brand})
+
+    return render_template('wh_brand_and_price.html', wh_brand=whbrand, wh_pas=wh_pas, wh_pab_b2h=wh_pab_b2h,
+                           wh_pab_2hto9h=wh_pab_2hto9h, wh_pab_a9h=wh_pab_a9h)
+
+
+@views.route('/wh/brand_sales_star')
+def wh_brand_sales_star():
     # 苹果无线耳机销量明星
     apple_model = []
     apple_mt = []
@@ -353,9 +400,7 @@ def wireless_headphone():
         bose_model.append(wh_bss.model)
         bose_mt.append(rounding_w(wh_bss.total))
 
-    return render_template('wireless_headphone.html', total=total, total_tc=total_tc, wh_self_per=wh_self_per,
-                           wh_name=wh_name, wh_count=wh_count, wh_brand=whbrand, wh_pas=wh_pas, wh_pab_b2h=wh_pab_b2h,
-                           wh_pab_2hto9h=wh_pab_2hto9h, wh_pab_a9h=wh_pab_a9h, apple_model=apple_model,
-                           apple_mt=apple_mt, enkor_model=enkor_model, enkor_mt=enkor_mt, hw_model=hw_model,
-                           hw_mt=hw_mt, edifier_model=edifier_model, edifier_mt=edifier_mt, mi_model=mi_model,
-                           mi_mt=mi_mt, sony_model=sony_model, sony_mt=sony_mt, bose_model=bose_model, bose_mt=bose_mt)
+    return render_template('wh_brand_sales_star.html', apple_model=apple_model, apple_mt=apple_mt,
+                           enkor_model=enkor_model, enkor_mt=enkor_mt, hw_model=hw_model, hw_mt=hw_mt,
+                           edifier_model=edifier_model, edifier_mt=edifier_mt, mi_model=mi_model, mi_mt=mi_mt,
+                           sony_model=sony_model, sony_mt=sony_mt, bose_model=bose_model, bose_mt=bose_mt)
