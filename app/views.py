@@ -13,11 +13,11 @@ views = Blueprint('views', __name__)
 
 @views.route('/')
 def index():
-    return redirect(url_for('views.phone'))
+    return redirect(url_for('views.phone_sales'))
 
 
-@views.route('/phone')
-def phone():
+@views.route('/phone_sales')
+def phone_sales():
     # 手机销量排行
     phone_name = []
     phone_count = []
@@ -39,14 +39,6 @@ def phone():
         platform_cc.append(platform.commodity_count)
         platform_sp.append(float(platform.self_percentage))
         platform_nsp.append(float(platform.non_self_percentage))
-    # 操作系统占比
-    phoneos = []
-    for phone_os in PhoneOS.select():
-        phoneos.append({'value': float(phone_os.percentage), 'name': phone_os.os})
-    # 品牌销量占比
-    phonebrand = []
-    for phone_brand in PhoneBrand.select():
-        phonebrand.append({'value': float(phone_brand.percentage), 'name': phone_brand.brand})
     # 苹果手机销量明星
     apple_model = []
     apple_mt = []
@@ -101,10 +93,6 @@ def phone():
     oppo_per = []
     for bp in BrandPercentage.select().where(BrandPercentage.main_brand == 'OPPO'):
         oppo_per.append({'value': float(bp.percentage), 'name': bp.sub_brand})
-    # 功能机品牌占比
-    fpp = []
-    for fp in FeaturePhonePercentage.select():
-        fpp.append({'value': float(fp.percentage), 'name': fp.brand})
     # SoC销量排行
     soc_name = []
     soc_count = []
@@ -175,19 +163,37 @@ def phone():
     for ppab in PhonePriceAndBrand.select().where(PhonePriceAndBrand.price_range == '5000元以上'):
         ppab_a5k.append({'value': float(ppab.percentage), 'name': ppab.brand})
 
-    return render_template('phone.html', phone_name=phone_name, phone_count=phone_count, total=total, total_tc=total_tc,
+    return render_template('phone_sales.html', phone_name=phone_name, phone_count=phone_count, total=total, total_tc=total_tc,
                            platform_source=platform_source, platform_tc=platform_tc, platform_cc=platform_cc,
-                           platform_sp=platform_sp, platform_nsp=platform_nsp, phone_os=phoneos, phone_brand=phonebrand,
+                           platform_sp=platform_sp, platform_nsp=platform_nsp,
                            apple_model=apple_model, apple_mt=apple_mt, mi_model=mi_model, mi_mt=mi_mt,
                            hw_model=hw_model, hw_mt=hw_mt, honor_model=honor_model, honor_mt=honor_mt,
                            oppo_model=oppo_model, oppo_mt=oppo_mt, vivo_model=vivo_model, vivo_mt=vivo_mt,
-                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, fpp=fpp, soc_name=soc_name,
+                           mi_per=mi_per, vivo_per=vivo_per, oppo_per=oppo_per, soc_name=soc_name,
                            soc_count=soc_count, soc_mfrs=socmfrs, as_model=as_model, as_mt=as_mt,
                            unisoc_model=unisoc_model, unisoc_mt=unisoc_mt, exynos_model=exynos_model,
                            exynos_mt=exynos_mt, snapdragon_model=snapdragon_model, snapdragon_mt=snapdragon_mt,
                            kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt, fpsp=fpsp,
                            phone_size=phone_size, ppas_sp=ppas_sp, ppas_fp=ppas_fp, ppab_b2k=ppab_b2k,
                            ppab_2kto5k=ppab_2kto5k, ppab_a5k=ppab_a5k)
+
+
+@views.route('/os_and_brand_per')
+def os_and_brand_per():
+    # 操作系统占比
+    phoneos = []
+    for phone_os in PhoneOS.select():
+        phoneos.append({'value': float(phone_os.percentage), 'name': phone_os.os})
+    # 品牌销量占比
+    phonebrand = []
+    for phone_brand in PhoneBrand.select():
+        phonebrand.append({'value': float(phone_brand.percentage), 'name': phone_brand.brand})
+    # 功能机品牌占比
+    fpp = []
+    for fp in FeaturePhonePercentage.select():
+        fpp.append({'value': float(fp.percentage), 'name': fp.brand})
+
+    return render_template('os_and_brand_per.html', phone_os=phoneos, phone_brand=phonebrand, fpp=fpp)
 
 
 @views.route('/phone/mi10')

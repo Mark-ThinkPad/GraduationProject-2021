@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-half">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">手机发展变迁</p>
+      </header>
+      <div class="card-content">
+        <div class="content">
+          <p>从手机行业整个的发展过程中来看, 手机行业是跟随移动通信技术的进步与迭代而发展的.</p>
+          <p>
+            <span>在最初的模拟信号时期(即1G时代), 手机行业的佼佼者是在通信领域已颇有建树的摩托罗拉.</span>
+            <span>当时的手机普遍体积大, 重量沉, 并且只有通话功能, 被称为大哥大.</span>
+          </p>
+          <p>
+            <span>上世纪90年代, 欧洲提出名为GSM的数字移动通信系统, 风靡全球, 现在普遍称之为2G通信技术, 同时美国将CDMA技术民用化, 与GSM竞争.</span>
+            <span>GSM和CDMA技术不仅能够实现基本的通话功能, 还新增了短信功能, 后期甚至提供了上网服务, 催生了WAP技术与市场生态.</span>
+            <span>摩托罗拉作为1G时代的霸主, 不愿快速跟上2G时代的潮流, 其霸主地位迅速下滑, 诺基亚, 爱立信等新兴企业后来居上.</span>
+            <span>手机形态也进一步发展, 彩屏, 直板, 翻盖, 滑盖, T9键盘, 全键盘等设计百花齐放</span>
+          </p>
+          <p>
+            <span>2009年, 3G时代到来, 欧洲提出了WCDMA标准, 美国提出了CDMA2000标准, 中国则提出了TD-SCDMA标准.</span>
+            <span>此时智能手机的概念已经逐渐明朗, 诺基亚以塞班系统为代表, 苹果以iOS系统为代表, 而谷歌也在这个时期推出了Android操作系统.</span>
+            <span>手机形态的发展向着普及触摸屏和更大的屏幕尺寸发展, 同时3G网络提供的网速也更快, 移动互联网生态进一步发展.</span>
+            <span>行业也依然发生了大洗牌, 苹果和三星后来居上, 其他功能机时代的老牌企业逐渐没落.</span>
+          </p>
+          <p>
+            <span>2014年, 我国引入4G网络, 此前饱受诟病的TD-SCDMA标准为我们进入TD-LTE标准提供了良好的人才基础.</span>
+            <span>在这个时代中, 华为乘着4G的东风后来居上, 国内手机企业的竞争愈发激烈.</span>
+            <span>手机形态也趋向同质化, 以直板手机为主, 屏幕尺寸朝着更大的方向发着, 后来出现的曲面屏虽然在边缘处弯曲, 但仍然属于直板手机的范畴.</span>
+          </p>
+          <p>
+            <span>在3G和4G时代, 国内智能手机行业的发展可谓是沧海桑田, 初期的主流商业模式以移动通信运行商渠道进行销售.</span>
+            <span>此时国产品牌格局被称为中华酷联, 即中兴, 华为, 酷派, 联想.</span>
+            <span>随便电商平台和移动支付的发展为基础, 以小米为代表的互联网商业模式进入手机市场, 中华酷联中晋仅剩华为未被洗牌, 短暂的形成了以小米, 魅族, 华为为主的短暂格局.</span>
+            <span>随便互联网商业模式热度的退潮, 线下市场的老玩家OPPO和VIVO逐渐浮上水面, 最终形成了现在的华米OV格局, 即华为, 小米, OPPO, VIVO.</span>
+            <span>再看国外品牌的市场份额, 三星称霸国内安卓市场的时代已经过去了, 中低端市场份额先被小米等新兴企业夺走, 高端市场后来又被华为高端化战略抢走大部分.</span>
+            <span>同时苹果虽然仍然是行业内顶端的企业, 但是国内市场份额逐年下滑已是不争的事实. 现在全球市场的前两名仍然是苹果和三星, 但早已今非昔比.</span>
+            <span>国产品牌的强势崛起, 其背后是上下游产业的重心逐渐向中国转移的大趋势, 跟随着中国经济一起腾飞.</span>
+          </p>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="phone_os"></div>
+  <div class="column is-half uniform-height" id="phone_brand"></div>
+  <div class="column is-half uniform-height" id="feature_phone_percentage"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("os_and_brand_per_url").classList.add("is-active");
+</script>
+
+<script>
+// 操作系统占比饼图
+let phone_os_dom = document.getElementById("phone_os");
+let phone_os_chart = echarts.init(phone_os_dom);
+let phone_os_option = {
+  title: {
+    text: "不同操作系统的手机销量占全部手机销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "操作系统",
+      type: "pie",
+      radius: "50%",
+      data: {{ phone_os | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+phone_os_chart.setOption(phone_os_option);
+</script>
+
+<script>
+// 品牌销量占比饼图
+let phone_brand_dom = document.getElementById("phone_brand");
+let phone_brand_chart = echarts.init(phone_brand_dom);
+let phone_brand_option = {
+  title: {
+    text: "不同品牌的手机销量占所有手机销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ phone_brand | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+phone_brand_chart.setOption(phone_brand_option);
+</script>
+
+<script>
+// 功能机品牌占比饼图
+let fpp_dom = document.getElementById("feature_phone_percentage");
+let fpp_chart = echarts.init(fpp_dom);
+let fpp_option = {
+  title: {
+    text: "不同品牌的功能机销量占所有功能机销量的百分比",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ fpp | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+fpp_chart.setOption(fpp_option);
+</script>
+{% endblock %}

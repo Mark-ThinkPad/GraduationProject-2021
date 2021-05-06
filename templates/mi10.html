@@ -100,68 +100,68 @@ let total_option = {
     text: "电商数据源总览"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'cross'
+      type: "cross"
     }
   },
   grid: {
-    right: '20%'
+    right: "20%"
   },
   legend: {
-    data: ['销量(基于评论总数)', '好评率']
+    data: ["销量(基于评论总数)", "好评率"]
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       axisPointer: {
-        type: 'shadow'
+        type: "shadow"
       },
       data: {{ total_source | tojson }}
     }
   ],
   yAxis: [
     {
-      type: 'value',
-      name: '销量(基于评论总数)',
-      position: 'left',
+      type: "value",
+      name: "销量(基于评论总数)",
+      position: "left",
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#5470C6'
+          color: "#5470C6"
         }
       },
       axisLabel: {
-        formatter: '{value} 万部'
+        formatter: "{value} 万部"
       }
     },
     {
-      type: 'value',
-      name: '好评率',
+      type: "value",
+      name: "好评率",
       min: 0,
       max: 100,
-      position: 'right',
+      position: "right",
       offset: 40,
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#91CC75'
+          color: "#91CC75"
         }
       },
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
   ],
   series: [
     {
-      name: '销量(基于评论总数)',
-      type: 'bar',
+      name: "销量(基于评论总数)",
+      type: "bar",
       data: {{ total_count | tojson }}
     },
     {
-      name: '好评率',
-      type: 'bar',
+      name: "好评率",
+      type: "bar",
       yAxisIndex: 1,
       data: {{ total_good_rate | tojson }}
     }
@@ -177,72 +177,72 @@ let model_count_chart = echarts.init(model_count_dom);
 let model_count_option = {
   title: {
     text: "各型号数据总览",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'cross'
+      type: "cross"
     }
   },
   grid: {
-    left: '5%',
-    right: '10%'
+    left: "5%",
+    right: "10%"
   },
   legend: {
-    data: ['百分比', '好评率']
+    data: ["百分比", "好评率"]
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       axisPointer: {
-        type: 'shadow'
+        type: "shadow"
       },
       data: {{ mc_name | tojson }}
     }
   ],
   yAxis: [
     {
-      type: 'value',
-      name: '百分比',
-      position: 'left',
+      type: "value",
+      name: "百分比",
+      position: "left",
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#5470C6'
+          color: "#5470C6"
         }
       },
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
     {
-      type: 'value',
-      name: '好评率',
+      type: "value",
+      name: "好评率",
       min: 0,
       max: 100,
-      position: 'right',
+      position: "right",
       offset: 40,
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#91CC75'
+          color: "#91CC75"
         }
       },
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
   ],
   series: [
     {
-      name: '百分比',
-      type: 'bar',
+      name: "百分比",
+      type: "bar",
       data: {{ mc_per | tojson }}
     },
     {
-      name: '好评率',
-      type: 'bar',
+      name: "好评率",
+      type: "bar",
       yAxisIndex: 1,
       data: {{ mc_good_rate | tojson }}
     }
@@ -257,27 +257,27 @@ let color_count_dom = document.getElementById("color_count");
 let color_count_chart = echarts.init(color_count_dom);
 let color_count_option = {
   title: {
-    text: '不同机身颜色占总销量百分比',
-    left: 'center'
+    text: "不同机身颜色占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '机身颜色',
-      type: 'pie',
-      radius: '50%',
+      name: "机身颜色",
+      type: "pie",
+      radius: "50%",
       data: {{ color_count | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -292,27 +292,27 @@ let ram_count_dom = document.getElementById("ram_count");
 let ram_count_chart = echarts.init(ram_count_dom);
 let ram_count_option = {
   title: {
-    text: '不同内存(RAM)容量占总销量百分比',
-    left: 'center'
+    text: "不同内存(RAM)容量占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '内存容量',
-      type: 'pie',
-      radius: '50%',
+      name: "内存容量",
+      type: "pie",
+      radius: "50%",
       data: {{ ram_count | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -327,27 +327,27 @@ let rom_count_dom = document.getElementById("rom_count");
 let rom_count_chart = echarts.init(rom_count_dom);
 let rom_count_option = {
   title: {
-    text: '不同储存(ROM)容量占总销量百分比',
-    left: 'center'
+    text: "不同储存(ROM)容量占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '储存容量',
-      type: 'pie',
-      radius: '50%',
+      name: "储存容量",
+      type: "pie",
+      radius: "50%",
       data: {{ rom_count | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -365,70 +365,70 @@ let user_activity_option = {
     text: "有内容评论和默认好评数量占比"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'cross'
+      type: "cross"
     }
   },
   grid: {
-    right: '20%'
+    right: "20%"
   },
   legend: {
-    data: ['有内容评论百分比', '默认好评百分比']
+    data: ["有内容评论百分比", "默认好评百分比"]
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       axisPointer: {
-        type: 'shadow'
+        type: "shadow"
       },
       data: {{ ua_source | tojson }}
     }
   ],
   yAxis: [
     {
-      type: 'value',
-      name: '有内容评论百分比',
+      type: "value",
+      name: "有内容评论百分比",
       min: 0,
       max: 100,
-      position: 'left',
+      position: "left",
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#5470C6'
+          color: "#5470C6"
         }
       },
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
     {
-      type: 'value',
-      name: '默认好评百分比',
+      type: "value",
+      name: "默认好评百分比",
       min: 0,
       max: 100,
-      position: 'right',
+      position: "right",
       offset: 40,
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#91CC75'
+          color: "#91CC75"
         }
       },
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
   ],
   series: [
     {
-      name: '有内容评论百分比',
-      type: 'bar',
+      name: "有内容评论百分比",
+      type: "bar",
       data: {{ ua_ap | tojson }}
     },
     {
-      name: '默认好评百分比',
-      type: 'bar',
+      name: "默认好评百分比",
+      type: "bar",
       yAxisIndex: 1,
       data: {{ ua_iap | tojson }}
     }
@@ -444,40 +444,40 @@ let cdc_chart = echarts.init(cdc_dom);
 let cdc_option = {
   title: {
     text: "用户评论时间分布",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-   trigger: 'axis',
+   trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   legend: {
-    data: ['百分比', '百分比']
+    data: ["百分比", "百分比"]
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ cdc_ym | tojson }},
       axisPointer: {
-        type: 'shadow'
+        type: "shadow"
       }
     }
   ],
   yAxis: [
     {
-      type: 'value',
-      name: '百分比',
+      type: "value",
+      name: "百分比",
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
 
   ],
   series: [
     {
-      name: '百分比',
-      type: 'bar',
+      name: "百分比",
+      type: "bar",
       data: {{ cdc_per | tojson }}
     }
   ]
@@ -493,39 +493,39 @@ let odc_option = {
   title: {
     text: "用户下单时间分布",
     subtext: "(仅京东平台数据)",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   legend: {
-    data: ['百分比', '百分比']
+    data: ["百分比", "百分比"]
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ odc_ym | tojson }},
       axisPointer: {
-        type: 'shadow'
+        type: "shadow"
       }
     }
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     },
 
   ],
   series: [
     {
-      name: '百分比',
-      type: 'bar',
+      name: "百分比",
+      type: "bar",
       data: {{ odc_per | tojson }}
     }
   ]
@@ -541,23 +541,23 @@ let odsc_option = {
   title: {
     text: "从下单到评论的时间间隔分布",
     subtext: "(仅京东平台数据)",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ odsc_days | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -569,16 +569,16 @@ let odsc_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     }
   ],
   series: [
     {
-      name: '百分比',
-      type: 'bar',
+      name: "百分比",
+      type: "bar",
       data: {{ odsc_per | tojson }}
     }
   ]
@@ -594,23 +594,23 @@ let adc_option = {
   title: {
     text: "追评时间间隔分布",
     subtext: "(京东+苏宁数据)",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ adc_days | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -622,16 +622,16 @@ let adc_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     }
   ],
   series: [
     {
-      name: '百分比',
-      type: 'bar',
+      name: "百分比",
+      type: "bar",
       data: {{ adc_per | tojson }}
     }
   ]
@@ -645,28 +645,28 @@ let udc_dom = document.getElementById("user_device_count");
 let udc_chart = echarts.init(udc_dom);
 let udc_option = {
   title: {
-    text: '用户设备类型统计',
+    text: "用户设备类型统计",
     subtext: "(京东+苏宁数据)",
-    left: 'center'
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '评论数量占比',
-      type: 'pie',
-      radius: '50%',
+      name: "评论数量占比",
+      type: "pie",
+      radius: "50%",
       data: {{ udc_per | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }

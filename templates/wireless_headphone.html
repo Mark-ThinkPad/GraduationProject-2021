@@ -71,24 +71,24 @@ let wh_self_per_chart = echarts.init(wh_self_per_dom);
 let wh_self_per_option = {
   title: {
     text: "官方自营与非官方自营销量占比",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
-      data: ['官方自营', '非官方自营'],
+      type: "category",
+      data: ["官方自营", "非官方自营"],
       axisTick: {
         alignWithLabel: true
       },
@@ -99,19 +99,19 @@ let wh_self_per_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       min: 0,
       max: 100,
       axisLabel: {
-        formatter: '{value} %'
+        formatter: "{value} %"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: [{{ wh_self_per.self_percentage }}, {{ wh_self_per.non_self_percentage }}]
     }
   ]
@@ -125,18 +125,18 @@ let wh_dom = document.getElementById("wh");
 let wh_chart = echarts.init(wh_dom);
 let wh_option = {
   title: {
-    text: '无线耳机销量排行',
-    left: '5%'
+    text: "无线耳机销量排行",
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {
-      type: 'shadow'
+      type: "shadow"
     }
   },
   dataZoom: [
     {
-      type: 'slider',
+      type: "slider",
       yAxisIndex: 0,
       zoomLock: true,
       width: 10,
@@ -149,7 +149,7 @@ let wh_option = {
       showDetail: false,
     },
     {
-      type: 'inside',
+      type: "inside",
       yAxisIndex: 0,
       start: 99.8,
       end: 100,
@@ -159,29 +159,29 @@ let wh_option = {
     }
   ],
   legend: {
-    data: ['销量(件)']
+    data: ["销量(件)"]
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: {
-    type: 'value',
+    type: "value",
     axisLabel: {
-      formatter: '{value} 件'
+      formatter: "{value} 件"
     },
     min: 0,
   },
   yAxis: {
-    type: 'category',
+    type: "category",
     data: {{ wh_name | tojson }},
   },
   series: [
     {
-      name: '销量(件)',
-      type: 'bar',
+      name: "销量(件)",
+      type: "bar",
       data: {{ wh_count | tojson }}
     }
   ]
@@ -195,27 +195,27 @@ let wh_brand_dom = document.getElementById("wh_brand");
 let wh_brand_chart = echarts.init(wh_brand_dom);
 let wh_brand_option = {
   title: {
-    text: '不同品牌的无线耳机销量占所有无线耳机销量的百分比',
-    left: 'center'
+    text: "不同品牌的无线耳机销量占所有无线耳机销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '品牌',
-      type: 'pie',
-      radius: '50%',
+      name: "品牌",
+      type: "pie",
+      radius: "50%",
       data: {{ wh_brand | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -225,32 +225,32 @@ wh_brand_chart.setOption(wh_brand_option);
 </script>
 
 <script>
-// 无线耳机不同价格区间与销量分布饼图
+// 无线耳机不同价位段与销量分布饼图
 let wh_pas_dom = document.getElementById("wh_pas");
 let wh_pas_chart = echarts.init(wh_pas_dom);
 let wh_pas_option = {
   title: {
-    text: '不同价格区间内的无线耳机销量占无线耳机总销量的百分比',
-    left: 'center'
+    text: "不同价位段内的无线耳机销量占无线耳机总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '销量占比',
-      type: 'pie',
-      radius: '50%',
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
       data: {{ wh_pas | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -265,27 +265,27 @@ let wh_pab_b2h_dom = document.getElementById("wh_pab_b2h");
 let wh_pab_b2h_chart = echarts.init(wh_pab_b2h_dom);
 let wh_pab_b2h_option = {
   title: {
-    text: '200元以下的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
-    left: 'center'
+    text: "200元以下的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '销量占比',
-      type: 'pie',
-      radius: '50%',
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
       data: {{ wh_pab_b2h | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -300,27 +300,27 @@ let wh_pab_2hto9h_dom = document.getElementById("wh_pab_2hto9h");
 let wh_pab_2hto9h_chart = echarts.init(wh_pab_2hto9h_dom);
 let wh_pab_2hto9h_option = {
   title: {
-    text: '200元到900元之间的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
-    left: 'center'
+    text: "200元到900元之间的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '销量占比',
-      type: 'pie',
-      radius: '50%',
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
       data: {{ wh_pab_2hto9h | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -335,27 +335,27 @@ let wh_pab_a9h_dom = document.getElementById("wh_pab_a9h");
 let wh_pab_a9h_chart = echarts.init(wh_pab_a9h_dom);
 let wh_pab_a9h_option = {
   title: {
-    text: '900元以上的无线耳机中不同品牌的无线耳机销量占总销量的百分比',
-    left: 'center'
+    text: "900元以上的无线耳机中不同品牌的无线耳机销量占总销量的百分比",
+    left: "center"
   },
   tooltip: {
-    trigger: 'item'
+    trigger: "item"
   },
   legend: {
-    orient: 'vertical',
-    left: 'left',
+    orient: "vertical",
+    left: "left",
   },
   series: [
     {
-      name: '销量占比',
-      type: 'pie',
-      radius: '50%',
+      name: "销量占比",
+      type: "pie",
+      radius: "50%",
       data: {{ wh_pab_a9h | tojson }}.sort(function (a, b) {return b.value - a.value}),
       emphasis: {
         itemStyle: {
           shadowBlur: 10,
           shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)'
+          shadowColor: "rgba(0, 0, 0, 0.5)"
         }
       }
     }
@@ -371,23 +371,23 @@ let apple_sales_star_chart = echarts.init(apple_sales_star_dom);
 let apple_sales_star_option = {
   title: {
     text: "苹果无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ apple_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -399,17 +399,17 @@ let apple_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ apple_mt | tojson }}
     }
   ]
@@ -424,23 +424,23 @@ let enkor_sales_star_chart = echarts.init(enkor_sales_star_dom);
 let enkor_sales_star_option = {
   title: {
     text: "ENKOR无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ enkor_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -452,17 +452,17 @@ let enkor_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ enkor_mt | tojson }}
     }
   ]
@@ -477,23 +477,23 @@ let hw_sales_star_chart = echarts.init(hw_sales_star_dom);
 let hw_sales_star_option = {
   title: {
     text: "华为无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ hw_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -505,17 +505,17 @@ let hw_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ hw_mt | tojson }}
     }
   ]
@@ -530,23 +530,23 @@ let edifier_sales_star_chart = echarts.init(edifier_sales_star_dom);
 let edifier_sales_star_option = {
   title: {
     text: "漫步者无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ edifier_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -558,17 +558,17 @@ let edifier_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ edifier_mt | tojson }}
     }
   ]
@@ -583,23 +583,23 @@ let mi_sales_star_chart = echarts.init(mi_sales_star_dom);
 let mi_sales_star_option = {
   title: {
     text: "小米无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ mi_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -611,17 +611,17 @@ let mi_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ mi_mt | tojson }}
     }
   ]
@@ -636,23 +636,23 @@ let sony_sales_star_chart = echarts.init(sony_sales_star_dom);
 let sony_sales_star_option = {
   title: {
     text: "索尼无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ sony_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -664,17 +664,17 @@ let sony_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ sony_mt | tojson }}
     }
   ]
@@ -689,23 +689,23 @@ let bose_sales_star_chart = echarts.init(bose_sales_star_dom);
 let bose_sales_star_option = {
   title: {
     text: "Bose无线耳机销量明星",
-    left: '5%'
+    left: "5%"
   },
   tooltip: {
-    trigger: 'axis',
+    trigger: "axis",
     axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-      type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
     }
   },
   grid: {
-    left: '3%',
-    right: '4%',
-    bottom: '3%',
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
     containLabel: true
   },
   xAxis: [
     {
-      type: 'category',
+      type: "category",
       data: {{ bose_model | tojson }},
       axisTick: {
         alignWithLabel: true
@@ -717,17 +717,17 @@ let bose_sales_star_option = {
   ],
   yAxis: [
     {
-      type: 'value',
+      type: "value",
       axisLabel: {
-        formatter: '{value} 万件'
+        formatter: "{value} 万件"
       }
     }
   ],
   series: [
     {
-      name: '销量',
-      type: 'bar',
-      barWidth: '60%',
+      name: "销量",
+      type: "bar",
+      barWidth: "60%",
       data: {{ bose_mt | tojson }}
     }
   ]
