@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-full" id="all_comments_wordcloud">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">全部评论的词云</p>
+      </header>
+      <div class="card-image px-4">
+        <figure class="image is-3by1">
+          <img src="/static/images/mi10_all_comments_wordcloud.png" alt="mi10_all_comments_wordcloud">
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half" id="after_comments_wordcloud">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">追加评论的词云</p>
+      </header>
+      <div class="card-image pl-4 pr-2">
+        <figure class="image is-5by3">
+          <img src="/static/images/mi10_after_comments_wordcloud.png" alt="mi10_after_comments_wordcloud">
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half" id="non_five_star_comments_wordcloud">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">5星以下评论的词云</p>
+      </header>
+      <div class="card-image pl-2 pr-4">
+        <figure class="image is-5by3">
+          <img src="/static/images/mi10_non_five_star_comments_wordcloud.png"
+               alt="mi10_non_five_star_comments_wordcloud">
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="android_comments_wordcloud">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">Android 留存用户的评论词云</p>
+      </header>
+      <div class="card-image pl-2 pr-4">
+        <figure class="image is-5by3">
+          <img src="/static/images/mi10_android_comments_wordcloud.png" alt="mi10_android_comments_wordcloud">
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half uniform-height" id="ios_comments_wordcloud">
+    <div class="card is-shadowless">
+      <header class="card-header is-shadowless">
+        <p class="card-header-title">iOS 转化用户的评论词云</p>
+      </header>
+      <div class="card-image pl-2 pr-4">
+        <figure class="image is-5by3">
+          <img src="/static/images/mi10_ios_comments_wordcloud.png" alt="mi10_ios_comments_wordcloud">
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("mi10_comment_wordcloud_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "小米10评论词云";
+</script>
+{% endblock %}

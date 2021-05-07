@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+{% block main %}
+<div class="columns is-multiline">
+  <div class="column is-full uniform-height" id="user_activity"></div>
+  <div class="column is-full uniform-height" id="comment_date_count"></div>
+  <div class="column is-full uniform-height" id="order_date_count"></div>
+  <div class="column is-full uniform-height" id="order_days_count"></div>
+  <div class="column is-full uniform-height" id="after_days_count"></div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById("mi10_comment_summary_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "小米10评论数据";
+</script>
+
+<script>
+// 有内容评论和默认好评百分比多Y轴柱状图
+let user_activity_dom = document.getElementById("user_activity");
+let user_activity_chart = echarts.init(user_activity_dom);
+let user_activity_option = {
+  title: {
+    text: "有内容评论和默认好评数量占比"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "cross"
+    }
+  },
+  grid: {
+    right: "20%"
+  },
+  legend: {
+    data: ["有内容评论百分比", "默认好评百分比"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      axisPointer: {
+        type: "shadow"
+      },
+      data: {{ ua_source | tojson }}
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      name: "有内容评论百分比",
+      min: 0,
+      max: 100,
+      position: "left",
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: "#5470C6"
+        }
+      },
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    },
+    {
+      type: "value",
+      name: "默认好评百分比",
+      min: 0,
+      max: 100,
+      position: "right",
+      offset: 40,
+      axisLine: {
+        show: true,
+        lineStyle: {
+          color: "#91CC75"
+        }
+      },
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    },
+  ],
+  series: [
+    {
+      name: "有内容评论百分比",
+      type: "bar",
+      data: {{ ua_ap | tojson }}
+    },
+    {
+      name: "默认好评百分比",
+      type: "bar",
+      yAxisIndex: 1,
+      data: {{ ua_iap | tojson }}
+    }
+  ]
+};
+user_activity_chart.setOption(user_activity_option);
+</script>
+
+<script>
+// 用户评论时间分布柱状图
+let cdc_dom = document.getElementById("comment_date_count");
+let cdc_chart = echarts.init(cdc_dom);
+let cdc_option = {
+  title: {
+    text: "用户评论时间分布",
+    left: "5%"
+  },
+  tooltip: {
+   trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  legend: {
+    data: ["百分比", "百分比"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ cdc_ym | tojson }},
+      axisPointer: {
+        type: "shadow"
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      name: "百分比",
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: "百分比",
+      type: "bar",
+      data: {{ cdc_per | tojson }}
+    }
+  ]
+};
+cdc_chart.setOption(cdc_option);
+</script>
+
+<script>
+// 用户下单时间分布柱状图
+let odc_dom = document.getElementById("order_date_count");
+let odc_chart = echarts.init(odc_dom);
+let odc_option = {
+  title: {
+    text: "用户下单时间分布",
+    subtext: "(仅京东平台数据)",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  legend: {
+    data: ["百分比", "百分比"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ odc_ym | tojson }},
+      axisPointer: {
+        type: "shadow"
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: "百分比",
+      type: "bar",
+      data: {{ odc_per | tojson }}
+    }
+  ]
+};
+odc_chart.setOption(odc_option);
+</script>
+
+<script>
+// 从下单到评论的间隔时间分布柱状图
+let odsc_dom = document.getElementById("order_days_count");
+let odsc_chart = echarts.init(odsc_dom);
+let odsc_option = {
+  title: {
+    text: "从下单到评论的时间间隔分布",
+    subtext: "(仅京东平台数据)",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ odsc_days | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        formatter: "{value}天"
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "百分比",
+      type: "bar",
+      data: {{ odsc_per | tojson }}
+    }
+  ]
+};
+odsc_chart.setOption(odsc_option);
+</script>
+
+<script>
+// 追评间隔时间分布柱状图
+let adc_dom = document.getElementById("after_days_count");
+let adc_chart = echarts.init(adc_dom);
+let adc_option = {
+  title: {
+    text: "追评时间间隔分布",
+    subtext: "(京东+苏宁数据)",
+    left: "5%"
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  grid: {
+    left: "3%",
+    right: "4%",
+    bottom: "3%",
+    containLabel: true
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ adc_days | tojson }},
+      axisTick: {
+        alignWithLabel: true
+      },
+      axisLabel: {
+        formatter: "{value}天"
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      axisLabel: {
+        formatter: "{value} %"
+      }
+    }
+  ],
+  series: [
+    {
+      name: "百分比",
+      type: "bar",
+      data: {{ adc_per | tojson }}
+    }
+  ]
+};
+adc_chart.setOption(adc_option);
+</script>
+{% endblock %}

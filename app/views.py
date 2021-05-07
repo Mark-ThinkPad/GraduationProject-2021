@@ -229,8 +229,8 @@ def phone_soc_mfrs_sales_star():
                            kirin_model=kirin_model, kirin_mt=kirin_mt, mtk_model=mtk_model, mtk_mt=mtk_mt)
 
 
-@views.route('/phone/mi10')
-def mi10():
+@views.route('/phone/mi10/sales')
+def mi10_sales():
     # 电商平台数据源概览
     total_source = []
     total_count = []
@@ -259,6 +259,20 @@ def mi10():
     rom_count = []
     for roc in RomCount.select():
         rom_count.append({'value': float(roc.percentage), 'name': roc.product_rom})
+    # 用户设备类型统计
+    udc_per = []
+    for udc in UserDeviceCount.select():
+        udc_per.append({'value': float(udc.android_percentage), 'name': 'Android 留存用户'})
+        udc_per.append({'value': float(udc.ios_percentage), 'name': 'iOS 转化用户'})
+        udc_per.append({'value': float(udc.other_percentage), 'name': 'other'})
+
+    return render_template('mi10_sales.html', total_source=total_source, total_count=total_count,
+                           total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
+                           color_count=color_count, ram_count=ram_count, rom_count=rom_count, udc_per=udc_per)
+
+
+@views.route('/phone/mi10/comment/summary')
+def mi10_comment_summary():
     # 用户活跃度百分比
     ua_source = []
     ua_ap = []
@@ -291,18 +305,15 @@ def mi10():
     for adc in AfterDaysCount.select():
         adc_days.append(adc.after_days)
         adc_per.append(adc.percentage)
-    # 用户设备类型统计
-    udc_per = []
-    for udc in UserDeviceCount.select():
-        udc_per.append({'value': float(udc.android_percentage), 'name': 'Android 留存用户'})
-        udc_per.append({'value': float(udc.ios_percentage), 'name': 'iOS 转化用户'})
-        udc_per.append({'value': float(udc.other_percentage), 'name': 'other'})
 
-    return render_template('mi10.html', total_source=total_source, total_count=total_count,
-                           total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
-                           color_count=color_count, ram_count=ram_count, rom_count=rom_count, ua_source=ua_source,
-                           ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym, cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per,
-                           odsc_days=odsc_days, odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per, udc_per=udc_per)
+    return render_template('mi10_comment_summary.html', ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap, cdc_ym=cdc_ym,
+                           cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per, odsc_days=odsc_days, odsc_per=odsc_per,
+                           adc_days=adc_days, adc_per=adc_per)
+
+
+@views.route('/phone/mi10/comment/wordcloud')
+def mi10_comment_wordcloud():
+    return render_template('mi10_comment_wordcloud.html')
 
 
 @views.route('/wh/sales')
