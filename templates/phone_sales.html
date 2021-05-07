@@ -78,6 +78,7 @@
     </div>
   </div>
   <div class="column is-half uniform-height" id="platform"></div>
+  <div class="column is-full uniform-height" id="hot_models"></div>
   <div class="column is-full more-height" id="phone"></div>
 </div>
 {% endblock %}
@@ -89,13 +90,64 @@ document.getElementById("page_title").innerText = "手机销量总览";
 </script>
 
 <script>
+// 手机市场热销机型柱状图
+let hm_dom = document.getElementById("hot_models");
+let hm_chart = echarts.init(hm_dom);
+let hm_option = {
+  title: {
+    text: "线上手机市场热销机型",
+    left: "5%"
+  },
+  tooltip: {
+   trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  legend: {
+    data: ["销量(台)"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ hm_name | tojson }},
+      axisPointer: {
+        type: "shadow"
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      name: "销量(台)",
+      axisLabel: {
+        formatter: "{value} 万台"
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: "销量(台)",
+      type: "bar",
+      data: {{ hm_count | tojson }}
+    }
+  ]
+};
+hm_chart.setOption(hm_option);
+</script>
+
+<script>
 // 手机销量排行横向条形图
 let phone_dom = document.getElementById("phone");
 let phone_chart = echarts.init(phone_dom);
 let phone_option = {
   title: {
-    text: "手机销量排行",
-    subtext: "数据来自京东和苏宁 (下滑查看更多机型)",
+    text: "所有手机销量排行",
+    subtext: "数据来自京东和苏宁 (下滑查看所有机型)",
     left: "5%"
   },
   tooltip: {

@@ -146,7 +146,19 @@ class PhonePriceAndBrand(BaseModel):
         primary_key = pw.CompositeKey('price_range', 'brand')
 
 
+# SoC制造商向不同手机品牌销售的比例分布
+class SoCAndBrand(BaseModel):
+    soc_mfrs = pw.CharField(max_length=10)
+    brand = pw.CharField(max_length=20)
+    total = pw.IntegerField()
+    percentage = pw.CharField(max_length=4, null=True)
+
+    class Meta:
+        primary_key = pw.CompositeKey('soc_mfrs', 'brand')
+
+
 if __name__ == '__main__':
     phone_sales_analyze_db.create_tables([Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                           BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                          FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand])
+                                          FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand,
+                                          SoCAndBrand])

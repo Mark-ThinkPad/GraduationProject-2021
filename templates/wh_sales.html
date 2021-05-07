@@ -43,6 +43,7 @@
     </div>
   </div>
   <div class="column is-half uniform-height" id="wh_self_per"></div>
+  <div class="column is-full uniform-height" id="hot_models"></div>
   <div class="column is-full more-height" id="wh"></div>
 </div>
 {% endblock %}
@@ -107,6 +108,57 @@ let wh_self_per_option = {
 };
 wh_self_per_chart.setOption(wh_self_per_option);
 </script>
+  
+<script>
+// 无线耳机市场热销机型柱状图
+let hm_dom = document.getElementById("hot_models");
+let hm_chart = echarts.init(hm_dom);
+let hm_option = {
+  title: {
+    text: "线上无线耳机市场热销型号",
+    left: "5%"
+  },
+  tooltip: {
+   trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  legend: {
+    data: ["销量(件)"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ hm_name | tojson }},
+      axisPointer: {
+        type: "shadow"
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      name: "销量(件)",
+      axisLabel: {
+        formatter: "{value} 万件"
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: "销量(件)",
+      type: "bar",
+      data: {{ hm_count | tojson }}
+    }
+  ]
+};
+hm_chart.setOption(hm_option);
+</script>
 
 <script>
 // 无线耳机销量排行横向条形图
@@ -114,7 +166,8 @@ let wh_dom = document.getElementById("wh");
 let wh_chart = echarts.init(wh_dom);
 let wh_option = {
   title: {
-    text: "无线耳机销量排行",
+    text: "所有无线耳机销量排行",
+    subtext: "(下滑查看所有型号)",
     left: "5%"
   },
   tooltip: {

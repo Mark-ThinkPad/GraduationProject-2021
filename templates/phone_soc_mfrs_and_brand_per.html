@@ -3,6 +3,11 @@
 <div class="columns is-multiline">
   <div class="column is-half uniform-height" id="soc_mfrs"></div>
   <div class="column is-half uniform-height" id="feature_phone_soc_per"></div>
+  <div class="column is-half uniform-height" id="exynos"></div>
+  <div class="column is-half uniform-height" id="kirin"></div>
+  <div class="column is-half uniform-height" id="snapdragon"></div>
+  <div class="column is-half uniform-height" id="mtk"></div>
+  <div class="column is-half is-offset-3 uniform-height" id="unisoc"></div>
 </div>
 {% endblock %}
 
@@ -82,5 +87,185 @@ let fpsp_option = {
   ]
 };
 fpsp_chart.setOption(fpsp_option);
+</script>
+
+<script>
+// 三星猎户座向不同手机品牌销售SoC的百分比饼图
+let exynos_dom = document.getElementById("exynos");
+let exynos_chart = echarts.init(exynos_dom);
+let exynos_option = {
+  title: {
+    text: "三星猎户座向不同手机品牌销售SoC的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "手机品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ exynos | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+exynos_chart.setOption(exynos_option);
+</script>
+
+<script>
+// 海思麒麟向不同手机品牌销售SoC的百分比饼图
+let kirin_dom = document.getElementById("kirin");
+let kirin_chart = echarts.init(kirin_dom);
+let kirin_option = {
+  title: {
+    text: "海思麒麟向不同手机品牌销售SoC的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "手机品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ kirin | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+kirin_chart.setOption(kirin_option);
+</script>
+
+<script>
+// 高通骁龙向不同手机品牌销售SoC的百分比饼图
+let snapdragon_dom = document.getElementById("snapdragon");
+let snapdragon_chart = echarts.init(snapdragon_dom);
+let snapdragon_option = {
+  title: {
+    text: "高通骁龙向不同手机品牌销售SoC的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "手机品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ snapdragon | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+snapdragon_chart.setOption(snapdragon_option);
+</script>
+
+<script>
+// 联发科向不同手机品牌销售SoC的百分比饼图
+let mtk_dom = document.getElementById("mtk");
+let mtk_chart = echarts.init(mtk_dom);
+let mtk_option = {
+  title: {
+    text: "联发科向不同手机品牌销售SoC的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "手机品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ mtk | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+mtk_chart.setOption(mtk_option);
+</script>
+
+<script>
+// 紫光展锐向不同手机品牌销售SoC的百分比饼图
+let unisoc_dom = document.getElementById("unisoc");
+let unisoc_chart = echarts.init(unisoc_dom);
+let unisoc_option = {
+  title: {
+    text: "紫光展锐向不同手机品牌销售SoC的百分比",
+    subtext: "基于手机销量统计",
+    left: "center"
+  },
+  tooltip: {
+    trigger: "item"
+  },
+  legend: {
+    orient: "vertical",
+    left: "left",
+  },
+  series: [
+    {
+      name: "手机品牌",
+      type: "pie",
+      radius: "50%",
+      data: {{ unisoc | tojson }}.sort(function (a, b) {return b.value - a.value}),
+      emphasis: {
+        itemStyle: {
+          shadowBlur: 10,
+          shadowOffsetX: 0,
+          shadowColor: "rgba(0, 0, 0, 0.5)"
+        }
+      }
+    }
+  ]
+};
+unisoc_chart.setOption(unisoc_option);
 </script>
 {% endblock %}

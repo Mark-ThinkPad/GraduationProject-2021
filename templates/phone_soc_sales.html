@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 <div class="columns is-multiline">
+  <div class="column is-full uniform-height" id="hot_models"></div>
   <div class="column is-full more-height" id="soc"></div>
 </div>
 {% endblock %}
@@ -10,6 +11,57 @@
 document.getElementById("phone_soc_sales_url").classList.add("is-active");
 document.getElementById("page_title").innerText = "手机SoC销量总览";
 </script>
+  
+<script>
+// 手机市场热销SoC型号柱状图
+let hm_dom = document.getElementById("hot_models");
+let hm_chart = echarts.init(hm_dom);
+let hm_option = {
+  title: {
+    text: "线上手机市场热销SoC型号",
+    left: "5%"
+  },
+  tooltip: {
+   trigger: "axis",
+    axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+      type: "shadow"        // 默认为直线，可选为："line" | "shadow"
+    }
+  },
+  legend: {
+    data: ["销量(片)"]
+  },
+  xAxis: [
+    {
+      type: "category",
+      data: {{ hm_name | tojson }},
+      axisPointer: {
+        type: "shadow"
+      },
+      axisLabel: {
+        interval: 0
+      }
+    }
+  ],
+  yAxis: [
+    {
+      type: "value",
+      name: "销量(片)",
+      axisLabel: {
+        formatter: "{value} 万片"
+      }
+    },
+
+  ],
+  series: [
+    {
+      name: "销量(片)",
+      type: "bar",
+      data: {{ hm_count | tojson }}
+    }
+  ]
+};
+hm_chart.setOption(hm_option);
+</script>
 
 <script>
 // SoC销量排行横向条形图
@@ -17,8 +69,8 @@ let soc_dom = document.getElementById("soc");
 let soc_chart = echarts.init(soc_dom);
 let soc_option = {
   title: {
-    text: "SoC销量排行",
-    subtext: "数据来自京东和苏宁 (基于手机销量计算) (下滑查看更多型号)",
+    text: "所有SoC销量排行",
+    subtext: "数据来自京东和苏宁 (基于手机销量计算) (下滑查看更多所有型号)",
     left: "5%"
   },
   tooltip: {

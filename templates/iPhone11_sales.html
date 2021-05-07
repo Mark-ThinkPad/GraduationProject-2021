@@ -5,20 +5,20 @@
     <div class="card is-shadowless">
       <header class="card-header is-shadowless">
         <p class="card-header-title">
-          <img class="image is-32x32" src="/static/images/mi_logo.png" alt="mi_logo">
-          <span>&nbsp;&nbsp;小米10</span>
+          <img class="image is-32x32" src="/static/images/apple_logo.png" alt="mi_logo">
+          <span>&nbsp;&nbsp;iPhone 11</span>
         </p>
         <p class="card-header-icon">
-          <span>于2020年2月13号发布, 小米宣布冲击高端手机市场</span>
+          <span>于2019年9月11号发布, 在产品定位上是iPhone XR的下一代续作</span>
         </p>
       </header>
       <div class="card-image">
         <div class="columns">
           <div class="column is-half">
-            <img src="/static/images/mi10_1.jpg" alt="mi10_1">
+            <img src="/static/images/iPhone11_1.png" alt="iPhone11_1">
           </div>
           <div class="column is-half">
-            <img src="/static/images/mi10_2.jpg" alt="mi10_2">
+            <img src="/static/images/iPhone11_2.png" alt="iPhone11_2">
           </div>
         </div>
       </div>
@@ -27,16 +27,15 @@
   <div class="column is-half uniform-height" id="total" ></div>
   <div class="column is-full uniform-height" id="model_count"></div>
   <div class="column is-half uniform-height" id="color_count"></div>
-  <div class="column is-half uniform-height" id="ram_count"></div>
   <div class="column is-half uniform-height" id="rom_count"></div>
-  <div class="column is-half uniform-height" id="user_device_count"></div>
+  <div class="column is-half is-offset-3 uniform-height" id="user_device_count"></div>
 </div>
 {% endblock %}
 
 {% block js %}
 <script>
-document.getElementById("mi10_sales_url").classList.add("is-active");
-document.getElementById("page_title").innerText = "小米10 销售数据";
+document.getElementById("iPhone11_sales_url").classList.add("is-active");
+document.getElementById("page_title").innerText = "iPhone 11 销售数据";
 </script>
 
 <script>
@@ -232,41 +231,6 @@ let color_count_option = {
   ]
 };
 color_count_chart.setOption(color_count_option);
-</script>
-
-<script>
-// 内存容量百分比饼图
-let ram_count_dom = document.getElementById("ram_count");
-let ram_count_chart = echarts.init(ram_count_dom);
-let ram_count_option = {
-  title: {
-    text: "不同内存(RAM)容量占总销量的百分比",
-    left: "center"
-  },
-  tooltip: {
-    trigger: "item"
-  },
-  legend: {
-    orient: "vertical",
-    left: "left",
-  },
-  series: [
-    {
-      name: "内存容量",
-      type: "pie",
-      radius: "50%",
-      data: {{ ram_count | tojson }}.sort(function (a, b) {return b.value - a.value}),
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10,
-          shadowOffsetX: 0,
-          shadowColor: "rgba(0, 0, 0, 0.5)"
-        }
-      }
-    }
-  ]
-};
-ram_count_chart.setOption(ram_count_option);
 </script>
 
 <script>

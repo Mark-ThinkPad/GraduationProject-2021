@@ -1,10 +1,12 @@
-from flask import Blueprint, render_template, redirect, url_for
+import db.iPhone11_analyze_models as ipa
 from app.utils import rounding_w
+from flask import Blueprint, render_template, redirect, url_for
 from db.mi10_analyze_models import (UserDeviceCount, Total, ModelCount, ColorCount, RamCount, RomCount,
                                     CommentDateCount, AfterDaysCount, OrderDateCount, OrderDaysCount, UserActivity)
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                            BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand)
+                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand,
+                                           SoCAndBrand)
 from db.wireless_headphone_analyze_models import (WH, WHTotal, WHSelfPer, WHBrand, WHBrandSalesStar, WHPriceAndSales,
                                                   WHPriceAndBrand)
 
@@ -24,6 +26,14 @@ def phone_sales():
     for item in Phone.select().order_by(Phone.total.asc()):
         phone_name.append(item.brand + '\n' + item.model)
         phone_count.append(item.total)
+    # 热销机型
+    hm_name = []
+    hm_count = []
+    for item in Phone.select().order_by(Phone.total.desc()):
+        hm_name.append(item.brand + '\n' + item.model)
+        hm_count.append(rounding_w(item.total))
+    hm_name = hm_name[:20]
+    hm_count = hm_count[:20]
     # 数据总览
     total = PhoneTotal.get_by_id(1)
     total_tc = rounding_w(total.total_count)
@@ -45,7 +55,7 @@ def phone_sales():
     return render_template('phone_sales.html', phone_name=phone_name, phone_count=phone_count, total=total,
                            total_tc=total_tc, platform_source=platform_source, platform_tc=platform_tc,
                            platform_cc=platform_cc, platform_sp=platform_sp, platform_nsp=platform_nsp,
-                           phone_size=phone_size)
+                           phone_size=phone_size, hm_name=hm_name, hm_count=hm_count)
 
 
 @views.route('/phone/os_and_brand_per')
@@ -164,10 +174,23 @@ def phone_soc_sales():
     soc_name = []
     soc_count = []
     for soc in SoC.select().order_by(SoC.total.asc()):
+        if soc.soc_model == '未知':
+            continue
         soc_name.append(soc.soc_mfrs + '\n' + soc.soc_model)
         soc_count.append(soc.total)
+    # 热销型号
+    hm_name = []
+    hm_count = []
+    for item in SoC.select().order_by(SoC.total.desc()):
+        if item.soc_model == '未知':
+            continue
+        hm_name.append(item.soc_mfrs + '\n' + item.soc_model)
+        hm_count.append(rounding_w(item.total))
+    hm_name = hm_name[:20]
+    hm_count = hm_count[:20]
 
-    return render_template('phone_soc_sales.html', soc_name=soc_name, soc_count=soc_count)
+    return render_template('phone_soc_sales.html', soc_name=soc_name, soc_count=soc_count, hm_name=hm_name,
+                           hm_count=hm_count)
 
 
 @views.route('/phone/soc/mfrs_and_brand_per')
@@ -180,8 +203,29 @@ def phone_soc_mfrs_and_brand_per():
     fpsp = []
     for fps in FeaturePhoneSoCPer.select():
         fpsp.append({'value': float(fps.percentage), 'name': fps.soc_mfrs})
+    # 三星猎户座采购商比例
+    exynos = []
+    for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == '三星猎户座'):
+        exynos.append({'value': float(sab.percentage), 'name': sab.brand})
+    # 海思麒麟采购商比例
+    kirin = []
+    for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == '海思麒麟'):
+        kirin.append({'value': float(sab.percentage), 'name': sab.brand})
+    # 高通骁龙采购商比例
+    snapdragon = []
+    for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == '高通骁龙'):
+        snapdragon.append({'value': float(sab.percentage), 'name': sab.brand})
+    # 联发科采购商比例
+    mtk = []
+    for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == '联发科'):
+        mtk.append({'value': float(sab.percentage), 'name': sab.brand})
+    # 紫光展锐采购商比例
+    unisoc = []
+    for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == '紫光展锐'):
+        unisoc.append({'value': float(sab.percentage), 'name': sab.brand})
 
-    return render_template('phone_soc_mfrs_and_brand_per.html', soc_mfrs=socmfrs, fpsp=fpsp)
+    return render_template('phone_soc_mfrs_and_brand_per.html', soc_mfrs=socmfrs, fpsp=fpsp, exynos=exynos, kirin=kirin,
+                           snapdragon=snapdragon, mtk=mtk, unisoc=unisoc)
 
 
 @views.route('/phone/soc/mfrs_sales_star')
@@ -316,6 +360,89 @@ def mi10_comment_wordcloud():
     return render_template('mi10_comment_wordcloud.html')
 
 
+@views.route('/phone/iPhone11/sales')
+def iPhone11_sales():
+    # 电商平台数据源概览
+    total_source = []
+    total_count = []
+    total_good_rate = []
+    for platform in ipa.Total.select():
+        total_source.append(platform.source)
+        total_count.append(rounding_w(platform.total))
+        total_good_rate.append(float(platform.good_rate))
+    # 各型号数据概览
+    mc_name = []
+    mc_per = []
+    mc_good_rate = []
+    for model in ipa.ModelCount.select():
+        mc_name.append(model.color + '\n' + model.rom)
+        mc_per.append(model.percentage)
+        mc_good_rate.append(float(model.good_rate))
+    # 机身颜色百分比
+    color_count = []
+    for cc in ipa.ColorCount.select():
+        color_count.append({'value': float(cc.percentage), 'name': cc.color})
+    # 储存容量百分比
+    rom_count = []
+    for roc in ipa.RomCount.select():
+        rom_count.append({'value': float(roc.percentage), 'name': roc.rom})
+    # 用户设备类型统计
+    udc_per = []
+    for udc in ipa.UserDeviceCount.select():
+        udc_per.append({'value': float(udc.android_percentage), 'name': 'Android 转化用户'})
+        udc_per.append({'value': float(udc.ios_percentage), 'name': 'iOS 留存用户'})
+        udc_per.append({'value': float(udc.other_percentage), 'name': 'other'})
+
+    return render_template('iPhone11_sales.html', total_source=total_source, total_count=total_count,
+                           total_good_rate=total_good_rate, mc_name=mc_name, mc_per=mc_per, mc_good_rate=mc_good_rate,
+                           color_count=color_count, rom_count=rom_count, udc_per=udc_per)
+
+
+@views.route('/phone/iPhone11/comment/summary')
+def iPhone11_comment_summary():
+    # 用户活跃度百分比
+    ua_source = []
+    ua_ap = []
+    ua_iap = []
+    for ua in ipa.UserActivity.select():
+        ua_source.append(ua.source)
+        ua_ap.append(float(ua.active_percentage))
+        ua_iap.append(float(ua.inactive_percentage))
+    # 用户评论时间分布
+    cdc_ym = []
+    cdc_per = []
+    for cdc in ipa.CommentDateCount.select().order_by(ipa.CommentDateCount.year_month.asc()):
+        cdc_ym.append(cdc.year_month)
+        cdc_per.append(float(cdc.percentage))
+    # 用户下单时间分布
+    odc_ym = []
+    odc_per = []
+    for odc in ipa.OrderDateCount.select().order_by(ipa.OrderDateCount.year_month.asc()):
+        odc_ym.append(odc.year_month)
+        odc_per.append(float(odc.percentage))
+    # 从下单到评论的时间间隔分布
+    odsc_days = []
+    odsc_per = []
+    for odsc in ipa.OrderDaysCount.select():
+        odsc_days.append(odsc.order_days)
+        odsc_per.append(float(odsc.percentage))
+    # 追评时间间隔分布
+    adc_days = []
+    adc_per = []
+    for adc in ipa.AfterDaysCount.select():
+        adc_days.append(adc.after_days)
+        adc_per.append(adc.percentage)
+
+    return render_template('iPhone11_comment_summary.html', ua_source=ua_source, ua_ap=ua_ap, ua_iap=ua_iap,
+                           cdc_ym=cdc_ym, cdc_per=cdc_per, odc_ym=odc_ym, odc_per=odc_per, odsc_days=odsc_days,
+                           odsc_per=odsc_per, adc_days=adc_days, adc_per=adc_per)
+
+
+@views.route('/phone/iPhone11/comment/wordcloud')
+def iPhone11_comment_wordcloud():
+    return render_template('iPhone11_comment_wordcloud.html')
+
+
 @views.route('/wh/sales')
 def wh_sales():
     # 数据总览
@@ -329,9 +456,17 @@ def wh_sales():
     for item in WH.select().order_by(WH.total.asc()):
         wh_name.append(item.brand + '\n' + item.model[:20])
         wh_count.append(item.total)
+    # 热销型号
+    hm_name = []
+    hm_count = []
+    for item in WH.select().order_by(WH.total.desc()):
+        hm_name.append(item.brand + '\n' + item.model[:20])
+        hm_count.append(rounding_w(item.total))
+    hm_name = hm_name[:12]
+    hm_count = hm_count[:12]
 
     return render_template('wh_sales.html', total=total, total_tc=total_tc, wh_self_per=wh_self_per, wh_name=wh_name,
-                           wh_count=wh_count)
+                           wh_count=wh_count, hm_name=hm_name, hm_count=hm_count)
 
 
 @views.route('/wh/brand_and_price')

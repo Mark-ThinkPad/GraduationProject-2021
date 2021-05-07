@@ -3,7 +3,8 @@ from data_analyze.utils import calculate_percentage, calculate_average, calculat
 from db.phone_sales_models import Commodity
 from db.phone_sales_analyze_models import (Phone, PhoneTotal, PhonePlatform, PhoneOS, PhoneBrand, BrandSalesStar,
                                            BrandPercentage, FeaturePhonePercentage, SoC, SoCMfrs, SoCStar,
-                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand)
+                                           FeaturePhoneSoCPer, PhoneSize, PhonePriceAndSales, PhonePriceAndBrand,
+                                           SoCAndBrand)
 
 
 # 预处理原生数据
@@ -606,6 +607,40 @@ def get_phone_price_and_brand():
             #     ppab.delete_instance()
 
 
+# 生成SoC制造商向不同手机品牌销售的比例分布
+def get_soc_and_brand():
+    # for commodity in Commodity.select().where(Commodity.soc_mfrs != '未知'):
+    #     try:
+    #         sab = SoCAndBrand.get(
+    #             SoCAndBrand.soc_mfrs == commodity.soc_mfrs,
+    #             SoCAndBrand.brand == commodity.brand
+    #         )
+    #         sab.total += commodity.total
+    #         sab.save()
+    #     except SoCAndBrand.DoesNotExist:
+    #         SoCAndBrand.create(
+    #             soc_mfrs=commodity.soc_mfrs,
+    #             brand=commodity.brand,
+    #             total=commodity.total
+    #         )
+    soc_mfrs_list = ['三星猎户座', '海思麒麟', '紫光展锐', '联发科', '高通骁龙']
+    for soc_mfrs in soc_mfrs_list:
+        total_count = SoCAndBrand.select(fn.SUM(SoCAndBrand.total).alias('tc')) \
+            .where(SoCAndBrand.soc_mfrs == soc_mfrs).dicts()[0]['tc']
+        print(total_count)
+        for sab in SoCAndBrand.select().where(SoCAndBrand.soc_mfrs == soc_mfrs):
+            sab.percentage = calculate_percentage(total_count, sab.total)
+            sab.save()
+            # if float(sab.percentage) < 1:
+            #     others = SoCAndBrand.get(
+            #         SoCAndBrand.soc_mfrs == soc_mfrs,
+            #         SoCAndBrand.brand == '其他品牌'
+            #     )
+            #     others.total += sab.total
+            #     others.save()
+            #     sab.delete_instance()
+
+
 if __name__ == '__main__':
     # preprocess_data()
     # get_phone()
@@ -621,4 +656,5 @@ if __name__ == '__main__':
     # get_feature_phone_soc_percentage()
     # get_phone_size()
     # get_phone_price_and_sales()
-    get_phone_price_and_brand()
+    # get_phone_price_and_brand()
+    get_soc_and_brand()
