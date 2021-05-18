@@ -42,7 +42,12 @@ let user_activity_option = {
       axisPointer: {
         type: "shadow"
       },
-      data: {{ ua_source | tojson }}
+      data: {{ ua_source | tojson }},
+      axisLabel: {
+        textStyle: {
+          fontSize: 18,
+        }
+      }
     }
   ],
   yAxis: [
@@ -59,7 +64,10 @@ let user_activity_option = {
         }
       },
       axisLabel: {
-        formatter: "{value} %"
+        formatter: "{value} %",
+        textStyle: {
+          fontSize: 18,
+        }
       }
     },
     {
@@ -76,7 +84,10 @@ let user_activity_option = {
         }
       },
       axisLabel: {
-        formatter: "{value} %"
+        formatter: "{value} %",
+        textStyle: {
+          fontSize: 18,
+        }
       }
     },
   ],
@@ -121,6 +132,12 @@ let cdc_option = {
       data: {{ cdc_ym | tojson }},
       axisPointer: {
         type: "shadow"
+      },
+      axisLabel: {
+        interval: 0,
+        textStyle: {
+          fontSize: 16,
+        }
       }
     }
   ],
@@ -129,7 +146,10 @@ let cdc_option = {
       type: "value",
       name: "百分比",
       axisLabel: {
-        formatter: "{value} %"
+        formatter: "{value} %",
+        textStyle: {
+          fontSize: 18,
+        }
       }
     },
 
@@ -170,6 +190,12 @@ let odc_option = {
       data: {{ odc_ym | tojson }},
       axisPointer: {
         type: "shadow"
+      },
+      axisLabel: {
+        interval: 0,
+        textStyle: {
+          fontSize: 16,
+        }
       }
     }
   ],
@@ -177,7 +203,10 @@ let odc_option = {
     {
       type: "value",
       axisLabel: {
-        formatter: "{value} %"
+        formatter: "{value} %",
+        textStyle: {
+          fontSize: 18,
+        }
       }
     },
 
